@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
+
+  # Admin
+  scope :admin do
+    get '' => 'landing#admin', as: :admin
+
+  end
 end
