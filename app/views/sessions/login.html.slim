@@ -1,0 +1,13 @@
+h1 Log in
+
+= form_for(:session, url: login_path) do |f|
+  .label
+    .label__caption Name
+    = f.text_field :name
+
+  .label
+    .label__caption Password
+    = f.password_field :password
+
+  p
+    button Log in

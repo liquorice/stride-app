@@ -3,4 +3,29 @@ html
 head
   title Stride App
 body
+
+  h2 Stride
+
+  - if flash[:success]
+    .notifications
+      .constrained
+        .notification.success = flash[:success]
+
+  - if flash[:error]
+    .notifications
+      .constrained
+        .notification.error = flash[:error]
+
+  hr
+
+  - if @current_user
+    p Hello #{@current_user.name}
+    p
+      a href=logout_path Log out
+
+  - else
+    p
+      a href=login_path Log in
+
+  hr
   = yield
