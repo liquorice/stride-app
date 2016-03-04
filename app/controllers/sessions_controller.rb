@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(name: params[:session][:name])
-    failed unless user
+    return failed unless user
 
     if user.authenticate(params[:session][:password])
       log_in(user)
