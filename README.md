@@ -14,3 +14,7 @@ This project uses postgres. Install on OSX with homebrew, using `brew install po
 (You will be prompted to enter the password)
 
 To create the database (only required the first time you set up the app), use `rake db:create && rake db:migrate`. To migrate the database at any time to reflect new structural changes, use `rake db:migrate`.
+
+== Sites
+
+The app is deployed once, but is accessed as several different sites. This is determined by the request url, which is matched against the 'hosts' array in the Sites table.
