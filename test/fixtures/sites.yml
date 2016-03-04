@@ -1,0 +1,7 @@
+pete:
+  name: pete
+  hosts: [pete-app.dev, pete.org.au]
+
+dale:
+  name: dale
+  hosts: [dale-app.dev, dale.org.au]

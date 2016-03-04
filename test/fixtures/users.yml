@@ -1,0 +1,4 @@
+admin:
+  name: admin
+  email: dev@dokio.co
+  password_digest: <%= BCrypt::Password.create('password123') %>
