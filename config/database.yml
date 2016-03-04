@@ -5,13 +5,15 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: 5
   timeout: 5000
 
-development:
+development: &development
   <<: *default
-  database: db/development.sqlite3
+  database: stride_dev
+  username: stride
+  password: stride
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
