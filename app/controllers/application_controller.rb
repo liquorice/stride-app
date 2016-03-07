@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
 
   # Catch 404 errors
   rescue_from Exceptions::NotFoundError, with: :not_found
-
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  rescue_from Exceptions::NotAuthorisedError, with: :not_authorised
   private
 
   def check_for_user
@@ -24,8 +25,20 @@ class ApplicationController < ActionController::Base
     raise Exceptions::NotFoundError unless @site
   end
 
+  def require_permission(permission)
+    # Require permission via an access level
+    # Otherwise, 403
+    unless @current_user && @current_user.can?(permission)
+      raise Exceptions::NotAuthorisedError
+    end
+  end
+
   def not_found
     render(:file => File.join(Rails.root, 'public/404.html'), :status => 404, :layout => false)
+  end
+
+  def not_authorised
+    render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
   end
 
 end

@@ -1,0 +1,6 @@
+<% ['pete', 'dale'].each do |site| %>
+  admin_<%= site %>:
+    site: <%= site %>
+    name: Admin
+    permissions_data: { 'accessLevels_modify': true }
+<% end %>

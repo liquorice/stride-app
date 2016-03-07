@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304171959) do
+ActiveRecord::Schema.define(version: 20160307144825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "access_levels", force: :cascade do |t|
+    t.integer  "site_id"
+    t.string   "name"
+    t.json     "permissions_data", default: {}
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "access_levels", ["site_id"], name: "index_access_levels_on_site_id", using: :btree
 
   create_table "sites", force: :cascade do |t|
     t.string   "name"
@@ -27,8 +37,17 @@ ActiveRecord::Schema.define(version: 20160304171959) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "superuser",       default: false
+    t.integer  "access_level_id"
+    t.integer  "site_id"
   end
 
+  add_index "users", ["access_level_id"], name: "index_users_on_access_level_id", using: :btree
+  add_index "users", ["site_id"], name: "index_users_on_site_id", using: :btree
+
+  add_foreign_key "access_levels", "sites"
+  add_foreign_key "users", "access_levels"
+  add_foreign_key "users", "sites"
 end

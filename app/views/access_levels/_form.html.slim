@@ -1,0 +1,14 @@
+= form_for @access_level do |f|
+  .label
+    .label__caption Access level name
+    = f.text_field :name
+
+  .label
+    .label_caption Permissions
+    - AccessLevel.permissions_list.each do |k, v|
+      label.checkbox
+        = check_box_tag "permissions_data[#{k}]", 1, @access_level.permissions[k]
+        span = v
+
+  p
+    button Create access level

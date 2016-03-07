@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:session][:name])
+    user = @site.users.find_by(name: params[:session][:name])
     return failed unless user
 
     if user.authenticate(params[:session][:password])
