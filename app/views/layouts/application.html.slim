@@ -1,31 +1,36 @@
 doctype html
 html
-head
-  title Stride App
-body
+  head
+    title Stride App
+    meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"
+    = csrf_meta_tags
 
-  h2 Stride — #{@site.name}
+  body
 
-  - if flash[:success]
-    .notifications
-      .constrained
-        .notification.success = flash[:success]
+    h2 Stride — #{@site.name}
 
-  - if flash[:error]
-    .notifications
-      .constrained
-        .notification.error = flash[:error]
+    - if flash[:success]
+      .notifications
+        .constrained
+          .notification.success = flash[:success]
 
-  hr
+    - if flash[:error]
+      .notifications
+        .constrained
+          .notification.error = flash[:error]
 
-  - if @current_user
-    p Hello #{@current_user.name}
-    p
-      a href=logout_path Log out
+    hr
 
-  - else
-    p
-      a href=login_path Log in
+    - if @current_user
+      p Hello #{@current_user.name}
+      p
+        a href=logout_path data-method='post' Log out
 
-  hr
-  = yield
+    - else
+      p
+        a href=login_path Log in
+
+    hr
+    = yield
+
+    = javascript_include_tag 'application'
