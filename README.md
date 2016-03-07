@@ -25,8 +25,8 @@ The app is deployed once, but is accessed as several different sites. This is de
 
 The app will 404 if a matching site is not found. In development, use `pow` to create the sites for pete and dale. Follow the instructions on http://pow.cx/ to install pow, then set-up the two sites with:
 
-`ln -s ~/PATH/TO/APP ~/.pow/dale-app`
-`ln -s ~/PATH/TO/APP ~/.pow/pete-app`
+    ln -s ~/PATH/TO/APP ~/.pow/dale-app
+    ln -s ~/PATH/TO/APP ~/.pow/pete-app
 
 You should then be able to access `http://pete-app.dev` and `http://dale-app.dev`.
 

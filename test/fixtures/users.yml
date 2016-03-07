@@ -1,4 +1,8 @@
-admin:
-  name: admin
-  email: dev@dokio.co
-  password_digest: <%= BCrypt::Password.create('password123') %>
+<% ['pete', 'dale'].each do |site| %>
+  admin_<%= site %>:
+    name: admin
+    site: <%= site %>
+    access_level: admin_<%= site %>
+    email: dev@liquorice.com.au
+    password_digest: <%= BCrypt::Password.create('password123') %>
+<% end %>
