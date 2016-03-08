@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   def can?(permission)
     # Checks that a user has the permission privledge, as set
     # by their access_level
-    self.permissions.key?(permission.to_s)
+    # Superusers always have permission
+    superuser || permissions.key?(permission.to_s)
   end
 
 end

@@ -46,3 +46,7 @@ When requiring a particular permission within a controller, you can use `require
     end
 
 Be sure to `require_permission` on all associated actions, not just those that control the display of the form.
+
+### Superuser
+
+Superusers have access to the entire app, and sidestep all permission checks. The superuser property on a user can only be set via the `console`; there is no web-based control. This ensures that superuser status can not be set without express intervention from a developer.
