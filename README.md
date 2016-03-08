@@ -50,3 +50,17 @@ Be sure to `require_permission` on all associated actions, not just those that c
 ### Superuser
 
 Superusers have access to the entire app, and sidestep all permission checks. The superuser property on a user can only be set via the `console`; there is no web-based control. This ensures that superuser status can not be set without express intervention from a developer.
+
+## Assets
+
+Assets are managed by the Rails Asset pipeline, so there is no need for any external programs such as gulp or grunt.
+
+### Stylesheets
+
+Each site has it's own stylesheet, at `app/assets/stylesheets/#{site_name}.scss.erb`. This is where site specific variables are set. This then includes a single file, `app/assets/stylesheets/base/_main.scss.erb`, the main SCSS file. This is what would normally be in `application.scss`, and is where all other SCSS files are imported to.
+
+There are three folders for organising SCSS. `base` is for any styles shared across the entire site; `components` is for any modular elements that are re-used across the site; and `pages` is for everything else, which should only be page and site-section specific styling.
+
+All SCSS files should be named `*.scss.erb`. The `.erb` suffix allows us to use ruby within the file, which is required once we start referring to asset paths for images and the like.
+
+`dev.scss.erb` is used to make the site basically usable and debuggable during the development process, and should be made redundant and removed before moving to production.

@@ -1,0 +1,76 @@
+$mini: 481px;
+$small: 720px;
+$medium: 960px;
+$large: 1200px;
+$huge: 1800px;
+
+@mixin breakpoint($points...) {
+  @if index($points, huge) {
+    @media screen and (min-width: $huge)
+    { @content; }
+  }
+  @if index($points, overlarge) {
+    @media screen and (min-width: $large) and (max-width: $huge - 1)
+    { @content; }
+  }
+  @if index($points, large) {
+    @media screen and (min-width: $medium) and (max-width: $large - 1px)
+    { @content; }
+  }
+  @if index($points, medium) {
+    @media screen and (min-width: $small) and (max-width: $medium - 1px)
+    { @content; }
+  }
+  @if index($points, small) {
+    @media screen and (min-width: $mini) and (max-width: $small - 1px)
+    { @content; }
+  }
+  @if index($points, mini) {
+    @media screen and (max-width: $mini - 1px)
+    { @content; }
+  }
+  @if index($points, print) {
+    @media print
+    { @content; }
+  }
+}
+
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+.constrained {
+  @include breakpoint(huge, overlarge, large) {
+    width: 71%;
+  }
+  @include breakpoint(medium) {
+    width: 84%;
+  }
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
+  position: relative;
+  width: 90%;
+}
+
+.group {
+  @include breakpoint(huge, overlarge, large) {
+    width: 71%;
+  }
+  @include breakpoint(medium) {
+    width: 84%;
+  }
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 90%;
+  overflow: visible;
+  position: relative;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

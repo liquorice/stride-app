@@ -1,0 +1,58 @@
+@mixin antialias {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Chroma(color='white') progid:DXImageTransform.Microsoft.Alpha(opacity=50)";
+  filter: "progid:DXImageTransform.Microsoft.Chroma(color='white') progid:DXImageTransform.Microsoft.Alpha(opacity=50)";
+}
+
+@mixin ff_flood {
+  font-family: "flood-std", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin ff_quatroSlab {
+  @include antialias;
+  font-family: "quatro-slab", serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+@mixin ff_quatroSlab-italic {
+  @include antialias;
+  font-family: "quatro-slab", serif;
+  font-style: italic;
+  font-weight: 900;
+}
+
+@mixin ff_adelle-regular {
+  @include antialias;
+  font-family: "adelle-sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin ff_adelle-regularItalic {
+  @include antialias;
+  font-family: "adelle-sans", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@mixin ff_adelle-bold {
+  @include antialias;
+  font-family: "adelle-sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin ff_adelle-boldItalic {
+  @include antialias;
+  font-family: "adelle-sans", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+}
