@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     get '' => 'landing#admin', as: :admin
 
     resources :access_levels
+    resources :topics
   end
 end

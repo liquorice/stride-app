@@ -1,0 +1,11 @@
+= form_for @topic do |f|
+  .label
+    .label__caption Topic name
+    = f.text_field :name
+
+  .label
+    .label__caption Description
+    = f.text_area :description
+
+  p
+    button Save topic

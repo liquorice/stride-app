@@ -11,6 +11,7 @@ html
       .header
         .navigation
           a href=access_levels_path Access Levels
+          a href=topics_path Topics
 
         .logout
           ' Logged in as #{@current_user.name}.
@@ -20,13 +21,11 @@ html
 
       - if flash[:success]
         .notifications
-          .constrained
-            .notification.success = flash[:success]
+          .notification.success = flash[:success]
 
       - if flash[:error]
         .notifications
-          .constrained
-            .notification.error = flash[:error]
+          .notification.error = flash[:error]
 
       = yield
 

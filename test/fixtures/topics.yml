@@ -1,0 +1,17 @@
+<% ['pete', 'dale'].each do |site| %>
+  topic_one_<%= site %>:
+    site: <%= site %>
+    name: Topic one
+    description: This is the first topic
+
+  topic_two_<%= site %>:
+    site: <%= site %>
+    name: Topic two
+    description: This is the second topic
+
+  topic_three_<%= site %>:
+    site: <%= site %>
+    name: And here is topic three
+    description: This is the third topic. This is the third topic. This is the third topic.
+
+<% end %>
