@@ -112,6 +112,17 @@ input {
   padding: 5px;
 }
 
+textarea {
+  background: #fff;
+  font-family: 'Consolas', monospace;
+  font-size: 16px;
+  height: 300px;
+  min-width: 400px;
+  overflow-y: scroll;
+  padding: 5px;
+  resize: none;
+}
+
 
 // Layout
 
@@ -122,7 +133,30 @@ input {
 .navigation {
   float: left;
   width: 50%;
+
+  a {
+    margin-right: 10px;
+  }
 }
+
+.notifications {
+  margin-bottom: 24px;
+}
+
+  .notification {
+    border-left: 10px solid;
+    padding: 10px 20px;
+
+    &.error {
+      border-color: #d01800;
+      background: rgba(#d01800, 0.1);
+    }
+
+    &.success {
+      border-color: #58d000;
+      background: rgba(#58d000, 0.1);
+    }
+  }
 
 .logout {
   float: left;
