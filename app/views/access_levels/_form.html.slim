@@ -4,11 +4,11 @@
     = f.text_field :name
 
   .label
-    .label_caption Permissions
+    .label__caption Permissions
     - AccessLevel.permissions_list.each do |k, v|
       label.checkbox
         = check_box_tag "permissions_data[#{k}]", 1, @access_level.permissions[k]
         span = v
 
   p
-    button Create access level
+    button Save access level

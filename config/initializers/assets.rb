@@ -11,4 +11,4 @@ Rails.application.config.assets.version = '1.0'
 # TODO this is a massive hack and makes me sad. Should instead scan the contents
 # of assets/stylesheets/.
 
-Rails.application.config.assets.precompile += ['pete.css', 'dale.css']
+Rails.application.config.assets.precompile += ['pete.css', 'dale.css', 'admin.css']

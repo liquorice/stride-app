@@ -64,3 +64,22 @@ There are three folders for organising SCSS. `base` is for any styles shared acr
 All SCSS files should be named `*.scss.erb`. The `.erb` suffix allows us to use ruby within the file, which is required once we start referring to asset paths for images and the like.
 
 `dev.scss.erb` is used to make the site basically usable and debuggable during the development process, and should be made redundant and removed before moving to production.
+
+## The Admin Elephant
+
+                  ___.-~"~-._   __....__
+                .'    `    \ ~"~        ``-.
+               /` _      )  `\              `\
+              /`  a)    /     |               `\
+             :`        /      |                 \
+        <`-._|`  .-.  (      /   .            `;\\
+         `-. `--'_.'-.;\___/'   .      .       | \\
+      _     /:--`     |        /     /        .'  \\
+     ("\   /`/        |       '     '         /    :`;
+     `\'\_/`/         .\     /`~`=-.:        /     ``
+       `._.'          /`\    |      `\      /(
+                     /  /\   |        `Y   /  \
+                    J  /  Y  |         |  /`\  \
+                   /  |   |  |         |  |  |  |
+                  "---"  /___|        /___|  /__|
+                         '"""         '"""  '"""

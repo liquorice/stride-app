@@ -1,0 +1,131 @@
+@import 'base/reset';
+
+*, body {
+  font-family: 'Consolas', monospace;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background: #dedede;
+  color: #323232;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+}
+
+.constrained {
+  background: #ececec;
+  margin: 50px auto;
+  min-height: calc(100vh - 100px);
+  padding: 40px;
+  width: 900px;
+}
+
+// Type
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+p {
+  margin-bottom: 24px;
+}
+
+ul {
+
+}
+
+  li {
+    line-height: 24px;
+    list-style-type: none;
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+
+    &:before {
+      background: rgba(#2b65f9, 0.2);
+      border-radius: 20px;
+      content: ' ';
+      display: block;
+      height: 10px;
+      left: 0;
+      position: absolute;
+      top: 7px;
+      width: 10px;
+    }
+  }
+
+a {
+  color: #2b65f9;
+  border-bottom: 1px solid rgba(#2b65f9, 0.5);
+}
+
+a.button,
+button {
+  border-radius: 5px;
+  border: 2px solid rgba(#2b65f9, 0.7);
+  color: #2b65f9;
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px 10px;
+}
+
+pre {
+  font-family: 'Consolas', monospace;
+  line-height: 1;
+}
+
+hr {
+  border-bottom: 2px solid rgba(#323232, 0.1);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  height: 1px;
+  margin-bottom: 24px;
+}
+
+// Forms
+
+.label {
+  margin-bottom: 24px;
+}
+
+  label.checkbox {
+    span {
+      cursor: pointer;
+      margin-left: 10px;
+    }
+  }
+
+input {
+  background: #fff;
+  font-family: 'Consolas', monospace;
+  font-size: 16px;
+  min-width: 400px;
+  padding: 5px;
+}
+
+
+// Layout
+
+.header {
+  overflow: hidden;
+}
+
+.navigation {
+  float: left;
+  width: 50%;
+}
+
+.logout {
+  float: left;
+  width: 50%;
+  text-align: right;
+}

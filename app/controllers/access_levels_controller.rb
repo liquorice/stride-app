@@ -1,4 +1,5 @@
 class AccessLevelsController < ApplicationController
+  layout 'admin'
 
   def index
     require_permission :accessLevels_modify
