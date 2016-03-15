@@ -17,31 +17,44 @@ html
       })(document);
 
   body
+    .constrained
+      h2 Stride — #{@site.name}
 
-    h2 Stride — #{@site.name}
-
-    - if flash[:success]
-      .notifications
-        .constrained
+      - if flash[:success]
+        .notifications
           .notification.success = flash[:success]
 
-    - if flash[:error]
-      .notifications
-        .constrained
+      - if flash[:error]
+        .notifications
           .notification.error = flash[:error]
 
-    hr
+      hr
 
-    - if @current_user
-      p Hello #{@current_user.name}
-      p
-        a href=logout_path data-method='post' Log out
+      - if @current_user
+        p Hello #{@current_user.name}
+        p
+          a href=logout_path data-method='post' Log out
 
-    - else
-      p
-        a href=login_path Log in
+      - else
+        p
+          a href=login_path Log in
 
-    hr
-    = yield
+      hr
+        a href=topics_preview_path Forums
+
+      hr
+
+    - if content_for? :dark_strip
+      .darkStrip
+        .constrained
+          = yield :dark_strip
+
+    - if content_for? :light_strip
+      .lightStrip
+        .constrained
+          = yield :light_strip
+
+    .constrained
+      = yield
 
     = javascript_include_tag 'application'
