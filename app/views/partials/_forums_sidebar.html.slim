@@ -1,6 +1,6 @@
 h3 Forum topics
 
-- if @current_user.can?(:topics_modify)
+- if current_user_can?(:topics_modify)
   p
     a href=new_topic_path Create new topic
 

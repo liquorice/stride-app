@@ -13,4 +13,8 @@ module SessionsHelper
     @current_user = nil
   end
 
+  def current_user_can?(permission)
+    @current_user && @current_user.can?(permission)
+  end
+
 end
