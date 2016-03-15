@@ -1,5 +1,9 @@
 h3 Forum topics
 
+- if @current_user.can?(:topics_modify)
+  p
+    a href=new_topic_path Create new topic
+
 ul
   - @site.topics.each do |topic|
     li
