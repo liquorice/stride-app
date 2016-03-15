@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def new
     return redirect_to :root if logged_in?
 
-    render :login
+    render :login, layout: 'modal'
   end
 
   def create
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   def failed
     flash.now[:error] = 'Invalid name/password combination' # Not quite right!
-    render :login
+    render :login, layout: 'modal'
   end
 
 end
