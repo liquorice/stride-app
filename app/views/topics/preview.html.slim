@@ -1,0 +1,17 @@
+- content_for :dark_strip do
+  h2 Forums
+
+- content_for :light_strip do
+  h3 Overview content for the forums
+
+- @topics.each do |topic|
+  .topic
+    h4.topic__name
+      a href=topic_path(topic)
+        = topic.name
+
+    .topicThreads
+      = render topic.topic_threads.preview
+
+    p
+      a href=topic_path(topic) View more on this topic

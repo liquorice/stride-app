@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
 
+  get 'forums' => 'topics#preview', as: :topics_preview
+  get 'forum/:id' => 'topics#show', as: :topic
+  get 'thread/:id' => 'topic_threads#show', as: :thread
+
   # Admin
   scope :admin do
     get '' => 'landing#admin', as: :admin

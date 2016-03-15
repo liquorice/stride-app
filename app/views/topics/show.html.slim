@@ -1,0 +1,9 @@
+- content_for :dark_strip do
+  h2
+    | Topic:
+    =< @topic.name
+
+- content_for :light_strip do
+  h3 = @topic.description
+
+= render @topic.topic_threads

@@ -1,0 +1,21 @@
+.topicThreads {
+
+}
+
+.topicThread {
+  border: 1px solid;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: white;
+  display: block;
+  color: black;
+
+  &[data-pinned] {
+    border-left: 10px solid;
+  }
+
+  &[data-locked] {
+    color: grey;
+    background: none;
+  }
+}

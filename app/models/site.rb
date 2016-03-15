@@ -1,6 +1,7 @@
 class Site < ActiveRecord::Base
   has_many :access_levels
   has_many :topics
+  has_many :topic_threads, through: :topics
   has_many :users
 
   def self.find_by_host(host)

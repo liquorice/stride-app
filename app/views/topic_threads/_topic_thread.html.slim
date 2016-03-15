@@ -1,0 +1,17 @@
+a.topicThread href=thread_path(topic_thread) data-pinned=topic_thread.pinned data-locked=topic_thread.locked
+  - if topic_thread.locked
+    p Locked
+  - if topic_thread.pinned
+    p Pinned
+
+  .topicThread__name = topic_thread.name
+
+  .topicThread__latest
+    | XX said XXd ago XXX
+
+  .topicThread__created
+    | Created
+    =< topic_thread.created_at
+
+  .topicThread__replies
+    | Replies XX

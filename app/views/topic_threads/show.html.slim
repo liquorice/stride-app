@@ -1,0 +1,10 @@
+- content_for :dark_strip do
+  p
+    a href=topic_path(@thread.topic)
+      | < Topic
+      =< @thread.topic.name
+
+  h2
+    =< @thread.name
+
+p todo: Posts

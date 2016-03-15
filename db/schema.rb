@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308152655) do
+ActiveRecord::Schema.define(version: 20160315120322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,21 @@ ActiveRecord::Schema.define(version: 20160308152655) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "topic_threads", force: :cascade do |t|
+    t.integer  "topic_id"
+    t.string   "name"
+    t.boolean  "pinned",     default: false
+    t.boolean  "locked",     default: false
+    t.integer  "user_id"
+    t.boolean  "public",     default: true
+    t.string   "tags",                                    array: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "topic_threads", ["topic_id"], name: "index_topic_threads_on_topic_id", using: :btree
+  add_index "topic_threads", ["user_id"], name: "index_topic_threads_on_user_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"
@@ -58,6 +73,8 @@ ActiveRecord::Schema.define(version: 20160308152655) do
   add_index "users", ["site_id"], name: "index_users_on_site_id", using: :btree
 
   add_foreign_key "access_levels", "sites"
+  add_foreign_key "topic_threads", "topics"
+  add_foreign_key "topic_threads", "users"
   add_foreign_key "topics", "sites"
   add_foreign_key "users", "access_levels"
   add_foreign_key "users", "sites"

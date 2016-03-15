@@ -1,5 +1,17 @@
 class TopicsController < ApplicationController
-  layout 'admin'
+  layout 'admin', except: ['preview', 'show']
+
+  # Public
+
+  def preview
+    @topics = @site.topics
+  end
+
+  def show
+    @topic = @site.topics.find(params[:id])
+  end
+
+  # Admin
 
   def index
     require_permission :topics_modify
