@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  layout 'admin', except: ['preview', 'show']
+  layout 'modal', except: ['preview', 'show']
 
   # Public
 
@@ -13,9 +13,23 @@ class TopicsController < ApplicationController
 
   # Admin
 
-  def index
+  def update
+    @topic = @site.topics.find(params[:id])
+
+    if @topic.update(topic_params)
+      flash[:success] = "#{@topic.name} succesfully updated"
+      redirect_to topic_path(@topic)
+    else
+      flash.now[:error] = @topic.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
+  def edit
     require_permission :topics_modify
-    @topics = @site.topics
+    @topic = @site.topics.find(params[:id])
+
+    render :edit
   end
 
   def new
@@ -29,27 +43,10 @@ class TopicsController < ApplicationController
 
     if @topic.save
       flash[:success] = "#{@topic.name} succesfully created"
-      redirect_to topics_path
+      redirect_to topics_preview_path
     else
       flash.now[:error] = @topic.errors.full_messages.to_sentence
       render :new
-    end
-  end
-
-  def edit
-    require_permission :topics_modify
-    @topic = @site.topics.find(params[:id])
-  end
-
-  def update
-    @topic = @site.topics.find(params[:id])
-
-    if @topic.update(topic_params)
-      flash[:success] = "#{@topic.name} succesfully updated"
-      redirect_to topics_path
-    else
-      flash.now[:error] = @topic.errors.full_messages.to_sentence
-      render :edit
     end
   end
 

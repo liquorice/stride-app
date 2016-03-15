@@ -15,3 +15,9 @@
 
     p
       a href=topic_path(topic) View more on this topic
+
+hr
+
+- if @current_user.can?(:topics_modify)
+  p
+    a href=new_topic_path Create new topic

@@ -6,4 +6,7 @@
 - content_for :light_strip do
   h3 = @topic.description
 
+  - if @current_user.can?(:topics_modify)
+    a.dev__edit href=edit_topic_path(@topic) Edit details
+
 = render @topic.topic_threads
