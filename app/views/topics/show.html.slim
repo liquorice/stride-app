@@ -9,4 +9,7 @@
   - if @current_user.can?(:topics_modify)
     a.dev__edit href=edit_topic_path(@topic) Edit details
 
+- content_for :sidebar do
+  = render 'partials/forums_sidebar'
+
 = render @topic.topic_threads

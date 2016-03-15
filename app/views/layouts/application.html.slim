@@ -55,6 +55,9 @@ html
           = yield :light_strip
 
     .constrained
-      = yield
+      .sidebar
+        = yield :sidebar
+      .content
+        = yield
 
     = javascript_include_tag 'application'

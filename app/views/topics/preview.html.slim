@@ -4,6 +4,9 @@
 - content_for :light_strip do
   h3 Overview content for the forums
 
+- content_for :sidebar do
+  = render 'partials/forums_sidebar'
+
 - @topics.each do |topic|
   .topic
     h4.topic__name

@@ -1,0 +1,7 @@
+h3 Forum topics
+
+ul
+  - @site.topics.each do |topic|
+    li
+      a href=topic_path(topic) data-active=(topic == @topic)
+        = topic.name
