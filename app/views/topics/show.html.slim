@@ -12,4 +12,5 @@
 - content_for :sidebar do
   = render 'partials/forums_sidebar'
 
-= render @topic.topic_threads
+= render @threads
+= render 'partials/pagination', paginated: @threads

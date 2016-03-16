@@ -1,0 +1,22 @@
+- current_page = paginated.current_page
+- previous_page = current_page - 1
+- next_page = current_page + 1
+- total_pages = paginated.total_pages
+
+- if total_pages > 1
+  .pagination
+    - if current_page > 1
+      a.pagination__link href='?page=1' First
+      a.pagination__link href="?page=#{previous_page}" Previous
+    - else
+      span.pagination__link.disabled First
+      span.pagination__link.disabled Previous
+
+    span.pagination__display Page #{paginated.current_page} of #{paginated.total_pages}
+
+    - if current_page < total_pages
+      a.pagination__link href="?page=#{next_page}" Next
+      a.pagination__link href="?page=#{total_pages}" Last
+    - else
+      span.pagination__link.disabled Next
+      span.pagination__link.disabled Last
