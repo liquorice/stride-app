@@ -38,6 +38,10 @@ Each `user` inherits their `permissions` through their `access_level`, defaultin
 
 `@current_user.can? :accessLevel_modify`
 
+In a view, use `current_user_can?` to guard against times when there is no logged in user:
+
+`current_user_can?(:accessLevel_modify)`
+
 When requiring a particular permission within a controller, you can use `require_permission`:
 
     def index
