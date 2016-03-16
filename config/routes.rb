@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
 
-  resources :topics
+  resources :topics, path: 'topic'
   get 'forums' => 'topics#preview', as: :topics_preview
   get 'thread/:id' => 'topic_threads#show', as: :thread
 
