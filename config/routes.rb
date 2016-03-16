@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   resources :topics, path: 'topic'
   get 'forums' => 'topics#preview', as: :topics_preview
-  get 'thread/:id' => 'topic_threads#show', as: :thread
+  resources :topic_threads, path: 'thread'
+  patch 'thread/:id/toggle_pin' => 'topic_threads#toggle_pin', as: :toggle_topic_thread_pin
 
   # Admin
   scope :admin do
