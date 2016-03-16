@@ -1,0 +1,6 @@
+$adjective $noun
+$noun
+$adjective, $adjective $noun
+$possessive_pronoun $adjective $noun
+$possessive_pronoun $noun
+$possessive_pronoun $adjective, $adjective $noun

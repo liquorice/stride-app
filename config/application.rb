@@ -17,6 +17,7 @@ module StrideApp
     # Custom autoload paths
     config.autoload_paths << Rails.root.join('lib', 'modules')
     config.autoload_paths << Rails.root.join('lib', 'classes')
+    config.autoload_paths << Rails.root.join('lib', 'classes', 'liblib')
 
 
     # Do not swallow errors in after_commit/after_rollback callbacks.

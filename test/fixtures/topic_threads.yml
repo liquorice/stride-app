@@ -3,7 +3,7 @@
     <% 25.times.each do |j| %>
       topicThread_<%= i %>_<%= j %>_<%= site %>:
         topic: topic_<%= i %>_<%= site %>
-        name: <%= Markus.title(1, 15) %>
+        name: "<%= LibLib.sentences(1..3, :title) %>"
         user: admin_<%= site %>
         <% if j == 9 %>
         locked: true
