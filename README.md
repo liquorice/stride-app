@@ -69,6 +69,10 @@ All SCSS files should be named `*.scss.erb`. The `.erb` suffix allows us to use 
 
 `dev.scss.erb` is used to make the site basically usable and debuggable during the development process, and should be made redundant and removed before moving to production.
 
+### Javascripts
+
+`application.js` is used to manage which files are imported into the final JS file, and `main.js` is the central location for all code initialisation.
+
 ## The Admin Elephant
 
                   ___.-~"~-._   __....__
