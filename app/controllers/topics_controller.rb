@@ -14,6 +14,7 @@ class TopicsController < ApplicationController
   # Admin
 
   def update
+    require_permission :topics_modify
     @topic = @site.topics.find(params[:id])
 
     if @topic.update(topic_params)

@@ -1,0 +1,26 @@
+= form_for @thread do |f|
+  .label
+    .label__caption Public?
+    = f.check_box :public
+
+  .label
+    .label__caption Locked?
+    = f.check_box :locked
+
+  .label
+    .label__caption Thread name
+    = f.text_field :name
+
+  .label
+    .label__caption Tags
+    p TODO
+
+  .label
+    .label__caption Topic picker
+    = render 'components/dropdown',
+      name: "topic_thread[topic_id]",
+      options: Hash[@site.topics.pluck(:id, :name)],
+      value: @thread.topic_id
+
+  p
+    button Save thread

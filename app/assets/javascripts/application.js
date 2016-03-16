@@ -16,5 +16,6 @@
 
 //= require module
 //= require dropdown
+//= require href
 
 //= require main

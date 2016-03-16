@@ -7,6 +7,9 @@
   h2
     =< @thread.name
 
+  - if current_user_can?(:threads_modify)
+    a.dev__edit href=edit_topic_thread_path(@thread) Edit details
+
 - content_for :sidebar do
   = render 'partials/forums_sidebar'
 

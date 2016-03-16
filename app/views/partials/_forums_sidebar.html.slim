@@ -4,6 +4,10 @@ h3 Forum topics
   p
     a href=new_topic_path Create new topic
 
+- if current_user_can?(:topicThreads_create)
+  p
+    a href=new_topic_thread_path Create new thread
+
 ul
   - @site.topics.each do |topic|
     li
