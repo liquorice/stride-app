@@ -13,3 +13,8 @@
 
 //= require jquery
 //= require jquery-rails
+
+//= require module
+//= require dropdown
+
+//= require main
