@@ -9,29 +9,10 @@ class TopicsController < ApplicationController
 
   def show
     @topic = @site.topics.find(params[:id])
+    @threads = @topic.topic_threads.paginate(:page => params[:page])
   end
 
   # Admin
-
-  def update
-    require_permission :topics_modify
-    @topic = @site.topics.find(params[:id])
-
-    if @topic.update(topic_params)
-      flash[:success] = "#{@topic.name} succesfully updated"
-      redirect_to topic_path(@topic)
-    else
-      flash.now[:error] = @topic.errors.full_messages.to_sentence
-      render :edit
-    end
-  end
-
-  def edit
-    require_permission :topics_modify
-    @topic = @site.topics.find(params[:id])
-
-    render :edit
-  end
 
   def new
     require_permission :topics_modify
@@ -48,6 +29,26 @@ class TopicsController < ApplicationController
     else
       flash.now[:error] = @topic.errors.full_messages.to_sentence
       render :new
+    end
+  end
+
+  def edit
+    require_permission :topics_modify
+    @topic = @site.topics.find(params[:id])
+
+    render :edit
+  end
+
+  def update
+    require_permission :topics_modify
+    @topic = @site.topics.find(params[:id])
+
+    if @topic.update(topic_params)
+      flash[:success] = "#{@topic.name} succesfully updated"
+      redirect_to topic_path(@topic)
+    else
+      flash.now[:error] = @topic.errors.full_messages.to_sentence
+      render :edit
     end
   end
 
