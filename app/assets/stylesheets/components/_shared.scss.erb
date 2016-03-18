@@ -1,0 +1,571 @@
+/* Shared Styles */
+//
+//  Heading Styles
+//
+
+@mixin h1-regular {
+  @include ff_quatroSlab;
+  color: $black;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+@mixin h1-primary {
+  @include h1-regular;
+  color: $primary;
+}
+
+@mixin h2-regular {
+  @include ff_adelle-bold;
+  color: $black;
+  font-size: 1.46rem;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+@mixin h1-flood {
+  @include ff_flood;
+  @include breakpoint(small, mini) {
+    font-size: 2.4rem;
+  }
+  color: $black;
+  font-size: 3.2rem;
+  line-height: 0.96em;
+  margin-bottom: 0.6rem;
+}
+
+@mixin h2-primary {
+  @include h2-regular;
+  color: $primary;
+}
+
+@mixin h3-regular {
+  @include ff_adelle-bold;
+  color: $black;
+  font-size: 1.1rem;
+  line-height: 1.33334;
+  margin-bottom: 0.6rem;
+}
+
+@mixin h3-flood {
+  @include ff_flood;
+  color: $black;
+  font-size: 2rem;
+  line-height: 1.9em;
+  margin-bottom: 0.6rem;
+}
+
+@mixin h3-primary {
+  @include h3-regular;
+  color: $primary;
+}
+
+@mixin h2-mixed {
+  @include ff_quatroSlab;
+  @include breakpoint(huge, overlarge, large) {
+    margin-bottom: 1.5rem;
+  }
+  @include breakpoint(medium, small, mini) {
+    margin-bottom: 1rem;
+  }
+  color: $primary;
+  font-size: 2.2rem;
+  line-height: 2.5rem;
+
+  em {
+    @include ff_flood;
+    font-size: 120%;
+    letter-spacing: -0.02em;
+    word-spacing: -0.05em;
+    color: $blue-dark;
+  }
+
+  span.upper {
+    text-transform: uppercase;
+  }
+}
+
+@mixin home-heading {
+  @include breakpoint(huge, overlarge) {
+    font-size: 3.16rem;
+  }
+  @include breakpoint(large) {
+    font-size: 2.5rem;
+  }
+  @include ff_quatroSlab;
+  font-size: 1.86667rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5em;
+}
+
+
+
+//
+// Extra styles
+//
+
+
+@mixin bold-italic {
+  em {
+    @include ff_adelle-regularItalic;
+  }
+
+  strong {
+    @include ff_adelle-bold;
+  }
+
+  strong em,
+  em strong {
+    @include ff_adelle-boldItalic;
+  }
+}
+
+@mixin blockquote {
+  @include ff_adelle-boldItalic;
+  color: $blue-dark;
+  font-size: 1.263rem;
+}
+
+@mixin extract {
+  @include ff_adelle-boldItalic;
+  color: $blue-dark;
+  font-size: 1.263rem;
+  line-height: 1.35;
+
+  &:before {
+    content: "";
+    background: url('/images/dot.svg') repeat-x;
+    background-size: 12px 8px;
+    display: block;
+    height: 13px;
+    margin-bottom: 6px;
+    width: 37px;
+  }
+}
+
+@mixin lists {
+  ul, ol {
+    @include p-regular;
+    list-style-type: none;
+    line-height: 1.46667;
+    position: relative;
+    left: 25px;
+  }
+
+  ul li {
+    margin: 0 0 0.333334em;
+    padding: 0;
+    position: relative;
+
+    &:before {
+      @include ff_adelle-bold;
+      color: $primary;
+      content: "—";
+      font-size: .75rem;
+      line-height: 1.8;
+      position: absolute;
+      margin-left: -24px;
+
+
+    }
+  }
+
+  ol li {
+    counter-increment: list-counter;
+    margin: 0.333334em 0;
+    position: relative;
+
+    &:before {
+      @include ff_adelle-bold;
+      color: $primary;
+      content: counter(list-counter);
+      margin-right: .8rem;
+      position: absolute;
+      margin-left: -24px;
+    }
+  }
+}
+
+@mixin links {
+  border-bottom: 1px solid rgba($links, 0.5);
+  box-shadow: inset 0 -1.25em 0 rgba($links, 0);
+  color: $links;
+  transition: all 100ms ease-out;
+
+  &:hover {
+    color: mix($blue-dark, $links, 70%);
+    box-shadow: inset 0 -1.25em 0 rgba($links, 0.15);
+    transition: all 100ms ease-out;
+  }
+}
+
+//
+// Buttons
+//
+
+@mixin button-standard {
+  @include ff_adelle-bold;
+  @include unselectable;
+  background: rgba($grey-warm, 0.08);
+  border-radius: 3px;
+  border: none;
+  color: $grey-warm;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.571em 0.857em 0.643em;
+  transition: all 100ms ease-out;
+
+  &:hover {
+    background: rgba($grey-warm, 0.18);
+    box-shadow: none;
+    color: $black;
+    transition: all 100ms ease-out;
+  }
+}
+
+@mixin button-short {
+  @include button-standard;
+  font-size: 0.933334rem;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  padding-top: 0.5357em;
+}
+
+@mixin button-midLevel{
+  @include button-standard;
+  background: $white;
+  color: $links;
+
+  &:hover {
+    background: mix($links, white, 20%);
+    color: $blue-dark;
+  }
+}
+
+@mixin login {
+  @include ff_adelle-regular;
+  @include breakpoint(huge, overlarge) {
+    font-size: 0.75rem;
+    margin: 20px 0 20px 20px;
+  }
+  @include breakpoint(large) {
+    font-size: 0.75rem;
+  }
+  border-radius: 2px;
+  color: $grey-warm;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+
+  a {
+    color: $grey-warm;
+    display: block;
+    padding: 0.25em 0.75em;
+
+    &:active,
+    &.active {
+      background-color: rgba($grey-warm, 0.08);
+    }
+  }
+
+  .header-user__triangle {
+    display: inline;
+    vertical-align: middle;
+    fill: mix($grey-warm, $white, 50%);
+  }
+}
+
+//
+// Paragraph Styles
+//
+
+@mixin p-regular {
+  @include ff_adelle-regular;
+  @include bold-italic;
+  color: $black;
+  font-size: 1rem;
+  line-height: 1.46667;
+  margin-bottom: 0.6rem;
+
+  a {
+    @include links;
+  }
+}
+
+
+@mixin p-small {
+  @include ff_adelle-regular;
+  @include bold-italic;
+  color: $black;
+  font-size: 0.933334rem;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+
+  a {
+    @include links;
+  }
+}
+
+@mixin p-large {
+  @include ff_adelle-regular;
+  @include bold-italic;
+  color: $blue-dark;
+  font-size: 1.26rem;
+  margin-bottom: 0.6rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 44em;
+
+
+  a {
+    @include links;
+  }
+}
+
+@mixin p-meta {
+  @include ff_adelle-regular;
+  @include bold-italic;
+  @include breakpoint(huge, overlarge, large) {
+    font-size: 0.75rem;
+  }
+  color: $grey-warm;
+  font-size: 13px;
+  line-height: 1.4;
+
+  a {
+    @include links;
+  }
+}
+
+@mixin p-xsmall {
+  @include p-meta;
+}
+
+//
+// Tags
+//
+
+@mixin tags {
+  li {
+    @include ff_adelle-regular;
+    @include unselectable;
+    @include breakpoint(huge, overlarge, large) {
+      font-size: 0.75rem;
+    }
+    border-radius: 2px;
+    color: $blue-mid;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-right: 0.3em;
+    margin-top: 0.3em;
+    overflow: hidden;
+
+    a {
+      display: block;
+      padding: 0.21em 0.75em 0.2877em 0.75em;
+      transition: background-color 200ms, color 200ms;
+
+      &:hover {
+        color: $blue-dark;
+        background-color: mix($links, white, 20%);
+      }
+    }
+  }
+}
+
+@mixin tags-light {
+  @include tags;
+
+  li a {
+    background-color: $white;
+    color: $links;
+  }
+}
+
+@mixin tags-dark {
+  @include tags;
+
+  li a {
+    background-color: mix($links, $white, 10%);
+    color: $links;
+  }
+}
+
+//
+// Section styles
+//
+
+@mixin section-base {
+   @include breakpoint(medium) {
+    padding-top: 3.2rem;
+    padding-bottom: 3.36rem;
+  }
+  @include breakpoint(small, mini) {
+    padding-top: 3rem;
+    padding-bottom: 3.15rem;
+  }
+  padding-top: 3.5rem;
+  padding-bottom: 3.675rem;
+  p {
+    max-width: 45em;
+    margin: 0 auto;
+  }
+}
+
+@mixin section-heading {
+  @include ff_flood;
+  @include breakpoint(huge) {
+    font-size: 140px;
+  }
+  @include breakpoint(overlarge) {
+    font-size: 120px;
+  }
+  @include breakpoint(large) {
+    font-size: 100px;
+  }
+  @include breakpoint(medium) {
+    font-size: 92px;
+  }
+  @include breakpoint(small) {
+    font-size: 72px;
+  }
+  @include breakpoint(mini) {
+    font-size: 3.333334rem;
+  }
+  color: $blue-dark;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5em;
+  transform: rotateZ(-5deg);
+}
+
+@mixin section-intro {
+  @include section-base;
+  background: url('/images/noise-1440x530.png') center center repeat $bg-dark;
+  background-size: 1440px 530px;
+
+  p {
+    @include p-large;
+    text-align: center;
+
+    a {
+      @include links;
+    }
+  }
+
+  header {
+    text-align: center;
+  }
+}
+
+//
+// Horizontal rules
+//
+
+@mixin hr {
+  border-left: 0;
+  border-top-color: rgba($grey-warm, 0.1);
+  height: 1px;
+}
+
+@mixin dotted-line {
+  background: url('/images/dot.svg') top left repeat-x;
+  background-size: 10px 4px;
+  height: 4px;
+}
+
+@mixin hr--three-px {
+   @include hr;
+   border-top-width: 3px;
+}
+
+@mixin hr--two-px {
+  @include hr;
+  border-top-width: 2px;
+}
+
+@mixin borders--dark {
+  @include hr;
+  padding: 1em;
+  background: $bg-dark;
+}
+
+//
+// Banner
+//
+@mixin banner-base {
+  @include breakpoint(huge) {
+    &:after {
+      background: url('/images/gradient-dark-blue.png') top left repeat-y;
+      background-size: 100% auto;
+      content: '';
+      display: block;
+      height: 100%;
+      left: 0;
+      margin: 0 auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1200px;
+    }
+  }
+
+  background-color: $blue-dark;
+}
+
+@mixin noise {
+  background: url('/images/noise-200px@1.5x.png') 200px 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+//
+// Avatars
+//
+
+//skin colors
+$avatar-skin-primary: $primary;
+$avatar-skin-1: #925929;
+$avatar-skin-2: #ceb49f;
+$avatar-skin-3: #1e94ac;
+$avatar-skin-4: $other-primary;
+
+//faces
+//$primary-face: url(/images/avatars/avatar_face-dale.svg);
+
+@mixin avatar-base {
+  position: relative;
+
+ //the skin and base color
+  &:before{
+    width: 93%;
+    height: 93%;
+    border-radius: 50%;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 3.5%;
+    left: 3.5%;
+    background: $avatar-skin-primary;
+  }
+  //avatar face
+  &:after {
+    content: $primary-face;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+  }
+}
+//dale or petes face
+@mixin avatar-primary {
+  @include avatar-base;
+}
+

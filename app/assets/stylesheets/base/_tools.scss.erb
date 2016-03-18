@@ -1,0 +1,139 @@
+@mixin transition($transition...) {
+  @include prefix(transition, $transition);
+}
+
+@mixin transform($transformations...) {
+  @include prefix(transform, $transformations);
+}
+
+@mixin opacity($opacity) {
+  @include prefix(opacity, $opacity);
+  $ie_opacity: $opacity * 100.0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie_opacity})";
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie_opacity})";
+}
+
+@mixin border-radius($radius) {
+  @include prefix(border-radius, $radius);
+}
+
+@mixin prefix($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -o-#{$property}: $value;
+  -ms-#{$property}: $value;
+  #{$property}: $value;
+}
+
+@mixin gradient($start, $stops...) {
+  background: -webkit-linear-gradient($start, $stops);
+  background: -moz-linear-gradient($start, $stops);
+  background: -o-linear-gradient($start, $stops);
+  background: -ms-linear-gradient($start, $stops);
+  background: linear-gradient($start, $stops);
+}
+
+@mixin retina() {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dppx){ @content; }
+}
+
+@mixin unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+@mixin triangle($colour) {
+  &:after {
+    @include breakpoint(overlarge, large) {
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid $colour;
+      left: -webkit-calc(50% - 20px);
+      left: calc(50% - 20px);
+    }
+    @include breakpoint(medium, small) {
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid $colour;
+      left: -webkit-calc(50% - 15px);
+      left: calc(50% - 15px);
+    }
+    content: "";
+    height: 0;
+    position: absolute;
+    top: 0;
+    width: 0;
+  }
+}
+
+@mixin mask {
+  @include print {
+    &:after {
+      display: none;
+    }
+  }
+  &:after {
+    content: "";
+    background: url('/images/itemList-mask.png') bottom left repeat-x;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    height: 77px;
+    width: 100%;
+  }
+}
+
+@mixin animation($animate...) {
+  $max: length($animate);
+  $animations: '';
+
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+
+    @if $i < $max {
+      $animations: #{$animations + ", "};
+    }
+  }
+  -webkit-animation: $animations;
+  -moz-animation:    $animations;
+  -o-animation:      $animations;
+  animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
