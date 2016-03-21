@@ -19,41 +19,16 @@ html
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
       })(document);
 
-  body.page-forum.action-index
-    header.header.js-header
-      .header-toolbar
-        .group
-          a.header-toolbar__logo
-            = insert_svg @site.name+"/logo.svg"
-            span.header-logo__alt
-              = @site.name
-          .header-toolbar__search.js-searchForm-container
-            form.header-toolbar__search-form.js-searchForm action="/search"
-              label.js-searchForm-toggle for="search-box"
-                span Search
-                = insert_svg "search.svg"
-              input id="query" type="text" name="query"
-
-      nav.header-navigation.js-submenu
-        .group role="navigation"
-          ul
-            - for nav_item in ["forums", "articles", "support", "about"] do
-              li
-                - if nav_item == "forums"
-                  a class="active"
-                    = nav_item.capitalize
-                - else
-                  a
-                    = nav_item.capitalize
+  body.page-forum
+    = render "/partials/navigation"
 
     main.page id="content" tabindex="0"
-      .about
-        header.standardHeader
-          .constrained
-            h1 Forums
-        .forum-introduction
-          .constrained
-            p Political life-expectancy care thinkers who make change happen evolution enable developing poverty. Catalyst inspire social change communities, foundation respect involvement. Campaign Action Against Hunger social entrepreneurship opportunity committed combat malaria board of directors rural global network planned giving.
+      .standardHeader
+        .constrained
+          h1 Forums
+      .standardIntroduction
+        .constrained
+          p Political life-expectancy care thinkers who make change happen evolution enable developing poverty. Catalyst inspire social change communities, foundation respect involvement. Campaign Action Against Hunger social entrepreneurship opportunity committed combat malaria board of directors rural global network planned giving.
 
 
     .constrained

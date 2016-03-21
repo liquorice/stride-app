@@ -1,0 +1,163 @@
+/* Shared Styles */
+//
+//  Heading Styles
+//
+
+@mixin h1-regular {
+  @include ff_quatroSlab;
+  color: $black;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+@mixin h1-primary {
+  @include h1-regular;
+  color: $primary;
+}
+
+@mixin h1-flood {
+  @include ff_flood;
+  @include breakpoint(small, mini) {
+    font-size: 2.4rem;
+  }
+  color: $black;
+  font-size: 3.2rem;
+  line-height: 0.96em;
+  margin-bottom: 0.6rem;
+}
+
+@mixin h2-regular {
+  @include ff_adelle-bold;
+  color: $black;
+  font-size: 1.46rem;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+@mixin h2-primary {
+  @include h2-regular;
+  color: $primary;
+}
+
+@mixin h3-regular {
+  @include ff_adelle-bold;
+  color: $black;
+  font-size: 1.1rem;
+  line-height: 1.33334;
+  margin-bottom: 0.6rem;
+}
+
+@mixin h3-primary {
+  @include h3-regular;
+  color: $primary;
+}
+
+@mixin h3-flood {
+  @include ff_flood;
+  color: $black;
+  font-size: 2rem;
+  line-height: 1.9em;
+  margin-bottom: 0.6rem;
+}
+
+@mixin h2-mixed {
+  @include ff_quatroSlab;
+  @include breakpoint(huge, overlarge, large) {
+    margin-bottom: 1.5rem;
+  }
+  @include breakpoint(medium, small, mini) {
+    margin-bottom: 1rem;
+  }
+  em {
+    @include ff_flood;
+    font-size: 120%;
+    letter-spacing: -0.02em;
+    word-spacing: -0.05em;
+    color: $blue-dark;
+  }
+  span.upper {
+    text-transform: uppercase;
+  }
+  color: $primary;
+  font-size: 2.2rem;
+  line-height: 2.5rem;
+}
+
+//
+// Paragraph Styles
+//
+
+@mixin p-regular {
+  @include ff_adelle-regular;
+  @include bold-italic;
+  a {
+    @include links;
+  }
+  color: $black;
+  font-size: 1rem;
+  line-height: 1.46667;
+  margin-bottom: 0.6rem;
+}
+
+
+@mixin p-small {
+  @include ff_adelle-regular;
+  @include bold-italic;
+  a {
+    @include links;
+  }
+  color: $black;
+  font-size: 0.933334rem;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+@mixin p-large {
+  @include ff_adelle-regular;
+  @include bold-italic;
+  a {
+    @include links;
+  }
+  color: $blue-dark;
+  font-size: 1.26rem;
+  margin-bottom: 0.6rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 44em;
+}
+
+@mixin p-meta {
+  @include ff_adelle-regular;
+  @include bold-italic;
+  @include breakpoint(huge, overlarge, large) {
+    font-size: 0.75rem;
+  }
+  a {
+    @include links;
+  }
+  color: $grey-warm;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@mixin p-xsmall {
+  @include p-meta;
+}
+
+//
+// Extra styles
+//
+
+@mixin bold-italic {
+  em {
+    @include ff_adelle-regularItalic;
+  }
+  strong {
+    @include ff_adelle-bold;
+  }
+  strong em,
+  em strong {
+    @include ff_adelle-boldItalic;
+  }
+}

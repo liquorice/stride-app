@@ -2,35 +2,35 @@
   position: relative;
 }
 
-  .standardPage-content {
-    position: relative;
+.standardPage-content {
+  position: relative;
+}
+
+.standardPage-content__block {
+  @include breakpoint(huge, overlarge, large, medium) {
+    padding: 70px columns(4.5) 100px columns(4.5);
+  }
+  @include breakpoint(small, mini) {
+    padding: 36px 0 56px 0;
   }
 
-    .standardPage-content__block {
-      @include breakpoint(huge, overlarge, large, medium) {
-        padding: 70px columns(4.5) 100px columns(4.5);
-      }
-      @include breakpoint(small, mini) {
-        padding: 36px 0 56px 0;
-      }
+  &:nth-of-type(2n+1) {
+    background-color: $bg;
+  }
 
-      &:nth-of-type(2n+1) {
-        background-color: $bg;
-      }
+  &:nth-of-type(2n) {
+    background-color: $bg-dark;
+  }
 
-      &:nth-of-type(2n) {
-        background-color: $bg-dark;
-      }
+  h2 {
+    @include ff_quatroSlab;
+    font-size: 1.85rem;
+    line-height: 0.9;
+    color: $primary;
+    margin-bottom: 9px;
+  }
 
-      h2 {
-        @include ff_quatroSlab;
-        font-size: 1.85rem;
-        line-height: 0.9;
-        color: $primary;
-        margin-bottom: 9px;
-      }
-
-      p {
-        @include p-regular;
-      }
-    }
+  p {
+    @include p-regular;
+  }
+}
