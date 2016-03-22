@@ -1,0 +1,30 @@
+.sideBar__group {
+  padding: 0.65em 0;
+}
+
+.sideBar__topics {
+  h1 {
+    @include p-meta;
+    padding: 1.5em 0.857em 0.5em;
+  }
+
+  li {
+    padding: 0.4em 0.857em;
+  }
+
+  a {
+    @include p-meta;
+
+    &[data-active] {
+      color: $primary;
+    }
+  }
+
+  &:before {
+    content: " ";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba($grey-warm, 0.08);
+  }
+}

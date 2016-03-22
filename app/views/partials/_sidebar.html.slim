@@ -1,0 +1,32 @@
+.sideBar__group
+  - unless @current_user
+    .btn__sideLogin Login or Register
+    .btn__newThreadInactive Create new Thread
+
+  / - if current_user_can?(:topics_modify)
+  /   .btn__sideNewTopic Create new Thread
+  /     a href=new_topic_path Create new topic
+
+  - if current_user_can?(:topicThreads_create)
+    a href=new_topic_thread_path
+      .btn__newThreadActive Create new Thread
+
+.sideBar__group
+  .btn__sideMenu Upcoming live chats
+  .btn__sideMenu Community rules
+  .btn__sideMenu Privacy statement
+
+- if @topic
+  .sideBar__group.sideBar__topics
+    h1
+      strong Forum Topics:
+
+    ul
+      - @site.topics.each do |topic|
+        li
+          a href=topic_path(topic) data-active=(topic == @topic)
+            - if (topic == @topic)
+              strong
+                em = topic.name
+            -else
+              = topic.name

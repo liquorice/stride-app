@@ -30,6 +30,15 @@ html
         .constrained
           p Political life-expectancy care thinkers who make change happen evolution enable developing poverty. Catalyst inspire social change communities, foundation respect involvement. Campaign Action Against Hunger social entrepreneurship opportunity committed combat malaria board of directors rural global network planned giving.
 
+      .standardPage
+        .constrained
+          .page__left
+            .sidebar
+              = yield :sidebar
+          .page__right
+            .content
+              = yield
+
 
     .constrained
       h2 Stride — #{@site.name}
