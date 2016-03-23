@@ -60,6 +60,17 @@
   }
 }
 
+@mixin button-primary-short {
+  @include button-short;
+  background: $primary;
+  color: $white;
+
+  &:hover {
+    background: $primary-dark;
+    color: $white;
+  }
+}
+
 @mixin login {
   @include ff_adelle-regular;
   @include breakpoint(huge, overlarge) {
@@ -145,6 +156,30 @@
   }
 }
 
+.btn__newTopicActive {
+  @include button-midLevel-short;
+  @include btn__sideBar;
+
+  &:before {
+    @include icon__newTopicActive;
+    content: " ";
+    float: left;
+    margin: 0 10px 0 0;
+  }
+}
+
+.btn__newChatActive {
+  @include button-midLevel-short;
+  @include btn__sideBar;
+
+  &:before {
+    @include icon__newChatActive;
+    content: " ";
+    float: left;
+    margin: 0 10px 0 0;
+  }
+}
+
 .btn__sideMenu {
   @include button-side;
   @include btn__sideBar;
@@ -158,12 +193,18 @@
     height: 1rem;
     width: 0.35rem;
   }
+}
 
-  // background-color: $primary;
-  // color: $white;
+.btn_edit {
+  @include button-primary-short;
+  padding-right: 1rem;
 
-  // &:hover {
-  //   background-color: $primary-dark;
-  //   color: $white;
-  // }
+  &:before {
+    @include icon__edit;
+    content: " ";
+    float: left;
+    margin: 0 3px 0 0;
+    height: 1em;
+    width: 1em;
+  }
 }

@@ -23,18 +23,25 @@ html
     = render "/partials/navigation"
 
     main.page id="content" tabindex="0"
-      .standardHeader
-        .constrained
-          h1 Forums
-      .standardIntroduction
-        .constrained
-          p Political life-expectancy care thinkers who make change happen evolution enable developing poverty. Catalyst inspire social change communities, foundation respect involvement. Campaign Action Against Hunger social entrepreneurship opportunity committed combat malaria board of directors rural global network planned giving.
+      - if content_for? :dark_strip
+        .standardHeader
+          .constrained
+            = yield :dark_strip
+      - if content_for? :edit_strip
+        .editHeader
+          .contrained
+            =yield :edit_strip
+      - if content_for? :light_strip
+        .standardIntroduction
+          .constrained
+            = yield :light_strip
 
       .standardPage
         .constrained
           .page__left
-            .sidebar
-              = yield :sidebar
+            - if content_for? :sidebar
+              .sidebar
+                = yield :sidebar
           .page__right
             .content
               = yield

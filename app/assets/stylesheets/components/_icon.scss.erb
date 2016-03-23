@@ -20,9 +20,32 @@
   background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue.svg' %>") no-repeat;
 }
 
+@mixin icon__newTopicActive {
+  @include icon__standard;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue copy.svg' %>") no-repeat;
+}
+
+@mixin icon__newChatActive {
+  @include icon__standard;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-chat--blue.svg' %>") no-repeat;
+}
+
 @mixin icon__sideMenu {
   background-size: 1rem 0.55rem;
   background-image: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-right--grey-warm.svg' %>");
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+@mixin icon__edit {
+  background-size: 0.9em 0.9em;
+  background-image: url("<%= asset_data_uri 'icons/icon_edit-white.svg' %>");
+  background-repeat: no-repeat;
+  background-position: center 82%;
+}
+
+@mixin icon__back {
+  height: 0.9rem;
+  width: 0.9rem;
+  background: url("<%= asset_data_uri 'icons/icon_back-arrow-white.svg' %>") no-repeat;
 }

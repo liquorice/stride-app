@@ -39,14 +39,66 @@ $pages: 'forum' $teal, 'chat' $blue-80;
   }
 
   h1 {
-    @include section-heading;
-    color: $white;
+    @include forum-heading;
     text-align: center;
     line-height: .9;
     margin-top: 1.5rem;
   }
 
+  h2 {
+    @include topic-heading;
+    text-align: center;
+    line-height: .9;
+    margin-top: 1.5rem;
+  }
+
+  h3 {
+    @include thread-heading;
+    @include breakpoint(huge, overlarge, large) {
+      margin-bottom: 1.5rem;
+    }
+    @include breakpoint(medium, small, mini) {
+      margin-bottom: 1rem;
+    }
+    text-align: center;
+    line-height: .9;
+  }
+
+  h3.topic__name {
+    @include thread-heading;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    line-height: .9;
+    margin-top: 1.5rem;
+
+    em {
+      &:before {
+        @include icon__back;
+        display: inline-block;
+        content: " ";
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+
   position: relative;
+}
+
+.editHeader {
+  // @include breakpoint(medium) {
+  //   margin-top: -1.7em;
+  //   margin-bottom: -2.1em;
+  // }
+  // @include breakpoint(small,mini) {
+  //   margin-top: -1.7em;
+  //   margin-bottom: -2.1em;
+  // }
+  margin-top: -1.7em;
+  margin-bottom: -2.1em;
+  padding-top: 0;
+  position: relative;
+  z-index: 30;
+  text-align: center;
 }
 
 .standardIntroduction {

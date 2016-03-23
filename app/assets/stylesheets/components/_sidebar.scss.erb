@@ -15,8 +15,19 @@
   a {
     @include p-meta;
 
+    &:hover {
+      background: rgba($grey-warm, 0.18);
+      box-shadow: none;
+      color: $black;
+      transition: all 100ms ease-out;
+    }
+
     &[data-active] {
       color: $primary;
+
+      &:hover {
+        background: none;
+      }
     }
   }
 

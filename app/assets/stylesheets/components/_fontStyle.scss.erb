@@ -84,6 +84,73 @@
   line-height: 2.5rem;
 }
 
+@mixin forum-heading {
+  @include ff_flood;
+  @include breakpoint(huge) {
+    font-size: 140px;
+  }
+  @include breakpoint(overlarge) {
+    font-size: 120px;
+  }
+  @include breakpoint(large) {
+    font-size: 100px;
+  }
+  @include breakpoint(medium) {
+    font-size: 92px;
+  }
+  @include breakpoint(small) {
+    font-size: 72px;
+  }
+  @include breakpoint(mini) {
+    font-size: 3.333334rem;
+  }
+  color: $white;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5em;
+  transform: rotateZ(-5deg);
+}
+
+@mixin topic-heading {
+  @include ff_flood;
+  @include breakpoint(huge, overlarge, large, medium) {
+    font-size: 92px;
+  }
+  @include breakpoint(small) {
+    font-size: 72px;
+  }
+  @include breakpoint(mini) {
+    font-size: 3.333334rem;
+  }
+  color: $white;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5em;
+}
+
+@mixin thread-heading {
+  @include ff_adelle-bold;
+  em {
+    @include ff_flood;
+    margin-bottom: 0;
+    font-size: 80%;
+    letter-spacing: -0.02em;
+    word-spacing: -0.05em;
+    color: $white;
+  }
+  a {
+    color: $white;
+    &:hover {
+      color: $primary;
+      transition: all 100ms ease-out;
+    }
+  }
+  span.upper {
+    text-transform: uppercase;
+  }
+  color: $white;
+  font-size: 2.2rem;
+  line-height: 2.5rem;
+}
+
 //
 // Paragraph Styles
 //

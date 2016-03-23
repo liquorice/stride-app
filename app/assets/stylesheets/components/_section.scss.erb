@@ -19,32 +19,6 @@
   padding-bottom: 3.675rem;
 }
 
-@mixin section-heading {
-  @include ff_flood;
-  @include breakpoint(huge) {
-    font-size: 140px;
-  }
-  @include breakpoint(overlarge) {
-    font-size: 120px;
-  }
-  @include breakpoint(large) {
-    font-size: 100px;
-  }
-  @include breakpoint(medium) {
-    font-size: 92px;
-  }
-  @include breakpoint(small) {
-    font-size: 72px;
-  }
-  @include breakpoint(mini) {
-    font-size: 3.333334rem;
-  }
-  color: $blue-dark;
-  letter-spacing: -0.025em;
-  margin-bottom: 0.5em;
-  transform: rotateZ(-5deg);
-}
-
 @mixin section-intro {
   @include section-base;
   background: url('noise-1440x530.png') center center repeat $bg-dark;
