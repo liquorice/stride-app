@@ -13,4 +13,21 @@
 - content_for :sidebar do
   = render 'partials/forums_sidebar'
 
-p todo: Posts
+.postDetails
+  .postDetails__createdBy
+    .postDetails__createdBy-avatar
+      | AVATAR
+    .postDetails__createdBy-title Created by
+    .postDetails__createdBy-user = @thread.user.name
+
+  .postDetails__createdDate
+    = @thread.created_at
+
+  .postDetails__views
+    | XXX
+
+  .postDetails__replies
+    = @thread.posts_count
+
+= render @posts
+= render 'partials/pagination', paginated: @posts

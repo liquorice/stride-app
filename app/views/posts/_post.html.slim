@@ -1,0 +1,10 @@
+.post name="post-#{post.id}"
+  .post__details
+    .post__avatar
+      | AVATAR
+    .post__user
+      .post__user-name = post.user.name
+      ' said, #{post.created_at}
+
+  .post__content
+    = simple_format(post.content)

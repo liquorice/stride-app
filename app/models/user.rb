@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
   belongs_to :site
   belongs_to :access_level
+  has_many :topic_threads
+  has_many :posts
 
   # --- Access and permissions ---
 

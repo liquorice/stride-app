@@ -38,7 +38,8 @@ class LibLib
     end
 
     def load_pattern_data(name)
-      IO.binread(Rails.root.join('lib', 'classes', 'liblib', 'patterns', "#{name}.txt")).split("\n")
+      loaded = IO.binread(Rails.root.join('lib', 'classes', 'liblib', 'patterns', "#{name}.txt")).split("\n")
+      @@patterns[name] = loaded
     end
 
     # Parts
@@ -53,7 +54,8 @@ class LibLib
     end
 
     def load_part_data(name)
-      IO.binread(Rails.root.join('lib', 'classes', 'liblib', 'parts', "#{name}.txt")).split("\n")
+      loaded = IO.binread(Rails.root.join('lib', 'classes', 'liblib', 'parts', "#{name}.txt")).split("\n")
+      @@parts[name] = loaded
     end
 
   end
