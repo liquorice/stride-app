@@ -2,37 +2,87 @@
 // Section styles
 //
 
-@mixin section-base {
+@mixin section__base {
   @include breakpoint(medium) {
-    padding-top: 3.2rem;
     padding-bottom: 3.36rem;
+    padding-top: 3.2rem;
   }
   @include breakpoint(small, mini) {
-    padding-top: 3rem;
     padding-bottom: 3.15rem;
+    padding-top: 3rem;
   }
   p {
-    max-width: 45em;
     margin: 0 auto;
+    max-width: 45em;
   }
-  padding-top: 3.5rem;
   padding-bottom: 3.675rem;
+  padding-top: 3.5rem;
 }
 
-@mixin section-intro {
-  @include section-base;
-  background: url('noise-1440x530.png') center center repeat $bg-dark;
-  background-size: 1440px 530px;
-
-  header {
-    text-align: center;
+@mixin section__dark {
+  @include breakpoint(huge, overlarge) {
+    min-height: 212px;
+    padding-top: 18px;
   }
+  @include breakpoint(large) {
+    min-height: 212px;
+    padding-top: 36px;
+  }
+  @include breakpoint(medium) {
+    min-height: 200px;
+    padding-top: 36px;
+  }
+  @include breakpoint(small) {
+    min-height: 160px;
+    padding-top: 30px;
+  }
+  @include breakpoint(mini) {
+    min-height: 130px;
+    padding-top: 30px;
+  }
+}
 
+@mixin section__light {
+  @include breakpoint(medium) {
+    padding-bottom: 3.36rem;
+    padding-top: 3.2rem;
+  }
+  @include breakpoint(small, mini) {
+    padding-bottom: 3.15rem;
+    padding-top: 3rem;
+  }
   p {
-    @include p-large;
-    text-align: center;
-    a {
-      @include links;
-    }
+    margin: 0 auto;
+    max-width: 45em;
+  }
+  padding-bottom: 3.675rem;
+  padding-top: 3.5rem;
+}
+
+@mixin section__sidebar {
+  @include breakpoint(huge, overlarge, large, medium) {
+    margin-right: columns(0.5);
+    padding-left: columns(0.5);
+    width: columns(9);
+  }
+  @include breakpoint(small, mini) {
+    margin-bottom: 20px;
+    margin-right: mobile_columns(1);
+    padding-left: mobile_columns(1);
+    width: mobile_columns(14);
+  }
+}
+
+@mixin section__content {
+  @include breakpoint(huge, overlarge, large, medium) {
+    margin-right: columns(0.5);
+    padding-left: columns(0.5);
+    width: columns(27);
+  }
+  @include breakpoint(small, mini) {
+    margin-bottom: 20px;
+    margin-right: mobile_columns(1);
+    padding-left: mobile_columns(1);
+    width: mobile_columns(14);
   }
 }

@@ -1,53 +1,50 @@
-.sideBar__group
-  - unless @current_user
+.side__group
+  // Uncomment permissions check when ready
+  / - unless @current_user
+  a href=login_path
     .btn__sideLogin Login or Register
     .btn__newThreadInactive Create new Thread
 
-  / - if current_user_can?(:topics_modify)
-  /   .btn__sideNewTopic Create new Thread
-  /     a href=new_topic_path Create new topic
+  // Uncomment permissions check when ready
+  / - if current_user_can?(:topicThreads_create)
+  a href=new_topic_thread_path
+    .btn__newThreadActive Create new Thread
 
-  - if current_user_can?(:topicThreads_create)
-    a href=new_topic_thread_path
-      .btn__newThreadActive Create new Thread
+  // Uncomment permissions check when ready
+  / - if current_user_can?(:topics_create)
+  a href=new_topic_path
+    .btn__newTopicActive Create new Topic
 
-  - if current_user_can?(:topics_create)
-    a href=new_topic_path
-      .btn__newTopicActive Create new Topic
-
-  / - if current_user_can?(:chats_create)
-  a
+  // Add permissions check when ready
+  a href="#"
     .btn__newChatActive Setup new Chat
 
-.sideBar__group
-  a href="#"
-    .btn__sideMenu Upcoming live chats
-  / - if current_user_can?(:view_archived_chats)
-  a href="#"
-    .btn__sideMenu Archived chats
-  / - if current_user_can?(:view_users)
-  a href="#"
-    .btn__sideMenu View all users
-  a href="#"
-    .btn__sideMenu Community rules
-  a href="#"
-    .btn__sideMenu Privacy statement
+.side__group
+  .sideMenu
+    a href="#" Upcoming live chats
+    // Add permissions check when ready
+    a href="#" Archived chats
+    // Add permissions check when ready
+    a href="#" View all users
+    a href="#" Community rules
+    a href="#" Privacy statement
 
 - if @topic or @thread
-  -unless @thread.nil?
+  - unless @thread.nil?
     - currTopic = @thread.topic
   - currTopic ||= @topic
 
-  .sideBar__group.sideBar__topics
-    h1
-      strong Forum Topics:
+  .side__group
+    .sideTopics
+      h1
+        strong Forum Topics:
 
-    ul
-      - @site.topics.each do |topic|
-        li
-          a href=topic_path(topic) data-active=(topic == currTopic)
-            -if currTopic == topic
-              strong
-                em = topic.name
-            -else
-              = topic.name
+      ul
+        - @site.topics.each do |topic|
+          li
+            a href=topic_path(topic) data-active=(topic == currTopic)
+              - if currTopic == topic
+                strong
+                  em = topic.name
+              - else
+                = topic.name

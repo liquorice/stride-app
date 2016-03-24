@@ -3,12 +3,11 @@ html
   head
     title Stride App
     meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"
-
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
     = csrf_meta_tags
-
     = stylesheet_link_tag @site.name
+
     javascript:
       (function(d) {
         var config = {
@@ -19,46 +18,44 @@ html
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
       })(document);
 
-  body.page-forum
+  body.page__forum
     = render "/partials/navigation"
 
-    main.page id="content" tabindex="0"
+    - if flash[:success]
+        .notifications
+          .notification.success = flash[:success]
+
+    - if flash[:error]
+      .notifications
+        .notification.error = flash[:error]
+
+    main.container id="content" tabindex="0"
       - if content_for? :dark_strip
-        .standardHeader
+        .strip__dark
           .constrained
             = yield :dark_strip
+
       - if content_for? :edit_strip
-        .editHeader
+        .strip__edit
           .contrained
             =yield :edit_strip
+
       - if content_for? :light_strip
-        .standardIntroduction
+        .strip__light
           .constrained
             = yield :light_strip
 
-      .standardPage
+      .page
         .constrained
-          .page__left
-            - if content_for? :sidebar
-              .sidebar
-                = yield :sidebar
-          .page__right
-            .content
-              = yield
+          - if content_for? :sidebar
+            .sidebar
+              = yield :sidebar
+          .content
+            = yield
 
 
     .constrained
       h2 Stride — #{@site.name}
-
-      - if flash[:success]
-        .notifications
-          .notification.success = flash[:success]
-
-      - if flash[:error]
-        .notifications
-          .notification.error = flash[:error]
-
-      hr
 
       - if @current_user
         p Hello #{@current_user.name}
@@ -73,21 +70,5 @@ html
         a href=topics_preview_path Forums
 
       hr
-
-    - if content_for? :dark_strip
-      .darkStrip
-        .constrained
-          = yield :dark_strip
-
-    - if content_for? :light_strip
-      .lightStrip
-        .constrained
-          = yield :light_strip
-
-    .constrained
-      .sidebar
-        = yield :sidebar
-      .content
-        = yield
 
     = javascript_include_tag 'application'

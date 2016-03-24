@@ -1,5 +1,5 @@
 - content_for :dark_strip do
-  h3.topic__name
+  h3.topic__text
     a href=topic_path(@thread.topic)
       em
         =< @thread.topic.name
@@ -9,7 +9,7 @@
 - if current_user_can?(:threads_modify)
   - content_for :edit_strip do
     a href=edit_topic_thread_path(@thread)
-      .btn_edit Edit details
+      .btn__edit Edit details
 
 - content_for :sidebar do
   = render 'partials/sidebar'

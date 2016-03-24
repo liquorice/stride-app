@@ -1,25 +1,25 @@
-header.header.js-header
+header.header
   .header-toolbar
     .group
       a.header-toolbar__logo
         = insert_svg "#{@site.name}/logo.svg"
         span.header-logo__alt
           = @site.name
-      .header-toolbar__search.js-searchForm-container
-        form.header-toolbar__search-form.js-searchForm action="/search"
-          label.js-searchForm-toggle for="search-box"
+      .header-toolbar__search
+        form.header-toolbar__search-form action="/search"
+          label for="search-box"
             span Search
             = insert_svg "search.svg"
           input id="query" type="text" name="query"
 
-  nav.header-navigation.js-submenu
+  nav.header-navigation
     .group role="navigation"
       ul
-        li 
-          = link_to('forums'.capitalize, "/forums", class:'active')
-        li 
-          = link_to('articles'.capitalize, "/articles")
-        li 
-          = link_to('support'.capitalize, "/support")
-        li 
-          = link_to('about'.capitalize, "/about")
+        li
+          a.active href=topics_preview_path Forums
+        li
+          a href="#" Articles
+        li
+          a href="#" Support
+        li
+          a href="#" About

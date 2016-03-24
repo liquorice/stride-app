@@ -2,6 +2,39 @@
 // Buttons
 //
 
+@mixin login {
+  @include ff_adelle-regular;
+  @include breakpoint(huge, overlarge) {
+    font-size: 0.75rem;
+    margin: 20px 0 20px 20px;
+  }
+  @include breakpoint(large) {
+    font-size: 0.75rem;
+  }
+  border-radius: 2px;
+  color: $grey-warm;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+
+  a {
+    color: $grey-warm;
+    display: block;
+    padding: 0.25em 0.75em;
+
+    &:active,
+    &.active {
+      background-color: rgba($grey-warm, 0.08);
+    }
+  }
+
+  .header-user__triangle {
+    display: inline;
+    fill: mix($grey-warm, $white, 50%);
+    vertical-align: middle;
+  }
+}
+
 @mixin button-standard {
   @include ff_adelle-bold;
   @include unselectable;
@@ -13,7 +46,6 @@
   font-size: 1rem;
   line-height: 1;
   padding: 0.571em 0.857em 0.643em;
-  transition: all 100ms ease-out;
 
   &:hover {
     background: rgba($grey-warm, 0.18);
@@ -29,13 +61,6 @@
   line-height: 1;
   margin-bottom: 0.4rem;
   padding-top: 0.5357em;
-}
-
-@mixin button-side {
-  @include button-standard;
-  @include p-meta;
-  margin: 0;
-  padding: 0.2em 0.857em;
 }
 
 @mixin button-midLevel{
@@ -68,143 +93,5 @@
   &:hover {
     background: $primary-dark;
     color: $white;
-  }
-}
-
-@mixin login {
-  @include ff_adelle-regular;
-  @include breakpoint(huge, overlarge) {
-    font-size: 0.75rem;
-    margin: 20px 0 20px 20px;
-  }
-  @include breakpoint(large) {
-    font-size: 0.75rem;
-  }
-  border-radius: 2px;
-  color: $grey-warm;
-  font-size: 13px;
-  line-height: 1.4;
-  overflow: hidden;
-
-  a {
-    color: $grey-warm;
-    display: block;
-    padding: 0.25em 0.75em;
-
-    &:active,
-    &.active {
-      background-color: rgba($grey-warm, 0.08);
-    }
-  }
-
-  .header-user__triangle {
-    display: inline;
-    vertical-align: middle;
-    fill: mix($grey-warm, $white, 50%);
-  }
-}
-
-@mixin btn__sideBar {
-  @include ff_adelle-regular;
-  overflow: hidden;
-  border-radius: 0;
-  width: 100%;
-  margin-bottom: 0;
-}
-
-.btn__sideLogin {
-  @include button-short;
-  @include btn__sideBar;
-  background-color: $primary;
-  color: $white;
-
-  &:before {
-    @include icon__login;
-    content: " ";
-    float: left;
-    margin: 0 10px 0 0;
-  }
-
-  &:hover {
-    background-color: $primary-dark;
-    color: $white;
-  }
-}
-
-.btn__newThreadInactive {
-  @include button-short;
-  @include btn__sideBar;
-  color: $black opacity 0.5;
-
-  &:before {
-    @include icon__newThreadInactive;
-    content: " ";
-    float: left;
-    margin: 0 10px 0 0;
-  }
-}
-
-.btn__newThreadActive {
-  @include button-midLevel-short;
-  @include btn__sideBar;
-
-  &:before {
-    @include icon__newThreadActive;
-    content: " ";
-    float: left;
-    margin: 0 10px 0 0;
-  }
-}
-
-.btn__newTopicActive {
-  @include button-midLevel-short;
-  @include btn__sideBar;
-
-  &:before {
-    @include icon__newTopicActive;
-    content: " ";
-    float: left;
-    margin: 0 10px 0 0;
-  }
-}
-
-.btn__newChatActive {
-  @include button-midLevel-short;
-  @include btn__sideBar;
-
-  &:before {
-    @include icon__newChatActive;
-    content: " ";
-    float: left;
-    margin: 0 10px 0 0;
-  }
-}
-
-.btn__sideMenu {
-  @include button-side;
-  @include btn__sideBar;
-  background-color: $bg-dark;
-
-  &:after {
-    @include icon__sideMenu;
-    content: " ";
-    float: right;
-    vertical-align: baseline;
-    height: 1rem;
-    width: 0.35rem;
-  }
-}
-
-.btn_edit {
-  @include button-primary-short;
-  padding-right: 1rem;
-
-  &:before {
-    @include icon__edit;
-    content: " ";
-    float: left;
-    margin: 0 3px 0 0;
-    height: 1em;
-    width: 1em;
   }
 }
