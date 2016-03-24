@@ -1,0 +1,58 @@
+.pagination {
+  text-align: center;
+  width: 100%;
+}
+
+.pagination__link,
+.pagination__display {
+  @include button-short;
+  @include p-meta;
+  background-color: $bg;
+  border-radius: 0;
+  margin: 0.25rem 0.06rem;
+}
+
+.pagination__display {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.pagination__link.first {
+  &:before {
+    @include icon__first;
+    content: " ";
+    height: 1rem;
+    vertical-align: baseline;
+    width: 1rem;
+  }
+}
+
+.pagination__link.prev {
+  &:before {
+    @include icon__prev;
+    content: " ";
+    height: 1rem;
+    vertical-align: baseline;
+    width: 1rem;
+  }
+}
+
+.pagination__link.next {
+  &:after {
+    @include icon__next;
+    content: " ";
+    height: 1rem;
+    vertical-align: baseline;
+    width: 1rem;
+  }
+}
+
+.pagination__link.last {
+  &:after {
+    @include icon__last;
+    content: " ";
+    height: 1rem;
+    vertical-align: baseline;
+    width: 1rem;
+  }
+}
