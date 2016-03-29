@@ -31,3 +31,10 @@
 
 = render @posts
 = render 'partials/pagination', paginated: @posts
+
+- if current_user_can? :post_create
+  .postReply
+    .postReply__title Post a reply
+    = form_tag new_post_path(@thread), method: :post do |f|
+      textarea name="content"
+      button Post

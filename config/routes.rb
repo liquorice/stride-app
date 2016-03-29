@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :topic_threads, path: 'thread'
   patch 'thread/:id/toggle_pin' => 'topic_threads#toggle_pin', as: :toggle_topic_thread_pin
 
+  post 'thread/:id/post' => 'posts#new', as: :new_post
+
   # Admin
   scope :admin do
     get '' => 'landing#admin', as: :admin

@@ -12,7 +12,7 @@
       span.pagination__link.disabled First
       span.pagination__link.disabled Previous
 
-    span.pagination__display Page #{paginated.current_page} of #{paginated.total_pages}
+    span.pagination__display Page #{current_page} of #{total_pages}
 
     - if current_page < total_pages
       a.pagination__link href="?page=#{next_page}" Next
