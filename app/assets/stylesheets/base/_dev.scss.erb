@@ -97,4 +97,9 @@ button {
   margin-bottom: 20px;
   overflow: hidden;
   max-height: 300px;
+
+  &:not([data-visible]) {
+    opacity: 0.4;
+    border-left: 10px solid black;
+  }
 }

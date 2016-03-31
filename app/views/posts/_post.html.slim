@@ -1,10 +1,23 @@
-.post name="post-#{post.id}"
-  .post__details
-    .post__avatar
-      | AVATAR
-    .post__user
-      .post__user-name = post.user.name
-      ' said, #{post.created_at}
+.post name="post-#{post.id}" data-visible=post.visible
+  - unless post.visible
+    .post__hidden
+      | Reply hidden by moderator #{post.hidden_at}
 
-  .post__content
-    = simple_format(post.content)
+  - if current_user_can? :post_moderate
+    .post__moderation
+      a href=toggle_post_visibility_path(post) data-method="patch"
+        - if post.visible
+          | Hide this reply
+        - else
+          | Show this reply
+
+  - if post.visible || current_user_can?(:post_moderate)
+    .post__details
+      .post__avatar
+        | AVATAR
+      .post__user
+        .post__user-name = post.user.name
+        ' said, #{post.created_at}
+
+    .post__content
+      = simple_format(post.content)
