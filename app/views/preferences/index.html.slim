@@ -1,0 +1,38 @@
+- content_for :dark_strip do
+  h2 Preferences
+
+h3 Your details
+
+= form_tag preferences_path, method: :patch do |f|
+
+  .label
+    .label__caption Avatar colour
+    input name="avatar_colour" value=@current_user.avatar_colour
+
+  .label
+    .label__caption Avatar face
+    input name="avatar_face" value=@current_user.avatar_face
+
+  .label
+    .label__caption Username
+    input name="name" value=@current_user.name
+
+  button Save
+
+hr
+
+= form_tag update_password_path, method: :patch do |f|
+
+  .label
+    .label__caption Current password
+    input type="password" name="current_password"
+
+  .label
+    .label__caption New password
+    input type="password" name="password"
+
+  .label
+    .label__caption Confirm new password
+    input type="password" name="password_confirmation"
+
+  button Update password

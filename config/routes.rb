@@ -7,13 +7,22 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
 
+  # Topics
   resources :topics, path: 'topic'
   get 'forums' => 'topics#preview', as: :topics_preview
+
+  # Threads
   resources :topic_threads, path: 'thread'
   patch 'thread/:id/toggle_pin' => 'topic_threads#toggle_pin', as: :toggle_topic_thread_pin
 
+  # Posts
   post 'thread/:id/post' => 'posts#new', as: :new_post
   patch 'post/:id/toggle_visibility' => 'posts#toggle_visibility', as: :toggle_post_visibility
+
+  # Users
+  get 'preferences' => 'preferences#index'
+  patch 'preferences' => 'preferences#update'
+  patch 'preferences/password' => 'preferences#update_password', as: :update_password
 
   # Admin
   scope :admin do

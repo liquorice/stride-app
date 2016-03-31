@@ -4,3 +4,4 @@ topicThreads_modify: Modify existing topic threads
 topicThreads_create: Create topic threads
 post_create: Create posts
 post_moderate: Show/hide posts
+preferences_modify: Modify own preferences
