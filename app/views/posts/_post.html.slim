@@ -1,5 +1,5 @@
 .post data-visible=post.visible
-  a name="post-#{post.id}"
+  a name="post-#{post.id}" href=post_path(post) Permalink
   - unless post.visible
     .post__hidden
       | Reply hidden by moderator #{post.hidden_at}
