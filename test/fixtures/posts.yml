@@ -6,6 +6,7 @@
           topic_thread: topicThread_<%= i %>_<%= j %>_<%= site %>
           user: user_<%= rand(200) %>_<%= site %>
           content: "<%= LibLib.paragraphs(1..8, :grimm) %>"
+          created_at: <%= Time.at(Time.now.to_i - (rand * 8.weeks.to_i)) %>
       <% end %>
     <% end %>
   <% end %>
