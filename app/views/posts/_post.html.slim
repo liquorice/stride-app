@@ -1,4 +1,5 @@
-.post name="post-#{post.id}" data-visible=post.visible
+.post data-visible=post.visible
+  a name="post-#{post.id}"
   - unless post.visible
     .post__hidden
       | Reply hidden by moderator #{post.hidden_at}

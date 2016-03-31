@@ -5,7 +5,7 @@ class TopicThreadsController < ApplicationController
 
   def show
     @thread = @site.topic_threads.find(params[:id])
-    @posts = @thread.posts.paginate(:page => params[:page])
+    @posts = @thread.posts_for_page(params[:page])
     @topic = @thread.topic
   end
 

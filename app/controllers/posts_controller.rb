@@ -9,8 +9,12 @@ class PostsController < ApplicationController
     # TODO catch post errors
     @post.save
 
-    # TODO redirect to last page of posts
-    redirect_to topic_thread_path(@thread)
+    redirect_to @post.direct_path
+  end
+
+  def show
+    @post = @site.posts.find(params[:id])
+    redirect_to @post.direct_path
   end
 
   def toggle_visibility
@@ -25,8 +29,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post successfully unhidden"
     end
 
-    # TODO redirect to correct page for post
-    redirect_to topic_thread_path(@post.topic_thread)
+    redirect_to @post.direct_path
   end
 
 end
