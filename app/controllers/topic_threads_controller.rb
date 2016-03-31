@@ -52,10 +52,10 @@ class TopicThreadsController < ApplicationController
 
     if @thread.pinned
       @thread.update(pinned: false)
-      flash[:success] = "#{@thread.name} succesfully pinned"
+      flash[:success] = "#{@thread.name} succesfully unpinned"
     else
       @thread.update(pinned: true)
-      flash[:success] = "#{@thread.name} succesfully unpinned"
+      flash[:success] = "#{@thread.name} succesfully pinned"
     end
 
     redirect_to topic_path(@thread.topic)
