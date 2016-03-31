@@ -15,8 +15,9 @@
 
 .postDetails
   .postDetails__createdBy
-    .postDetails__createdBy-avatar
-      | AVATAR
+    .postDetails__createdBy-avatar style="width: 80px; height: 80px"
+      = render 'user/avatar', user: @thread.user
+
     .postDetails__createdBy-title Created by
     .postDetails__createdBy-user = @thread.user.name
 

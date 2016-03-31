@@ -103,3 +103,117 @@ button {
     border-left: 10px solid black;
   }
 }
+
+// Avatar
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 2;
+  }
+
+  &[data-face='1']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-01.svg' %>);
+  }
+
+  &[data-face='2']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-02.svg' %>);
+  }
+
+  &[data-face='3']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-03.svg' %>);
+  }
+
+  &[data-face='4']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-04.svg' %>);
+  }
+
+  &[data-face='5']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-05.svg' %>);
+  }
+
+  &[data-face='6']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-06.svg' %>);
+  }
+
+  &[data-face='7']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-07.svg' %>);
+  }
+
+  &[data-face='8']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-08.svg' %>);
+  }
+
+  &[data-face='9']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-09.svg' %>);
+  }
+
+  &[data-face='10']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-10.svg' %>);
+  }
+
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    right: 3%;
+    bottom: 3%;
+    background: rgba(black, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  &[data-colour='1']:after {
+    background: #f7d596;
+  }
+
+  &[data-colour='2']:after {
+    background: #f0b542;
+  }
+
+  &[data-colour='3']:after {
+    background: #fdc4cd;
+  }
+
+  &[data-colour='4']:after {
+    background: #f9b286;
+  }
+
+  &[data-colour='5']:after {
+    background: #f9b287;
+  }
+
+  &[data-colour='6']:after {
+    background: #f49150;
+  }
+
+  &[data-colour='7']:after {
+    background: #9aced9;
+  }
+
+  &[data-colour='8']:after {
+    background: #5cb2c3;
+  }
+
+  &[data-colour='9']:after {
+    background: #cfb49d;
+  }
+
+  &[data-colour='10']:after {
+    background: #9d6a3a;
+  }
+}
+

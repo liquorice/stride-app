@@ -32,6 +32,9 @@ html
 
       - if @current_user
         p Hello #{@current_user.name}
+        div style="width: 20px; height: 20px"
+          = render 'user/avatar', user: @current_user
+
         p
           a href=preferences_path Preferences
           | |
