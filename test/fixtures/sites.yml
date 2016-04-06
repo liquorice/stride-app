@@ -1,7 +1,7 @@
 pete:
   name: pete
-  hosts: [pete-app.dev, pete.org.au]
+  hosts: [pete-app.dev, forums.stage.pete.org.au, forums.pete.org.au]
 
 dale:
   name: dale
-  hosts: [dale-app.dev, dale.org.au]
+  hosts: [dale-app.dev, forums.stage.dale.org.au, forums.dale.org.au,]
