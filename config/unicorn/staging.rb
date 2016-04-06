@@ -47,15 +47,10 @@ GC.respond_to?(:copy_on_write_friendly=) &&
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) &&
     ActiveRecord::Base.connection.disconnect!
-
-  Que.mode = :off
 end
 
 # After forking, restore your ActiveRecord connection.
 after_fork do |server, worker|
   defined?(ActiveRecord::Base) &&
     ActiveRecord::Base.establish_connection
-
-  # Setup que
-  Que.mode = :async
 end
