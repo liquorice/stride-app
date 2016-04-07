@@ -1,1 +1,8 @@
-h1 Hello, world
+- content_for :dark_strip do
+  h1 Forums
+
+- content_for :light_strip do
+  p Why do we have a welome and a preview view?
+
+- content_for :sidebar do
+  = render 'partials/sidebar'

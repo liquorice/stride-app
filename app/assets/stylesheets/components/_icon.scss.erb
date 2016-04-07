@@ -20,9 +20,63 @@
   background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue.svg' %>") no-repeat;
 }
 
+@mixin icon__newTopicActive {
+  @include icon__standard;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue copy.svg' %>") no-repeat;
+}
+
+@mixin icon__newChatActive {
+  @include icon__standard;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-chat--blue.svg' %>") no-repeat;
+}
+
 @mixin icon__sideMenu {
   background-size: 1rem 0.55rem;
   background-image: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-right--grey-warm.svg' %>");
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+@mixin icon__edit {
+  background-size: 0.9em 0.9em;
+  background-image: url("<%= asset_data_uri 'icons/icon_edit-white.svg' %>");
+  background-repeat: no-repeat;
+  background-position: center 82%;
+}
+
+@mixin icon__back {
+  @include icon__standard;
+  background: url("<%= asset_data_uri 'icons/icon_back-arrow-white.svg' %>") no-repeat;
+}
+
+@mixin icon__first {
+  background-size: 0.65rem 0.65rem;
+  background-image: url("<%= asset_data_uri 'icons/icon_first-arrow-grey.svg' %>");
+  background-repeat: no-repeat;
+  background-position: center center;
+  float: left;
+}
+
+@mixin icon__prev {
+  background-image: url("<%= asset_data_uri 'icons/icon_prev-arrow-grey.svg' %>");
+  background-size: 1rem 0.55rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  float: left;
+}
+
+@mixin icon__next {
+  background-image: url("<%= asset_data_uri 'icons/icon_next-arrow-grey.svg' %>");
+  background-size: 1rem 0.55rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  float: right;
+}
+
+@mixin icon__last {
+  background-image: url("<%= asset_data_uri 'icons/icon_last-arrow-grey.svg' %>");
+  background-size: 0.65rem 0.65rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  float: right;
 }

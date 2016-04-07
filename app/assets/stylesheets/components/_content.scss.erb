@@ -1,25 +1,32 @@
-.standardPage {
-  @include section-base;
+.page {
+  @include section__base;
   background-color: $bg-dark;
   position: relative;
 }
 
-.page__left {
-  @include breakpoint(huge, overlarge, large, medium) {
-    margin-right: columns(0.5);
-    padding-left: columns(0.5);
-    width: columns(9);
-  }
-  @include breakpoint(small, mini) {
-    margin-bottom: 20px;
-    margin-right: mobile_columns(1);
-    padding-left: mobile_columns(1);
-    width: mobile_columns(14);
-  }
-
+.sidebar {
+  @include section__sidebar;
   float: left;
   position: relative;
 
+  // Just for visual assistance for breakpoint testing, please remove before staging
+  &:before {
+    background-color: rgba($grey-warm, 0.15);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1px;
+  }
+}
+
+.content {
+  @include section__content;
+  float: left;
+  position: relative;
+
+  // Just for visual assistance for breakpoint testing, please remove before staging
   &:before {
     content: "";
     background-color: rgba($grey-warm, 0.15);
@@ -30,63 +37,3 @@
     height: 100%;
   }
 }
-
-.page__right {
-  @include breakpoint(huge, overlarge, large, medium) {
-    margin-right: columns(0.5);
-    padding-left: columns(0.5);
-    width: columns(27);
-  }
-  @include breakpoint(small, mini) {
-    margin-bottom: 20px;
-    margin-right: mobile_columns(1);
-    padding-left: mobile_columns(1);
-    width: mobile_columns(14);
-  }
-
-  float: left;
-  position: relative;
-
-  &:before {
-    content: "";
-    background-color: rgba($grey-warm, 0.15);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 100%;
-  }
-}
-
-// .standardPage-content {
-//   position: relative;
-// }
-
-// .standardPage-content__block {
-//   @include breakpoint(huge, overlarge, large, medium) {
-//     padding: 70px columns(4.5) 100px columns(4.5);
-//   }
-//   @include breakpoint(small, mini) {
-//     padding: 36px 0 56px 0;
-//   }
-
-//   &:nth-of-type(2n+1) {
-//     background-color: $bg;
-//   }
-
-//   &:nth-of-type(2n) {
-//     background-color: $bg-dark;
-//   }
-
-//   h2 {
-//     @include ff_quatroSlab;
-//     font-size: 1.85rem;
-//     line-height: 0.9;
-//     color: $primary;
-//     margin-bottom: 9px;
-//   }
-
-//   p {
-//     @include p-regular;
-//   }
-// }

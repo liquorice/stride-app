@@ -1,15 +1,15 @@
 - content_for :dark_strip do
-  h2 Forums
+  h1 Forums
 
 - content_for :light_strip do
-  h3 Overview content for the forums
+  p Overview content for the forums
 
 - content_for :sidebar do
   = render 'partials/sidebar'
 
 - @topics.each do |topic|
   .topic
-    h4.topic__name
+    h4.topic__text
       a href=topic_path(topic)
         = topic.name
 
