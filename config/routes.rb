@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch 'thread/:id/toggle_pin' => 'topic_threads#toggle_pin', as: :toggle_topic_thread_pin
 
   # Posts
+  get 'post/:id' => 'posts#show', as: :post
   post 'thread/:id/post' => 'posts#new', as: :new_post
   patch 'post/:id/toggle_visibility' => 'posts#toggle_visibility', as: :toggle_post_visibility
 

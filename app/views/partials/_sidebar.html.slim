@@ -14,7 +14,6 @@
   / - if current_user_can?(:topics_create)
   a href=new_topic_path
     .btn__newTopicActive Create new Topic
-
   // Add permissions check when ready
   a href="#"
     .btn__newChatActive Setup new Chat
@@ -29,22 +28,13 @@
     a href="#" Community rules
     a href="#" Privacy statement
 
-- if @topic or @thread
-  - unless @thread.nil?
-    - currTopic = @thread.topic
-  - currTopic ||= @topic
+.side__group
+  .sideTopics
+    h1
+      strong Forum Topics:
 
-  .side__group
-    .sideTopics
-      h1
-        strong Forum Topics:
-
-      ul
-        - @site.topics.each do |topic|
-          li
-            a href=topic_path(topic) data-active=(topic == currTopic)
-              - if currTopic == topic
-                strong
-                  em = topic.name
-              - else
-                = topic.name
+    ul
+      - @site.topics.each do |topic|
+        li
+          a href=topic_path(topic) data-active=(topic == @topic)
+            = topic.name

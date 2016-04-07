@@ -1,40 +1,6 @@
 // This file is for all dev-only styles, and will not be used in production
 // That being said, please keep this file tidy as you would any other
 
-body {
-  @include ff_adelle-regular;
-  background: #f7f6f4;
-  border-top: 10px solid $primary;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-h1, h2, h3, h4 {
-  font-size: 20px;
-  margin-bottom: 1em;
-}
-
-p {
-  margin-bottom: 1em;
-}
-
-// a {
-//   text-decoration: underline !important;
-// }
-
-// input,
-// textarea,
-// .dropdown {
-//   border: 1px solid;
-//   background: #fff;
-//   padding: 5px;
-//   margin-bottom: 20px;
-//   width: 400px;
-// }
-
-.dropdown {
-  border-right: 20px solid;
-}
 
 button {
   border: 1px solid;
@@ -42,53 +8,37 @@ button {
   cursor: pointer;
 }
 
-.darkStrip {
-  background: #347a7a;
-  color: #fff;
-  text-align: center;
-}
-
-.lightStrip {
-  background: #eeefe9;
-  color: #347a7a;
-  text-align: center;
-}
-
-.constrained {
-  padding: 20px;
-}
-
-.dev__modal {
-  background: black;
-  color: white;
-  font-size: 40px;
-  text-align: center;
-  padding: 20px;
-  text-transform: uppercase;
-}
-
-.sidebar {
-  width: 200px;
-  float: left;
-}
-
-.content {
-  margin-left: 240px;
-}
-
-[data-active] {
-  color: red;
-}
-
-.pagination {
-  text-align: center;
-  margin-bottom: 20px;
-
-  a, span {
-    display: inline-block;
-    padding: 5px;
-    margin: 0 10px;
+body.modal {
+  h2 {
+    background: black;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding: 20px;
+    text-transform: uppercase;
   }
+
+  input,
+  textarea,
+  .dropdown {
+    border: 1px solid;
+    background: #fff;
+    padding: 5px;
+    margin-bottom: 20px;
+    width: 400px;
+  }
+
+  .dropdown {
+    border-right: 20px solid;
+  }
+}
+
+textarea {
+  border: 1px solid;
+  background: #fff;
+  padding: 5px;
+  margin-bottom: 20px;
+  width: 400px;
 }
 
 .post {

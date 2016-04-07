@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    return redirect_to :root if logged_in?
+    return redirect_to topics_preview_path if logged_in?
 
     render :login, layout: 'modal'
   end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if user.authenticate(params[:session][:password])
       log_in(user)
-      redirect_to :root
+      redirect_to topics_preview_path
     else
       failed
     end
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to :root
+    redirect_to topics_preview_path
   end
 
   private

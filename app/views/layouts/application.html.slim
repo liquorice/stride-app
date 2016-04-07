@@ -19,15 +19,35 @@ html
       })(document);
 
   body.page__forum
-    = render "/partials/navigation"
+    header.header.js-header
+      .headerToolbar
+        .group
+          a.headerToolbar__logo href="#"
+            = insert_svg "#{@site.name}/logo.svg"
+            span.header-logo__alt
+              = @site.name
+          .headerToolbar__search.js-searchForm-container
+            form.headerToolbar__search-form.js-searchForm action="/search"
+              label.js-searchForm-toggle for="search-box"
+                span Search
+                = insert_svg "search.svg"
+              input id="query" type="text" name="query"
 
-    - if flash[:success]
-        .notifications
-          .notification.success = flash[:success]
+          .headerToolbar__user
+            div style="width: 20px; height: 20px"
+              /= render 'user/avatar', user: @current_user
 
-    - if flash[:error]
-      .notifications
-        .notification.error = flash[:error]
+      nav.headerNavigation
+        .group
+          ul role="navigation"
+            li
+              a.active href=topics_preview_path Forums
+            li
+              a href="#" Articles
+            li
+              a href="#" Support
+            li
+              a href="#" About
 
     main.container id="content" tabindex="0"
       - if content_for? :dark_strip
@@ -53,27 +73,4 @@ html
           .content
             = yield
 
-
-    .constrained
-      h2 Stride — #{@site.name}
-
-      - if @current_user
-        p Hello #{@current_user.name}
-        div style="width: 20px; height: 20px"
-          = render 'user/avatar', user: @current_user
-
-        p
-          a href=preferences_path Preferences
-          | |
-          a href=logout_path data-method='post' Log out
-
-      - else
-        p
-          a href=login_path Log in
-
-      hr
-        a href=topics_preview_path Forums
-
-      hr
-
-    = javascript_include_tag 'application'
+  = javascript_include_tag 'application'
