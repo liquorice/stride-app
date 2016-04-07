@@ -1,0 +1,50 @@
+//
+// Tags
+//
+
+@mixin tags {
+  li {
+    @include ff_adelle-regular;
+    @include unselectable;
+    @include breakpoint(huge, overlarge, large) {
+      font-size: 0.75rem;
+    }
+    border-radius: 2px;
+    color: $blue-mid;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-right: 0.3em;
+    margin-top: 0.3em;
+    overflow: hidden;
+
+    a {
+      display: block;
+      padding: 0.21em 0.75em 0.2877em 0.75em;
+      transition: background-color 200ms, color 200ms;
+
+      &:hover {
+        color: $blue-dark;
+        background-color: mix($links, white, 20%);
+      }
+    }
+  }
+}
+
+@mixin tags-light {
+  @include tags;
+
+  li a {
+    background-color: $white;
+    color: $links;
+  }
+}
+
+@mixin tags-dark {
+  @include tags;
+
+  li a {
+    background-color: mix($links, $white, 10%);
+    color: $links;
+  }
+}

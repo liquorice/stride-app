@@ -1,0 +1,28 @@
+@mixin icon__standard {
+  height: 0.9rem;
+  width: 0.9rem;
+
+  // Add Breakpoint to 11px (but rem)
+}
+
+@mixin icon__login {
+  @include icon__standard;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_profile--white.svg' %>") no-repeat;
+}
+
+@mixin icon__newThreadInactive {
+  @include icon__standard;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue copy 2.svg' %>") no-repeat;
+}
+
+@mixin icon__newThreadActive {
+  @include icon__standard;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue.svg' %>") no-repeat;
+}
+
+@mixin icon__sideMenu {
+  background-size: 1rem 0.55rem;
+  background-image: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-right--grey-warm.svg' %>");
+  background-repeat: no-repeat;
+  background-position: center center;
+}

@@ -1,0 +1,46 @@
+body.page-404 .standardHeader {
+  @include retina() {
+    background: url('/images/noise-diamonds-283x283-@2x.png') top left repeat;
+  }
+
+  background: url('/images/noise-diamonds-283x283-@2x.png') top left repeat;
+  background-size: 283px 283px;
+  background-color: $blue-dark;
+}
+
+.standardHeader {
+  &.plain {
+    @include breakpoint(huge, overlarge, large, medium) {
+      min-height: 164px;
+    }
+    @include breakpoint(small) {
+      min-height: 140px;
+    }
+    @include breakpoint(mini) {
+      min-height: 130px;
+    }
+
+    .constrained {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      @include ff_adelle-bold;
+      @include breakpoint(small, mini) {
+        font-size: 2.4rem;
+        line-height: 1.09em;
+        margin-top: 3.2rem;
+      }
+      color: $white;
+      font-size: 3.06rem;
+      line-height: 1.09em;
+      transform: none;
+      margin-top: 2.8rem;
+    }
+
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,42 @@
+//
+// Avatars
+//
+
+//skin colors
+$avatar-skin-primary: $primary;
+$avatar-skin-1: #925929;
+$avatar-skin-2: #ceb49f;
+$avatar-skin-3: #1e94ac;
+$avatar-skin-4: $other-primary;
+
+//faces
+//$primary-face: url(/images/avatars/avatar_face-dale.svg);
+
+@mixin avatar-base {
+ //the skin and base color
+  &:before{
+    width: 93%;
+    height: 93%;
+    border-radius: 50%;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 3.5%;
+    left: 3.5%;
+    background: $avatar-skin-primary;
+  }
+  //avatar face
+  &:after {
+    content: $primary-face;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+  }
+  position: relative;
+}
+
+//dale or petes face
+@mixin avatar-primary {
+  @include avatar-base;
+}

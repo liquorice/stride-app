@@ -1,0 +1,432 @@
+/*
+All of this is placeholding and
+examples of in-house css styles
+*/
+
+@mixin nav-item {
+  @include ff_adelle-regular;
+  @include breakpoint(huge, overlarge) {
+    font-size: 18px;
+  }
+  @include breakpoint(large, medium) {
+    font-size: 15px;
+  }
+  @include breakpoint(small, mini) {
+    font-size: 14px;
+  }
+  color: $grey-warm;
+  display: block;
+  float: left;
+  text-align: center;
+  transition: background-color 100ms, color 100ms;
+
+  a {
+    color: $grey-warm;
+    display: block;
+  }
+}
+
+.header {
+  @include breakpoint(huge, overlarge) {
+    border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 65px;
+  }
+  @include breakpoint(large, medium) {
+    height: 95px;
+  }
+  transform: translate3d(0, 0, 0);
+  background-color: $white;
+  opacity: 1;
+  position: fixed;
+  transition: all 200ms ease-out;
+  width: 100%;
+  z-index: 1000;
+
+  &.hide {
+    @include breakpoint(large, medium) {
+      transform: translate3d(0, -53px, 0);
+    }
+    @include breakpoint(small, mini) {
+      transform: translate3d(0, -50px, 0);
+    }
+  }
+}
+
+.header-toolbar {
+  @include breakpoint(large, medium) {
+    border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 53px;
+  }
+  @include breakpoint(small, mini) {
+    border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 50px;
+  }
+  position: relative;
+  height: 100%;
+
+  .group {
+    height: 100%;
+    text-align: right;
+  }
+}
+
+.header-toolbar__logo {
+  bottom: 0;
+  left: 0;
+  margin: auto 0;
+  position: absolute;
+  top: 0;
+
+  display: block;
+  width: 280px;
+
+  & > svg {
+    @include breakpoint(huge, overlarge) {
+      width: 96px;
+      height: 25px;
+    }
+    @include breakpoint(large, medium) {
+      width: 74px;
+      height: 20px;
+    }
+    @include breakpoint(small, mini) {
+      width: 64px;
+      height: 20px;
+    }
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto 0;
+
+    .logo-path {
+      fill: $primary;
+    }
+  }
+}
+
+.header-logo__alt {
+  display: block;
+  left: -5000px;
+  position: absolute;
+  top: 0;
+}
+
+.header-toolbar__search {
+  @include breakpoint(huge, overlarge) {
+    border-right: 1px solid mix($grey-warm, $white, 15%);
+    padding: 0 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: calc(100% - (50% + 203px));
+  }
+  @include breakpoint(large, medium) {
+    display: inline-block;
+    position: relative;
+    width: 220px;
+  }
+  @include breakpoint(small, mini) {
+    position: absolute;
+    padding-top: 15px;
+    // right: 66px;
+    right: 0;
+    overflow: hidden;
+  }
+  background-color: $white;
+  height: 100%;
+  margin-right: 0;
+  position: relative;
+  vertical-align: middle;
+
+  &.active {
+    @include breakpoint(small, mini) {
+      width: 100%;
+
+      .header-toolbar__search-form {
+        position: absolute;
+        top: 15px;
+        right: 0;
+        width: calc(100% - 73px);
+      }
+    }
+  }
+}
+
+.header-toolbar__search-form {
+  @include breakpoint(small, mini) {
+    border-radius: 2px;
+    height: 24px;
+    overflow: hidden;
+    width: 24px;
+  }
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  label {
+    @include ff_adelle-regular;
+    @include breakpoint(huge, overlarge) {
+      height: 33px;
+    }
+    @include breakpoint(large, medium) {
+      height: 25px;
+    }
+    @include breakpoint(small, mini) {
+      height: 24px;
+    }
+    background-color: $bg;
+    bottom: 0;
+    color: $black;
+    margin: auto 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 24px;
+    z-index: 10;
+
+    span {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -5000px;
+    }
+
+    svg {
+      @include breakpoint(huge, overlarge) {
+        right: 6px;
+        top: 8px;
+        width: 14px;
+        height: 14px;
+      }
+      @include breakpoint(large, medium) {
+        right: 6px;
+        top: 6px;
+        width: 11px;
+        height: 11px;
+      }
+      @include breakpoint(small, mini) {
+        right: 6px;
+        top: 6px;
+        width: 11px;
+        height: 11px;
+      }
+      display: block;
+      position: absolute;
+
+      .cls-4 {
+        fill: $grey-warm;
+      }
+    }
+  }
+
+  input {
+    @include ff_adelle-regular;
+    @include breakpoint(huge, overlarge) {
+      font-size: 0.75rem;
+      height: 33px;
+    }
+    @include breakpoint(large, medium) {
+      font-size: 0.75rem;
+      height: 25px;
+    }
+    @include breakpoint(small, mini) {
+      height: 24px;
+    }
+    background-color: $bg;
+    bottom: 0;
+    color: $black;
+    display: block;
+    padding: 4px 28px 4px 5px;
+    font-size: 13px;
+    line-height: 1.4;
+    margin: auto 0;
+    padding-right: 28px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 5;
+  }
+}
+
+.header-toolbar__user {
+  @include unselectable;
+  @include breakpoint(huge, overlarge) {
+    position: absolute;
+    right: -100px;
+    top: 0;
+    width: 100px;
+    height: 100%;
+  }
+  @include breakpoint(large, medium) {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 5px;
+  }
+  @include breakpoint(small, mini) {
+    position: absolute;
+    top: 15px;
+    right: -0.7em;
+  }
+
+  p {
+    @include login;
+  }
+}
+
+.header-navigation {
+  @include breakpoint(huge, overlarge) {
+    position: absolute;
+    left: calc(50% - 203px);
+    top: 0;
+    height: 100%;
+  }
+  @include breakpoint(large, medium) {
+    height: 42px;
+    display: block;
+    box-shadow: 0px 1px rgba($grey-warm, .15);
+    background-color: mix($grey-warm, $white, 8%);
+    width: 100%;
+  }
+  @include breakpoint(small, mini) {
+    height: 40px;
+    display: block;
+    box-shadow: 0px 1px rgba($grey-warm, .15);
+    background-color: mix($grey-warm, $white, 8%);
+    width: 100%;
+  }
+  display: block;
+  position: relative;
+
+  .group {
+    @include breakpoint(huge, overlarge) {
+      margin: 0;
+      max-width: 100%;
+      padding: 0;
+      width: 100%;
+    }
+    height: 100%;
+  }
+
+  ul {
+    @include breakpoint(huge, overlarge) {
+      display: inline-block;
+      width: 406px;
+    }
+    @include breakpoint(large, medium) {
+      display: block;
+      width: 305px;
+    }
+    @include breakpoint(small) {
+      display: block;
+      width: 90%;
+    }
+    @include breakpoint(mini) {
+      display: block;
+      text-align: center;
+      width: 320px;
+    }
+    height: 100%;
+    position: relative;
+
+    li {
+      @include nav-item;
+      @include breakpoint(huge, overlarge) {
+        background-color: mix($grey-warm, $white, 8%);
+        height: 100%;
+        width: 25%;
+
+        &:first-child {
+          a {
+            border-left: 1px solid rgba($grey-warm, .15);
+          }
+        }
+      }
+      @include breakpoint(large, medium) {
+        border-right: 1px solid rgba($grey-warm, .15);
+        display: inline-block;
+        width: 25%;
+
+        &:first-of-type {
+          border-left: 1px solid rgba($grey-warm, .15);
+        }
+      }
+      @include breakpoint(small) {
+        border-right: 1px solid rgba($grey-warm, .15);
+        display: inline-block;
+        max-width: 75px;
+        width: 25%;
+
+        &:first-of-type {
+          border-left: 1px solid rgba($grey-warm, .15);
+        }
+      }
+      @include breakpoint(mini) {
+        border-left: 1px solid rgba($grey-warm, .15);
+        display: inline-block;
+        width: 25%;
+
+        &:last-of-type {
+          border-right: 1px solid rgba($grey-warm, .15);
+        }
+      }
+      overflow: hidden;
+
+      a {
+        @include breakpoint(huge, overlarge) {
+          border-right: 1px solid rgba($grey-warm, .15);
+          padding: 1rem 0;
+
+          &:hover {
+            background-color: $white;
+            color: $blue-mid;
+          }
+        }
+        @include breakpoint(large, medium) {
+          padding: 9px 0 10px 0;
+          text-align: center;
+
+          &:active {
+            background-color: $white;
+            color: $blue-mid;
+          }
+        }
+        @include breakpoint(small) {
+          padding: 10px 0.5em;
+
+          &:active {
+            background-color: $white;
+            color: $blue-mid;
+          }
+        }
+        @include breakpoint(mini) {
+          padding: 10px 0.5em;
+          text-align: center;
+
+          &:active {
+            background-color: $white;
+            color: $blue-mid;
+          }
+        }
+        transition: background-color 200ms;
+        display: block;
+        height: 100%;
+
+        &.active {
+          @include ff_adelle-boldItalic;
+          background-color: $white;
+          color: $primary;
+
+          &:hover {
+            color: $blue-mid;
+          }
+        }
+      }
+    }
+  }
+}

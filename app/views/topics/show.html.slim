@@ -10,7 +10,7 @@
     a.dev__edit href=edit_topic_path(@topic) Edit details
 
 - content_for :sidebar do
-  = render 'partials/forums_sidebar'
+  = render 'partials/sidebar'
 
 = render @threads
 = render 'partials/pagination', paginated: @threads

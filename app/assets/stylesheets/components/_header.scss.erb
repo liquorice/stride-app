@@ -1,0 +1,54 @@
+$pages: 'forum' $teal, 'chat' $blue-80;
+
+@each $p in $pages {
+  body.page-#{nth($p, 1)} .standardHeader {
+    @include retina() {
+      background:
+        url('header-#{nth($p, 1)}@2x.png') top left repeat,
+        url('noise-diamonds-283x283-@2x.png') top left repeat;
+    }
+
+    background:
+      url('header-#{nth($p, 1)}.png') top left repeat,
+      url('noise-diamonds-283x283-@2x.png') top left repeat;
+    background-size: 660px 235px, 283px 283px;
+    background-color: nth($p, 2);
+  }
+}
+
+.standardHeader {
+  @include breakpoint(huge, overlarge) {
+    padding-top: 18px;
+    min-height: 212px;
+  }
+  @include breakpoint(large) {
+    padding-top: 36px;
+     min-height: 212px;
+  }
+  @include breakpoint(medium) {
+    padding-top: 36px;
+     min-height: 200px;
+  }
+  @include breakpoint(small) {
+    padding-top: 30px;
+     min-height: 160px;
+  }
+  @include breakpoint(mini) {
+    padding-top: 30px;
+     min-height: 130px;
+  }
+
+  h1 {
+    @include section-heading;
+    color: $white;
+    text-align: center;
+    line-height: .9;
+    margin-top: 1.5rem;
+  }
+
+  position: relative;
+}
+
+.standardIntroduction {
+  @include section-intro;
+}

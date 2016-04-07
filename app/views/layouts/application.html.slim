@@ -3,6 +3,9 @@ html
   head
     title Stride App
     meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"
+
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
     = csrf_meta_tags
 
     = stylesheet_link_tag @site.name
@@ -16,7 +19,27 @@ html
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
       })(document);
 
-  body
+  body.page-forum
+    = render "/partials/navigation"
+
+    main.page id="content" tabindex="0"
+      .standardHeader
+        .constrained
+          h1 Forums
+      .standardIntroduction
+        .constrained
+          p Political life-expectancy care thinkers who make change happen evolution enable developing poverty. Catalyst inspire social change communities, foundation respect involvement. Campaign Action Against Hunger social entrepreneurship opportunity committed combat malaria board of directors rural global network planned giving.
+
+      .standardPage
+        .constrained
+          .page__left
+            .sidebar
+              = yield :sidebar
+          .page__right
+            .content
+              = yield
+
+
     .constrained
       h2 Stride — #{@site.name}
 
