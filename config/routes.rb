@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'topics#preview', as: :topics_preview
 
   # Session management
   get 'login' => 'sessions#new'
@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   # Topics
   resources :topics, path: 'topic'
-  get 'forums' => 'topics#preview', as: :topics_preview
 
   # Threads
   resources :topic_threads, path: 'thread'
