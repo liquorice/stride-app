@@ -3,21 +3,93 @@
 }
 
 .thread {
-  border: 1px solid;
-  margin-bottom: 20px;
-  padding: 20px;
-  background: white;
   display: block;
-  color: black;
   cursor: pointer;
+  background: $white;
+}
+
+.thread__preview {
+  @include p-meta;
+  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
+  margin-bottom: 0.37rem;
+  padding: 0.8rem 1rem;
+  border-left: 0.37rem solid $white;
+  display: inline-block;
+  width: columns(23);
 
   &[data-pinned] {
-    border-left: 10px solid;
+    border-left: 0.37rem solid $blue-dark;
   }
 
   &[data-locked] {
-    color: grey;
-    background: none;
+    .thread__name {
+      h2 {
+        color: $grey-warm;
+      }
+      &:before {
+        @include icon__lock;
+        content: " ";
+        float: left;
+        margin-top: 0.2rem;
+      }
+    }
   }
+}
 
+
+.thread__name {
+  h2 {
+    @include h2-other-primary;
+    font-size: 1.22rem;
+    line-height: 1;
+    margin-bottom: 0.55rem;
+  }
+}
+
+.thread__created {
+  @include p-meta;
+  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
+  margin-bottom: 0.37rem;
+  padding: 0.8rem 1rem;
+  border-left: 1px solid $grey-warm;
+  display: inline-block;
+  color: $green-light;
+  height: 100%;
+  width: columns(6.5);
+
+  h4 {
+    font-size: 1.22rem;
+    line-height: 1;
+  }
+}
+
+.thread__replies {
+  @include p-meta;
+  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
+  margin-bottom: 0.37rem;
+  padding: 0.8rem 1rem;
+  border-left: 1px solid $grey-warm;
+  display: inline-block;
+  color: $green-mid;
+  width: columns(6.5);
+
+  h4 {
+    font-size: 1.22rem;
+    line-height: 1;
+  }
+}
+
+.icon__pinned {
+  float: left;
+  height: 1rem;
+  margin: 0.14rem 0.2rem 0 0.2rem;
+  width: 0.9rem;
+}
+
+.icon__unpinned {
+  float: left;
+  height: 0.55rem;
+  margin: 0.45rem 0.2rem 0 0.2rem;
+  opacity: 0.5;
+  width: 0.65rem;
 }

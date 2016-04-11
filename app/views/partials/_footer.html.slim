@@ -1,0 +1,65 @@
+footer.footer
+  section.footer__logos
+    .constrained
+      p
+        = "A "
+        a href="/beyond_blue" = "Beyond Blue"
+        = " project"
+
+      ul aria-label="Contributors"
+        li
+          a href="/beyond_blue"
+            img.logo__beyondBlue alt="Beyond Blue" src="#{asset_path('logos/beyond-blue.png')}"
+
+        li
+          a href="/vac"
+            img.logo__vac alt="Victoria Aids Council" src="#{asset_path('logos/vac.png')}"
+
+        li
+          a href="/acon"
+            img.logo__acon alt="ACON" src="#{asset_path('logos/acon.png')}"
+
+        li
+          a href="/unsw"
+            img.logo__unsw alt="The University of New South Wales" src="#{asset_path('logos/unsw.png')}"
+
+        li
+          a href="/csrh"
+            img.logo__csrh alt="Centre for Social Research in Health" src="#{asset_path('logos/csrh.png')}"
+
+        li
+          a href="/movember"
+            img.logo__movember alt="Movember" src="#{asset_path('logos/movember.png')}"
+
+  section.footer__links
+    .constrained
+      .footer__links-left
+        p.footer__links-copyright
+          = "Copyright #{Date.current.year} VAC"
+
+      .footer__links-right
+        ul
+          li
+            a href="#" Home
+          li
+            a href="#" Articles
+
+          li
+            a href="#" Forums
+          li
+            a href="#" Chat
+
+          li
+            a href="#" About
+          li
+            a href="#" Support
+
+          li
+            a href="#" Register
+          li
+            a href="#" Preferences
+
+          li
+            a href="#" Terms of use
+          li
+            a href="#" Privacy policy

@@ -8,8 +8,8 @@
   = render 'partials/sidebar'
 
 - @topics.each do |topic|
-  .topic
-    h4.topic__text
+  .topic__preview
+    h1.topic__text
       a href=topic_path(topic)
         = topic.name
 

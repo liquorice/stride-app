@@ -1,0 +1,165 @@
+.footer {
+  background-color: $blue-80;
+  position: relative;
+  transition: all 200ms ease-out 800ms;
+}
+
+.footer__logos {
+  @include breakpoint(huge, overlarge, large, medium) {
+    padding: 56px 0;
+  }
+  @include breakpoint(small, mini) {
+    padding: 20px 0 40px 0;
+    text-align: center;
+  }
+  background-color: $bg-dark;
+
+  p {
+    @include ff_adelle-regular;
+    color: $blue-dark;
+    font-size: 0.8rem;
+    line-height: 1.1rem;
+    margin-bottom: 22px;
+
+    a {
+      border-bottom: 1px solid $blue-dark;
+      color: $blue-dark;
+      transition: background-color 180ms, color 180ms, bottom-border-color 180ms;
+
+      &:hover {
+        background-color: mix($blue-dark, $bg, 12%);
+      }
+    }
+  }
+
+  ul {
+    @include breakpoint(huge, overlarge) {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+    @include breakpoint(large, medium) {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      li:first-of-type {
+        flex: 0 0 100%;
+      }
+    }
+
+    li {
+      @include breakpoint(huge, overlarge) {
+        flex: 0 1 auto;
+      }
+      @include breakpoint(large, medium) {
+        flex: 0 1 auto;
+        padding-top: 20px;
+
+        &:first-of-type {
+          padding-top: 0;
+        }
+      }
+      @include breakpoint(small, mini) {
+        display: block;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+      list-style: none;
+
+      img {
+
+        &.logo__beyondBlue {
+          height: 150px;
+          width: 314px;
+        }
+        &.logo__vac {
+          height: 42px;
+          width: 90px;
+        }
+        &.logo__acon {
+          height: auto;
+          width: 64px;
+        }
+        &.logo__unsw {
+          height: 42px;
+          width: 161px;
+        }
+        &.logo__csrh {
+          height: 61px;
+          width: 108px;
+        }
+        &.logo__movember {
+          height: 77px;
+          width: 43px;
+        }
+      }
+    }
+  }
+}
+
+.footer__links  {
+  @include breakpoint(huge, overlarge, large, medium) {
+    height: 90px;
+  }
+  background-color: $blue-80;
+  overflow: hidden;
+  padding: 20px 0 20px 0;
+}
+
+  .footer__links-left {
+    @include breakpoint(huge, overlarge, large, medium) {
+      float: left;
+      width: columns(8.75);
+    }
+  }
+
+    .footer__links-copyright {
+      @include ff_adelle-regular;
+      @include breakpoint(small, mini) {
+        text-align: center;
+      }
+      color: mix($blue-dark, $white, 50%);
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+      margin-bottom: 14px;
+
+      a {
+        border-bottom: 1px solid $blue-dark;
+        color: $blue-dark;
+        transition: color 180ms linear, border-color 180ms linear;
+
+        &:hover {
+          border-bottom-color: $white;
+          color: $white;
+        }
+      }
+    }
+
+  .footer__links-right {
+    @include breakpoint(huge, overlarge, large, medium) {
+      padding: 0 0 0 columns(0.75);
+      width: columns(27);
+    }
+    @include breakpoint(small, mini) {
+      text-align: center;
+    }
+
+    float: left;
+
+    ul {
+      list-style: none;
+
+      li {
+        @extend .footer__links-copyright;
+        display: inline-block;
+        margin-right: 10px;
+
+        a {
+          color: mix($blue-dark, $white, 50%);
+          transition: color 180ms linear, bottom-border-color 180ms linear;
+        }
+      }
+    }
+  }

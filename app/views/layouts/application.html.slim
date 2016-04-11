@@ -53,6 +53,9 @@ html
           .content
             = yield
 
+    = render "/partials/getSupport"
+    = render "/partials/footer"
+
 
     .constrained
       h2 Stride — #{@site.name}
