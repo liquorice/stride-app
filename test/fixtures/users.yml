@@ -2,7 +2,6 @@
   admin_<%= site %>:
     name: admin
     site: <%= site %>
-    access_level: admin_<%= site %>
     email: dev@liquorice.com.au
     password_digest: <%= BCrypt::Password.create('password123') %>
 
@@ -12,4 +11,16 @@
     email: dev@liquorice.com.au
     superuser: true
     password_digest: <%= BCrypt::Password.create('password123') %>
+
+<% 200.times.each do |i| %>
+  <% name = LibLib.name %>
+  user_<%= i %>_<%= site %>:
+    name: "<%= name %>"
+    site: <%= site %>
+    email: "<%= name.parameterize %>@liquorice.com.au"
+    password_digest: 'fake_string_so_bcrypt_does_not_take_forever'
+    avatar_colour: <%= rand(AvatarHelper.avatar_colours) %>
+    avatar_face: <%= rand(AvatarHelper.avatar_faces) %>
+<% end %>
+
 <% end %>

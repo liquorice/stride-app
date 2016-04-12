@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315120322) do
+ActiveRecord::Schema.define(version: 20160331114257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20160315120322) do
   end
 
   add_index "access_levels", ["site_id"], name: "index_access_levels_on_site_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "topic_thread_id"
+    t.text     "content"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_id"
+    t.boolean  "visible",         default: true
+    t.datetime "hidden_at"
+  end
+
+  add_index "posts", ["topic_thread_id"], name: "index_posts_on_topic_thread_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "sites", force: :cascade do |t|
     t.string   "name"
@@ -67,12 +80,16 @@ ActiveRecord::Schema.define(version: 20160315120322) do
     t.boolean  "superuser",       default: false
     t.integer  "access_level_id"
     t.integer  "site_id"
+    t.integer  "avatar_colour",   default: 1
+    t.integer  "avatar_face",     default: 1
   end
 
   add_index "users", ["access_level_id"], name: "index_users_on_access_level_id", using: :btree
   add_index "users", ["site_id"], name: "index_users_on_site_id", using: :btree
 
   add_foreign_key "access_levels", "sites"
+  add_foreign_key "posts", "topic_threads"
+  add_foreign_key "posts", "users"
   add_foreign_key "topic_threads", "topics"
   add_foreign_key "topic_threads", "users"
   add_foreign_key "topics", "sites"

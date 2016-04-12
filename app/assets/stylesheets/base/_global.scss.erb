@@ -25,8 +25,7 @@ html {
     .container,
     .getSupport,
     .footer {
-      opacity: 0;
-      transform: translateY(-10px);
+      visibility: hidden;
     }
   }
 }
@@ -42,6 +41,22 @@ body {
   background-color: $bg;
   line-height: 1.46667;
   min-height: 100%;
+}
+
+main {
+  @include breakpoint(huge, overlarge) {
+    padding-top: 65px;
+  }
+  @include breakpoint(large, medium, small, mini) {
+    padding-top: 90px;
+  }
+}
+
+.getSupport {
+  transition: all 200ms ease-out 400ms;
+  background-color: $blue-dark;
+  display: block;
+  overflow: hidden;
   position: relative;
   width: 100%;
 

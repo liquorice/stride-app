@@ -14,4 +14,29 @@
 - content_for :sidebar do
   = render 'partials/sidebar'
 
-p todo: Posts
+.postDetails
+  .postDetails__createdBy
+    .postDetails__createdBy-avatar style="width: 80px; height: 80px"
+      = render 'user/avatar', user: @thread.user
+
+    .postDetails__createdBy-title Created by
+    .postDetails__createdBy-user = @thread.user.name
+
+  .postDetails__createdDate
+    = @thread.created_at
+
+  .postDetails__views
+    | XXX
+
+  .postDetails__replies
+    = @thread.posts_count
+
+= render @posts
+= render 'partials/pagination', paginated: @posts
+
+- if current_user_can? :post_create
+  .postReply
+    .postReply__title Post a reply
+    = form_tag new_post_path(@thread), method: :post do |f|
+      textarea name="content"
+      button Post

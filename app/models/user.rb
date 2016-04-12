@@ -1,7 +1,16 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  # --- Associations ---  
   belongs_to :site
   belongs_to :access_level
+  has_many :topic_threads
+  has_many :posts
+
+  # --- Validations ---
+  has_secure_password
+  validates :name, presence: true, length: { minimum: 2 }
+  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+  validates :avatar_colour, inclusion: { in: AvatarHelper.avatar_colours }
+  validates :avatar_face, inclusion: { in: AvatarHelper.avatar_faces}
 
   # --- Access and permissions ---
 

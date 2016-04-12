@@ -271,7 +271,7 @@ But as she crossed the threshold, crash! the bird threw the millstone down on he
 But as she sat she bethought herself of the egg that the moon had given her; and when she broke it, there ran out a hen and twelve chickens of pure gold, that played about, and then nestled under the old one's wings, so as to form the most beautiful sight in the world
 But as soon as the first rays of the sun shone into the garden he saw all the ten sacks standing side by side, quite full, and not a single grain was missing
 But as the weather grew so bad and there was a storm of rain and wind, he could go no farther, and turned back to the mill and begged for shelter
-But as you have not a bad heart, and as I mean well by you, there is one thing I will grant you; if you fall into any difficulty, come to the forest and cry: "Iron Hans," and then I will come and help you
+But as you have not a bad heart, and as I mean well by you, there is one thing 
 But by good luck the dwarfs came in very early that evening; and when they saw Snowdrop lying on the ground, they thought what had happened, and soon found the poisoned comb
 But Chanticleer was no coward, and returned the duck's blows with his sharp spurs so fiercely that she soon began to cry out for mercy; which was only granted her upon condition that she would draw the carriage home for them
 But Falada saw it all, and marked it well
@@ -1671,8 +1671,7 @@ When they went into the cave, other giants were sitting there by the fire, and e
 When they were all ready, they went and looked at the soldier; but he snored on, and did not stir hand or foot: so they thought they were quite safe; and the eldest went up to her own bed and clapped her hands, and the bed sank into the floor and a trap-door flew open
 When they were half-way across Lily let the nut fall into the water, and immediately a large nut-tree arose from the sea, whereon the griffin rested for a while, and then carried them safely home
 When Tom found they were gone, he came out of his hiding-place
-When we have done, we will come back and fetch you away.'
-When you come to the king, and he asks for the beautiful princess, you must say, "Here she is!" Then he will be very joyful; and you will mount the golden horse that they are to give you, and put out your hand to take leave of them; but shake hands with the princess last
+When we have done, we will come back and fetch you away.
 While he was trying his luck in milking, and managing the matter very clumsily, the uneasy beast began to think him very troublesome; and at last gave him such a kick on the head as knocked him down; and there he lay a long while senseless
 While she was doing this kind office one of her cheeses fell out of the basket, and rolled down the hill
 While she was speaking the frog knocked again at the door, and said:

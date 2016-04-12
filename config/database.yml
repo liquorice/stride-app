@@ -15,6 +15,13 @@ development: &development
   username: stride
   password: stride
 
+staging:
+  <<: *default
+  database: stride_staging
+  username: stride
+  password: stride
+  host: localhost
+
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.

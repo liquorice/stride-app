@@ -12,6 +12,9 @@ gem "slim-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+# For uglifier, mebbe?
+gem 'therubyracer', platforms: :ruby
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 

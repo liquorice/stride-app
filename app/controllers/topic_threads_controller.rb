@@ -5,6 +5,8 @@ class TopicThreadsController < ApplicationController
 
   def show
     @thread = @site.topic_threads.find(params[:id])
+    @posts = @thread.posts_for_page(params[:page])
+    @topic = @thread.topic
   end
 
   # Admin
@@ -51,10 +53,10 @@ class TopicThreadsController < ApplicationController
 
     if @thread.pinned
       @thread.update(pinned: false)
-      flash[:success] = "#{@thread.name} succesfully pinned"
+      flash[:success] = "#{@thread.name} succesfully unpinned"
     else
       @thread.update(pinned: true)
-      flash[:success] = "#{@thread.name} succesfully unpinned"
+      flash[:success] = "#{@thread.name} succesfully pinned"
     end
 
     redirect_to topic_path(@thread.topic)
