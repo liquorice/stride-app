@@ -15,21 +15,24 @@
   = render 'partials/sidebar'
 
 .postDetails
-  .postDetails__createdBy
-    .postDetails__createdBy-avatar style="width: 80px; height: 80px"
-      = render 'user/avatar', user: @thread.user
+  .postDetails__createdBy-avatar
+    = render 'user/avatar', user: @thread.user
 
-    .postDetails__createdBy-title Created by
-    .postDetails__createdBy-user = @thread.user.name
+  .postDetails__createdBy-user
+    strong Created by
+    h2 = @thread.user.name.capitalize
 
   .postDetails__createdDate
-    = @thread.created_at
+    strong Created
+    h2 = @thread.created_at.strftime('%x')
 
   .postDetails__views
-    | XXX
+    strong Views
+    h2 XXX
 
   .postDetails__replies
-    = @thread.posts_count
+    strong Replies
+    h2 = @thread.posts_count
 
 = render @posts
 = render 'partials/pagination', paginated: @posts

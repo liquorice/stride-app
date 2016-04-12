@@ -21,15 +21,20 @@
       h2 = topic_thread.name
 
     .thread__latest
-      strong = "XX "
-      = "said, XXd ago "
-      strong = "XXX"
+      = render 'user/avatar', user: topic_thread.posts.last.user
+      p 
+        strong = "#{topic_thread.posts.last.user.name} "
+        = "said, #{time_since_post(topic_thread.posts.last.updated_at)} ago "
+        strong = "#{topic_thread.posts.last.content}"
 
   .thread__created data-locked=topic_thread.locked
     strong
-      = "Created"
-      =< topic_thread.created_at
+      | Created
+    h2
+      =< topic_thread.created_at.strftime('%x')
 
   .thread__replies data-locked=topic_thread.locked
     strong
-      = Replies #{topic_thread.posts_count}
+      | Replies
+    h2
+      | #{topic_thread.posts_count}
