@@ -95,3 +95,22 @@
     color: $white;
   }
 }
+
+@mixin button-meta {
+  @include button-short;
+  @include p-meta;
+  padding: 0.21em 0.75em 0.2877em;
+  margin: 0;
+}
+
+@mixin button-midLevel-meta {
+  @include button-meta;
+  background: rgba($links, 0.08);
+  color: $links;
+  padding: 0.21em 1.357em 0.2877em;
+
+  &:hover {
+    background: mix($links, white, 20%);
+    color: $blue-dark;
+  }
+}

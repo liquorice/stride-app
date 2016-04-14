@@ -1,15 +1,25 @@
 .postDetails {
-  display: table;
-  cursor: pointer;
+  height: 4.9rem;
   background: $white;
-  margin-bottom: 0.3rem;
+  margin-bottom: 6px;
+  // margin-bottom: 0.3rem;
+}
+
+.postDetails__createdBy {
+  display: block;
+  float: left;
+  // width: 8%;
+  width: 55.8%;
+  background-color: $bg-dark;
+  height: 4.9rem;
 }
 
 .postDetails__createdBy-avatar {
-  display: table-cell;
-  width: 8%;
-  margin-bottom: 0.37rem;
-  padding: 0 1rem 0.1rem 1rem;
+  display: block;
+  float: left;
+  // width: 8%;
+  padding: 0.9rem 0 0 1.65rem;
+  height: 4.9rem;
 
   .avatar {
     @include avatar__mid;
@@ -18,12 +28,12 @@
 
 .postDetails__createdBy-user {
   @include p-meta;
-  display: table-cell;
-  width: 43%;
-  max-width: 1rem;
+  display: block;
+  float: left;
+  // width: 43%;
   color: $grey-warm;
-  margin-bottom: 0.37rem;
-  padding: 0 1rem 0.1rem 1rem;
+  padding: 1.1rem 1rem 0 0.85rem;
+  height: 4.9rem;
 
   h2 {
     @include h2-regular;
@@ -33,27 +43,16 @@
   }
 }
 
-  // .postDetails__createdBy-title {
-  //   @include p-meta;
-  //   color: $grey-warm;
-  //   max-width: 1rem;
-  // }
-
-  // .postDetails__createdBy-user {
-  //   @include h2-regular;
-  //   color: $grey-warm;
-  //   font-size: 1.65em;
-  //   line-height: 1.5;
-  // }
-
 .postDetails__createdDate {
   @include p-meta;
-  display: table-cell;
-  width: 1%;
+  display: block;
+  float: left;
+  // width: 1%;
+  width: 18.2%;
   color: $green-light;
-  margin-bottom: 0.37rem;
-  padding: 0 1rem 0.1rem 1rem;
+  padding: 1.1rem 0 0 0.85rem;
   border-left: 2px solid rgba($grey-warm, 0.1);
+  height: 4.9rem;
 
   h2 {
     @include h2-regular;
@@ -65,12 +64,14 @@
 
 .postDetails__views {
   @include p-meta;
-  display: table-cell;
-  width: 1%;
+  display: block;
+  float: left;
+  // width: 1%;
+  width: 13%;
   color: $green-mid;
-  margin-bottom: 0.37rem;
-  padding: 0 1rem 0.1rem 1rem;
+  padding: 1.1rem 0 0 0.85rem;
   border-left: 2px solid rgba($grey-warm, 0.1);
+  height: 4.9rem;
 
   h2 {
     @include h2-regular;
@@ -82,12 +83,14 @@
 
 .postDetails__replies {
   @include p-meta;
-  display: table-cell;
-  width: 1%;
+  display: block;
+  float: left;
+  // width: 1%;
+  width: 13%;
   color: $green-dark;
-  margin-bottom: 0.37rem;
-  padding: 0 1rem 0.1rem 1rem;
+  padding: 1.1rem 0 0 0.85rem;
   border-left: 2px solid rgba($grey-warm, 0.1);
+  height: 4.9rem;
 
   h2 {
     @include h2-regular;

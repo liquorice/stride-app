@@ -3,8 +3,145 @@
 }
 
 .post {
-  display: table;
-  cursor: pointer;
-  background: $white;
-  margin-bottom: 0.3rem;
+  display: block;
+  background: rgba($bg-dark, 0.5);
+  margin-bottom: 0.35rem;
+  border-left: 0.37rem solid #36545c;
+
+  &[data-visible] {
+    background-color: $white;
+    border-left: 0;
+  }
+}
+
+.post__hidden {
+  @include h3-regular;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 1rem 2.5rem 1.24rem 1.23rem;
+  width: 100%;
+  margin-bottom: 0;
+  background-color: $bg-dark;
+}
+
+.post__details {
+  height: 4.9rem;
+  width: 100%;
+
+  &[data-visible] {
+    opacity:1;
+
+    .post__avatar,.post__text {
+      opacity: 1;
+    }
+  }
+
+  .post__avatar,.post__text {
+    opacity: 0.5;
+  }
+}
+
+.post__avatar {
+  display: block;
+  float: left;
+  height: 4.9rem;
+  padding: 0.9rem 0 0 1.65rem;
+
+  .avatar {
+    @include avatar__mid;
+  }
+}
+
+.post__text {
+  @include p-meta;
+  display: block;
+  float: left;
+  height: 4.9rem;
+  padding: 1.9rem 1rem 0 0.85rem;
+
+  a {
+    border-bottom: 0;
+  }
+}
+
+.post__moderation {
+  float: right;
+  margin-top: 2rem;
+  margin-right: 1.5rem;
+}
+
+.post__optionButton {
+  content: url("<%= asset_data_uri 'icons/icon_dots-grey.svg' %>");
+  display: block;
+  height: 1.3rem;
+  width: 1.3rem;
+  position: absolute;
+  right: 1.66rem;
+}
+
+.post__optionMenu {
+  display: none;
+  position: relative;
+  top: 1.4rem;
+  z-index: 1000;
+  background-color: $white;
+  border-radius: 3px;
+  box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.15);
+  min-width: 8.75rem;
+
+  &:before {
+    content: "";
+    border-color: transparent transparent $white transparent;
+    border-style:solid;
+    border-width:0.4rem;
+    width:0;
+    height:0;
+    position:absolute;
+    top: -0.7rem;
+    right: 0.5rem;
+  }
+}
+
+.post__optionMenu-links {
+  padding: 0.65rem;
+
+  a {
+    @include p-meta;
+    color: $grey-warm;
+    border: 0;
+  }
+}
+
+.post__content {
+  padding: 0 2.5rem 1.7rem 1.65rem;
+  opacity: 0.5;
+
+  &[data-visible] {
+    opacity:1;
+  }
+
+  p {
+    @include p-regular;
+    margin: 0;
+  }
+
+  a.post__showMore {
+    @include button-midLevel-meta;
+    margin-top: 1rem;
+    margin-right: 0.3rem;
+  }
+
+  a.post__quote {
+    @include button-meta;
+    margin-top: 1rem;
+  }
+}
+
+.fadeContent {
+  -webkit-mask-image: -webkit-gradient(linear, left 50%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  display: block;
+}
+
+.moreContent span {
+  display: none;
 }

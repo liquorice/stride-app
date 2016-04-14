@@ -113,7 +113,7 @@
 @mixin topic-heading {
   @include ff_flood;
   @include breakpoint(huge, overlarge, large, medium) {
-    font-size: 92px;
+    font-size: 72px;
   }
   @include breakpoint(small) {
     font-size: 72px;
@@ -131,7 +131,8 @@
   em {
     @include ff_flood;
     margin-bottom: 0;
-    font-size: 80%;
+    font-size: 55%;
+    line-height: 0.8;
     letter-spacing: -0.02em;
     word-spacing: -0.05em;
     color: $white;
@@ -147,8 +148,9 @@
     text-transform: uppercase;
   }
   color: $white;
-  font-size: 2.2rem;
-  line-height: 2.5rem;
+  font-size: 2.67rem;
+  line-height: 1.05;
+  margin-bottom: 3em;
 }
 
 //

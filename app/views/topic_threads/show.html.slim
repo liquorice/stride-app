@@ -15,12 +15,13 @@
   = render 'partials/sidebar'
 
 .postDetails
-  .postDetails__createdBy-avatar
-    = render 'user/avatar', user: @thread.user
+  .postDetails__createdBy
+    .postDetails__createdBy-avatar
+      = render 'user/avatar', user: @thread.user
 
-  .postDetails__createdBy-user
-    strong Created by
-    h2 = @thread.user.name.capitalize
+    .postDetails__createdBy-user
+      strong Created by
+      h2 = @thread.user.name.capitalize
 
   .postDetails__createdDate
     strong Created
@@ -39,7 +40,9 @@
 
 - if current_user_can? :post_create
   .postReply
-    .postReply__title Post a reply
-    = form_tag new_post_path(@thread), method: :post do |f|
-      textarea name="content"
-      button Post
+    .postReply__title
+      h3 Post a reply
+    = form_tag new_post_path(@thread), method: :post, class:"postReply__form" do |f|
+      textarea.autoExpand rows='1' data-min-rows='1' placeholder="Enter text..." name="content"
+      .postReply__button
+        button Post

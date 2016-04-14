@@ -15,6 +15,9 @@
 //= require jquery-rails
 
 //= require module
+//= require div-showToggle
+//= require textarea-showtoggle
+//= require textarea-autoexpand
 //= require dropdown
 //= require href
 
