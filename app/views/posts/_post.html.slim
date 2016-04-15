@@ -1,4 +1,5 @@
 .post data-visible=post.visible
+  / Ask JB: Is this for the quote function?
   / a name="post-#{post.id}" href=post_path(post) Permalink
 
   - unless post.visible
@@ -8,7 +9,7 @@
   - if post.visible || current_user_can?(:post_moderate)
     .post__details data-visible=post.visible
       .post__avatar
-        = render 'user/avatar', user: post.user
+        = render 'user/avatar', user: post.user, size: "avatar__mid"
 
       .post__text
         p
@@ -33,8 +34,8 @@
     .post__content data-visible=post.visible
       = simple_format(post.content, class:'post__showToggle')
 
+      / Ask JB: Is it cool to have these in js? Is there a pretty rails way?
         / .post__showMore
         /   | Show more
-
       / .post__quote
       /   | "Quote

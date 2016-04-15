@@ -16,12 +16,15 @@
     / - if topic_thread.locked
     /   p Locked
 
-
     .thread__name
       h2 = topic_thread.name
 
     .thread__latest
-      = render 'user/avatar', user: topic_thread.posts.last.user
+      div style="float: left; margin-right: 0.25em;"
+        = render 'user/avatar',
+          user: topic_thread.posts.last.user,
+          size: 'avatar__sml'
+
       p 
         strong = "#{topic_thread.posts.last.user.name} "
         = "said, #{time_since_post(topic_thread.posts.last.updated_at)} ago "

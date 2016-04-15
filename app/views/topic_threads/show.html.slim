@@ -17,7 +17,7 @@
 .postDetails
   .postDetails__createdBy
     .postDetails__createdBy-avatar
-      = render 'user/avatar', user: @thread.user
+      = render 'user/avatar', user: @thread.user, size: "avatar__mid"
 
     .postDetails__createdBy-user
       strong Created by
