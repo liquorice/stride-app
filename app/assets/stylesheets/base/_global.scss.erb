@@ -25,7 +25,8 @@ html {
     .container,
     .getSupport,
     .footer {
-      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
     }
   }
 }
@@ -41,6 +42,34 @@ body {
   background-color: $bg;
   line-height: 1.46667;
   min-height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.header {
+  @include breakpoint(huge, overlarge) {
+    border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 65px;
+  }
+  @include breakpoint(large, medium) {
+    height: 95px;
+  }
+  background-color: $white;
+  opacity: 1;
+  position: fixed;
+  transform: translate3d(0, 0, 0);
+  transition: all 200ms ease-out;
+  width: 100%;
+  z-index: 1000;
+
+  &.hide {
+    @include breakpoint(large, medium) {
+      transform: translate3d(0, -53px, 0);
+    }
+    @include breakpoint(small, mini) {
+      transform: translate3d(0, -50px, 0);
+    }
+  }
 }
 
 main {
@@ -53,31 +82,9 @@ main {
 }
 
 .getSupport {
-  transition: all 200ms ease-out 400ms;
   background-color: $blue-dark;
   display: block;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-
-  .container {
-    @include breakpoint(huge, overlarge) {
-      padding-top: 65px;
-    }
-    @include breakpoint(large, medium) {
-      padding-top: 95px;
-    }
-    @include breakpoint(small, mini) {
-      padding-top: 90px;
-    }
-    opacity: 1;
-    transition: all 200ms ease-out 200ms;
-  }
-}
-
-.getSupport {
-  background-color: $blue-dark;
-  display: block;
+  opacity: 1;
   overflow: hidden;
   position: relative;
   transition: all 200ms ease-out 400ms;

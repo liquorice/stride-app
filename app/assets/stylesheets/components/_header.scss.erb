@@ -1,84 +1,465 @@
-.page__forum {
-  .strip__dark {
-    @include retina() {
-    background:
-      url('header-forum@2x.png') top left repeat,
-      url('noise-diamonds-283x283-@2x.png') top left repeat;
-    }
-    background:
-    url('header-forum.png') top left repeat,
-    url('noise-diamonds-283x283-@2x.png') top left repeat;
-    background-color: $teal;
-    background-size: 660px 235px, 283px 283px;
+//
+// Header Navigation Styles
+//
+
+@mixin nav-item {
+  @include ff_adelle-regular;
+  @include breakpoint(huge, overlarge) {
+    font-size: 18px;
   }
-}
-
-.strip__dark {
-  @include section__dark;
-
-  h1 {
-    @include forum-heading;
-    line-height: .9;
-    margin-top: 1.5rem;
-    text-align: center;
+  @include breakpoint(large, medium) {
+    font-size: 15px;
   }
-
-  h2 {
-    @include topic-heading;
-    margin-top: 1rem;
-    text-align: center;
+  @include breakpoint(small, mini) {
+    font-size: 14px;
   }
-
-  h3 {
-    @include thread-heading;
-    @include breakpoint(huge, overlarge, large) {
-      margin-bottom: 1.5rem;
-    }
-    @include breakpoint(medium, small, mini) {
-      margin-bottom: 1rem;
-    }
-    position: relative;
-    text-align: center;
-  }
-}
-
-.strip__edit {
-  margin-bottom: -2.1em;
-  margin-top: -1.7em;
-  padding-top: 0;
-  position: relative;
+  color: $grey-warm;
+  display: block;
+  float: left;
   text-align: center;
-  z-index: 30;
+  transition: background-color 100ms, color 100ms;
 
-  .btn__edit {
-    @include button-primary-short;
-    padding-right: 1rem;
+  a {
+    color: $grey-warm;
+    display: block;
+  }
+}
+
+.hdrToolbar {
+  @include breakpoint(large, medium) {
+    border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 53px;
+  }
+  @include breakpoint(small, mini) {
+    border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 50px;
+  }
+  position: relative;
+  height: 100%;
+
+  .group {
+    height: 100%;
+    text-align: right;
+  }
+}
+
+  .hdrToolbar__logo {
+    bottom: 0;
+    left: 0;
+    margin: auto 0;
+    position: absolute;
+    top: 0;
+
+    display: block;
+    width: 280px;
+
+    & > svg {
+      @include breakpoint(huge, overlarge) {
+        width: 96px;
+        height: 25px;
+      }
+      @include breakpoint(large, medium) {
+        width: 74px;
+        height: 20px;
+      }
+      @include breakpoint(small, mini) {
+        width: 64px;
+        height: 20px;
+      }
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto 0;
+
+      .logo-path {
+        fill: $primary;
+      }
+    }
+  }
+
+    .hdrToolbar__logo-alt {
+      display: block;
+      left: -5000px;
+      position: absolute;
+      top: 0;
+    }
+
+  .hdrToolbar__search {
+    @include breakpoint(huge, overlarge) {
+      border-right: 1px solid mix($grey-warm, $white, 15%);
+      padding: 0 12px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: calc(100% - (50% + 203px));
+    }
+    @include breakpoint(large, medium) {
+      display: inline-block;
+      position: relative;
+      width: 220px;
+    }
+    @include breakpoint(small, mini) {
+      position: absolute;
+      padding-top: 15px;
+      right: 0;
+      overflow: hidden;
+    }
+    background-color: $white;
+    height: 100%;
+    margin-right: 0;
+    position: relative;
+    vertical-align: middle;
+
+    &.active {
+      @include breakpoint(small, mini) {
+        width: 100%;
+
+        .hdrToolbar__search-form{
+          position: absolute;
+          top: 15px;
+          right: 0;
+          width: calc(100% - 73px);
+        }
+      }
+    }
+  }
+
+    .hdrToolbar__search-form {
+      @include breakpoint(small, mini) {
+        border-radius: 2px;
+        height: 24px;
+        overflow: hidden;
+        width: 24px;
+      }
+      display: block;
+      position: relative;
+      height: 100%;
+      width: 100%;
+
+      label {
+        @include ff_adelle-regular;
+        @include breakpoint(huge, overlarge) {
+          height: 33px;
+        }
+        @include breakpoint(large, medium) {
+          height: 25px;
+        }
+        @include breakpoint(small, mini) {
+          height: 24px;
+        }
+        background-color: $bg;
+        bottom: 0;
+        color: $black;
+        margin: auto 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 24px;
+        z-index: 10;
+
+        span {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: -5000px;
+        }
+
+        svg {
+          @include breakpoint(huge, overlarge) {
+            right: 6px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+          }
+          @include breakpoint(large, medium) {
+            right: 6px;
+            top: 6px;
+            width: 11px;
+            height: 11px;
+          }
+          @include breakpoint(small, mini) {
+            right: 6px;
+            top: 6px;
+            width: 11px;
+            height: 11px;
+          }
+          display: block;
+          position: absolute;
+
+          .cls-4 {
+            fill: $grey-warm;
+          }
+        }
+      }
+
+      input {
+        @include ff_adelle-regular;
+        @include breakpoint(huge, overlarge) {
+          font-size: 0.75rem;
+          height: 33px;
+        }
+        @include breakpoint(large, medium) {
+          font-size: 0.75rem;
+          height: 25px;
+        }
+        @include breakpoint(small, mini) {
+          height: 24px;
+        }
+        background-color: $bg;
+        bottom: 0;
+        color: $black;
+        display: block;
+        padding: 4px 28px 4px 5px;
+        font-size: 13px;
+        line-height: 1.4;
+        margin: auto 0;
+        padding-right: 28px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        vertical-align: middle;
+        width: 100%;
+        z-index: 5;
+      }
+    }
+
+  .hdrToolbar__user {
+    @include unselectable;
+    @include breakpoint(huge, overlarge) {
+      position: absolute;
+      right: -100px;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      // padding-left: 25px;
+    }
+    @include breakpoint(large, medium) {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    @include breakpoint(small, mini) {
+      position: absolute;
+      top: 15px;
+      right: -0.7em;
+    }
+
+    p {
+      @include login;
+    }
+
+    .header-user__triangle {
+      fill: mix($grey-warm, $white, 50%);
+    }
+  }
+
+  .hdrToolbar__userIcons {
+    padding-left: 25px;
+    float: left;
+  }
+
+  .hdrToolbar__user-icon {
+    float: left;
+    padding-top: 20px;
+  }
+
+  .hdrToolbar__user-triangle {
+    float: left;
+    padding-top: 24px;
+    padding-left: 5px;
+  }
+
+
+  .hdrToolbar__userMenu {
+    display: none;
+    position: relative;
+    top: 42px;
+    right: 97px;
+    z-index: 900;
+    background-color: $white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.15);
+    min-width: 8.75rem;
+    text-align: left;
 
     &:before {
-      @include icon__edit;
-      content: " ";
-      float: left;
-      height: 1em;
-      margin: 0 3px 0 0;
-      width: 1em;
+      content: "";
+      border-color: transparent transparent $white transparent;
+      border-style:solid;
+      border-width:0.4rem;
+      width:0;
+      height:0;
+      position:absolute;
+      top: -0.7rem;
+      right: 0.5rem;
+    }
+
+    p {
+      position: relative;
+      left: -65px;
+    }
+
+    a {
+      @include login;
+      display: block;
+      width: 100%;
+
+      &:nth-child(n + 2) {
+        border-top: 1px solid $grey-warm;
+      }
     }
   }
-}
 
-.strip__light {
-  @include section__light;
-  background: url('noise-1440x530.png') center center repeat $bg;
-  background-size: 1440px 530px;
+.hdrNav {
+  @include breakpoint(huge, overlarge) {
+    position: absolute;
+    left: calc(50% - 203px);
+    top: 0;
+    height: 100%;
+  }
+  @include breakpoint(large, medium) {
+    height: 42px;
+    display: block;
+    box-shadow: 0px 1px rgba($grey-warm, .15);
+    background-color: mix($grey-warm, $white, 8%);
+    width: 100%;
+  }
+  @include breakpoint(small, mini) {
+    height: 40px;
+    display: block;
+    box-shadow: 0px 1px rgba($grey-warm, .15);
+    background-color: mix($grey-warm, $white, 8%);
+    width: 100%;
+  }
+  display: block;
+  position: relative;
 
-  header {
-    text-align: center;
+  .group {
+    @include breakpoint(huge, overlarge) {
+      margin: 0;
+      max-width: 100%;
+      padding: 0;
+      width: 100%;
+    }
+    height: 100%;
   }
 
-  p {
-    @include p-large;
-    text-align: center;
-    a {
-      @include links;
+  ul {
+    @include breakpoint(huge, overlarge) {
+      display: inline-block;
+      width: 406px;
+    }
+    @include breakpoint(large, medium) {
+      display: block;
+      width: 305px;
+    }
+    @include breakpoint(small) {
+      display: block;
+      width: 90%;
+    }
+    @include breakpoint(mini) {
+      display: block;
+      text-align: center;
+      width: 320px;
+    }
+    height: 100%;
+    position: relative;
+
+    li {
+      @include nav-item;
+      @include breakpoint(huge, overlarge) {
+        background-color: mix($grey-warm, $white, 8%);
+        height: 100%;
+        width: 25%;
+
+        &:first-child {
+          a {
+            border-left: 1px solid rgba($grey-warm, .15);
+          }
+        }
+      }
+      @include breakpoint(large, medium) {
+        border-right: 1px solid rgba($grey-warm, .15);
+        display: inline-block;
+        width: 25%;
+
+        &:first-of-type {
+          border-left: 1px solid rgba($grey-warm, .15);
+        }
+      }
+      @include breakpoint(small) {
+        border-right: 1px solid rgba($grey-warm, .15);
+        display: inline-block;
+        max-width: 75px;
+        width: 25%;
+
+        &:first-of-type {
+          border-left: 1px solid rgba($grey-warm, .15);
+        }
+      }
+      @include breakpoint(mini) {
+        border-left: 1px solid rgba($grey-warm, .15);
+        display: inline-block;
+        width: 25%;
+
+        &:last-of-type {
+          border-right: 1px solid rgba($grey-warm, .15);
+        }
+      }
+      overflow: hidden;
+
+      a {
+        @include breakpoint(huge, overlarge) {
+          border-right: 1px solid rgba($grey-warm, .15);
+          padding: 1rem 0;
+
+          &:hover {
+            background-color: $white;
+            color: $blue-mid;
+          }
+        }
+        @include breakpoint(large, medium) {
+          padding: 9px 0 10px 0;
+          text-align: center;
+
+          &:active {
+            background-color: $white;
+            color: $blue-mid;
+          }
+        }
+        @include breakpoint(small) {
+          padding: 10px 0.5em;
+
+          &:active {
+            background-color: $white;
+            color: $blue-mid;
+          }
+        }
+        @include breakpoint(mini) {
+          padding: 10px 0.5em;
+          text-align: center;
+
+          &:active {
+            background-color: $white;
+            color: $blue-mid;
+          }
+        }
+        transition: background-color 200ms;
+        display: block;
+        height: 100%;
+
+        &.active {
+          @include ff_adelle-boldItalic;
+          background-color: $white;
+          color: $primary;
+
+          &:hover {
+            color: $blue-mid;
+          }
+        }
+      }
     }
   }
 }

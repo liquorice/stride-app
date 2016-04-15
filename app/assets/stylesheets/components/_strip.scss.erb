@@ -1,0 +1,86 @@
+.page__forum {
+  .strip__dark {
+    @include retina() {
+    background:
+      url('header-forum@2x.png') top left repeat,
+      url('noise-diamonds-283x283-@2x.png') top left repeat;
+      background-color: $teal;
+      background-size: 660px 235px, 283px 283px;
+    }
+    background:
+    url('header-forum.png') top left repeat,
+    url('noise-diamonds-283x283-@2x.png') top left repeat;
+    background-color: $teal;
+    background-size: 660px 235px, 283px 283px;
+  }
+}
+
+.strip__dark {
+  @include section__dark;
+
+  h1 {
+    @include forum-heading;
+    line-height: .9;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  h2 {
+    @include topic-heading;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  h3 {
+    @include thread-heading;
+    @include breakpoint(huge, overlarge, large) {
+      margin-bottom: 1.5rem;
+    }
+    @include breakpoint(medium, small, mini) {
+      margin-bottom: 1rem;
+    }
+    position: relative;
+    text-align: center;
+  }
+}
+
+.strip__edit {
+  margin-bottom: -2.1em;
+  margin-top: -1.7em;
+  padding-top: 0;
+  position: relative;
+  text-align: center;
+  z-index: 30;
+
+  .btn__edit {
+    @include button-primary-short;
+    padding-right: 1rem;
+
+    &:before {
+      @include icon__edit;
+      content: " ";
+      float: left;
+      height: 1em;
+      margin: 0 3px 0 0;
+      width: 1em;
+    }
+  }
+}
+
+.strip__light {
+  @include section__light;
+  background: url('noise-1440x530.png') center center repeat $bg;
+  background-size: 1440px 530px;
+
+  header {
+    text-align: center;
+  }
+
+  p {
+    @include p-large;
+    text-align: center;
+    a {
+      @include links;
+    }
+  }
+}

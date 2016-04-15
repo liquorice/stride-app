@@ -1,25 +1,41 @@
-header.header
-  .header-toolbar
-    .group
-      a.header-toolbar__logo
-        = insert_svg "#{@site.name}/logo.svg"
-        span.header-logo__alt
-          = @site.name
-      .header-toolbar__search
-        form.header-toolbar__search-form action="/search"
-          label for="search-box"
-            span Search
-            = insert_svg "search.svg"
-          input id="query" type="text" name="query"
+.hdrToolbar
+  .group
+    a.hdrToolbar__logo href="#"
+      = insert_svg "#{@site.name}/logo.svg"
+      span.hdrToolbar__logo-alt
+        = @site.name
+    .hdrToolbar__search
+      form.hdrToolbar__search-form action="/search"
+        label for="search-box"
+          span Search
+          = insert_svg "search.svg"
+        input id="query" type="text" name="query"
 
-  nav.header-navigation
-    .group role="navigation"
-      ul
-        li
-          a.active href=topics_preview_path Forums
-        li
-          a href="#" Articles
-        li
-          a href="#" Support
-        li
-          a href="#" About
+    .hdrToolbar__user
+      - if @current_user
+        .hdrToolbar__userIcons
+          .hdrToolbar__user-icon href="#"
+            = render 'user/avatar', user: @current_user, size: "avatar__toolbar"
+          .hdrToolbar__user-triangle href="#"
+            = insert_svg "triangle.svg"
+
+        .hdrToolbar__userMenu id="hdr_userMenu"
+          p
+            a href=@current_user.id #{@current_user.name.capitalize}
+            a href=preferences_path Preferences
+            a href=logout_path data-method='post' Log out
+      - else
+        p
+          a href=login_path Log in
+
+nav.hdrNav
+  .group
+    ul role="navigation"
+      li
+        a.active href=topics_preview_path Forums
+      li
+        a href="#" Articles
+      li
+        a href="#" Support
+      li
+        a href="#" About
