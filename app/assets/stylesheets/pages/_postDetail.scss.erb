@@ -1,39 +1,31 @@
 .postDetails {
-  height: 4.9rem;
   background: $white;
+  height: 4.9rem;
   margin-bottom: 6px;
-  // margin-bottom: 0.3rem;
 }
 
 .postDetails__createdBy {
+  background-color: $bg-dark;
   display: block;
   float: left;
-  // width: 8%;
-  width: 55.8%;
-  background-color: $bg-dark;
   height: 4.9rem;
+  width: 55.8%;
 }
 
 .postDetails__createdBy-avatar {
   display: block;
   float: left;
-  // width: 8%;
-  padding: 0.9rem 0 0 1.65rem;
   height: 4.9rem;
-
-  .avatar {
-    @include avatar__mid;
-  }
+  padding: 0.9rem 0 0 1.65rem;
 }
 
 .postDetails__createdBy-user {
   @include p-meta;
+  color: $grey-warm;
   display: block;
   float: left;
-  // width: 43%;
-  color: $grey-warm;
-  padding: 1.1rem 1rem 0 0.85rem;
   height: 4.9rem;
+  padding: 1.1rem 1rem 0 0.85rem;
 
   h2 {
     @include h2-regular;
@@ -45,14 +37,13 @@
 
 .postDetails__createdDate {
   @include p-meta;
+  border-left: 2px solid rgba($grey-warm, 0.1);
+  color: $green-light;
   display: block;
   float: left;
-  // width: 1%;
-  width: 18.2%;
-  color: $green-light;
-  padding: 1.1rem 0 0 0.85rem;
-  border-left: 2px solid rgba($grey-warm, 0.1);
   height: 4.9rem;
+  padding: 1.1rem 0 0 0.85rem;
+  width: 18.2%;
 
   h2 {
     @include h2-regular;
@@ -64,14 +55,13 @@
 
 .postDetails__views {
   @include p-meta;
+  border-left: 2px solid rgba($grey-warm, 0.1);
+  color: $green-mid;
   display: block;
   float: left;
-  // width: 1%;
-  width: 13%;
-  color: $green-mid;
-  padding: 1.1rem 0 0 0.85rem;
-  border-left: 2px solid rgba($grey-warm, 0.1);
   height: 4.9rem;
+  padding: 1.1rem 0 0 0.85rem;
+  width: 13%;
 
   h2 {
     @include h2-regular;
@@ -83,14 +73,13 @@
 
 .postDetails__replies {
   @include p-meta;
+  border-left: 2px solid rgba($grey-warm, 0.1);
+  color: $green-dark;
   display: block;
   float: left;
-  // width: 1%;
-  width: 13%;
-  color: $green-dark;
-  padding: 1.1rem 0 0 0.85rem;
-  border-left: 2px solid rgba($grey-warm, 0.1);
   height: 4.9rem;
+  padding: 1.1rem 0 0 0.85rem;
+  width: 13%;
 
   h2 {
     @include h2-regular;

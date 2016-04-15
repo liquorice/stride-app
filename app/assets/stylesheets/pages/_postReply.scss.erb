@@ -1,51 +1,48 @@
 .postReply {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
   display: table;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
   width: 100%;
 }
 
 .postReply__title {
-  width: 100%;
   background-color: $green-mid;
   display: table-row;
+  width: 100%;
 
   h3 {
     @include h3-regular;
     color: $white;
-    padding: 0.4rem 1.2rem;
     margin-bottom: 0;
+    padding: 0.4rem 1.2rem;
   }
 }
 
 .postReply__form {
   background-color: $white;
-  width: 100%;
-  // height: 100%;
-  // min-height: 4rem;
   display: table-row;
+  width: 100%;
 
   textarea {
     @include p-regular;
-    line-height: 1;
-    display: block;
     box-sizing:padding-box;
-    overflow: hidden;
-    float: left;
-    padding: 1.2rem 1rem;
-    width: 87.6%;
-    resize: none;
+    display: block;
     display: table-cell;
+    float: left;
+    line-height: 1;
     margin-bottom: 0;
+    overflow: hidden;
+    padding: 1.2rem 1rem;
+    resize: none;
+    width: 87.6%;
   }
 }
 
 .postReply__button {
-  // display: block;
-  float: left;
-  padding: 0.65rem;
   background-color: $white;
   display: table-cell;
+  float: left;
+  padding: 0.65rem;
 
   button {
     @include button-standard;

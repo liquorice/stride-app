@@ -6,32 +6,22 @@
   @include ff_adelle-regular;
   @include breakpoint(huge, overlarge) {
     font-size: 0.75rem;
-    margin: 20px 0 20px 20px;
   }
   @include breakpoint(large) {
     font-size: 0.75rem;
   }
-  border-radius: 2px;
   color: $grey-warm;
   font-size: 13px;
   line-height: 1.4;
   overflow: hidden;
+  margin: 0;
 
   a {
     color: $grey-warm;
-    display: block;
-    padding: 0.25em 0.75em;
-
     &:active,
     &.active {
       background-color: rgba($grey-warm, 0.08);
     }
-  }
-
-  .header-user__triangle {
-    display: inline;
-    fill: mix($grey-warm, $white, 50%);
-    vertical-align: middle;
   }
 }
 
