@@ -25,9 +25,9 @@
           user: topic_thread.posts.last.user,
           size: 'avatar__sml'
 
-      p 
+      p
         strong = "#{topic_thread.posts.last.user.name} "
-        = "said, #{time_since_post(topic_thread.posts.last.updated_at)} ago "
+        = "said, #{time_ago_in_words(topic_thread.posts.last.created_at)} ago "
         strong = "#{topic_thread.posts.last.content}"
 
   .thread__created data-locked=topic_thread.locked

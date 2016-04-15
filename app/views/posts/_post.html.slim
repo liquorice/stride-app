@@ -18,7 +18,7 @@
               a href=post.user.id #{post.user.name}
             - else
               | #{post.user.name}
-          = " said, #{time_created_post(post.created_at)}"
+          = " said, #{time_ago_in_words(post.created_at)} ago"
 
       - if current_user_can? :post_moderate
         .post__moderation
