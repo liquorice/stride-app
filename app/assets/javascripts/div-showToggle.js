@@ -6,6 +6,11 @@ Module.register('div-showToggle', function() {
       $(this).parent().find('#post_modMenu').toggle('slow');
       return false;
     });
+
+    $(".hdrToolbar__user").click(function(){
+      $(this).find('#hdr_userMenu').toggle();
+      return false;
+    });
   });
 
 });
