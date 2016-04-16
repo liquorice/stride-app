@@ -21,4 +21,8 @@ class Post < ActiveRecord::Base
     content.split('.').first
   end
 
+  def hidden?
+    !visible
+  end
+
 end

@@ -1,24 +1,25 @@
-.post data-visible=post.visible
+.post data-hidden=post.hidden?
   / Ask JB: Is this for the quote function?
   / a name="post-#{post.id}" href=post_path(post) Permalink
 
-  - unless post.visible
+  - if post.hidden?
     .post__hidden
       | Reply hidden by moderator #{post.hidden_at.strftime('%x')}
 
   - if post.visible || current_user_can?(:post_moderate)
-    .post__details data-visible=post.visible
+    .post__details
       .post__details-avatar
         = render 'user/avatar', user: post.user
 
-      .post__text
-        p
-          strong
-            - if current_user_can?(:post_moderate)
-              a href=post.user.id #{post.user.name}
-            - else
-              | #{post.user.name}
-          = " said, #{time_ago_in_words(post.created_at)} ago"
+      / TODO URL
+
+      .post__details-text
+        strong
+          - if current_user_can?(:post_moderate)
+            a href=post.user.id #{post.user.name}
+          - else
+            | #{post.user.name}
+        = " said, #{time_ago_in_words(post.created_at)} ago"
 
       - if current_user_can? :post_moderate
         .post__moderation
@@ -31,7 +32,7 @@
                 - else
                   | Show this reply
 
-    .post__content data-visible=post.visible
+    .post__content
       = simple_format(post.content, class:'post__showToggle')
 
       / Ask JB: Is it cool to have these in js? Is there a pretty rails way?
