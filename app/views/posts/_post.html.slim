@@ -1,6 +1,5 @@
 .post data-hidden=post.hidden?
-  / Ask JB: Is this for the quote function?
-  / a name="post-#{post.id}" href=post_path(post) Permalink
+  a.permalinkAnchor name="post-#{post.id}" &nbsp;
 
   - if post.hidden?
     .post__hidden
@@ -16,10 +15,13 @@
       .post__details-text
         strong
           - if current_user_can?(:post_moderate)
-            a href=post.user.id #{post.user.name}
+            a href="#"
+              = post.user.name
           - else
-            | #{post.user.name}
-        = " said, #{time_ago_in_words(post.created_at)} ago"
+            = post.user.name
+        = " said, "
+        a.permalink href=post_path(post)
+          = "#{time_ago_in_words(post.created_at)} ago"
 
       - if current_user_can? :post_moderate
         .post__moderation

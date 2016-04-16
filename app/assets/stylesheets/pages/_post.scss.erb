@@ -14,6 +14,19 @@
   }
 }
 
+  .permalinkAnchor {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    font-size: 0px;
+    position: absolute;
+
+    // TODO
+    // This is the amount to scroll the page down to compensate
+    // for the floating header, and should be breakpoint-aware
+    top: -60px;
+  }
+
   .post__hidden {
     @include h3-regular;
     background-color: $bg-dark;
@@ -46,6 +59,14 @@
 
       a {
         border-bottom: 0;
+      }
+
+      a.permalink {
+        @include p-meta;
+
+        &:hover {
+          box-shadow: none;
+        }
       }
     }
 
