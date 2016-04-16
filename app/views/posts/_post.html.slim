@@ -10,8 +10,6 @@
       .post__details-avatar
         = render 'user/avatar', user: post.user
 
-      / TODO URL
-
       .post__details-text
         strong
           - if current_user_can?(:post_moderate)
