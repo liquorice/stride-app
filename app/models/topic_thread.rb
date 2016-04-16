@@ -34,4 +34,8 @@ class TopicThread < ActiveRecord::Base
 
     nil
   end
+
+  def latest_post
+    posts.visible.last
+  end
 end

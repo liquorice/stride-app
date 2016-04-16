@@ -21,12 +21,12 @@
 
     .thread__latest
       .thread__latest-avatar
-        = render 'user/avatar', user: topic_thread.posts.visible.last.user
+        = render 'user/avatar', user: topic_thread.latest_post.user
 
       p
-        strong = topic_thread.posts.visible.last.user.name
-        = " said, #{time_ago_in_words(topic_thread.posts.visible.last.created_at)} ago "
-        strong = topic_thread.posts.visible.last.preview_snippet
+        strong = topic_thread.latest_post.user.name
+        = " said, #{time_ago_in_words(topic_thread.latest_post.created_at)} ago "
+        strong = topic_thread.latest_post.preview_snippet
 
   .thread__created data-locked=topic_thread.locked
     strong
