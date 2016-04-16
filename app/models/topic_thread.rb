@@ -29,7 +29,6 @@ class TopicThread < ActiveRecord::Base
     (0..total_post_pages).each do |i|
       page_number = i + 1
       ids_for_page = posts_for_page(page_number).pluck(:id)
-      puts page_number
       return page_number if ids_for_page.include?(post_id)
     end
 
