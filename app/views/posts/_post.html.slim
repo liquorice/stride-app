@@ -24,13 +24,12 @@
       - if current_user_can? :post_moderate
         .post__moderation
           .post__optionButton
-          .post__optionMenu id="post_modMenu"
-            .post__optionMenu-links
-              a href=toggle_post_visibility_path(post) data-method="patch"
-                - if post.visible
-                  | Hide this reply
-                - else
-                  | Show this reply
+          .post__optionMenu
+            a href=toggle_post_visibility_path(post) data-method="patch"
+              - if post.visible
+                | Hide this reply
+              - else
+                | Show this reply
 
     .post__content
       = simple_format(post.content, class:'post__showToggle')
