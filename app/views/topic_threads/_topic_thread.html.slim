@@ -24,9 +24,9 @@
         = render 'user/avatar', user: topic_thread.posts.visible.last.user
 
       p
-        strong = "#{topic_thread.posts.visible.last.user.name} "
-        = "said, #{time_ago_in_words(topic_thread.posts.visible.last.created_at)} ago "
-        strong = "#{topic_thread.posts.visible.last.content}"
+        strong = topic_thread.posts.visible.last.user.name
+        = " said, #{time_ago_in_words(topic_thread.posts.visible.last.created_at)} ago "
+        strong = topic_thread.posts.visible.last.preview_snippet
 
   .thread__created data-locked=topic_thread.locked
     strong

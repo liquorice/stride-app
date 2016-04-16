@@ -17,4 +17,8 @@ class Post < ActiveRecord::Base
     "#{thread_path}?page=#{thread_page}#post-#{id}"
   end
 
+  def preview_snippet
+    content.split('.').first
+  end
+
 end
