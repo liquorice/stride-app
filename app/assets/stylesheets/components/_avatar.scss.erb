@@ -1,173 +1,110 @@
-//
-// Avatars
-//
-
-//skin colors
-$avatar-skin-primary: $primary;
-$avatar-skin-other: $other-primary;
-$avatar-skin-1: #925929;
-$avatar-skin-2: #ceb49f;
-$avatar-skin-3: #F4914F;
-$avatar-skin-4: #F7B284;
-$avatar-skin-5: #4BA9BD;
-$avatar-skin-6: #9ACFDA;
-$avatar-skin-7: #FA8C97;
-$avatar-skin-8: #FCC5CB;
-$avatar-skin-9: #F1AD2B;
-$avatar-skin-10: #F8D695;
-
-//faces
-$face-primary: $primary-avatar;
-$face-1: url("<%= asset_data_uri 'avatars/avatar_face-01.svg' %>");
-$face-2: url("<%= asset_data_uri 'avatars/avatar_face-02.svg' %>");
-$face-3: url("<%= asset_data_uri 'avatars/avatar_face-03.svg' %>");
-$face-4: url("<%= asset_data_uri 'avatars/avatar_face-04.svg' %>");
-$face-5: url("<%= asset_data_uri 'avatars/avatar_face-05.svg' %>");
-$face-6: url("<%= asset_data_uri 'avatars/avatar_face-06.svg' %>");
-$face-7: url("<%= asset_data_uri 'avatars/avatar_face-07.svg' %>");
-$face-8: url("<%= asset_data_uri 'avatars/avatar_face-08.svg' %>");
-$face-9: url("<%= asset_data_uri 'avatars/avatar_face-09.svg' %>");
-$face-10: url("<%= asset_data_uri 'avatars/avatar_face-10.svg' %>");
-
-@mixin avatar-base {
- //the skin and base color
-  background-color: $avatar-skin-primary;
-  border-radius: 50%;
-  content: '';
-  display: block;
-  position: relative;
-}
-
-@mixin avatar-face {
- //avatar face
-  content: $face-primary;
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
 .avatar {
+  height: 100%;
   position: relative;
+  width: 100%;
 
-  &[data-colour="1"] {
-    @include avatar-base;
-    background-color: $avatar-skin-1;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 2;
   }
 
-  &[data-colour="2"] {
-    @include avatar-base;
-    background-color: $avatar-skin-2;
+  &[data-face='1']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-01.svg' %>);
   }
 
-  &[data-colour="3"] {
-    @include avatar-base;
-    background-color: $avatar-skin-3;
+  &[data-face='2']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-02.svg' %>);
   }
 
-  &[data-colour="4"] {
-    @include avatar-base;
-    background-color: $avatar-skin-4;
+  &[data-face='3']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-03.svg' %>);
   }
 
-  &[data-colour="5"] {
-    @include avatar-base;
-    background-color: $avatar-skin-5;
+  &[data-face='4']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-04.svg' %>);
   }
 
-  &[data-colour="6"] {
-    @include avatar-base;
-    background-color: $avatar-skin-6;
+  &[data-face='5']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-05.svg' %>);
   }
 
-  &[data-colour="7"] {
-    @include avatar-base;
-    background-color: $avatar-skin-7;
+  &[data-face='6']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-06.svg' %>);
   }
 
-  &[data-colour="8"] {
-    @include avatar-base;
-    background-color: $avatar-skin-8;
+  &[data-face='7']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-07.svg' %>);
   }
 
-  &[data-colour="9"] {
-    @include avatar-base;
-    background-color: $avatar-skin-9;
+  &[data-face='8']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-08.svg' %>);
   }
 
-  &[data-colour="10"] {
-    @include avatar-base;
-    background-color: $avatar-skin-10;
-  }
-}
-
-.avatar__face {
-  &[data-face="1"] {
-    @include avatar-face;
-    content: $face-1;
+  &[data-face='9']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-09.svg' %>);
   }
 
-  &[data-face="2"] {
-    @include avatar-face;
-    content: $face-2;
+  &[data-face='10']:before {
+    background-image: url(<%= asset_data_uri 'avatars/avatar_face-10.svg' %>);
   }
 
-  &[data-face="3"] {
-    @include avatar-face;
-    content: $face-3;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $avatar-skin-primary;;
+    border-radius: 50%;
+    z-index: 1;
   }
 
-  &[data-face="4"] {
-    @include avatar-face;
-    content: $face-4;
+  &[data-colour='1']:after {
+    background: $avatar-skin-1;
   }
 
-  &[data-face="5"] {
-    @include avatar-face;
-    content: $face-5;
+  &[data-colour='2']:after {
+    background: $avatar-skin-2;
   }
 
-  &[data-face="6"] {
-    @include avatar-face;
-    content: $face-6;
+  &[data-colour='3']:after {
+    background: $avatar-skin-3;
   }
 
-  &[data-face="7"] {
-    @include avatar-face;
-    content: $face-7;
+  &[data-colour='4']:after {
+    background: $avatar-skin-4;
   }
 
-  &[data-face="8"] {
-    @include avatar-face;
-    content: $face-8;
+  &[data-colour='5']:after {
+    background: $avatar-skin-5;
   }
 
-  &[data-face="9"] {
-    @include avatar-face;
-    content: $face-9;
+  &[data-colour='6']:after {
+    background: $avatar-skin-6;
   }
 
-  &[data-face="10"] {
-    @include avatar-face;
-    content: $face-10;
+  &[data-colour='7']:after {
+    background: $avatar-skin-7;
   }
-}
-.avatar__sml {
-  height: 18.1px;
-  width: 18.1px;
-}
 
-.avatar__mid {
-  height: 60px;
-  width: 60px;
-}
+  &[data-colour='8']:after {
+    background: $avatar-skin-8;
+  }
 
-.avatar__lrg {
-  height: 124px;
-  width: 124px;
-}
+  &[data-colour='9']:after {
+    background: $avatar-skin-9;
+  }
 
-.avatar__toolbar {
-  height: 25px;
-  width: 25px;
+  &[data-colour='10']:after {
+    background: $avatar-skin-10;
+  }
 }

@@ -9,31 +9,32 @@
   display: block;
   float: left;
   height: 4.9rem;
+  padding: 0.9rem 0 0 1.65rem;
   width: 55.8%;
 }
 
-.postDetails__createdBy-avatar {
-  display: block;
-  float: left;
-  height: 4.9rem;
-  padding: 0.9rem 0 0 1.65rem;
-}
-
-.postDetails__createdBy-user {
-  @include p-meta;
-  color: $grey-warm;
-  display: block;
-  float: left;
-  height: 4.9rem;
-  padding: 1.1rem 1rem 0 0.85rem;
-
-  h2 {
-    @include h2-regular;
-    color: $grey-warm;
-    font-size: 1.65em;
-    line-height: 1.5;
+  .postDetails__createdBy-avatar {
+    display: block;
+    float: left;
+    height: 60px;
+    width: 60px;
   }
-}
+
+  .postDetails__createdBy-user {
+    @include p-meta;
+    color: $grey-warm;
+    display: block;
+    float: left;
+    height: 4.9rem;
+    padding: 0.2rem 1rem 0 0.85rem;
+
+    h2 {
+      @include h2-regular;
+      color: $grey-warm;
+      font-size: 1.65em;
+      line-height: 1.5;
+    }
+  }
 
 .postDetails__createdDate {
   @include p-meta;

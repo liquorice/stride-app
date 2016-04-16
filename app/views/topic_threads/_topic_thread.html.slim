@@ -20,10 +20,8 @@
       h2 = topic_thread.name
 
     .thread__latest
-      div style="float: left; margin-right: 0.25em;"
-        = render 'user/avatar',
-          user: topic_thread.posts.last.user,
-          size: 'avatar__sml'
+      .thread__latest-avatar
+        = render 'user/avatar', user: topic_thread.posts.last.user
 
       p
         strong = "#{topic_thread.posts.last.user.name} "

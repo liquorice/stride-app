@@ -8,8 +8,8 @@
 
   - if post.visible || current_user_can?(:post_moderate)
     .post__details data-visible=post.visible
-      .post__avatar
-        = render 'user/avatar', user: post.user, size: "avatar__mid"
+      .post__details-avatar
+        = render 'user/avatar', user: post.user
 
       .post__text
         p
