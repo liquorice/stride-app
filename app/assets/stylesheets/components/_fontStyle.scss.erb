@@ -102,7 +102,7 @@
     font-size: 72px;
   }
   @include breakpoint(mini) {
-    font-size: 3.333334rem;
+    font-size: 4rem;
   }
   color: $white;
   letter-spacing: -0.025em;
@@ -112,14 +112,17 @@
 
 @mixin topic-heading {
   @include ff_flood;
-  @include breakpoint(huge, overlarge, large, medium) {
+  @include breakpoint(huge, overlarge) {
     font-size: 72px;
+  }
+  @include breakpoint(large, medium) {
+    font-size: 64px;
   }
   @include breakpoint(small) {
-    font-size: 72px;
+    font-size: 53px;
   }
   @include breakpoint(mini) {
-    font-size: 3.333334rem;
+    font-size: 3rem;
   }
   color: $white;
   letter-spacing: -0.025em;
@@ -128,14 +131,27 @@
 
 @mixin thread-heading {
   @include ff_adelle-bold;
+  @include breakpoint(huge, overlarge) {
+    font-size: 2.67rem;
+    line-height: 1.05;
+  }
+  @include breakpoint(large) {
+    font-size: 2.52rem;
+    line-height: 1.05;
+  }
+  @include breakpoint(mini, small, medium) {
+    font-size: 2.38rem;
+    line-height: 1.05;
+  }
+
   em {
     @include ff_flood;
-    margin-bottom: 0;
-    font-size: 55%;
-    line-height: 0.8;
-    letter-spacing: -0.02em;
-    word-spacing: -0.05em;
     color: $white;
+    font-size: 55%;
+    letter-spacing: -0.02em;
+    line-height: 0.8;
+    margin-bottom: 0;
+    word-spacing: -0.05em;
   }
   a {
     color: $white;
@@ -148,8 +164,6 @@
     text-transform: uppercase;
   }
   color: $white;
-  font-size: 2.67rem;
-  line-height: 1.05;
   margin-bottom: 3em;
 }
 

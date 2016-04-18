@@ -1,7 +1,13 @@
 .strip__dark {
   h3.topic__text {
-    margin-bottom: 0.5rem;
-    margin-top: 1rem;
+    @include breakpoint(huge, overlarge) {
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+    @include breakpoint(mini, small, medium, large) {
+      margin-bottom: 0.5rem;
+      margin-top: 0;
+    }
 
     em {
       &:before {
