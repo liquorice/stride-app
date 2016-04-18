@@ -13,17 +13,16 @@
 
     .hdrToolbar__user
       - if @current_user
-        .hdrToolbar__userIcons
-          .hdrToolbar__user-icon href="#"
+        .hdrToolbar__menu
+          div
             = render 'user/avatar', user: @current_user, size: "avatar__toolbar"
-          .hdrToolbar__user-triangle href="#"
+          div
             = insert_svg "triangle.svg"
 
-        .hdrToolbar__userMenu id="hdr_userMenu"
-          p
-            a href=@current_user.id #{@current_user.name.capitalize}
-            a href=preferences_path Preferences
-            a href=logout_path data-method='post' Log out
+        .hdrToolbar__dropdown id="hdr_userMenu"
+          a href=@current_user.id #{@current_user.name.capitalize}
+          a href=preferences_path Preferences
+          a href=logout_path data-method='post' Log out
       - else
         p
           a href=login_path Log in

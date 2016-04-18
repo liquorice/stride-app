@@ -91,9 +91,9 @@
       border-right: 1px solid mix($grey-warm, $white, 15%);
       padding: 0 12px;
       position: absolute;
-      right: 0;
+      right: 80px;
       top: 0;
-      width: calc(100% - (50% + 203px));
+      width: calc(100% - (50% + 283px));
     }
     @include breakpoint(large, medium) {
       display: inline-block;
@@ -120,7 +120,7 @@
           position: absolute;
           top: 15px;
           right: 0;
-          width: calc(100% - 73px);
+          width: calc(100% - 83px);
         }
       }
     }
@@ -227,27 +227,32 @@
 
   .hdrToolbar__user {
     @include unselectable;
+    bottom: 0;
+    margin: auto 0;
+    padding: 0 0 0 19px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80px;
+
     @include breakpoint(huge, overlarge) {
-      position: absolute;
-      right: -100px;
-      top: 0;
-      width: 100px;
-      height: 100%;
-      // padding-left: 25px;
+      // to-do
     }
     @include breakpoint(large, medium) {
-      position: relative;
-      display: inline-block;
-      vertical-align: middle;
+      // to-do
     }
     @include breakpoint(small, mini) {
-      position: absolute;
-      top: 15px;
-      right: -0.7em;
+      // to-do
     }
 
     p {
       @include login;
+      -ms-transform: translateY(100%);
+      -webkit-transform: translateY(100%);
+      position: relative;
+      text-align: left;
+      top: 100%;
+      transform: translateY(100%);
     }
 
     .header-user__triangle {
@@ -255,60 +260,67 @@
     }
   }
 
-  .hdrToolbar__userIcons {
-    padding-left: 25px;
-    float: left;
+  .hdrToolbar__menu {
+    position: absolute;
+    text-align: left;
+    top: calc(50% - 12px);
+    z-index: 5;
+
+    div:nth-child(n) {
+      float: left;
+      margin-right: 4px;
+    }
   }
 
-  .hdrToolbar__user-icon {
-    float: left;
-    padding-top: 20px;
-  }
-
-  .hdrToolbar__user-triangle {
-    float: left;
-    padding-top: 24px;
-    padding-left: 5px;
-  }
-
-
-  .hdrToolbar__userMenu {
-    display: none;
-    position: relative;
-    top: 42px;
-    right: 97px;
-    z-index: 900;
+  .hdrToolbar__dropdown {
     background-color: $white;
     border-radius: 3px;
-    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.15);
-    min-width: 8.75rem;
+    box-shadow: 0px 0px 1px 1px rgba($grey-warm, 0.1);
+    display: none;
+    min-width: 230px;
+    position: absolute;
+    right: 5px;
     text-align: left;
-
-    &:before {
-      content: "";
-      border-color: transparent transparent $white transparent;
-      border-style:solid;
-      border-width:0.4rem;
-      width:0;
-      height:0;
-      position:absolute;
-      top: -0.7rem;
-      right: 0.5rem;
-    }
-
-    p {
-      position: relative;
-      left: -65px;
-    }
+    top: 65%;
+    width: 230px;
+    z-index: 900;
 
     a {
       @include login;
       display: block;
-      width: 100%;
+      padding: 10px 15px;
 
       &:nth-child(n + 2) {
-        border-top: 1px solid $grey-warm;
+        border-top: 1px solid rgba($grey-warm, 0.1);
       }
+
+      &:hover {
+        background: rgba($grey-warm, 0.08);
+        transition: all 100ms ease-out;
+      }
+    }
+
+    &:before,&:after {
+      border-color: transparent transparent $white transparent;
+      border-style:solid;
+      border-width:0.4rem;
+      content: "";
+      height:0;
+      position:absolute;
+      right: 0.5rem;
+      top: -0.7rem;
+      width:0;
+    }
+
+    &:before {
+      border-bottom-color: rgba($grey-warm, 0.35);
+      border-bottom: 6px solid;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      content: "";
+      position:absolute;
+      right: 12px;
+      top: -0.7rem;
     }
   }
 
