@@ -49,19 +49,4 @@ html
     = render "/partials/getSupport"
     = render "/partials/footer"
 
-
-    .constrained
-      h2 Stride — #{@site.name}
-
-      - if @current_user
-        p Hello #{@current_user.name}
-        p
-          a href=logout_path data-method='post' Log out
-
-      - else
-        p
-          a href=login_path Log in
-
-      hr
-
     = javascript_include_tag 'application'
