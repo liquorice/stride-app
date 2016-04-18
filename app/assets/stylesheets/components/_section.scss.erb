@@ -60,30 +60,38 @@
 }
 
 @mixin section__sidebar {
-  @include breakpoint(huge, overlarge, large, medium) {
+  @include breakpoint(huge, overlarge, large) {
     margin-right: columns(0.5);
-    padding-left: columns(0.5);
+    width: columns(9);
+    max-width: columns(9);
+  }
+  @include breakpoint(medium) {
+    margin-right: columns(0.5);
     width: columns(9);
     max-width: columns(9);
   }
   @include breakpoint(small, mini) {
     margin-bottom: 20px;
-    margin-right: mobile_columns(1);
-    padding-left: mobile_columns(1);
-    width: mobile_columns(14);
+    margin-right: 0;
+    width: mobile_columns(28);
   }
 }
 
 @mixin section__content {
-  @include breakpoint(huge, overlarge, large, medium) {
+  @include breakpoint(huge, overlarge, large) {
+    margin-right: columns(0.5);
+    padding-left: columns(0.5);
+    width: columns(27);
+  }
+  @include breakpoint(medium) {
     margin-right: columns(0.5);
     padding-left: columns(0.5);
     width: columns(27);
   }
   @include breakpoint(small, mini) {
     margin-bottom: 20px;
-    margin-right: mobile_columns(1);
-    padding-left: mobile_columns(1);
-    width: mobile_columns(14);
+    margin-right: 0;
+    padding-left: 0;
+    width: mobile_columns(28);
   }
 }

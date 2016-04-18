@@ -2,7 +2,16 @@
   height: 0.9rem;
   width: 0.9rem;
 
-  // Add Breakpoint to 11px (but rem)
+  @include breakpoint(medium, large) {
+    height: 11px;
+    width: 11px;
+    margin-top: 3px;
+  }
+  @include breakpoint(mini, small) {
+    height: 11px;
+    width: 11px;
+    margin-top: 5px;
+  }
 }
 
 @mixin icon__login {

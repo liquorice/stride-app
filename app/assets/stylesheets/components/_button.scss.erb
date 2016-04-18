@@ -56,22 +56,26 @@
 
 @mixin button-short {
   @include button-standard;
-  font-size: 0.93rem;
-  line-height: 1;
-  margin-bottom: 0.4rem;
-  padding-top: 0.5357em;
-
+  margin-bottom: 0.01rem;
   @include breakpoint(huge) {
     font-size: 0.93rem;
+    line-height: 1;
+    padding-top: 0.5357em;
   }
   @include breakpoint(overlarge) {
     font-size: 0.874rem;
+    line-height: 1;
+    padding-top: 0.5357em;
   }
-  @include breakpoint(small,medium,large) {
-    font-size: 0.661rem;
+  @include breakpoint(large, medium) {
+    font-size: 0.706rem;
+    line-height: 1.5;
+    padding-top: 0.55em;
   }
-  @include breakpoint(mini) {
+  @include breakpoint(mini, small) {
     font-size: 14px;
+    line-height: 1.5;
+    padding-top: 0.54em;
   }
 }
 
