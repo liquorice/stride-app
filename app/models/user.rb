@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  # --- Associations ---  
+  # --- Associations ---
   belongs_to :site
   belongs_to :access_level
   has_many :topic_threads
@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     # by their access_level
     # Superusers always have permission
     superuser || permissions.key?(permission.to_s)
+  end
+
+  def update_last_seen
+    update(last_seen: Time.now)
   end
 
 end

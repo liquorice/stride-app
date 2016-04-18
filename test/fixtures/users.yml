@@ -1,5 +1,8 @@
 <% ['pete', 'dale'].each do |site| %>
   admin_<%= site %>:
+    <% created_at = Time.at(Time.now.to_i - (rand * 20.weeks.to_i)) %>
+    created_at: <%= created_at %>
+    last_seen: <%= Time.at((Time.now.to_i - created_at.to_i) * rand + created_at.to_i) %>
     name: admin
     site: <%= site %>
     email: dev@liquorice.com.au
@@ -7,6 +10,9 @@
     access_level: admin_<%= site %>
 
   superuser_<%= site %>:
+    <% created_at = Time.at(Time.now.to_i - (rand * 20.weeks.to_i)) %>
+    created_at: <%= created_at %>
+    last_seen: <%= Time.at((Time.now.to_i - created_at.to_i) * rand + created_at.to_i) %>
     name: superuser
     site: <%= site %>
     email: dev@liquorice.com.au
@@ -16,7 +22,9 @@
 <% 200.times.each do |i| %>
   <% name = LibLib.name %>
   user_<%= i %>_<%= site %>:
-    created_at: <%= Time.at(Time.now.to_i - (rand * 20.weeks.to_i)) %>
+    <% created_at = Time.at(Time.now.to_i - (rand * 20.weeks.to_i)) %>
+    created_at: <%= created_at %>
+    last_seen: <%= Time.at((Time.now.to_i - created_at.to_i) * rand + created_at.to_i) %>
     name: "<%= name %>"
     site: <%= site %>
     email: "<%= name.parameterize %>@liquorice.com.au"
