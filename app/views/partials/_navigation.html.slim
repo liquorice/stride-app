@@ -13,17 +13,10 @@
 
     .hdrToolbar__user
       - if @current_user
-<<<<<<< HEAD
         .hdrToolbar__menu
-          div
-            = render 'user/avatar', user: @current_user, size: "avatar__toolbar"
-          div
-=======
-        .hdrToolbar__userIcons
-          .hdrToolbar__user-icon href="#"
+          .hdrToolbar__menu-avatar
             = render 'user/avatar', user: @current_user
-          .hdrToolbar__user-triangle href="#"
->>>>>>> dfcf95b7bf360c879e457009ac21608536d38118
+          .hdrToolbar__menu-triangle
             = insert_svg "triangle.svg"
 
         .hdrToolbar__dropdown id="hdr_userMenu"
