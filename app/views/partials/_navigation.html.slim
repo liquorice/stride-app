@@ -1,40 +1,38 @@
-.hdrToolbar
-  .group
-    a.hdrToolbar__logo href="#"
-      = insert_svg "#{@site.name}/logo.svg"
-      span.hdrToolbar__logo-alt
-        = @site.name
-    .hdrToolbar__search
-      form.hdrToolbar__search-form action="/search"
-        label for="search-box"
-          span Search
-          = insert_svg "search.svg"
-        input id="query" type="text" name="query"
+/ TODO renaming
 
-    .hdrToolbar__user
-      - if @current_user
-        .hdrToolbar__menu
-          .hdrToolbar__menu-avatar
-            = render 'user/avatar', user: @current_user
-          .hdrToolbar__menu-triangle
-            = insert_svg "triangle.svg"
+.toolbar
+  a.toolbar__logo href="#"
+    = insert_svg "#{@site.name}/logo.svg"
+    span.toolbar__logo-alt
+      = @site.name
+  .toolbar__search
+    form.toolbar__search-form action="/search"
+      label for="search-box"
+        span Search
+        = insert_svg "search.svg"
+      input id="query" type="text" name="query"
 
-        .hdrToolbar__dropdown id="hdr_userMenu"
+  .toolbar__user
+    - if @current_user
+      .toolbar__menu
+        .toolbar__menu-avatar
+          = render 'user/avatar', user: @current_user
+        .toolbar__menu-triangle
+          = insert_svg "triangle.svg"
+
+        .toolbar__dropdown
           a href=@current_user.id #{@current_user.name.capitalize}
           a href=preferences_path Preferences
           a href=logout_path data-method='post' Log out
-      - else
-        p
-          a href=login_path Log in
+    - else
+      a href=login_path Log in
 
-nav.hdrNav
-  .group
-    ul role="navigation"
-      li
-        a.active href=topics_preview_path Forums
-      li
-        a href="#" Articles
-      li
-        a href="#" Support
-      li
-        a href="#" About
+ul.navigation role="navigation"
+  li
+    a.active href=topics_preview_path Forums
+  li
+    a href="#" Articles
+  li
+    a href="#" Support
+  li
+    a href="#" About

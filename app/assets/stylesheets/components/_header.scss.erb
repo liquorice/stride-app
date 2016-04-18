@@ -1,53 +1,41 @@
-//
-// Header Navigation Styles
-//
-
-@mixin nav-item {
-  @include ff_adelle-regular;
+.header {
   @include breakpoint(huge, overlarge) {
-    font-size: 18px;
+    border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 66px;
   }
-  @include breakpoint(large, medium) {
-    font-size: 15px;
-  }
-  @include breakpoint(small, mini) {
-    font-size: 14px;
-  }
-  color: $grey-warm;
-  display: block;
-  float: left;
-  text-align: center;
-  transition: background-color 100ms, color 100ms;
-
-  a {
-    color: $grey-warm;
-    display: block;
-  }
-}
-
-.hdrToolbar {
   @include breakpoint(large, medium) {
     border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 54px;
+  }
+  @include breakpoint(small, mini) {
+    height: 90px;
+  }
+  background-color: $white;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.toolbar {
+  @include breakpoint(huge, overlarge) {
+    height: 65px;
+  }
+  @include breakpoint(large, medium) {
     height: 53px;
   }
   @include breakpoint(small, mini) {
-    border-bottom: 1px solid rgba($grey-warm, 0.15);
     height: 50px;
   }
-  height: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
   position: relative;
-
-  .group {
-    height: 100%;
-    text-align: right;
-  }
+  width: 90%;
 }
 
-  .hdrToolbar__logo {
+  .toolbar__logo {
     bottom: 0;
     display: block;
     left: 0;
-    margin: auto 0;
     position: absolute;
     top: 0;
     width: 280px;
@@ -65,7 +53,6 @@
         height: 20px;
         width: 64px;
       }
-
       bottom: 0;
       left: 0;
       margin: auto 0;
@@ -78,14 +65,14 @@
     }
   }
 
-    .hdrToolbar__logo-alt {
+    .toolbar__logo-alt {
       display: block;
       left: -5000px;
       position: absolute;
       top: 0;
     }
 
-  .hdrToolbar__search {
+  .toolbar__search {
     @include breakpoint(huge, overlarge, large) {
       border-right: 1px solid mix($grey-warm, $white, 15%);
       padding: 0 12px;
@@ -117,7 +104,7 @@
       @include breakpoint(small, mini) {
         width: 100%;
 
-        .hdrToolbar__search-form{
+        .toolbar__search-form{
           position: absolute;
           right: 0;
           top: 15px;
@@ -127,7 +114,7 @@
     }
   }
 
-    .hdrToolbar__search-form {
+    .toolbar__search-form {
       @include breakpoint(small, mini) {
         border-radius: 2px;
         height: 24px;
@@ -226,7 +213,7 @@
       }
     }
 
-  .hdrToolbar__user {
+  .toolbar__user {
     @include unselectable;
     @include breakpoint(huge, overlarge, large) {
       width: 80px;
@@ -236,46 +223,29 @@
     }
     bottom: 0;
     margin: auto 0;
-    padding: 0 0 0 19px;
     position: absolute;
     right: 0;
     top: 0;
-
-    p {
-      @include login;
-      -ms-transform: translateY(100%);
-      -webkit-transform: translateY(100%);
-      position: relative;
-      text-align: left;
-      top: 100%;
-      transform: translateY(100%);
-    }
 
     .header-user__triangle {
       fill: mix($grey-warm, $white, 50%);
     }
   }
 
-  .hdrToolbar__menu {
-    position: absolute;
-    text-align: left;
-    top: calc(50% - 12px);
-    z-index: 5;
-
-    div:nth-child(n) {
-      float: left;
-      margin-right: 4px;
-    }
+  .toolbar__menu {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
   }
 
-    .hdrToolbar__menu-avatar {
-      display: block;
-      float: left;
+    .toolbar__menu-avatar {
+      margin-left: 19px;
       height: 25px;
       width: 25px;
     }
 
-    .hdrToolbar__menu-triangle {
+    .toolbar__menu-triangle {
       @include breakpoint(huge, overlarge) {
         margin-top: 2px;
       }
@@ -284,7 +254,7 @@
       }
     }
 
-  .hdrToolbar__dropdown {
+  .toolbar__dropdown {
     @include breakpoint(huge, overlarge) {
       right: 9px;
       top: 65%;
@@ -297,23 +267,39 @@
       right: 0;
       top: 70%;
     }
+    transition: all 200ms ease-out;
+    opacity: 0;
     background-color: $white;
     border-radius: 3px;
-    box-shadow: 0px 0px 1px 1px rgba($grey-warm, 0.1);
-    display: none;
-    min-width: 230px;
     position: absolute;
     text-align: left;
-    width: 230px;
     z-index: 900;
+    visibility: hidden;
+
+    .toolbar__menu:hover & {
+      opacity: 1;
+      visibility: visible;
+    }
 
     a {
-      @include login;
+      @include ff_adelle-regular;
+      @include ff_adelle-regular;
+      @include breakpoint(huge, overlarge) {
+        font-size: 0.75rem;
+      }
+      @include breakpoint(large) {
+        font-size: 0.75rem;
+      }
+      color: $grey-warm;
+      font-size: 13px;
+      line-height: 1.4;
       display: block;
       padding: 10px 15px;
+      min-width: 230px;
+      border-top: 1px solid rgba($grey-warm, 0.1);
 
-      &:nth-child(n + 2) {
-        border-top: 1px solid rgba($grey-warm, 0.1);
+      &:first-child {
+        border-top: 0;
       }
 
       &:hover {
@@ -373,138 +359,143 @@
     }
   }
 
-.hdrNav {
+.navigation {
   @include breakpoint(huge, overlarge, large) {
-    height: 100%;
-    left: calc(50% - 203px);
-    position: absolute;
-    top: 0;
+    margin-left: calc(50% - 203px);
+    position: relative;
+    top: -100%;
+    width: 406px;
   }
   @include breakpoint(medium) {
-    height: 100%;
-    left: calc(50% - 213px);
-    position: absolute;
-    top: 0;
+    margin-left: calc(50% - 213px);
+    position: relative;
+    top: -100%;
+    width: 406px;
   }
   @include breakpoint(small, mini) {
-    background-color: mix($grey-warm, $white, 8%);
     box-shadow: 0px 1px rgba($grey-warm, .15);
-    display: block;
     height: 40px;
-    width: 100%;
+    margin: 0 auto;
+    width: 90%;
   }
-  display: block;
-  position: relative;
+  overflow: hidden;
+  height: 100%;
 
-  .group {
-    @include breakpoint(huge, overlarge, large, medium) {
-      margin: 0;
-      max-width: 100%;
-      padding: 0;
-      width: 100%;
+  &:before {
+    @include breakpoint(small, mini) {
+      background-color: mix($grey-warm, $white, 8%);
+      border-bottom: 1px solid rgba($grey-warm, 0.15);
+      border-top: 1px solid rgba($grey-warm, 0.15);
+      bottom: -1px;
+      content: "";
+      display: block;
+      height: 42px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: 1;
     }
-    height: 100%;
   }
 
-  ul {
+  li {
+    @include ff_adelle-regular;
     @include breakpoint(huge, overlarge, large, medium) {
-      display: inline-block;
-      width: 406px;
-    }
-    @include breakpoint(small) {
-      display: block;
-      width: 90%;
-    }
-    @include breakpoint(mini) {
-      display: block;
-      text-align: center;
-      width: 320px;
-    }
-    height: 100%;
-    position: relative;
+      background-color: mix($grey-warm, $white, 8%);
+      width: 25%;
 
-    li {
-      @include nav-item;
-      @include breakpoint(huge, overlarge, large, medium) {
-        background-color: mix($grey-warm, $white, 8%);
-        height: 100%;
-        width: 25%;
-
-        &:first-child {
-          a {
-            border-left: 1px solid rgba($grey-warm, .15);
-          }
-        }
-      }
-      @include breakpoint(small) {
-        border-right: 1px solid rgba($grey-warm, .15);
-        display: inline-block;
-        max-width: 85px;
-        width: 25%;
-
-        &:first-of-type {
+      &:first-child {
+        a {
           border-left: 1px solid rgba($grey-warm, .15);
         }
       }
-      @include breakpoint(mini) {
-        border-left: 1px solid rgba($grey-warm, .15);
-        display: inline-block;
-        width: 25%;
+    }
+    @include breakpoint(huge, overlarge) {
+      font-size: 18px;
+    }
+    @include breakpoint(large, medium) {
+      font-size: 15px;
+    }
+    @include breakpoint(small) {
+      border-right: 1px solid rgba($grey-warm, .15);
+      max-width: 85px;
+      width: 25%;
 
-        &:last-of-type {
-          border-right: 1px solid rgba($grey-warm, .15);
+      &:first-of-type {
+        border-left: 1px solid rgba($grey-warm, .15);
+      }
+    }
+    @include breakpoint(mini) {
+      border-left: 1px solid rgba($grey-warm, .15);
+      display: inline-block;
+      width: 25%;
+
+      &:last-of-type {
+        border-right: 1px solid rgba($grey-warm, .15);
+      }
+    }
+    @include breakpoint(small, mini) {
+      font-size: 14px;
+    }
+    clear: none;
+    color: $grey-warm;
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    transition: background-color 100ms, color 100ms;
+    z-index: 2;
+
+    a {
+      color: $grey-warm;
+      display: block;
+
+      @include breakpoint(huge, overlarge) {
+        border-right: 1px solid rgba($grey-warm, .15);
+        padding-top: 1rem;
+
+        &:hover {
+          background-color: $white;
+          color: $blue-mid;
         }
       }
-      overflow: hidden;
+      @include breakpoint(large, medium) {
+        border-right: 1px solid rgba($grey-warm, .15);
+        padding: 0.82rem 0;
 
-      a {
-        @include breakpoint(huge, overlarge) {
-          border-right: 1px solid rgba($grey-warm, .15);
-          padding: 1rem 0;
-
-          &:hover {
-            background-color: $white;
-            color: $blue-mid;
-          }
-        }
-        @include breakpoint(large, medium) {
-          border-right: 1px solid rgba($grey-warm, .15);
-          padding: 0.82rem 0;
-
-          &:hover {
-            background-color: $white;
-            color: $blue-mid;
-          }
-        }
-        @include breakpoint(small) {
-          padding: 10px 0.5em;
-
-          &:active {
-            background-color: $white;
-            color: $blue-mid;
-          }
-        }
-        @include breakpoint(mini) {
-          padding: 10px 0.5em;
-          text-align: center;
-
-          &:active {
-            background-color: $white;
-            color: $blue-mid;
-          }
-        }
-        display: block;
-        height: 100%;
-        transition: background-color 200ms;
-
-        &.active {
-          @include ff_adelle-boldItalic;
+        &:hover {
           background-color: $white;
-          color: $primary;
+          color: $blue-mid;
+        }
+      }
+      @include breakpoint(small) {
+        padding: 10px 0.5em;
 
-          &:hover {
-            color: $blue-mid;
-          }
+        &:active {
+          background-color: $white;
+          color: $blue-mid;
+        }
+      }
+      @include breakpoint(mini) {
+        padding: 10px 0.5em;
+        text-align: center;
+
+        &:active {
+          background-color: $white;
+          color: $blue-mid;
+        }
+      }
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      &.active {
+        @include ff_adelle-boldItalic;
+        background-color: $white;
+        color: $primary;
+
+        &:hover {
+          color: $blue-mid;
         }
       }
     }

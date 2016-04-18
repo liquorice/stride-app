@@ -42,35 +42,9 @@ $huge: 1800px;
 }
 
 .constrained {
-  @include breakpoint(huge, overlarge, large) {
-    width: 71%;
-  }
-  @include breakpoint(medium) {
-    width: 84%;
-  }
   margin: 0 auto;
   max-width: 1200px;
+  position: relative;
+  width: 90%;
   overflow: hidden;
-  position: relative;
-  width: 90%;
-}
-
-.group {
-  @include breakpoint(huge, overlarge, large) {
-    width: 71%;
-  }
-  @include breakpoint(medium) {
-    width: 84%;
-  }
-  margin: 0 auto;
-  max-width: 1200px;
-  overflow: visible;
-  position: relative;
-  width: 90%;
-
-  &:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
 }

@@ -46,36 +46,6 @@ body {
   width: 100%;
 }
 
-.header {
-  @include breakpoint(huge, overlarge) {
-    border-bottom: 1px solid rgba($grey-warm, 0.15);
-    height: 65px;
-  }
-  @include breakpoint(large, medium) {
-    border-bottom: 1px solid rgba($grey-warm, 0.15);
-    height: 53px;
-  }
-  @include breakpoint(small) {
-    height: 90px;
-  }
-  background-color: $white;
-  opacity: 1;
-  position: fixed;
-  transform: translate3d(0, 0, 0);
-  transition: all 200ms ease-out;
-  width: 100%;
-  z-index: 1000;
-
-  &.hide {
-    @include breakpoint(large, medium) {
-      transform: translate3d(0, -53px, 0);
-    }
-    @include breakpoint(small, mini) {
-      transform: translate3d(0, -50px, 0);
-    }
-  }
-}
-
 main {
   @include breakpoint(huge, overlarge) {
     padding-top: 65px;
@@ -88,67 +58,48 @@ main {
   }
 }
 
-.getSupport {
-  background-color: $blue-dark;
-  display: block;
-  opacity: 1;
-  overflow: hidden;
-  position: relative;
-  transition: all 200ms ease-out 400ms;
 
-  .constrained {
-    @include breakpoint(small, mini) {
-      margin: 0;
-      width: 100%;
-    }
+.page {
+  @include breakpoint(medium) {
+    padding-bottom: 3.36rem;
+    padding-top: 2.4rem;
   }
+  @include breakpoint(small, mini) {
+    padding-bottom: 3.15rem;
+    padding-top: 3rem;
+  }
+  p {
+    margin: 0 auto;
+    max-width: 45em;
+  }
+  background-color: $bg;
+  padding-bottom: 3.675rem;
+  padding-top: 2.45rem;
+  position: relative;
 }
 
-  .getSupport__link {
-    @include ff_quatroSlab;
-    transition: background-color 200ms;
-    @include breakpoint(huge, overlarge, large, medium) {
-      display: table-cell;
-      letter-spacing: -0.03em;
-      min-height: 80px;
-      width: columns(8.75);
-    }
-    @include breakpoint(small, mini) {
-      display: block;
-      padding: 22px 10px;
-      width: 100%;
-    }
-
-    background-color: $primary;
-    color: $white;
-    font-size: 1.2rem;
-    height: 100%;
-    text-align: center;
-    vertical-align: middle;
-
-    &:hover {
-      background-color: $primary-dark;
-    }
+.sidebar {
+  @include breakpoint(huge, overlarge, large, medium) {
+    width: columns(9);
   }
-
-  .getSupport__text {
-    @include ff_adelle-regular;
-    @include breakpoint(huge, overlarge, large, medium) {
-      font-size: 0.8rem;
-      line-height: 1.1rem;
-      min-height: 80px;
-      padding: 20px 0 20px columns(0.5);
-      width: columns(27);
-    }
-    @include breakpoint(small, mini) {
-      display: block;
-      font-size: 13px;
-      line-height: 19px;
-      padding: 22px 5%;
-      text-align: center;
-      width: 100%;
-    }
-    color: mix($blue-dark, $white, 50%);
-    display: table-cell;
-    height: 100%;
+  @include breakpoint(small, mini) {
+    margin-bottom: 20px;
+    margin-right: 0;
+    width: mobile_columns(28);
   }
+  float: left;
+  position: relative;
+}
+
+.content {
+  @include breakpoint(huge, overlarge, large, medium) {
+    margin-left: columns(10);
+  }
+  @include breakpoint(small, mini) {
+    margin-bottom: 20px;
+    margin-right: 0;
+    padding-left: 0;
+    width: mobile_columns(28);
+  }
+  position: relative;
+}
