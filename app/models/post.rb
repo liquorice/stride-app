@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   default_scope { order(created_at: :asc) }
+  scope :visible, -> { where(visible: true) }
 
   self.per_page = 8
 
@@ -14,6 +15,14 @@ class Post < ActiveRecord::Base
     thread_page = topic_thread.page_for_post(self)
 
     "#{thread_path}?page=#{thread_page}#post-#{id}"
+  end
+
+  def preview_snippet
+    content.split('.').first
+  end
+
+  def hidden?
+    !visible
   end
 
 end

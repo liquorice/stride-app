@@ -1,37 +1,37 @@
-.post data-visible=post.visible
-  / Ask JB: Is this for the quote function?
-  / a name="post-#{post.id}" href=post_path(post) Permalink
+.post data-hidden=post.hidden?
+  a.permalinkAnchor name="post-#{post.id}" &nbsp;
 
-  - unless post.visible
+  - if post.hidden?
     .post__hidden
       | Reply hidden by moderator #{post.hidden_at.strftime('%x')}
 
   - if post.visible || current_user_can?(:post_moderate)
-    .post__details data-visible=post.visible
-      .post__avatar
-        = render 'user/avatar', user: post.user, size: "avatar__mid"
+    .post__details
+      .post__details-avatar
+        = render 'user/avatar', user: post.user
 
-      .post__text
-        p
-          strong
-            - if current_user_can?(:post_moderate)
-              a href=post.user.id #{post.user.name}
-            - else
-              | #{post.user.name}
-          = " said, #{time_created_post(post.created_at)}"
+      .post__details-text
+        strong
+          - if current_user_can?(:post_moderate)
+            a href="#"
+              = post.user.name
+          - else
+            = post.user.name
+        = " said, "
+        a.permalink href=post_path(post)
+          = "#{time_ago_in_words(post.created_at)} ago"
 
       - if current_user_can? :post_moderate
         .post__moderation
           .post__optionButton
-          .post__optionMenu id="post_modMenu"
-            .post__optionMenu-links
-              a href=toggle_post_visibility_path(post) data-method="patch"
-                - if post.visible
-                  | Hide this reply
-                - else
-                  | Show this reply
+          .post__optionMenu
+            a href=toggle_post_visibility_path(post) data-method="patch"
+              - if post.visible
+                | Hide this reply
+              - else
+                | Show this reply
 
-    .post__content data-visible=post.visible
+    .post__content
       = simple_format(post.content, class:'post__showToggle')
 
       / Ask JB: Is it cool to have these in js? Is there a pretty rails way?

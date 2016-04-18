@@ -20,15 +20,13 @@
       h2 = topic_thread.name
 
     .thread__latest
-      div style="float: left; margin-right: 0.25em;"
-        = render 'user/avatar',
-          user: topic_thread.posts.last.user,
-          size: 'avatar__sml'
+      .thread__latest-avatar
+        = render 'user/avatar', user: topic_thread.latest_post.user
 
-      p 
-        strong = "#{topic_thread.posts.last.user.name} "
-        = "said, #{time_since_post(topic_thread.posts.last.updated_at)} ago "
-        strong = "#{topic_thread.posts.last.content}"
+      p
+        strong = topic_thread.latest_post.user.name
+        = " said, #{time_ago_in_words(topic_thread.latest_post.created_at)} ago "
+        strong = topic_thread.latest_post.preview_snippet
 
   .thread__created data-locked=topic_thread.locked
     strong

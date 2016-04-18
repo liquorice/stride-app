@@ -17,7 +17,7 @@
 .postDetails
   .postDetails__createdBy
     .postDetails__createdBy-avatar
-      = render 'user/avatar', user: @thread.user, size: "avatar__mid"
+      = render 'user/avatar', user: @thread.user
 
     .postDetails__createdBy-user
       strong Created by
@@ -43,6 +43,6 @@
     .postReply__title
       h3 Post a reply
     = form_tag new_post_path(@thread), method: :post, class:"postReply__form" do |f|
-      textarea.autoExpand rows='1' data-min-rows='1' placeholder="Enter text..." name="content"
+      textarea.js-autoexpand placeholder="Enter text..." name="content"
       .postReply__button
         button Post
