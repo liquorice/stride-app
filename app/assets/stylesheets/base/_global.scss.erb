@@ -52,7 +52,11 @@ body {
     height: 65px;
   }
   @include breakpoint(large, medium) {
-    height: 95px;
+    border-bottom: 1px solid rgba($grey-warm, 0.15);
+    height: 53px;
+  }
+  @include breakpoint(small) {
+    height: 90px;
   }
   background-color: $white;
   opacity: 1;
@@ -76,7 +80,10 @@ main {
   @include breakpoint(huge, overlarge) {
     padding-top: 65px;
   }
-  @include breakpoint(large, medium, small, mini) {
+  @include breakpoint(large, medium) {
+    padding-top: 53px;
+  }
+  @include breakpoint(small, mini) {
     padding-top: 90px;
   }
 }

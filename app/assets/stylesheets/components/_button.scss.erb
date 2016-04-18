@@ -28,6 +28,15 @@
 @mixin button-standard {
   @include ff_adelle-bold;
   @include unselectable;
+  @include breakpoint(overlarge,huge) {
+    font-size: 1rem;
+  }
+  @include breakpoint(small,medium,large) {
+    font-size: 0.953334rem;
+  }
+  @include breakpoint(mini) {
+    font-size: 15px;
+  }
   background: rgba($grey-warm, 0.08);
   border-radius: 3px;
   border: none;
@@ -47,10 +56,23 @@
 
 @mixin button-short {
   @include button-standard;
-  font-size: 0.933334rem;
+  font-size: 0.93rem;
   line-height: 1;
   margin-bottom: 0.4rem;
   padding-top: 0.5357em;
+
+  @include breakpoint(huge) {
+    font-size: 0.93rem;
+  }
+  @include breakpoint(overlarge) {
+    font-size: 0.874rem;
+  }
+  @include breakpoint(small,medium,large) {
+    font-size: 0.661rem;
+  }
+  @include breakpoint(mini) {
+    font-size: 14px;
+  }
 }
 
 @mixin button-midLevel{
