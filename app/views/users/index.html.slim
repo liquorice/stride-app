@@ -1,0 +1,22 @@
+- @access_levels.each do |access_level|
+  table
+    thead
+      th
+        h2 = access_level.name.pluralize
+        | (#{access_level.users.count})
+      th Joined
+      th Last active
+      th Forum replies
+      th Chat messages
+
+    - access_level.users.each do |user|
+      tr data-href=user_path(user)
+        td
+          div style="width: 20px; height: 20px; float: left"
+            = render "user/avatar", user: user
+          = user.name
+        td = user.created_at.strftime('%x')
+        td = user.last_seen
+        td = user.posts.count
+        td 0
+

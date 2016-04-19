@@ -16,7 +16,26 @@
 }
 
 .strip__dark {
-  @include section__dark;
+  @include breakpoint(huge, overlarge) {
+    min-height: 212px;
+    padding-top: 18px;
+  }
+  @include breakpoint(large) {
+    min-height: 212px;
+    padding-top: 34px;
+  }
+  @include breakpoint(medium) {
+    min-height: 200px;
+    padding-top: 32px;
+  }
+  @include breakpoint(small) {
+    min-height: 160px;
+    padding-top: 23px;
+  }
+  @include breakpoint(mini) {
+    min-height: 130px;
+    padding-top: 13.5px;
+  }
 
   h1 {
     @include forum-heading;
@@ -71,9 +90,22 @@
 }
 
 .strip__light {
-  @include section__light;
-  background: url('noise-1440x530.png') center center repeat $bg;
+  @include breakpoint(medium) {
+    padding-bottom: 3.36rem;
+    padding-top: 3.2rem;
+  }
+  @include breakpoint(small, mini) {
+    padding-bottom: 3.15rem;
+    padding-top: 3rem;
+  }
+  p {
+    margin: 0 auto;
+    max-width: 45em;
+  }
   background-size: 1440px 530px;
+  background: url('noise-1440x530.png') center center repeat $bg;
+  padding-bottom: 3.675rem;
+  padding-top: 3.5rem;
 
   header {
     text-align: center;

@@ -3,6 +3,6 @@ Module.register('autoexpand', function(_container) {
 
   _container.on('input', function(){
     $(this).css('height', 0).css('height', this.scrollHeight + 'px');
-  });
+  }).trigger('input');
 
 });

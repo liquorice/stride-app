@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   patch 'post/:id/toggle_visibility' => 'posts#toggle_visibility', as: :toggle_post_visibility
 
   # Users
+  get 'users' => 'users#index'
+  get 'user/:id' => 'users#show', as: :user
   get 'preferences' => 'preferences#index'
   patch 'preferences' => 'preferences#update'
   patch 'preferences/password' => 'preferences#update_password', as: :update_password
