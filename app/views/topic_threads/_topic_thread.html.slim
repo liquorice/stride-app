@@ -20,10 +20,10 @@
       h2 = topic_thread.name
 
     .thread__latest
-      .thread__latest-avatar
-        = render 'user/avatar', user: topic_thread.latest_post.user
-
       p
+        .thread__latest-avatar
+          = render 'user/avatar', user: topic_thread.latest_post.user
+
         strong = topic_thread.latest_post.user.name
         = " said, #{time_ago_in_words(topic_thread.latest_post.created_at)} ago "
         strong = topic_thread.latest_post.preview_snippet
@@ -39,3 +39,9 @@
       | Replies
     h2
       | #{topic_thread.posts_count}
+
+  .thread__mobile data-pinned=topic_thread.pinned
+    .thread__mobile-created
+      strong Created: #{topic_thread.created_at.strftime('%x')}
+    .thread__mobile-replies
+      strong Replies: #{topic_thread.posts_count}

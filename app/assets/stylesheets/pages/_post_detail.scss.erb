@@ -1,10 +1,59 @@
 .postDetails {
+  @include breakpoint(medium) {
+    height: 7.4rem;
+  }
+  @include breakpoint(mini, small) {
+    height: 6.9rem;
+  }
   background: $white;
   height: 4.9rem;
   margin-bottom: 6px;
 }
 
+.postDetails__mobile {
+  @include breakpoint(medium) {
+    display: block;
+    float: left;
+  }
+  @include breakpoint(mini, small) {
+    display: block;
+    height: 2rem;
+    float: left;
+    padding: 0.45rem 0 0 1.65rem;
+  }
+  display: none;
+  height: 2.5rem;
+  width: 100%;
+  padding: 0.7rem 0 0.7rem 1.65rem;
+}
+
+.postDetails__mobile-createdDate {
+  @include p-meta;
+  color: $green-light;
+  display: inline;
+  margin-right: 0.15rem;
+}
+
+.postDetails__mobile-views {
+  @include p-meta;
+  color: $green-mid;
+  display: inline;
+  margin-right: 0.15rem;
+}
+
+.postDetails__mobile-replies {
+  @include p-meta;
+  color: $green-dark;
+  display: inline;
+  margin-right: 0.15rem;
+}
+
+
 .postDetails__createdBy {
+  @include breakpoint(mini, small, medium) {
+    width: 100%;
+    padding: 0.7rem 0 0.7rem 1.65rem;
+  }
   background-color: $bg-dark;
   display: block;
   float: left;
@@ -14,6 +63,14 @@
 }
 
   .postDetails__createdBy-avatar {
+    @include breakpoint(small, medium) {
+      height: 57px;
+      width: 57px;
+    }
+    @include breakpoint(mini) {
+      height: 47px;
+      width: 47px;
+    }
     display: block;
     float: left;
     height: 60px;
@@ -22,6 +79,10 @@
 
   .postDetails__createdBy-user {
     @include p-meta;
+    @include breakpoint(mini, small, medium) {
+      padding: 0.2rem 1rem 0 0.85rem;
+      height: auto;
+    }
     color: $grey-warm;
     display: block;
     float: left;
@@ -38,6 +99,9 @@
 
 .postDetails__createdDate {
   @include p-meta;
+  @include breakpoint(mini, small, medium) {
+    display: none;
+  }
   border-left: 2px solid rgba($grey-warm, 0.1);
   color: $green-light;
   display: block;
@@ -56,6 +120,9 @@
 
 .postDetails__views {
   @include p-meta;
+  @include breakpoint(mini, small, medium) {
+    display: none;
+  }
   border-left: 2px solid rgba($grey-warm, 0.1);
   color: $green-mid;
   display: block;
@@ -74,6 +141,9 @@
 
 .postDetails__replies {
   @include p-meta;
+  @include breakpoint(mini, small, medium) {
+    display: none;
+  }
   border-left: 2px solid rgba($grey-warm, 0.1);
   color: $green-dark;
   display: block;

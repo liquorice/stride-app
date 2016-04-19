@@ -1,27 +1,81 @@
-.threads {
-
-}
-
 .thread {
+  @include breakpoint(small, medium) {
+    height: 7.4rem;
+  }
+  @include breakpoint(mini) {
+    height: auto;
+    margin-bottom: 0;
+    box-shadow: none;
+  }
   background: $white;
   cursor: pointer;
-  display: table;
-  margin-bottom: 0.3rem;
+  height: 5rem;
+  margin-bottom: 5px;
+  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
+}
+
+.thread__mobile {
+  @include breakpoint(mini, small, medium) {
+    display: block;
+    float: left;
+  }
+  display: none;
+  height: 2.5rem;
+  width: 100%;
+  background: $white;
+  margin-bottom: 6px;
+  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
+  border-left: 6px solid $white;
+
+  &[data-pinned] {
+    border-left: 6px solid $blue-dark;
+  }
+}
+
+.thread__mobile-created {
+  @include p-meta;
+  color: $green-light;
+  display: block;
+  float: left;
+  width: 50%;
+  padding: 0.6rem 1rem;
+  height: 2.5rem;
+  border-top: 2px solid rgba($grey-warm, 0.1);
+}
+
+.thread__mobile-replies {
+  @include p-meta;
+  color: $green-dark;
+  display: block;
+  float: left;
+  width: 50%;
+  border-left: 2px solid rgba($grey-warm, 0.1);
+  padding: 0.6rem 1rem;
+  height: 2.5rem;
+  border-top: 2px solid rgba($grey-warm, 0.1);
 }
 
 .thread__preview {
   @include p-meta;
-  border-left: 0.37rem solid $white;
-  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
+  @include breakpoint(small, medium) {
+    width: 100%;
+  }
+  @include breakpoint(mini) {
+    width: 100%;
+    max-height: 8rem;
+    height: auto;
+  }
+  background: $white;
   cursor: pointer;
-  display: table-cell;
-  margin-bottom: 0.37rem;
-  max-width: 1rem;
-  padding: 0.5rem 1rem 1.31rem 1rem;
-  width: 39%;
+  display: block;
+  float: left;
+  padding: 0.75rem 0.5rem;
+  width: 68.9%;
+  height: 5rem;
+  border-left: 6px solid $white;
 
   &[data-pinned] {
-    border-left: 0.37rem solid $blue-dark;
+    border-left: 6px solid $blue-dark;
   }
 
   &[data-locked] {
@@ -40,27 +94,46 @@
 }
 
 .thread__name {
+  display: block;
+  float: left;
+  max-width: 93%;
   h2 {
     @include h2-regular;
+    @include breakpoint(mini) {
+      max-height: 3.3em;
+    }
     color: $primary;
     font-size: 1.65em;
     line-height: 1.5;
     margin-bottom: 0.2em;
     overflow: hidden;
-    white-space: nowrap;
+    word-break: break-word;
+    max-height: 1.65em;
   }
 }
 
 .thread__latest {
+  @include breakpoint(mini) {
+    max-height: 2.8em;
+  }
+  display: block;
+  float: left;
+  width: 100%;
+  max-height: 1.4em;
+  overflow: hidden;
+  word-break: break-word;
   p {
     @include p-meta;
-    max-height: 1.4em;
-    overflow: hidden;
-    word-break: break-word;
   }
 }
 
   .thread__latest-avatar {
+    @include breakpoint(mini) {
+      display: inline-block;
+      float: none;
+      margin-bottom: -0.25em;
+    }
+    display: block;
     float: left;
     margin-right: 0.25em;
     height: 18.1px;
@@ -69,14 +142,17 @@
 
 .thread__created {
   @include p-meta;
+  @include breakpoint(mini, small, medium) {
+    display: none;
+  }
   border-left: 2px solid rgba($grey-warm, 0.1);
-  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
   color: $green-light;
   cursor: pointer;
-  display: table-cell;
-  margin-bottom: 0.37rem;
-  padding: 0 1rem 0.1rem 1rem;
-  width: 1%;
+  display: block;
+  float: left;
+  padding: 1rem 0.5rem;
+  width: 18.1%;
+  height: 5rem;
 
   h2 {
     @include h2-regular;
@@ -93,14 +169,17 @@
 
 .thread__replies {
   @include p-meta;
+  @include breakpoint(mini, small, medium) {
+    display: none;
+  }
   border-left: 2px solid rgba($grey-warm, 0.1);
-  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
   color: $green-mid;
   cursor: pointer;
-  display: table-cell;
-  margin-bottom: 0.37rem;
-  padding: 0 1rem 0.1rem 1rem;
-  width: 1%;
+  display: block;
+  float: left;
+  padding: 1rem 0.5rem;
+  width: 13%;
+  height: 5rem;
 
   h2 {
     @include h2-regular;

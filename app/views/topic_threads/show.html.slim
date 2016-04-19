@@ -35,6 +35,14 @@
     strong Replies
     h2 = @thread.posts_count
 
+  .postDetails__mobile
+    .postDetails__mobile-createdDate
+      strong Created: #{@thread.created_at.strftime('%x')}
+    .postDetails__mobile-views
+      strong Views: XXX
+    .postDetails__mobile-replies
+      strong Replies: #{@thread.posts_count}
+
 = render @posts
 = render 'partials/pagination', paginated: @posts
 

@@ -42,10 +42,10 @@ $huge: 1800px;
 }
 
 .constrained {
-  @include breakpoint(huge, overlarge, large) {
+  @include breakpoint(huge, overlarge) {
     width: 71%;
   }
-  @include breakpoint(medium) {
+  @include breakpoint(medium, large) {
     width: 84%;
   }
   margin: 0 auto;
@@ -56,10 +56,10 @@ $huge: 1800px;
 }
 
 .group {
-  @include breakpoint(huge, overlarge, large) {
+  @include breakpoint(huge, overlarge) {
     width: 71%;
   }
-  @include breakpoint(medium) {
+  @include breakpoint(medium, large) {
     width: 84%;
   }
   margin: 0 auto;

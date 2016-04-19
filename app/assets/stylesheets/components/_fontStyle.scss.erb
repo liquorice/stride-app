@@ -29,6 +29,9 @@
 
 @mixin h2-regular {
   @include ff_adelle-bold;
+  @include breakpoint(small, mini) {
+    font-size: 20px;
+  }
   color: $black;
   font-size: 1.46rem;
   line-height: 1.2;
