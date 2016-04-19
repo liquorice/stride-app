@@ -6,17 +6,17 @@
 - if total_pages > 1
   .pagination
     - if current_page > 1
-      a.pagination__link.first href='?page=1' First
+      a.pagination__link.first href='?page=1'
       a.pagination__link.prev href="?page=#{previous_page}" Prev
     - else
-      span.pagination__link.first.disabled First
+      span.pagination__link.first.disabled
       span.pagination__link.prev.disabled Prev
 
     span.pagination__display Page #{current_page} of #{total_pages}
 
     - if current_page < total_pages
       a.pagination__link.next href="?page=#{next_page}" Next
-      a.pagination__link.last href="?page=#{total_pages}" Last
+      a.pagination__link.last href="?page=#{total_pages}"
     - else
       span.pagination__link.next.disabled Next
-      span.pagination__link.last.disabled Last
+      span.pagination__link.last.disabled

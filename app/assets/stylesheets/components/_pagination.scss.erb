@@ -1,62 +1,115 @@
+@mixin pagination__btn {
+  content: " ";
+  height: 10.8px;
+  width: 10.1px;
+  line-height: 1.4;
+  display: inline-block;
+}
+
 .pagination {
   text-align: center;
-  width: 100%;
+  width: 342px;
+  display: block;
+  margin: auto auto;
+
+  .disabled {
+    background: rgba($bg-dark, 0.5);
+    opacity: 0.7;
+
+    &:hover {
+      background: rgba($bg-dark, 0.5);
+      color: $grey-warm;
+    }
+  }
 }
 
 .pagination__link,
 .pagination__display {
-  @include button-short;
-  @include p-meta;
-  background-color: $white;
+  @include button-meta;
+  margin: 0;
   border-radius: 0;
-  margin: 0.25rem 0.06rem;
+  background-color: $white;
+
+  &:hover {
+    background: rgba($links, 0.2);
+    color: $blue-dark;
+  }
 }
 
 .pagination__link.disabled {
   cursor: default;
 }
 
+.pagination__link, {
+  padding: 0.5357rem 0.2rem;
+}
+
 .pagination__display {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 0.5357rem 2rem;
+  width: 150px;
 }
 
 .pagination__link.first {
+  width: 30.84px;
+  border-right: 2px solid rgba($grey-warm, 0.1);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   &:before {
     @include icon__first;
-    content: " ";
-    height: 1rem;
-    vertical-align: baseline;
-    width: 1rem;
+    @include pagination__btn;
+    &:hover {
+      background-image: url("<%= asset_data_uri 'icons/icon_first-arrow-blue.svg' %>");
+    }
+  }
+  &:not([class="disabled"]):hover {
+    &:before {
+      background-image: url("<%= asset_data_uri 'icons/icon_first-arrow-blue.svg' %>");
+    }
   }
 }
 
 .pagination__link.prev {
+  border-right: 2px solid rgba($grey-warm, 0.1);
+  width: 62.76px;
   &:before {
     @include icon__prev;
-    content: " ";
-    height: 1rem;
-    vertical-align: baseline;
-    width: 1rem;
+    @include pagination__btn;
+    margin-right: 3px;
+  }
+  &:not([class="disabled"]):hover {
+    &:before {
+      background-image: url("<%= asset_data_uri 'icons/icon_prev-arrow-blue.svg' %>");
+    }
   }
 }
 
 .pagination__link.next {
+  border-left: 2px solid rgba($grey-warm, 0.1);
+  width: 62.76px;
   &:after {
     @include icon__next;
-    content: " ";
-    height: 1rem;
-    vertical-align: baseline;
-    width: 1rem;
+    @include pagination__btn;
+    margin-left: 3px;
+  }
+  &:not([class="disabled"]):hover {
+    &:before {
+      background-image: url("<%= asset_data_uri 'icons/icon_next-arrow-blue.svg' %>");
+    }
   }
 }
 
 .pagination__link.last {
+  border-left: 2px solid rgba($grey-warm, 0.1);
+  width: 30.84px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   &:after {
     @include icon__last;
-    content: " ";
-    height: 1rem;
-    vertical-align: baseline;
-    width: 1rem;
+    @include pagination__btn;
+  }
+  &:not([class="disabled"]):hover {
+    &:before {
+      background-image: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.svg' %>");
+    }
   }
 }
