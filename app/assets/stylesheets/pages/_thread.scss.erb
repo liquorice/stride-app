@@ -1,9 +1,9 @@
 .thread {
-  @include breakpoint(small, medium) {
+  @include breakpoint(medium) {
     height: 7.4rem;
     margin-bottom: 0.5rem;
   }
-  @include breakpoint(mini) {
+  @include breakpoint(mini, small) {
     height: auto;
     margin-bottom: 0;
     box-shadow: none;
@@ -26,10 +26,13 @@
   background: $white;
   margin-bottom: 6px;
   box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
-  border-left: 6px solid $white;
+  // border-left: 6px solid $white;
 
   &[data-pinned] {
     border-left: 6px solid $blue-dark;
+    .thread__mobile-created {
+      padding: 0.6rem 1rem;
+    }
   }
 }
 
@@ -39,7 +42,7 @@
   display: block;
   float: left;
   width: 50%;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem calc(1rem + 6px);
   height: 2.5rem;
   border-top: 2px solid rgba($grey-warm, 0.1);
 }
