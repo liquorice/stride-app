@@ -5,6 +5,23 @@
   width: 100%;
 }
 
+.postReply__disabled {
+  background-color: $bg-dark;
+  display: table-row;
+  width: 100%;
+
+  p {
+    @include p-regular;
+    color: $grey-warm;
+    margin-bottom: 0;
+    padding: 0.4rem 1.2rem;
+
+    a {
+      border: none;
+    }
+  }
+}
+
 .postReply__title {
   background-color: $green-mid;
   display: table-row;
@@ -25,6 +42,18 @@
 
   textarea {
     @include p-regular;
+    @include breakpoint(large) {
+      width: 85.8%;
+    }
+    @include breakpoint(medium) {
+      width: 82.2%;
+    }
+    @include breakpoint(small) {
+      width: 81.6%;
+    }
+    @include breakpoint(mini) {
+      width: 100%;
+    }
     box-sizing:padding-box;
     display: block;
     display: table-cell;
@@ -38,14 +67,41 @@
   }
 }
 
+.postReply__clear {
+  @include icon__clear;
+  @include breakpoint(mini) {
+    display: table-cell;
+  }
+
+  background-color: $bg-dark;
+  border-radius: 50%;
+  content: " ";
+  display: none;
+  float: right;
+  height: 17px;
+  margin-right: 10px;
+  margin-top: 1.2rem;
+  position: relative;
+  width: 17px;
+}
+
 .postReply__button {
   background-color: $white;
   display: table-cell;
-  float: left;
+  float: right;
   padding: 0.65rem;
 
   button {
     @include button-standard;
     padding: 0.571em 0.877em 0.643em;
+    transition: all 100ms ease-out;
+  }
+}
+
+.hasContent {
+  button {
+    background-color: $primary;
+    color: $white;
+    transition: all 100ms ease-out;
   }
 }

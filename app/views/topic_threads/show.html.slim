@@ -51,6 +51,16 @@
     .postReply__title
       h3 Post a reply
     = form_tag new_post_path(@thread), method: :post, class:"postReply__form" do |f|
-      textarea.js-autoexpand placeholder="Enter text..." name="content"
+      = text_area_tag 'postReply__content', nil, name: 'content', placeholder: "Enter text...", class: 'js-autoexpand'
+
       .postReply__button
         button Post
+      .postReply__clear
+
+- else
+  .postReply
+    .postReply__disabled
+      p
+        ' Please
+        a href=login_path login or register 
+        ' to reply
