@@ -1,3 +1,17 @@
+// Pagination images defined here because pagination styles update these
+
+// Pagination default and disabled icons
+$icon-pagination-first-grey: url("<%= asset_data_uri 'icons/icon_first-arrow-grey.svg' %>");
+$icon-pagination-prev-grey: url("<%= asset_data_uri 'icons/icon_prev-arrow-grey.svg' %>");
+$icon-pagination-next-grey: url("<%= asset_data_uri 'icons/icon_next-arrow-grey.svg' %>");
+$icon-pagination-last-grey: url("<%= asset_data_uri 'icons/icon_last-arrow-grey.svg' %>");
+
+// Pagination hover icons
+$icon-pagination-first-blue: url("<%= asset_data_uri 'icons/icon_first-arrow-blue.svg' %>");
+$icon-pagination-prev-blue: url("<%= asset_data_uri 'icons/icon_prev-arrow-blue.svg' %>");
+$icon-pagination-next-blue: url("<%= asset_data_uri 'icons/icon_next-arrow-blue.svg' %>");
+$icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.svg' %>");
+
 @mixin icon__standard {
   height: 0.9rem;
   width: 0.9rem;
@@ -60,27 +74,27 @@
 
 @mixin icon__first {
   background-size: 10.8px 10.1px;
-  background-image: url("<%= asset_data_uri 'icons/icon_first-arrow-grey.svg' %>");
+  background-image: $icon-pagination-first-grey;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 @mixin icon__prev {
-  background-image: url("<%= asset_data_uri 'icons/icon_prev-arrow-grey.svg' %>");
+  background-image: $icon-pagination-prev-grey;
   background-size: 5.9px 10.1px;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 @mixin icon__next {
-  background-image: url("<%= asset_data_uri 'icons/icon_next-arrow-grey.svg' %>");
+  background-image: $icon-pagination-next-grey;
   background-size: 5.9px 10.1px;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 @mixin icon__last {
-  background-image: url("<%= asset_data_uri 'icons/icon_last-arrow-grey.svg' %>");
+  background-image: $icon-pagination-last-grey;
   background-size: 10.8px 10.1px;
   background-repeat: no-repeat;
   background-position: center center;

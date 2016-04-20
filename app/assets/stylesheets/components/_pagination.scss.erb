@@ -57,13 +57,15 @@
   &:before {
     @include icon__first;
     @include pagination__btn;
-    &:hover {
-      background-image: url("<%= asset_data_uri 'icons/icon_first-arrow-blue.svg' %>");
+  }
+  &:hover {
+    &:before {
+      background-image: $icon-pagination-first-blue;
     }
   }
-  &:not([class="disabled"]):hover {
+  &.disabled {
     &:before {
-      background-image: url("<%= asset_data_uri 'icons/icon_first-arrow-blue.svg' %>");
+      background-image: $icon-pagination-first-grey;
     }
   }
 }
@@ -76,9 +78,14 @@
     @include pagination__btn;
     margin-right: 3px;
   }
-  &:not([class="disabled"]):hover {
+  &:hover {
     &:before {
-      background-image: url("<%= asset_data_uri 'icons/icon_prev-arrow-blue.svg' %>");
+      background-image: $icon-pagination-prev-blue;
+    }
+  }
+  &.disabled {
+    &:before {
+      background-image: $icon-pagination-prev-grey;
     }
   }
 }
@@ -91,9 +98,14 @@
     @include pagination__btn;
     margin-left: 3px;
   }
-  &:not([class="disabled"]):hover {
-    &:before {
-      background-image: url("<%= asset_data_uri 'icons/icon_next-arrow-blue.svg' %>");
+  &:hover {
+    &:after {
+      background-image: $icon-pagination-next-blue;
+    }
+  }
+  &.disabled {
+    &:after {
+      background-image: $icon-pagination-next-grey;
     }
   }
 }
@@ -107,9 +119,14 @@
     @include icon__last;
     @include pagination__btn;
   }
-  &:not([class="disabled"]):hover {
-    &:before {
-      background-image: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.svg' %>");
+  &:hover {
+    &:after {
+      background-image: $icon-pagination-last-blue;
+    }
+  }
+  &.disabled {
+    &:after {
+      background-image: $icon-pagination-last-grey;
     }
   }
 }
