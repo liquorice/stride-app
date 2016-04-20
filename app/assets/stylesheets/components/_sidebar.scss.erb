@@ -98,7 +98,10 @@
 //
 
 .sidebar {
-  .side__group {
+  .side__group:first-child {
+    padding: 0 0 0.65em 0;
+  }
+  .side__group:nth-child(n+2) {
     padding: 0.65em 0;
   }
 }
