@@ -81,13 +81,13 @@ main {
 .sidebar {
   @include breakpoint(huge, overlarge, large, medium) {
     width: columns(9);
+    float: left;
   }
   @include breakpoint(small, mini) {
     margin-bottom: 20px;
     margin-right: 0;
     width: mobile_columns(28);
   }
-  float: left;
   position: relative;
 }
 

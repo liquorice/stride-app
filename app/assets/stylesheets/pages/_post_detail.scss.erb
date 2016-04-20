@@ -1,28 +1,19 @@
 .postDetails {
-  @include breakpoint(medium) {
-    height: 7.4rem;
-  }
-  @include breakpoint(mini, small) {
-    height: 6.9rem;
+  @include breakpoint(mini, small, medium) {
+    height: 7.161rem;
   }
   background: $white;
-  height: 4.9rem;
+  height: 5rem;
   margin-bottom: 6px;
 }
 
 .postDetails__mobile {
-  @include breakpoint(medium) {
+  @include breakpoint(mini, small, medium) {
     display: block;
     float: left;
-  }
-  @include breakpoint(mini, small) {
-    display: block;
-    height: 2rem;
-    float: left;
-    padding: 0.45rem 0 0 1.65rem;
   }
   display: none;
-  height: 2.5rem;
+  height: 2.561rem;
   width: 100%;
   padding: 0.7rem 0 0.7rem 1.65rem;
 }
@@ -53,19 +44,20 @@
   @include breakpoint(mini, small, medium) {
     width: 100%;
     padding: 0.7rem 0 0.7rem 1.65rem;
+    height: 4.6rem;
   }
   background-color: $bg-dark;
   display: block;
   float: left;
-  height: 4.9rem;
+  height: 5rem;
   padding: 0.9rem 0 0 1.65rem;
   width: 55.8%;
 }
 
   .postDetails__createdBy-avatar {
     @include breakpoint(small, medium) {
-      height: 57px;
-      width: 57px;
+      height: 52px;
+      width: 52px;
     }
     @include breakpoint(mini) {
       height: 47px;
@@ -86,7 +78,7 @@
     color: $grey-warm;
     display: block;
     float: left;
-    height: 4.9rem;
+    height: 5rem;
     padding: 0.2rem 1rem 0 0.85rem;
 
     h2 {
@@ -106,7 +98,7 @@
   color: $green-light;
   display: block;
   float: left;
-  height: 4.9rem;
+  height: 5rem;
   padding: 1.1rem 0 0 0.85rem;
   width: 18.2%;
 
@@ -127,7 +119,7 @@
   color: $green-mid;
   display: block;
   float: left;
-  height: 4.9rem;
+  height: 5rem;
   padding: 1.1rem 0 0 0.85rem;
   width: 13%;
 
@@ -148,7 +140,7 @@
   color: $green-dark;
   display: block;
   float: left;
-  height: 4.9rem;
+  height: 5rem;
   padding: 1.1rem 0 0 0.85rem;
   width: 13%;
 
