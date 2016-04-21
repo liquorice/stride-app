@@ -1,49 +1,42 @@
 Module.register('textarea-showtoggle', function() {
   'use strict';
 
-  $(document).ready(function() {
-    var showChar = 1000;
-    var moretext = "Show more";
-    var lesstext = "Show less";
-    
+    $(document).ready(function() {
 
-    $('.post__showToggle').each(function() {
-        var content = $(this).html();
- 
-        if(content.length > showChar) {
- 
-            var c = content.substr(0, showChar);
-            var h = content.substr(showChar, content.length - showChar);
+        var maxHeight = 400;
+        var moretext = "Show more";
+        var lesstext = "Show less";
+        
 
-            var showBtn = '<a href="" class="post__showMore">' + moretext + '</a>';
+        $('.post__showToggle').each(function() {
+            if ($(this).parent().height() > maxHeight) {
+                $(this).parent().css("height", $(this).parent().find('post__showToggle').height());
+                $(this).parent().addClass("hide");
+                $(this).parent().parent().find('.post__showMore').html(moretext);
+            }
+        });
 
-            var quoteBtn = '<a href="" class="post__quote">"Quote</a>';
+        $(".post__showMore").click(function(){
 
-            var html = '<span id="prevContent" class="fadeContent">' + c + '</span><span class="moreContent"><span>' + h + '</span><div>' + showBtn + quoteBtn + '</div></span>';
- 
-            $(this).html(html);
-        }
+            $(this).html() == moretext ? $(this).html(lesstext) : $(this).html(moretext);
+
+            if($(this).parent().find('.post__content').length) {
+
+                if($(this).prev().hasClass('hide')){
+
+                    $(this).parent().find('.post__content').css('max-height', $(this).parent().find('.post__content').find('.post__showToggle').css('height'));
+
+                    $(this).prev().removeClass('hide');
+
+                } else {
+
+                    $(this).prev().addClass('hide');
+                    $(this).parent().find('.hide').css('max-height', maxHeight);
+
+                }
+
+            }
+        });
     });
- 
-    $(".post__showMore").click(function(){
-        if($(this).hasClass("less")) {
-            $(this).removeClass("less");
-            $(this).html(moretext);
-            if($(this).parent().parent().parent().find('#prevContent').length) {
-              $(this).parent().parent().parent().find('#prevContent').addClass("fadeContent");
-          }
-        } else {
-            $(this).addClass("less");
-            $(this).html(lesstext);
-            if($(this).parent().parent().parent().find('#prevContent').length) {
-              $(this).parent().parent().parent().find('#prevContent').removeClass("fadeContent");
-          }
-        }
-        $(this).parent().prev().toggle('slow');
-        $(this).prev().toggle('slow');
-
-        return false;
-    });
-  });
 
 });
