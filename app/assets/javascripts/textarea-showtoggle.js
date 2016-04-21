@@ -10,9 +10,10 @@ Module.register('textarea-showtoggle', function() {
 
         $('.post__showToggle').each(function() {
             if ($(this).parent().height() > maxHeight) {
-                $(this).parent().css("height", $(this).parent().find('post__showToggle').height());
+                $(this).parent().css("height", $(this).height());
                 $(this).parent().addClass("hide");
                 $(this).parent().parent().find('.post__showMore').html(moretext);
+                $(this).parent().parent().find('.post__showMore').css('display', 'inline-block');
             }
         });
 
@@ -20,18 +21,17 @@ Module.register('textarea-showtoggle', function() {
 
             $(this).html() == moretext ? $(this).html(lesstext) : $(this).html(moretext);
 
-            if($(this).parent().find('.post__content').length) {
+            if($(this).parent().parent().find('.post__content').length) {
 
-                if($(this).prev().hasClass('hide')){
+                if($(this).parent().parent().find('.post__content').hasClass('hide')){
 
-                    $(this).parent().find('.post__content').css('max-height', $(this).parent().find('.post__content').find('.post__showToggle').css('height'));
-
-                    $(this).prev().removeClass('hide');
+                    $(this).parent().parent().find('.post__content').css('max-height', $(this).parent().parent().find('.post__content').find('.post__showToggle').css('height'));
+                    $(this).parent().parent().find('.post__content').removeClass('hide');
 
                 } else {
 
-                    $(this).prev().addClass('hide');
-                    $(this).parent().find('.hide').css('max-height', maxHeight);
+                    $(this).parent().parent().find('.post__content').addClass('hide');
+                    $(this).parent().parent().find('.hide').css('max-height', maxHeight);
 
                 }
 
