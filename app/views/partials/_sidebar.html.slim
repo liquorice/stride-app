@@ -1,20 +1,19 @@
 .side__group
-  // Uncomment permissions check when ready
-  / - unless @current_user
-  a href=login_path
-    .btn__sideLogin Login or Register
-    .btn__newThreadInactive Create new Thread
+  - unless @current_user
+    a href=login_path
+      .btn__sideLogin Login or Register
+      .btn__newThreadInactive Create new Thread
 
-  // Uncomment permissions check when ready
-  / - if current_user_can?(:topicThreads_create)
-  a href=new_topic_thread_path
-    .btn__newThreadActive Create new Thread
+  - if current_user_can?(:topicThreads_create)
+    a href=new_topic_thread_path
+      .btn__newThreadActive Create new Thread
 
   // Uncomment permissions check when ready
   / - if current_user_can?(:topics_create)
   a href=new_topic_path
     .btn__newTopicActive Create new Topic
   // Add permissions check when ready
+  / - if current_user_can?(:chat_create)
   a href="#"
     .btn__newChatActive Setup new Chat
 
@@ -22,9 +21,10 @@
   .sideMenu
     a href="#" Upcoming live chats
     // Add permissions check when ready
+    / - if current_user_can?(:users_view)
     a href="#" Archived chats
-    // Add permissions check when ready
-    a href="#" View all users
+    - if current_user_can?(:users_view)
+      a href="#" View all users
     a href="#" Community rules
     a href="#" Privacy statement
 

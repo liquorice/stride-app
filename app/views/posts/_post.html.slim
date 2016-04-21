@@ -12,7 +12,7 @@
 
       .post__details-text
         strong
-          - if current_user_can?(:post_moderate)
+          - if current_user_can?(:users_view)
             a href="#"
               = post.user.name
           - else
