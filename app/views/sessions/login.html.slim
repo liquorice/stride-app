@@ -1,13 +1,24 @@
-h1 Log in
+h1 Log into #{@site.name}
 
 = form_for(:session, url: login_path) do |f|
   .label
-    .label__caption Name
-    = f.text_field :name
+    .label__title
+      strong Username or email
+    .form__textfield
+      = f.text_field :name, class:"input__textfield"
+
+    .label__title
+      strong Password
+    .form__textfield
+      = f.password_field :password, class:"input__textfield"
 
   .label
-    .label__caption Password
-    = f.password_field :password
+    button class="form__button-primary form__button-fullWidth" Log in
+    .form__checkbox
+      = f.check_box "Stay logged in", class:"input__checkbox"
+      = f.label "Stay logged in", "Stay logged in"
 
-  p
-    button Log in
+  .label
+    a href="#" class="form__button-standard form__button-fullWidth" Register new account
+    .label__required
+      | Registering allows you to create new posts, reply to comments, and contribute to live chats
