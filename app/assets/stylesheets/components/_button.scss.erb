@@ -54,6 +54,17 @@
   }
 }
 
+@mixin button-primary {
+  @include button-standard;
+  background: $primary;
+  color: $white;
+
+  &:hover {
+    background: $primary-dark;
+    color: $white;
+  }
+}
+
 @mixin button-short {
   @include button-standard;
   margin-bottom: 0.01rem;
