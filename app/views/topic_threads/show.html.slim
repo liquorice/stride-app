@@ -47,15 +47,15 @@
 = render 'partials/pagination', paginated: @posts
 
 - if current_user_can? :post_create
-  .postReply
+  .postReply.js-postReply
     .postReply__title
       h3 Post a reply
     = form_tag new_post_path(@thread), method: :post, class:"postReply__form" do |f|
-      = text_area_tag 'postReply__content', nil, name: 'content', placeholder: "Enter text...", class: 'js-autoexpand'
+      textarea.js-textarea name='content' placeholder='Enter text…'
 
       .postReply__button
         button Post
-      .postReply__clear
+      .postReply__clear.js-clear Clear
 
 - else
   .postReply

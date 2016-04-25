@@ -16,8 +16,7 @@
 
 //= require module
 //= require textarea-showtoggle
-//= require textarea-clear
-//= require autoexpand
+//= require post-reply
 //= require dropdown
 //= require href
 
