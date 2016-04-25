@@ -19,5 +19,7 @@
 //= require post-reply
 //= require dropdown
 //= require href
+//= require modal
+//= require notification
 
 //= require main

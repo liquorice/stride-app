@@ -1,4 +1,50 @@
+.modalOverlay {
+  background-color: $bg;
+  bottom: 0;
+  display: none;
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2000;
+
+  body.modal-visible & {
+    display: block;
+  }
+}
+
+  body.modal-visible {
+    overflow-y: hidden;
+  }
+
+  .modalOverlay__close {
+    // TODO style this MC
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: red;
+  }
+
+  .modalOverlay__loading {
+    // TODO style this MC
+    color: purple;
+    display: none;
+    font-family: 'Comic Sans MS', fantasy;
+    font-size: 50px;
+    padding: 100px;
+    text-align: center;
+
+    .modalOverlay.loading & {
+      display: block;
+    }
+  }
+
+
 .modalContainer {
+
   h1 {
     @include h3-flood;
     color: $green-dark;

@@ -19,6 +19,17 @@ html
       })(document);
 
   body.page__forum
+    .modalOverlay.js-popup
+      .modalOverlay__close.js-popup-close Close
+      .modalOverlay__loading Loading…
+      .modalContainer.js-popup-content
+
+    - if flash[:success]
+      .notification.success.js-notification = flash[:success]
+
+    - if flash[:error]
+      .notification.error.js-notification = flash[:error]
+
     header.header
       = render "/partials/navigation"
 

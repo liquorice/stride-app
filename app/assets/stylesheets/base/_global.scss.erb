@@ -46,6 +46,37 @@ body {
   width: 100%;
 }
 
+// Notifications
+
+.notification {
+  // TODO Style this MC
+  background: #fff;
+  font-family: 'Comic Sans MS', fantasy;
+  left: 100px;
+  padding: 30px;
+  position: fixed;
+  right: 100px;
+  text-align: center;
+  top: 100px;
+  transition: all .3s;
+  z-index: 2000;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.error {
+    border: 10px solid red;
+  }
+
+  &.success {
+    border: 10px solid green;
+  }
+}
+
+// Layout
+
 main {
   @include breakpoint(huge, overlarge) {
     padding-top: 65px;
