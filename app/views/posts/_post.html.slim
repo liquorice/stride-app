@@ -13,7 +13,7 @@
       .post__details-text
         strong
           - if current_user_can?(:users_view)
-            a href="#"
+            a href=user_path(post.user)
               = post.user.name
           - else
             = post.user.name
