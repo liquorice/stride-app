@@ -1,4 +1,4 @@
-.post data-hidden=post.hidden?
+.post.js-post data-hidden=post.hidden?
   a.permalinkAnchor name="post-#{post.id}" &nbsp;
 
   - if post.hidden?
@@ -31,10 +31,13 @@
               - else
                 | Show this reply
 
-    .post__content
-      = simple_format(post.content, class:'post__showToggle')
+    .post__content.js-postContent
+      = simple_format(post.content)
 
     .post__buttons
-      .post__showMore
+      .post__showMore.js-post-toggle
+        | Show more
+      .post__showLess.js-post-toggle
+        | Show less
       .post__quote
         | "Quote
