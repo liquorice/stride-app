@@ -8,9 +8,9 @@
 - allow_none ||= false
 - default = (allow_none) ? '(None)' : options.values.first
 
-.input__dropdown.js-dropdown
-  / .dropdown-display.js-display = options[value] || default
-  select data-type='dropdown' name=name class="turnintodropdown"
+.dropdown.js-dropdown
+  .dropdown__display.js-display = options[value] || default
+  select data-type='dropdown'
     - if allow_none
       option value='' selected=('selected' if value == '') #{default}
     - options.each do |k, v|

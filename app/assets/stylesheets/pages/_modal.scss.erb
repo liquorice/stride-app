@@ -1,99 +1,62 @@
-.modal {
+.modalContainer {
   h1 {
     @include h3-flood;
     color: $green-dark;
     margin-bottom: 1rem;
     padding: 10px;
   }
-}
 
-.alert {
-  color: $alert;
-}
-
-.label {
-  margin-bottom: 2.75rem;
-  padding: 0 10px;
-  display: block;
-}
-
-.label__title {
-  @include p-meta;
-}
-
-.label__desc {
-  @include p-meta;
-}
-
-.label__required {
-  @include p-meta;
-  margin-top: 10px;
-}
-
-.form__textfield {
-  margin-top: 7px;
-}
-
-.form__dropdown {
-  *zoom: 1;
-  font-weight: 400;
-  margin: 7px 0 0 0;
-
-  &:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
-}
-
-.toggle__text {
-  @include p-meta;
-  display: block;
-  float: left;
-  line-height: 1;
-  transition: color 0.4s;
-}
-
-  .toggle__text-right {
-    margin-left: 38px;
+  .alert {
+    color: $alert;
   }
 
-.form__toggle {
-  margin-top: 15px;
-}
-
-.form__toggle-public {
-  margin-left: 50px;
-
-  .toggle__text-left {
-    margin-left: -47px;
+  .label {
+    margin-bottom: 2.75rem;
+    padding: 0 10px;
   }
-}
 
-.form__toggle-lock {
-  margin-left: 70px;
+    .label__title {
+      @include p-meta;
+      @include ff_adelle-bold;
+    }
 
-  .toggle__text-left {
-    margin-left: -67px;
+    .label__desc {
+      @include p-meta;
+    }
+
+    .label__required {
+      @include p-meta;
+      margin-top: 10px;
+    }
+
+    input[type=text] {
+      margin-top: 7px;
+    }
+
+    .dropdown {
+      margin: 7px 0 0 0;
+    }
+
+    .toggle {
+      margin-top: 15px;
+    }
+
+  .form__buttons {
+    padding: 0 10px;
   }
-}
 
-.form__buttons {
-  display: block;
-  padding: 0 10px;
-}
+  .form__button-standard {
+    @include button-standard;
+    margin-right: 5px;
+  }
 
-.form__button-standard {
-  @include button-standard;
-  margin-right: 5px;
-}
+  .form__button-primary {
+    @include button-primary;
+    margin-right: 5px;
+  }
 
-.form__button-primary {
-  @include button-primary;
-  margin-right: 5px;
-}
-
-.form__button-fullWidth {
-  text-align: center;
-  width: 360px;
+  .form__button-fullWidth {
+    text-align: center;
+    width: 360px;
+  }
 }

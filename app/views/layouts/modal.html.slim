@@ -17,10 +17,7 @@ html
       })(document);
 
   body.modal
-    h2.dev__modal Modal popup
-    .constrained
-      h2 Stride — #{@site.name}
-
+    .modalContainer
       - if flash[:success]
         .notifications
           .notification.success = flash[:success]

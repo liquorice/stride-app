@@ -1,50 +1,46 @@
 = form_for @thread do |f|
   .label
-    .label__title
-      strong Show/hide this thread publicly
+    .label__title Show/hide this thread publicly
     .label__desc This post can be removed from public view.
 
-    .form__toggle.form__toggle-public
-      = f.check_box :public, class:"input__toggle input__toggle-flat"
-      = f.label :public, "-"
-        .toggle__text.toggle__text-left Public
-        .toggle__text.toggle__text-right Hidden
+    label.toggle
+      = f.check_box :public
+      .toggle__text Public
+      .toggle__text Hidden
 
   .label
-    .label__title
-      strong Lock/unlock this thread
+    .label__title Lock/unlock this thread
     .label__desc Locking will prevent any further activity. Thread will still remain visible.
 
-    .form__toggle.form__toggle-lock
-      = f.check_box :locked, class:"input__toggle input__toggle-flat"
-      = f.label :locked, "-"
-        .toggle__text.toggle__text-left Unlocked
-        .toggle__text.toggle__text-right Locked
+    label.toggle
+      = f.check_box :locked
+      .toggle__text Unlocked
+      .toggle__text Locked
 
   .label
     .label__title
-      strong Title of thread
+      | Title of thread
       span.alert *
     .form__textfield
       = f.text_field :name, class:"input__textfield"
 
-    .label__title
-      strong Select forum category
-      span.alert *
-    .form__dropdown
-      = render 'components/dropdown',
-        name: "topic_thread[topic_id]",
-        options: Hash[@site.topics.pluck(:id, :name)],
-        value: @thread.topic_id
-
   .label
     .label__title
-      strong Tags
+      | Select forum category
+      span.alert *
+
+    = render 'components/dropdown',
+      name: "topic_thread[topic_id]",
+      options: Hash[@site.topics.pluck(:id, :name)],
+      value: @thread.topic_id
+
+  .label
+    .label__title Tags
     p TODO
 
   .form__buttons
     .form__button-standard Cancel
-    button class="form__button-primary" Save
+    button.form__button-primary Save
 
   .label
     .label__required
