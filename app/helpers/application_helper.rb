@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def insert_svg filename, options={}
     file = File.read(Rails.root.join('app', 'assets', 'images', filename))
     doc = Nokogiri::HTML::DocumentFragment.parse file
@@ -8,9 +9,5 @@ module ApplicationHelper
     end
     raw doc
   end
-
-  # def inline_svg(path)
-  #   raw Rails.application.assets.find_asset(path).to_s
-  # end
 
 end
