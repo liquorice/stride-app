@@ -1,20 +1,20 @@
 .side__group
   - unless @current_user
-    a href=login_path
+    a href=login_path data-modal=true
       .btn__sideLogin Login or Register
       .btn__newThreadInactive Create new Thread
 
   - if current_user_can?(:topicThreads_create)
-    a href=new_topic_thread_path
+    a href=new_topic_thread_path data-modal=true
       .btn__newThreadActive Create new Thread
 
   // Uncomment permissions check when ready
   / - if current_user_can?(:topics_create)
-  a href=new_topic_path
+  a href=new_topic_path data-modal=true
     .btn__newTopicActive Create new Topic
   // Add permissions check when ready
   / - if current_user_can?(:chat_create)
-  a href="#"
+  a href="#" data-modal=true
     .btn__newChatActive Setup new Chat
 
 .side__group

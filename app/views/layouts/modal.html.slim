@@ -18,14 +18,15 @@ html
 
   body.modal
     .modalContainer.js-modalContainer
-      - if flash[:success]
-        .notifications
-          .notification.success = flash[:success]
+      .modalContent
+        - if flash[:success]
+          .notifications
+            .notification.success = flash[:success]
 
-      - if flash[:error]
-        .notifications
-          .notification.error = flash[:error]
+        - if flash[:error]
+          .notifications
+            .notification.error = flash[:error]
 
-      = yield
+        = yield
 
     = javascript_include_tag 'application'

@@ -19,17 +19,20 @@
   }
 
   .modalOverlay__close {
-    // TODO style this MC
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 50px;
+    @include icon__clear;
+    background-color: $bg-dark;
+    border-radius: 50%;
+    cursor: pointer;
     height: 50px;
-    background: red;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 50px;
   }
 
   .modalOverlay__loading {
     // TODO style this MC
+    // TODO ask AT regarding loading style
     color: purple;
     display: none;
     font-family: 'Comic Sans MS', fantasy;
@@ -102,7 +105,20 @@
   }
 
   .form__button-fullWidth {
+    max-width: 360px;
     text-align: center;
-    width: 360px;
+    width: 100%;
   }
+}
+
+.modalContent {
+  margin: auto;
+  max-width: 536px;
+  width: 100%;
+}
+
+.modalContent__login {
+  margin: auto;
+  max-width: 360px;
+  width: 100%;
 }
