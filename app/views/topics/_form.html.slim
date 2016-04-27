@@ -1,11 +1,24 @@
 = form_for @topic do |f|
-  .label
-    .label__caption Topic name
-    = f.text_field :name
+  .label.bottomMargin-small
+    .label__title 
+      | Title of forum
+      span.alert *
+    .form__textfield
+        = f.text_field :name, class:"input__textfield", required:"true"
 
   .label
-    .label__caption Description
-    = f.text_area :description
+    .label__title
+      | Forum description
+      span.alert *
+    .form__textarea
+        = f.text_area :description, class:"input__textarea", required:"true"
 
-  p
-    button Save topic
+  .form__buttons
+    .form__button-standard Cancel
+    button.form__button-primary Save
+
+  .label
+    .label__required
+      | You have required fields to complete (
+      span.alert *
+      ')

@@ -16,6 +16,25 @@
   }
 }
 
+// Textarea style
+
+.input__textarea {
+  @include p-regular;
+  border-bottom: 1px solid rgba($grey-warm, 0.12);
+  color: $grey-warm;
+  height: 173px;
+  margin-top: 7px;
+  padding: 12px;
+  resize: none;
+  width: 100%;
+
+  &:focus {
+    color: $links;
+    border-bottom: 1px solid $links;
+    box-shadow: 0px 0px 3px 1px rgba($links, 0.15);
+  }
+}
+
 // Checkbox style
 
 .checkbox {
