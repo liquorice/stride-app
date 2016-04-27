@@ -1,0 +1,11 @@
+flexbox: no-2009
+browsers:
+  - "> 0.01%"
+  - "last 10 versions"
+  - "Chrome >= 36"
+  - "Safari >= 7"
+  - "ff >= 38"
+  - "ie > 8"
+  - "iOS >= 6"
+  - "and_chr >= 35"
+  - "Android >= 4"

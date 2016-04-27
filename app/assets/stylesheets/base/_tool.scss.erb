@@ -1,47 +1,8 @@
-@mixin transition($transition...) {
-  @include prefix(transition, $transition);
-}
-
-@mixin transform($transformations...) {
-  @include prefix(transform, $transformations);
-}
-
-@mixin opacity($opacity) {
-  @include prefix(opacity, $opacity);
-  $ie_opacity: $opacity * 100.0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie_opacity})";
-  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie_opacity})";
-}
-
-@mixin border-radius($radius) {
-  @include prefix(border-radius, $radius);
-}
-
-@mixin prefix($property, $value) {
-  #{$property}: $value;
-  -moz-#{$property}: $value;
-  -ms-#{$property}: $value;
-  -o-#{$property}: $value;
-  -webkit-#{$property}: $value;
-}
-
-@mixin gradient($start, $stops...) {
-  background: -moz-linear-gradient($start, $stops);
-  background: -ms-linear-gradient($start, $stops);
-  background: -o-linear-gradient($start, $stops);
-  background: -webkit-linear-gradient($start, $stops);
-  background: linear-gradient($start, $stops);
-}
-
 @mixin retina() {
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dppx){ @content; }
 }
 
 @mixin unselectable {
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -51,14 +12,12 @@
       border-left: 20px solid transparent;
       border-right: 20px solid transparent;
       border-top: 20px solid $colour;
-      left: -webkit-calc(50% - 20px);
       left: calc(50% - 20px);
     }
     @include breakpoint(medium, small) {
       border-left: 15px solid transparent;
       border-right: 15px solid transparent;
       border-top: 15px solid $colour;
-      left: -webkit-calc(50% - 15px);
       left: calc(50% - 15px);
     }
     content: "";
@@ -83,38 +42,6 @@
     left: 0;
     position: absolute;
     width: 100%;
-  }
-}
-
-@mixin animation($animate...) {
-  $max: length($animate);
-  $animations: '';
-
-  @for $i from 1 through $max {
-    $animations: #{$animations + nth($animate, $i)};
-
-    @if $i < $max {
-      $animations: #{$animations + ", "};
-    }
-  }
-  -moz-animation:    $animations;
-  -o-animation:      $animations;
-  -webkit-animation: $animations;
-  animation:         $animations;
-}
-
-@mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
-    @content;
-  }
-  @-moz-keyframes #{$animationName} {
-    @content;
-  }
-  @-o-keyframes #{$animationName} {
-    @content;
-  }
-  @keyframes #{$animationName} {
-    @content;
   }
 }
 

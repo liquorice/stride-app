@@ -11,6 +11,8 @@ gem 'sass-rails', '~> 5.0'
 gem "slim-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# Auto prefixer for Rails
+gem "autoprefixer-rails"
 
 # For uglifier, mebbe?
 gem 'therubyracer', platforms: :ruby
