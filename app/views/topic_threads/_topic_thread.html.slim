@@ -41,7 +41,5 @@
       | #{topic_thread.posts_count}
 
   .thread__mobile data-pinned=topic_thread.pinned
-    .thread__mobile-created
-      strong Created: #{topic_thread.created_at.strftime('%x')}
-    .thread__mobile-replies
-      strong Replies: #{topic_thread.posts_count}
+    .thread__mobile-created Created: #{topic_thread.created_at.strftime('%x')}
+    .thread__mobile-replies Replies: #{topic_thread.posts_count}

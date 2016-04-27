@@ -3,13 +3,11 @@
 
   = form_for(:session, url: login_path) do |f|
     .label
-      .label__title
-        strong Username or email
+      .label__title Username or email
       .form__textfield
         = f.text_field :name, class:"input__textfield"
 
-      .label__title
-        strong Password
+      .label__title Password
       .form__textfield
         = f.password_field :password, class:"input__textfield"
 
