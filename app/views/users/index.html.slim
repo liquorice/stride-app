@@ -1,3 +1,12 @@
+- content_for :dark_strip do
+  h2.shortTitle All Users
+
+- content_for :light_strip do
+  p Search bar here
+
+- content_for :sidebar do
+  = render 'partials/sidebar'
+
 - @access_levels.each do |access_level|
   table
     thead

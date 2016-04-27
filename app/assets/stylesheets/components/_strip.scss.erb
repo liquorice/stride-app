@@ -48,6 +48,14 @@
     @include topic-heading;
     margin-top: 1rem;
     text-align: center;
+
+    .shortTitle {
+      @at-root {
+        .strip__dark {
+          min-height: 100px;
+        }
+      }
+    }
   }
 
   h3 {
@@ -104,6 +112,7 @@
   }
   background-size: 1440px 530px;
   background: url('noise-1440x530.png') center center repeat $bg;
+  background-color: $bg-dark;
   padding-bottom: 3.675rem;
   padding-top: 3.5rem;
 
