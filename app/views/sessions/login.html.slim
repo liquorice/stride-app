@@ -12,17 +12,16 @@
         = f.password_field :password, class:"input__textfield"
 
     .label.bottomMargin-small
-      button class="form__button-primary form__button-fullWidth" Log in
+      button.form__button-primary.form__button-fullWidth Log in
 
     .label
       label.checkbox
         = f.check_box "Stay logged in", class:"input__checkbox"
         .form__checkbox
       .checkbox__text Stay logged in
-      .label__link
-        a href="#" Lost password
+      a.label__link href="#" Lost password
 
     .label
-      a href="#" class="form__button-standard form__button-fullWidth" Register new account
+      a.form__button-standard.form__button-fullWidth href="#" Register new account
       .label__required
         | Registering allows you to create new threads and replies, and contribute to the live chats.

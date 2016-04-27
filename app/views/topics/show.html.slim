@@ -4,8 +4,7 @@
 
 - if current_user_can?(:topics_modify)
   - content_for :edit_strip do
-    a href=edit_topic_path(@topic) data-modal=true
-      .btn__edit Edit details
+    a.btn__edit href=edit_topic_path(@topic) data-modal=true Edit details
 
 - content_for :light_strip do
   p = @topic.description
