@@ -38,8 +38,8 @@
     strong
       | Replies
     h2
-      | #{topic_thread.posts_count}
+      = ("#{topic_thread.posts_count / 1000}k" if topic_thread.posts_count > 1000 ) || topic_thread.posts_count
 
   .thread__mobile data-pinned=topic_thread.pinned
     .thread__mobile-created Created: #{topic_thread.created_at.strftime('%x')}
-    .thread__mobile-replies Replies: #{topic_thread.posts_count}
+    .thread__mobile-replies = ("Replies: #{topic_thread.posts_count / 1000}k" if topic_thread.posts_count > 1000 ) || "Replies: #{topic_thread.posts_count}"

@@ -8,24 +8,42 @@
   = render 'partials/sidebar'
 
 - @access_levels.each do |access_level|
-  table
-    thead
-      th
+  .usersTable
+    .usersTable__titles
+      .usersTable__column
         h2 = access_level.name.pluralize
-        | (#{access_level.users.count})
-      th Joined
-      th Last active
-      th Forum replies
-      th Chat messages
+        span = "(#{access_level.users.count})"
+      .usersTable__column Joined
+      .usersTable__column Last active
+      .usersTable__column Forum replies
+      .usersTable__column Chat messages
 
     - access_level.users.each do |user|
-      tr data-href=user_path(user)
-        td
-          div style="width: 20px; height: 20px; float: left"
+      .userRow data-href=user_path(user)
+        .userRow__column.bold
+          .userRow__column-avatar
             = render "user/avatar", user: user
           = user.name
-        td = user.created_at.strftime('%x')
-        td = user.last_seen
-        td = user.posts.count
-        td 0
-
+        .userRow__column = user.created_at.strftime('%x')
+        .userRow__column
+          = ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%x')
+        .userRow__column
+          = ("#{user.posts.count / 1000}k" if user.posts.count > 1000 ) || user.posts.count
+        .userRow__column 0
+        .userRow__column-mobile
+          strong
+            | Joined
+          =< user.created_at.strftime('%x')
+      .userRow-mobile
+        .userRow__column-mobile
+          strong
+            | Last active
+          =< ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%x')
+        .userRow__column-mobile
+          strong
+            | Forum replies
+          =< ("#{user.posts.count / 1000}k" if user.posts.count > 1000) || user.posts.count
+        .userRow__column-mobile 
+          strong
+            | Chat messages
+          =< "0"
