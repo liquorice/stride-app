@@ -10,6 +10,9 @@
 .usersTable__column {
   @include p-meta;
   @include ff_adelle-bold;
+  @include breakpoint(overlarge, large) {
+    width: 15%;
+  }
   display: inline-block;
   width: 14.56%;
 
@@ -26,22 +29,28 @@
   }
 
   &:first-child {
-    @include breakpoint(small, mini) {
+    @include breakpoint(overlarge, large) {
+      width: 38%;
+    }
+    @include breakpoint(medium, small, mini) {
       width: 100%;
     }
     width: 40.32%;
   }
 
   &:nth-child(n+2) {
-    @include breakpoint(small, mini) {
+    @include breakpoint(medium, small, mini) {
       display: none;
     }
   }
 }
 
 .userRow {
-  @include breakpoint(small, mini) {
+  @include breakpoint(medium, small, mini) {
+    border-bottom: 2px solid rgba($grey-warm, 0.1);
+    box-shadow: none;
     height: 2.5rem;
+    margin-bottom: 0;
   }
   background-color: $white;
   box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
@@ -53,6 +62,9 @@
 
 .userRow__column {
   @include p-meta;
+  @include breakpoint(overlarge, large) {
+    width: 15%;
+  }
   display: inline-block;
   padding: 0.85em 0;
   width: 14.56%;
@@ -62,35 +74,30 @@
   }
 
   &:first-child {
-    @include breakpoint(small, mini) {
-      width: 70%;
+    @include breakpoint(overlarge, large) {
+      width: 38%;
+    }
+    @include breakpoint(medium, small, mini) {
+      width: 60%;
     }
     padding-left: 1em;
     width: 40.32%;
   }
 
   &:nth-child(2) {
-    // @include breakpoint(small, mini) {
-    //   width: 19.3%;
-    // }
-    @include breakpoint(small, mini) {
+    @include breakpoint(medium, small, mini) {
       display: none;
     }
   }
 
   &:nth-child(n+3) {
-    @include breakpoint(small, mini) {
+    @include breakpoint(medium, small, mini) {
       display: none;
     }
   }
 }
 
 .userRow__column-avatar {
-  // @include breakpoint(mini) {
-  //   display: inline-block;
-  //   float: none;
-  //   margin-bottom: -0.25em;
-  // }
   display: block;
   float: left;
   height: 18.1px;
@@ -99,21 +106,24 @@
 }
 
 .userRow-mobile {
-  @include breakpoint(huge, overlarge, large, medium) {
+  @include breakpoint(huge, overlarge, large) {
     display: none;
   }
-  display: block;
-  width: 100%;
+  @include breakpoint(mini) {
+    height: 3.9rem;
+  }
   background-color: $white;
   box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
   cursor: pointer;
+  display: block;
   height: 2.5rem;
-  margin-bottom: 0.158rem;
+  margin-bottom: 6px;
+  width: 100%;
 }
 
 .userRow__column-mobile {
   @include p-meta;
-  @include breakpoint(huge, overlarge, large, medium) {
+  @include breakpoint(huge, overlarge, large) {
     display: none;
   }
   display: inline-block;
@@ -122,13 +132,30 @@
   .userRow & {
     padding-right: 1em;
     text-align: right;
-    width: 29%;
+    width: 39%;
   }
-  .userRow-mobile & {
-    width: 30%;
 
-    &:first-child {
-      padding-left: 1em;
+  .userRow-mobile & {
+    @include breakpoint(mini) {
+      strong {
+        display: block;
+      }
+    }
+    padding-left: 1em;
+    width: 32%;
+
+    &:nth-child(n+2) {
+      border-left: 2px solid rgba($grey-warm, 0.1);
+    }
+
+    &:nth-child(1) {
+      color: $green-dark;
+    }
+    &:nth-child(2) {
+      color: $green-mid;
+    }
+    &:nth-child(3) {
+      color: $green-light;
     }
   }
 }
