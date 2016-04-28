@@ -1,27 +1,16 @@
 .strip__dark {
-  h3.topic__text {
-    @include breakpoint(huge, overlarge) {
-      margin-bottom: 0.5rem;
-      margin-top: 1rem;
-    }
-    @include breakpoint(mini, small, medium, large) {
-      margin-bottom: 0.5rem;
-      margin-top: 0;
-    }
-
-    em {
-      &:before {
-        @include icon__back;
-        content: " ";
-        display: inline-block;
-        margin: 0 10px 0 0;
-      }
+  h3.topic__title {
+    &:before {
+      @include icon__back;
+      content: " ";
+      display: inline-block;
+      margin: 0 10px 0 0;
     }
   }
 }
 
 .topic__preview {
-  .topic__text {
+  .topic__name {
     @include h3-flood;
     color: $green-dark;
     line-height: 1.9rem;

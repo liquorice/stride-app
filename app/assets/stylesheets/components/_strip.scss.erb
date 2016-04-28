@@ -17,23 +17,18 @@
 
 .strip__dark {
   @include breakpoint(huge, overlarge) {
-    min-height: 212px;
     padding-top: 18px;
   }
   @include breakpoint(large) {
-    min-height: 212px;
     padding-top: 34px;
   }
   @include breakpoint(medium) {
-    min-height: 200px;
     padding-top: 32px;
   }
   @include breakpoint(small) {
-    min-height: 160px;
     padding-top: 23px;
   }
   @include breakpoint(mini) {
-    min-height: 130px;
     padding-top: 13.5px;
   }
 
@@ -48,27 +43,21 @@
     @include topic-heading;
     margin-top: 1rem;
     text-align: center;
+    padding-bottom: 1rem;
 
-    .shortTitle {
-      @at-root {
-        .strip__dark {
-          min-height: 100px;
-        }
-      }
+    &.small {
+      padding-bottom: 0;
     }
   }
 
-  h3 {
+  h3.topic__title {
+    @include topic-heading-sub;
+    position: relative;
+    text-align: center;
+  }
+
+  h3.thread__title {
     @include thread-heading;
-    @include breakpoint(huge, overlarge, large) {
-      margin-bottom: 1.5rem;
-    }
-    @include breakpoint(large) {
-      margin-bottom: 2rem;
-    }
-    @include breakpoint(medium, small, mini) {
-      margin-bottom: 2.5rem;
-    }
     position: relative;
     text-align: center;
   }

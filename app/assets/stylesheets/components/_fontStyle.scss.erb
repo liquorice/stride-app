@@ -64,29 +64,6 @@
   margin-bottom: 0.6rem;
 }
 
-@mixin h2-mixed {
-  @include ff_quatroSlab;
-  @include breakpoint(huge, overlarge, large) {
-    margin-bottom: 1.5rem;
-  }
-  @include breakpoint(medium, small, mini) {
-    margin-bottom: 1rem;
-  }
-  em {
-    @include ff_flood;
-    font-size: 120%;
-    letter-spacing: -0.02em;
-    word-spacing: -0.05em;
-    color: $blue-dark;
-  }
-  span.upper {
-    text-transform: uppercase;
-  }
-  color: $primary;
-  font-size: 2.2rem;
-  line-height: 2.5rem;
-}
-
 @mixin forum-heading {
   @include ff_flood;
   @include breakpoint(huge) {
@@ -132,6 +109,37 @@
   margin-bottom: 0.5em;
 }
 
+@mixin topic-heading-sub {
+  @include ff_flood;
+  @include breakpoint(huge, overlarge) {
+    font-size: 1.46rem;
+    line-height: 1.05;
+  }
+  @include breakpoint(large) {
+    font-size: 1.38rem;
+    line-height: 1.05;
+  }
+  @include breakpoint(mini, small, medium) {
+    font-size: 1.309rem;
+    line-height: 1.05;
+  }
+  color: $white;
+  font-size: 55%;
+  letter-spacing: -0.02em;
+  line-height: 0.8;
+  margin-bottom: 0;
+  margin-top: 1.5rem;
+  word-spacing: -0.05em;
+
+  a {
+    color: $white;
+    &:hover {
+      color: $primary;
+      transition: all 100ms ease-out;
+    }
+  }
+}
+
 @mixin thread-heading {
   @include ff_adelle-bold;
   @include breakpoint(huge, overlarge) {
@@ -146,28 +154,8 @@
     font-size: 2.38rem;
     line-height: 1.05;
   }
-
-  em {
-    @include ff_flood;
-    color: $white;
-    font-size: 55%;
-    letter-spacing: -0.02em;
-    line-height: 0.8;
-    margin-bottom: 0;
-    word-spacing: -0.05em;
-  }
-  a {
-    color: $white;
-    &:hover {
-      color: $primary;
-      transition: all 100ms ease-out;
-    }
-  }
-  span.upper {
-    text-transform: uppercase;
-  }
   color: $white;
-  margin-bottom: 3em;
+  margin-bottom: 3rem;
 }
 
 //

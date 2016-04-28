@@ -9,9 +9,8 @@
 
 - @topics.each do |topic|
   .topic__preview
-    .topic__text
-      a href=topic_path(topic)
-        = topic.name
+    .topic__name
+      a href=topic_path(topic) = topic.name
 
     .topicThreads
       = render topic.topic_threads.preview

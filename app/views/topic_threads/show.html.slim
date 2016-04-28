@@ -1,9 +1,8 @@
 - content_for :dark_strip do
-  h3.topic__text
+  h3.topic__title
     a href=topic_path(@thread.topic)
-      em
-        =< @thread.topic.name
-  h3
+      =< @thread.topic.name
+  h3.thread__title
     =< @thread.name
 
 - if current_user_can?(:threads_modify)
