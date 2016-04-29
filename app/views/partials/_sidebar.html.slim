@@ -24,12 +24,13 @@
     a href="#" Community rules
     a href="#" Privacy statement
 
-.side__group
-  .sideTopics
-    h2 Forum Topics:
+- unless !show_topics
+  .side__group
+    .sideTopics
+      h2 Forum Topics:
 
-    ul
-      - @site.topics.each do |topic|
-        li
-          a href=topic_path(topic) data-active=(topic == @topic)
-            = topic.name
+      ul
+        - @site.topics.each do |topic|
+          li
+            a href=topic_path(topic) data-active=(topic == @topic)
+              = topic.name

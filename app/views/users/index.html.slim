@@ -10,7 +10,7 @@
     // Need to implement search functionality
 
 - content_for :sidebar do
-  = render 'partials/sidebar'
+  = render 'partials/sidebar', show_topics: false
 
 - @access_levels.each do |access_level|
   .usersTable

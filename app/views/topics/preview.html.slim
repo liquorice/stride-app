@@ -5,7 +5,7 @@
   p Overview content for the forums
 
 - content_for :sidebar do
-  = render 'partials/sidebar'
+  = render 'partials/sidebar', show_topics: true
 
 - @topics.each do |topic|
   .topic__preview
