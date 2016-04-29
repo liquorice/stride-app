@@ -1,39 +1,98 @@
 .userOverview, .userThreads, .userPosts {
   width: 100%;
+  margin-bottom: 2.5rem;
 }
 
 .userOverview__title, .userThreads__title, .userPosts__title {
-  @include ff_adelle-bold;
   @include p-large;
+  @include ff_adelle-bold;
   color: $black;
 }
 
-.userOverview__content {
-  .post__details-text {
-    @include ff_adelle-bold;
-    @include p-regular;
-    height: auto;
-    margin-left: 0;
-    padding: 0;
-    a {
-      border-bottom: none;
+.userOverview__row {
+  width: 100%;
+  background-color: $white;
+  display: block;
+
+  &:first-child {
+    height: 8.25rem;
+  }
+
+  &:nth-child(n+2) {
+    border-top: 2px solid rgba($grey-warm, 0.1);
+  }
+}
+
+  .userOverview__avatar-container {
+    min-height: 8.25rem;
+    min-width: 8.25rem;
+    height: 8.25rem;
+    display: block;
+    float: left;
+    border-right: 2px solid rgba($grey-warm, 0.1);
+  }
+
+    .userOverview__avatar {
+      display: block;
+      height: 124px;
+      width: 124px;
+      margin: 1rem auto 1rem;
+    }
+
+  .userOverview__status {
+    height: 8.25rem;
+    display: block;
+    float: left;
+    width: 35.5rem;
+
+    .large__text {
+      @include p-large;
+      @include ff_adelle-bold;
+      color: $black;
+      display: block;
+    }
+
+    .checkbox__text {
+      float: none;
+    }
+
+    .small__text {
+      @include p-meta;
+      display: block;
     }
   }
 
-  .post__details-date {
-    @include p-meta;
-  }
-
-  .post__buttons {
-    padding: 0.55rem 0 0.55rem 1.65rem;
-  }
-
-  .post__view {
-    padding: 0.55rem 0 1.55rem 1.65rem;
-    a {
-      @include links;
-      @include p-regular;
+  .button__suspend {
+    @include button-meta;
+    @include breakpoint (huge, overlarge, large, medium, small, mini) {
+      padding-top: 0.2em;
     }
+    background-color: rgba($alert, 0.2);
+    color: $black;
+
+    &:hover {
+      background-color: $alert;
+      color: $black;
+    }
+  }
+
+.userOverview__column {
+  @include p-meta;
+  display: inline-block;
+  min-width: 6rem;
+  padding: 1rem;
+
+  strong {
+    display: block;
+  }
+
+  &:first-child {
+    padding-left: 2rem;
+  }
+
+  &:last-child {
+    padding-right: 1rem;
+    max-width: 11.1rem;
   }
 }
 
@@ -67,8 +126,8 @@
   }
 
     .userThread__details-text {
-      @include ff_adelle-bold;
       @include p-regular;
+      @include ff_adelle-bold;
       height: auto;
       margin-bottom: 0.35rem;
       margin-left: 0;
@@ -95,7 +154,36 @@
   .userThread__view {
     padding: 0.55rem 0 1.55rem 1.65rem;
     a {
-      @include links;
       @include p-regular;
+      @include links;
     }
   }
+
+.userPosts__content {
+  .post__details-text {
+    @include p-regular;
+    @include ff_adelle-bold;
+    height: auto;
+    margin-left: 0;
+    padding: 0;
+    a {
+      border-bottom: none;
+    }
+  }
+
+  .post__details-date {
+    @include p-meta;
+  }
+
+  .post__buttons {
+    padding: 0.55rem 0 0.55rem 1.65rem;
+  }
+
+  .post__view {
+    padding: 0.55rem 0 1.55rem 1.65rem;
+    a {
+      @include p-regular;
+      @include links;
+    }
+  }
+}
