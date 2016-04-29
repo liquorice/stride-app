@@ -2,7 +2,12 @@
   h2.small All Users
 
 - content_for :light_strip do
-  p Search bar here
+  .users__search
+    form.users__search-form action="/search"
+      label for="search-box"
+        .users__search-clear.js-clear Clear
+      input id="query" type="text" name="query" placeholder="Search users"
+    // Need to implement search functionality
 
 - content_for :sidebar do
   = render 'partials/sidebar'
@@ -36,14 +41,14 @@
           =< user.created_at.strftime('%x')
       .userRow-mobile
         .userRow__column-mobile
-          strong
+          .break
             | Last active
           =< ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%x')
         .userRow__column-mobile
-          strong
+          .break
             | Forum replies
           =< ("#{user.posts.count / 1000}k" if user.posts.count > 1000) || user.posts.count
         .userRow__column-mobile 
-          strong
+          .break
             | Chat messages
           =< "0"

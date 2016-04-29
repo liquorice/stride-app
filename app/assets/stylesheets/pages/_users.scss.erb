@@ -1,3 +1,64 @@
+.users__search {
+  background-color: $white;
+  height: 3rem;
+  width: 100%;
+  position: relative;
+  vertical-align: middle;
+}
+
+  .users__search-form {
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    label {
+      background-color: $white;
+      bottom: 0;
+      margin: auto 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 36px;
+      z-index: 10;
+      height: 100%;
+
+      .users__search-clear {
+        @include icon__clear;
+        @include breakpoint(mini) {
+          margin-top: 0.85rem;
+        }
+        background-color: $bg-dark;
+        border-radius: 50%;
+        cursor: pointer;
+        float: right;
+        height: 20px;
+        margin-right: 16px;
+        margin-top: 1rem;
+        position: relative;
+        text-indent: -5000px;
+        width: 20px;
+      }
+    }
+
+    input {
+      @include p-large;
+      background-color: $white;
+      bottom: 0;
+      display: block;
+      margin: auto 0;
+      padding-right: 28px;
+      padding: 4px 40px 4px 5px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      vertical-align: middle;
+      width: 100%;
+      z-index: 5;
+      max-width: 100%;
+    }
+  }
+
 .usersTable {
   margin-bottom: 3.5rem;
   width: 100%;
@@ -130,19 +191,26 @@
   padding: 0.85em 0;
 
   .userRow & {
-    padding-right: 1em;
+    padding-right: 1.25em;
     text-align: right;
     width: 39%;
   }
 
   .userRow-mobile & {
+    @include ff_adelle-bold;
+    @include breakpoint(medium, small) {
+      .break {
+        display: inline-block;
+      }
+    }
     @include breakpoint(mini) {
-      strong {
+      .break {
         display: block;
       }
     }
     padding-left: 1em;
     width: 32%;
+    height: 100%;
 
     &:nth-child(n+2) {
       border-left: 2px solid rgba($grey-warm, 0.1);
