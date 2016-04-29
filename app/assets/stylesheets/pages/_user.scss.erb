@@ -1,0 +1,101 @@
+.userOverview, .userThreads, .userPosts {
+  width: 100%;
+}
+
+.userOverview__title, .userThreads__title, .userPosts__title {
+  @include ff_adelle-bold;
+  @include p-large;
+  color: $black;
+}
+
+.userOverview__content {
+  .post__details-text {
+    @include ff_adelle-bold;
+    @include p-regular;
+    height: auto;
+    margin-left: 0;
+    padding: 0;
+    a {
+      border-bottom: none;
+    }
+  }
+
+  .post__details-date {
+    @include p-meta;
+  }
+
+  .post__buttons {
+    padding: 0.55rem 0 0.55rem 1.65rem;
+  }
+
+  .post__view {
+    padding: 0.55rem 0 1.55rem 1.65rem;
+    a {
+      @include links;
+      @include p-regular;
+    }
+  }
+}
+
+.userThread {
+  background-color: $white;
+  display: block;
+  margin-bottom: 0.35rem;
+  position: relative;
+
+  &[data-hidden] {
+    background: rgba($bg-dark, 0.5);
+    border-left: 0.37rem solid #36545c;
+  }
+}
+
+  .userThread__hidden {
+    @include h3-regular;
+    background-color: $bg-dark;
+    font-size: 1rem;
+    line-height: 1;
+    margin-bottom: 0;
+    padding: 1rem 2.5rem 1.24rem 1.23rem;
+    width: 100%;
+  }
+
+  .userThread__details {
+    height: auto;
+    padding: 1.15rem 0 0 1.65rem;
+    position: relative;
+    width: 100%;
+  }
+
+    .userThread__details-text {
+      @include ff_adelle-bold;
+      @include p-regular;
+      height: auto;
+      margin-bottom: 0.35rem;
+      margin-left: 0;
+      padding: 0;
+
+      a {
+        border-bottom: 0;
+      }
+
+      .userThread[data-hidden] & {
+        opacity: 0.5;
+      }
+    }
+
+    .userThread__details-date {
+      @include p-meta;
+    }
+
+    .userThread__details-padding {
+      display: inline-block;
+      min-width: 15px;
+    }
+
+  .userThread__view {
+    padding: 0.55rem 0 1.55rem 1.65rem;
+    a {
+      @include links;
+      @include p-regular;
+    }
+  }

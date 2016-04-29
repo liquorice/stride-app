@@ -1,1 +1,47 @@
-= @user.name
+- if current_user_can?(:users_view)
+  - content_for :dark_strip do
+    h3.users__title
+      a href=users_path All Users
+    h3.user__title
+      =< @user.name
+
+  - content_for :sidebar do
+    = render 'partials/sidebar', show_topics: false
+
+.userOverview
+  p = @user.access_level.name
+  p = @user.created_at.strftime('%x')
+  /p = ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%x')
+  p = @user.topic_threads.count
+  p = @user.posts.count
+  p = "chat msgs"
+  p = "notification"
+
+.userThreads
+  - if @user.topic_threads.count > 0
+    .userThreads__title Threads created
+  - @user.topic_threads.each do |thread|
+    .userThread data-hidden=!thread.public?
+      - if !thread.public?
+        .userThread__hidden
+          | Thread is not public
+
+      .userThread__details
+        .userThread__details-text
+          = "Forums > #{thread.topic.name} > "
+          a href=topic_thread_path(thread) = thread.name
+        .userThread__details-date
+          strong Created: 
+          = "#{thread.created_at.strftime("%I")}:#{thread.created_at.strftime("%M")}#{thread.created_at.strftime('%P')}"
+          .userThread__details-padding
+          strong Replies: 
+          = thread.posts_count
+      .userThread__view
+        a href=topic_thread_path(thread) View thread
+
+.userPosts
+  - if @user.posts.count > 0
+    .userPosts__title Replies to threads
+  - @user.posts.each do |post|
+    .userOverview__content
+      = render "user/post", post: post
