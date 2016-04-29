@@ -34,8 +34,8 @@
 
     .userOverview__avatar {
       display: block;
-      height: 124px;
-      width: 124px;
+      height: 6.2rem;
+      width: 6.2rem;
       margin: 1rem auto 1rem;
     }
 
@@ -44,15 +44,19 @@
     display: block;
     float: left;
     width: 35.5rem;
+    padding: 0.75rem 1rem;
 
     .large__text {
       @include p-large;
       @include ff_adelle-bold;
       color: $black;
       display: block;
+      margin-bottom: 0.3rem;
     }
 
     .checkbox__text {
+      @include ff_adelle-bold;
+      color: $black;
       float: none;
     }
 
@@ -64,11 +68,23 @@
 
   .button__suspend {
     @include button-meta;
+    @include ff_adelle-bold;
     @include breakpoint (huge, overlarge, large, medium, small, mini) {
-      padding-top: 0.2em;
+      padding: 0.32em 0.75em 0.4877em;
     }
     background-color: rgba($alert, 0.2);
     color: $black;
+    margin: 1rem 0 0.3rem;
+
+    &:before {
+      content: url("<%= asset_data_uri 'icons/icon_suspend-black.svg' %>");
+      height: 11px;
+      width: 11px;
+      display: inline-block;
+      position: relative;
+      top: 0.088em;
+      margin-right: 5px;
+    }
 
     &:hover {
       background-color: $alert;
