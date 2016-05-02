@@ -24,6 +24,14 @@
 }
 
   .userOverview__avatar-container {
+    @include breakpoint(small) {
+      min-width: 8rem;
+    }
+    @include breakpoint(mini) {
+      min-height: 5.18rem;
+      min-width: 5.18rem;
+      height: 5.18rem;
+    }
     min-height: 8.25rem;
     min-width: 8.25rem;
     height: 8.25rem;
@@ -33,22 +41,40 @@
   }
 
     .userOverview__avatar {
+      @include avatarSize-large;
+      @include breakpoint (large) {
+        margin: 0.8rem auto 0.8rem;
+      }
+      @include breakpoint(mini) {
+        margin: 0.55rem auto 0.55rem;
+      }
       display: block;
-      height: 6.2rem;
-      width: 6.2rem;
       margin: 1rem auto 1rem;
     }
 
   .userOverview__status {
+    @include breakpoint (large) {
+      padding: 0.5rem 0.8rem;
+    }
+    @include breakpoint (medium, small) {
+      padding: 0.35rem 0.8rem;
+      width: 70%;
+    }
+    @include breakpoint (mini) {
+      padding: 0.32em 0.75em 0.4877em;
+    }
     height: 8.25rem;
     display: block;
     float: left;
-    width: 35.5rem;
+    width: 76%;
     padding: 0.75rem 1rem;
 
     .large__text {
       @include p-large;
       @include ff_adelle-bold;
+      @include breakpoint (medium, small, mini) {
+        margin-bottom: 0.1rem;
+      }
       color: $black;
       display: block;
       margin-bottom: 0.3rem;
@@ -71,6 +97,9 @@
     @include ff_adelle-bold;
     @include breakpoint (huge, overlarge, large, medium, small, mini) {
       padding: 0.32em 0.75em 0.4877em;
+    }
+    @include breakpoint (medium, small, mini) {
+      margin: 0.65rem 0 0.1rem;
     }
     background-color: rgba($alert, 0.2);
     color: $black;

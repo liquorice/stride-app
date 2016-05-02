@@ -41,18 +41,9 @@
   }
 
     .post__details-avatar {
-      @include breakpoint(small, medium) {
-        height: 52px;
-        width: 52px;
-      }
-      @include breakpoint(mini) {
-        height: 47px;
-        width: 47px;
-      }
+      @include avatarSize-medium;
       display: block;
       float: left;
-      height: 60px;
-      width: 60px;
 
       .post[data-hidden] & {
         opacity: 0.5;

@@ -134,6 +134,7 @@
 }
 
   .thread__latest-avatar {
+    @include avatarSize-mini;
     @include breakpoint(mini) {
       display: inline-block;
       float: none;
@@ -142,8 +143,6 @@
     display: block;
     float: left;
     margin-right: 0.25em;
-    height: 18.1px;
-    width: 18.1px;
   }
 
 .thread__created {
