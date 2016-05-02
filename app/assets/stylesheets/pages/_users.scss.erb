@@ -170,7 +170,7 @@
     display: none;
   }
   @include breakpoint(mini) {
-    height: 3.9rem;
+    height: auto;
   }
   background-color: $white;
   box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
@@ -203,6 +203,17 @@
       }
     }
     @include breakpoint(mini) {
+      height: 100%;
+      vertical-align: top;
+
+      .break {
+        display: block;
+      }
+    }
+    @media screen and (max-width: 364px) {
+      height: 4.9rem;
+      vertical-align: top;
+      
       .break {
         display: block;
       }
