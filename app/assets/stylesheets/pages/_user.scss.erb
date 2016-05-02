@@ -14,9 +14,9 @@
     display: block;
     width: 100%;
   }
-  display: none;
-  border-top: 2px solid rgba($grey-warm, 0.1);
   background-color: $white;
+  border-top: 2px solid rgba($grey-warm, 0.1);
+  display: none;
   padding: 1.1rem 1.1rem;
 }
 
@@ -30,16 +30,16 @@
   @include breakpoint(mini, small, medium) {
     border-top: 2px solid rgba($grey-warm, 0.1);
     display: block;
-    width: 100%;
     padding: 0.55rem 0.523rem;
+    width: 100%;
   }
   display: inline;
 }
 
 .userOverview__row {
-  width: 100%;
   background-color: $white;
   display: block;
+  width: 100%;
 
   &:first-child {
     @include breakpoint(mini) {
@@ -61,16 +61,16 @@
       min-width: 8rem;
     }
     @include breakpoint(mini) {
+      height: 5.73rem;
       min-height: 5.73rem;
       min-width: 5.73rem;
-      height: 5.73rem;
     }
-    min-height: 8.25rem;
-    min-width: 8.25rem;
-    height: 8.25rem;
+    border-right: 2px solid rgba($grey-warm, 0.1);
     display: block;
     float: left;
-    border-right: 2px solid rgba($grey-warm, 0.1);
+    height: 8.25rem;
+    min-height: 8.25rem;
+    min-width: 8.25rem;
   }
 
     .userOverview__avatar {
@@ -94,15 +94,15 @@
       width: 70%;
     }
     @include breakpoint (mini) {
-      width: 70%;
       height: 5.73rem;
       padding: 1rem;
+      width: 70%;
     }
-    height: 8.25rem;
     display: block;
     float: left;
-    width: 76%;
+    height: 8.25rem;
     padding: 0.75rem 1rem;
+    width: 76%;
 
     .large__text {
       @include p-large;
@@ -145,12 +145,12 @@
 
     &:before {
       content: url("<%= asset_data_uri 'icons/icon_suspend-black.svg' %>");
-      height: 11px;
-      width: 11px;
       display: inline-block;
+      height: 11px;
+      margin-right: 5px;
       position: relative;
       top: 0.088em;
-      margin-right: 5px;
+      width: 11px;
     }
 
     &:hover {
@@ -165,13 +165,13 @@
     padding: 1rem 0.5rem;
   }
   @include breakpoint(large) {
-    padding: 1rem 0.5rem;
     min-width: 4.65rem;
+    padding: 1rem 0.5rem;
   }
   @include breakpoint(mini, small, medium) {
-    width: 32%;
-    padding: 0 0.55rem;
     min-width: 5.5rem;
+    padding: 0 0.55rem;
+    width: 32%;
   }
   display: inline-block;
   min-width: 6rem;
@@ -193,16 +193,16 @@
 
   &.last {
     @include breakpoint(huge) {
-      padding-right: 1rem;
       max-width: 11.1rem;
+      padding-right: 1rem;
     }
     @include breakpoint(overlarge) {
-      padding-right: 1rem;
       max-width: 10.49rem;
+      padding-right: 1rem;
     }
     @include breakpoint(large) {
-      padding-right: 0.8rem;
       max-width: 8.2rem;
+      padding-right: 0.8rem;
     }
   }
 }

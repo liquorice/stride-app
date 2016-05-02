@@ -64,9 +64,9 @@
   width: 100%;
 }
 
-.usersTable__titles {
-  display: block;
-}
+  .usersTable__titles {
+    display: block;
+  }
 
 .usersTable__column {
   @include p-meta;
@@ -158,12 +158,12 @@
   }
 }
 
-.userRow__column-avatar {
-  @include avatarSize-mini;
-  display: block;
-  float: left;
-  margin-right: 0.25em;
-}
+  .userRow__column-avatar {
+    @include avatarSize-mini;
+    display: block;
+    float: left;
+    margin-right: 0.25em;
+  }
 
 .userRow-mobile {
   @include breakpoint(huge, overlarge, large) {
@@ -181,59 +181,59 @@
   width: 100%;
 }
 
-.userRow__column-mobile {
-  @include p-meta;
-  @include breakpoint(huge, overlarge, large) {
-    display: none;
-  }
-  display: inline-block;
-  padding: 0.85em 0;
-
-  .userRow & {
-    padding-right: 1.25em;
-    text-align: right;
-    width: 39%;
-  }
-
-  .userRow-mobile & {
-    @include ff_adelle-bold;
-    @include breakpoint(medium, small) {
-      .break {
-        display: inline-block;
-      }
+  .userRow__column-mobile {
+    @include p-meta;
+    @include breakpoint(huge, overlarge, large) {
+      display: none;
     }
-    @include breakpoint(mini) {
+    display: inline-block;
+    padding: 0.85em 0;
+
+    .userRow & {
+      padding-right: 1.25em;
+      text-align: right;
+      width: 39%;
+    }
+
+    .userRow-mobile & {
+      @include ff_adelle-bold;
+      @include breakpoint(medium, small) {
+        .break {
+          display: inline-block;
+        }
+      }
+      @include breakpoint(mini) {
+        height: 100%;
+        vertical-align: top;
+
+        .break {
+          display: block;
+        }
+      }
+      @media screen and (max-width: 364px) {
+        height: 4.9rem;
+        vertical-align: top;
+        
+        .break {
+          display: block;
+        }
+      }
+      padding-left: 1em;
+      width: 32%;
       height: 100%;
-      vertical-align: top;
 
-      .break {
-        display: block;
+      &:nth-child(n+2) {
+        border-left: 2px solid rgba($grey-warm, 0.1);
       }
-    }
-    @media screen and (max-width: 364px) {
-      height: 4.9rem;
-      vertical-align: top;
-      
-      .break {
-        display: block;
+
+      &:nth-child(1) {
+        color: $green-dark;
       }
-    }
-    padding-left: 1em;
-    width: 32%;
-    height: 100%;
-
-    &:nth-child(n+2) {
-      border-left: 2px solid rgba($grey-warm, 0.1);
-    }
-
-    &:nth-child(1) {
-      color: $green-dark;
-    }
-    &:nth-child(2) {
-      color: $green-mid;
-    }
-    &:nth-child(3) {
-      color: $green-light;
+      &:nth-child(2) {
+        color: $green-mid;
+      }
+      &:nth-child(3) {
+        color: $green-light;
+      }
     }
   }
-}
