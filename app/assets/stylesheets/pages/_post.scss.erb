@@ -58,13 +58,11 @@
       @include breakpoint(mini) {
         padding: 0.25rem 3rem 0 0.85rem;
         margin-left: 47px;
-        height: 3.5rem;
 
         strong {
           display: block;
         }
       }
-      height: 5rem;
       margin-left: 60px;
       padding: 1rem 1rem 0 0.85rem;
 
@@ -143,6 +141,9 @@
       }
 
   .post__content {
+    @include breakpoint(mini) {
+      padding: 0 1.3rem 0 1.1rem;
+    }
     margin-bottom: 0.5rem;
     margin-top: 0.25rem;
     overflow: hidden;
@@ -188,6 +189,9 @@
   }
 
     .post__buttons {
+      @include breakpoint(mini) {
+        padding: 0.55rem 0 1.75rem 1.1rem;
+      }
       padding: 0.55rem 0 1.75rem 1.65rem;
     }
 
