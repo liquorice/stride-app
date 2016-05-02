@@ -9,16 +9,49 @@
   color: $black;
 }
 
+.mobile__show {
+  @include breakpoint(mini) {
+    display: block;
+    width: 100%;
+  }
+  display: none;
+  border-top: 2px solid rgba($grey-warm, 0.1);
+  background-color: $white;
+  padding: 0.55rem 0.523rem;
+}
+
+.mobile__hide {
+  @include breakpoint(mini) {
+    display: none;
+  }
+}
+
+.mobile__row {
+  @include breakpoint(mini, small, medium) {
+    border-top: 2px solid rgba($grey-warm, 0.1);
+    display: block;
+    width: 100%;
+    padding: 0.55rem 0.523rem;
+  }
+  display: inline;
+}
+
 .userOverview__row {
   width: 100%;
   background-color: $white;
   display: block;
 
   &:first-child {
+    @include breakpoint(mini) {
+      height: 5.18rem;
+    }
     height: 8.25rem;
   }
 
   &:nth-child(n+2) {
+    @include breakpoint(mini, small, medium) {
+      border-top: none;
+    }
     border-top: 2px solid rgba($grey-warm, 0.1);
   }
 }
@@ -61,7 +94,8 @@
       width: 70%;
     }
     @include breakpoint (mini) {
-      padding: 0.32em 0.75em 0.4877em;
+      width: 70%;
+      height: 5.18rem;
     }
     height: 8.25rem;
     display: block;
@@ -85,11 +119,11 @@
       color: $black;
       float: none;
     }
+  }
 
-    .small__text {
-      @include p-meta;
-      display: block;
-    }
+  .text__suspend {
+    @include p-meta;
+    display: block;
   }
 
   .button__suspend {
@@ -98,8 +132,11 @@
     @include breakpoint (huge, overlarge, large, medium, small, mini) {
       padding: 0.32em 0.75em 0.4877em;
     }
-    @include breakpoint (medium, small, mini) {
+    @include breakpoint (medium, small) {
       margin: 0.65rem 0 0.1rem;
+    }
+    @include breakpoint (mini) {
+      margin: 0 0 0.1rem;
     }
     background-color: rgba($alert, 0.2);
     color: $black;
@@ -123,21 +160,49 @@
 
 .userOverview__column {
   @include p-meta;
+  @include breakpoint(overlarge) {
+    padding: 1rem 0.5rem;
+  }
+  @include breakpoint(large) {
+    padding: 1rem 0.5rem;
+    min-width: 4.65rem;
+  }
+  @include breakpoint(mini, small, medium) {
+    width: 32%;
+    padding: 0 0.55rem;
+    min-width: 5.5rem;
+  }
   display: inline-block;
   min-width: 6rem;
   padding: 1rem;
+  vertical-align: top;
 
   strong {
     display: block;
   }
 
-  &:first-child {
-    padding-left: 2rem;
+  &.first {
+    @include breakpoint(overlarge, huge) {
+      padding-left: 2rem;
+    }
+    @include breakpoint(large) {
+      padding-left: 1.15rem;
+    }
   }
 
-  &:last-child {
-    padding-right: 1rem;
-    max-width: 11.1rem;
+  &.last {
+    @include breakpoint(huge) {
+      padding-right: 1rem;
+      max-width: 11.1rem;
+    }
+    @include breakpoint(overlarge) {
+      padding-right: 1rem;
+      max-width: 10.49rem;
+    }
+    @include breakpoint(large) {
+      padding-right: 0.8rem;
+      max-width: 8.2rem;
+    }
   }
 }
 

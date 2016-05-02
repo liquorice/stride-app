@@ -14,37 +14,47 @@
       .userOverview__avatar
         = render 'user/avatar', user: @user
     .userOverview__status
-      .large__text
-        = "Status: #{@user.access_level.name}"
-      label.checkbox
-        = check_box "Moderator", class:"input__checkbox"
-        .form__checkbox
-      / Need to implement functionality ^
-      .checkbox__text Moderator
-      a.button__suspend href="#" Suspend user
-      .small__text
-        strong Suspending a user 
-        | will log them out and prevent them from logging back in
+      / TODO : This check is only for Superuser, who doesn't seem to have access_level in the model, if there will be an access_level for Superuser, remove the if statement
+      - if @user.access_level
+        .large__text
+          = "Status: #{@user.access_level.name}"
+        label.checkbox
+          = check_box "Moderator", class:"input__checkbox"
+          .form__checkbox
+        / TODO : Need to implement functionality ^
+        .checkbox__text Moderator
+        .mobile__hide
+          a.button__suspend href="#" Suspend user
+          .text__suspend
+            strong Suspending a user 
+            | will log them out and prevent them from logging back in
+  .mobile__show
+    a.button__suspend href="#" Suspend user
+    .text__suspend
+      strong Suspending a user 
+      | will log them out and prevent them from logging back in
 
   .userOverview__row
-    .userOverview__column
-      strong Joined
-      = @user.created_at.strftime('%x')
-    .userOverview__column
-      strong Last active
-      = ("Today" if Time.at(@user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(@user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || @user.last_seen.strftime('%x')
-    .userOverview__column
-      strong Threads
-      = @user.topic_threads.count
-    .userOverview__column
-      strong Forum replies
-      = @user.posts.count
-    .userOverview__column
-      strong Chat messages
-      = "0"
-    .userOverview__column
-      strong Notifications
-      = "selected options"
+    .mobile__row
+      .userOverview__column.first
+        strong Joined
+        = @user.created_at.strftime('%x')
+      .userOverview__column
+        strong Last active
+        = ("Today" if Time.at(@user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(@user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || @user.last_seen.strftime('%x')
+      .userOverview__column
+        strong Threads
+        = @user.topic_threads.count
+    .mobile__row
+      .userOverview__column
+        strong Forum replies
+        = @user.posts.count
+      .userOverview__column
+        strong Chat messages
+        = "TODO"
+      .userOverview__column.last
+        strong Notifications
+        = "TODO- e.g. SMS, Email, Twitter, Facebook"
 
 .userThreads
   - if @user.topic_threads.count > 0
