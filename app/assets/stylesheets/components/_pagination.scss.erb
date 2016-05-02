@@ -1,20 +1,20 @@
 @mixin pagination__btn {
   content: " ";
-  height: 10.8px;
-  width: 10.1px;
-  line-height: 1.4;
   display: inline-block;
+  height: 10.8px;
+  line-height: 1.4;
+  width: 10.1px;
 }
 
 .pagination {
   @include breakpoint(mini) {
-    width: 242.84px;
     padding-top: 1.334rem;
+    width: 242.84px;
   }
-  text-align: center;
-  width: 342px;
   display: block;
   margin: auto auto;
+  text-align: center;
+  width: 342px;
 
   .disabled {
     background: rgba($bg-dark, 0.5);
@@ -30,9 +30,9 @@
 .pagination__link,
 .pagination__display {
   @include button-meta;
-  margin: 0;
-  border-radius: 0;
   background-color: $white;
+  border-radius: 0;
+  margin: 0;
 
   &:hover {
     background: rgba($links, 0.2);
@@ -53,8 +53,8 @@
 
 .pagination__display {
   @include breakpoint(mini) {
-    width: 83.25px;
     padding: 0.167rem 0.2rem;
+    width: 83.25px;
   }
   padding: 0.5357rem 0;
   width: 150px;
@@ -64,10 +64,10 @@
   @include breakpoint(mini) {
     width: 24px;
   }
-  width: 30.84px;
+  border-bottom-left-radius: 3px;
   border-right: 2px solid rgba($grey-warm, 0.1);
   border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  width: 30.84px;
   &:before {
     @include icon__first;
     @include pagination__btn;
@@ -134,10 +134,10 @@
   @include breakpoint(mini) {
     width: 24px;
   }
-  border-left: 2px solid rgba($grey-warm, 0.1);
-  width: 30.84px;
-  border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+  border-left: 2px solid rgba($grey-warm, 0.1);
+  border-top-right-radius: 3px;
+  width: 30.84px;
   &:after {
     @include icon__last;
     @include pagination__btn;
