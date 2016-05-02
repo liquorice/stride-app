@@ -7,6 +7,10 @@
 }
 
 .pagination {
+  @include breakpoint(mini) {
+    width: 242.84px;
+    padding-top: 1.334rem;
+  }
   text-align: center;
   width: 342px;
   display: block;
@@ -41,15 +45,25 @@
 }
 
 .pagination__link, {
+  @include breakpoint(mini) {
+    padding: 0.167rem 0.2rem;
+  }
   padding: 0.5357rem 0.2rem;
 }
 
 .pagination__display {
+  @include breakpoint(mini) {
+    width: 83.25px;
+    padding: 0.167rem 0.2rem;
+  }
   padding: 0.5357rem 0;
   width: 150px;
 }
 
 .pagination__link.first {
+  @include breakpoint(mini) {
+    width: 24px;
+  }
   width: 30.84px;
   border-right: 2px solid rgba($grey-warm, 0.1);
   border-top-left-radius: 3px;
@@ -71,6 +85,9 @@
 }
 
 .pagination__link.prev {
+  @include breakpoint(mini) {
+    width: 52.8px;
+  }
   border-right: 2px solid rgba($grey-warm, 0.1);
   width: 62.76px;
   &:before {
@@ -91,6 +108,9 @@
 }
 
 .pagination__link.next {
+  @include breakpoint(mini) {
+    width: 52.8px;
+  }
   border-left: 2px solid rgba($grey-warm, 0.1);
   width: 62.76px;
   &:after {
@@ -111,6 +131,9 @@
 }
 
 .pagination__link.last {
+  @include breakpoint(mini) {
+    width: 24px;
+  }
   border-left: 2px solid rgba($grey-warm, 0.1);
   width: 30.84px;
   border-top-right-radius: 3px;
