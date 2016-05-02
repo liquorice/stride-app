@@ -20,6 +20,9 @@
 
   .modalOverlay__close {
     @include icon__clear;
+    @include breakpoint (mini) {
+      right: 0;
+    }
     background-color: $bg-dark;
     border-radius: 50%;
     cursor: pointer;
@@ -50,6 +53,9 @@
 
   h1 {
     @include h3-flood;
+    @include breakpoint (mini) {
+      padding: 10px 50px 10px 10px;
+    }
     color: $green-dark;
     margin-bottom: 1rem;
     padding: 10px;
