@@ -34,6 +34,9 @@
   }
 
   .post__details {
+    @include breakpoint(mini) {
+      padding: 1rem 0 0 1.1rem;
+    }
     height: 5rem;
     padding: 1.15rem 0 0 1.65rem;
     position: relative;
@@ -52,6 +55,15 @@
 
     .post__details-text {
       @include p-meta;
+      @include breakpoint(mini) {
+        padding: 0.25rem 3rem 0 0.85rem;
+        margin-left: 47px;
+        height: 3.5rem;
+
+        strong {
+          display: block;
+        }
+      }
       height: 5rem;
       margin-left: 60px;
       padding: 1rem 1rem 0 0.85rem;

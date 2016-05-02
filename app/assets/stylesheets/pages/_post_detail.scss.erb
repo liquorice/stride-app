@@ -8,9 +8,14 @@
 }
 
 .postDetails__mobile {
-  @include breakpoint(mini, small, medium) {
+  @include breakpoint(small, medium) {
     display: block;
     float: left;
+  }
+  @include breakpoint(mini) {
+    display: block;
+    float: left;
+    padding: 0.7rem 0 0.7rem 1.1rem;
   }
   display: none;
   height: 2.561rem;
@@ -44,9 +49,14 @@
 
 
 .postDetails__createdBy {
-  @include breakpoint(mini, small, medium) {
+  @include breakpoint(small, medium) {
     width: 100%;
     padding: 0.7rem 0 0.7rem 1.65rem;
+    height: 4.6rem;
+  }
+  @include breakpoint(mini) {
+    width: 100%;
+    padding: 0.7rem 0 0.7rem 1.1rem;
     height: 4.6rem;
   }
   background-color: $bg-dark;
@@ -65,8 +75,12 @@
 
   .postDetails__createdBy-user {
     @include p-meta;
-    @include breakpoint(mini, small, medium) {
+    @include breakpoint(small, medium) {
       padding: 0.2rem 1rem 0 0.85rem;
+      height: auto;
+    }
+    @include breakpoint(mini) {
+      padding: 0 1rem 0 0.85rem;
       height: auto;
     }
     color: $grey-warm;
