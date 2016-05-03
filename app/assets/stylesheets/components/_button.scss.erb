@@ -67,7 +67,6 @@
 
 @mixin button-short {
   @include button-standard;
-  margin-bottom: 0.01rem;
   @include breakpoint(huge) {
     font-size: 0.93rem;
     line-height: 1;
@@ -88,6 +87,7 @@
     line-height: 1.5;
     padding-top: 0.54em;
   }
+  margin-bottom: 0.01rem;
 }
 
 @mixin button-midLevel{
@@ -125,9 +125,30 @@
 
 @mixin button-meta {
   @include button-short;
-  @include p-meta;
+  @include ff_adelle-bold;
+  @include breakpoint(huge, overlarge, large) {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    padding-top: 0.16em;
+  }
+  @include breakpoint(mini, small, medium) {
+    font-size: 13px;
+    line-height: 1.4;
+    padding-top: 0.16em;
+  }
   padding: 0.21em 0.75em 0.2877em;
   margin: 0;
+}
+
+@mixin button-primary-meta {
+  @include button-meta;
+  background: $primary;
+  color: $white;
+
+  &:hover {
+    background: $primary-dark;
+    color: $white;
+  }
 }
 
 @mixin button-midLevel-meta {

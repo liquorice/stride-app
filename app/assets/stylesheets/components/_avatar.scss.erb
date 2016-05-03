@@ -9,6 +9,23 @@
 }
 
 @mixin avatarSize-medium {
+  @include breakpoint(medium) {
+    height: 48px;
+    width: 48px;
+  }
+  @include breakpoint(small) {
+    height: 48px;
+    width: 48px;
+  }
+  @include breakpoint(mini) {
+    height: 48px;
+    width: 48px;
+  }
+  height: 48px;
+  width: 48px;
+}
+
+@mixin avatarSize-large {
   @include breakpoint(small, medium) {
     height: 52px;
     width: 52px;
@@ -21,7 +38,7 @@
   width: 60px;
 }
 
-@mixin avatarSize-large {
+@mixin avatarSize-overlarge {
   @include breakpoint(medium) {
     height: 114px;
     width: 114px;
@@ -37,7 +54,6 @@
   height: 124px;
   width: 124px;
 }
-
 
 .avatar {
   height: 100%;
