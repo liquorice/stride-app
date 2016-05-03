@@ -1,0 +1,24 @@
+h1 Register
+
+= form_for(:user, url: register_path) do |f|
+
+  p
+    | Username
+    br
+    = f.text_field :name
+
+  p
+    | Email address (optional)
+    br
+    = f.text_field :email
+
+  p
+    | Password
+    br
+    = f.password_field :password
+    br
+    | Password confirmation
+    br
+    = f.password_field :password_confirmation
+
+  button Register

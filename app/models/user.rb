@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # --- Validations ---
   has_secure_password
-  validates :name, presence: true, length: { minimum: 2 }
+  validates :name, presence: true, length: { minimum: 2 }, uniqueness: true
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
   validates :avatar_colour, inclusion: { in: AvatarHelper.avatar_colours }
   validates :avatar_face, inclusion: { in: AvatarHelper.avatar_faces}

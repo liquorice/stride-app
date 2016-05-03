@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   patch 'preferences' => 'preferences#update'
   patch 'preferences/password' => 'preferences#update_password', as: :update_password
 
+  # New users
+  get 'register' => 'users#register', as: :register
+  post 'register' => 'users#signup'
+
   # Admin
   scope :admin do
     get '' => 'landing#admin', as: :admin
