@@ -1,38 +1,70 @@
 - content_for :dark_strip do
   h2 Preferences
 
-h3 Your details
+- content_for :light_strip do
+  p
+    | DALE Forums meetings twice a month in Sydney, and after nearly thirty years of supporting men in various stages of coming out, its activities are now going up a notch with ads for the group appearing on many popular male-to-male dating websites and apps like Grindr, Manhunt and Gaydar.
 
-= form_tag preferences_path, method: :patch do |f|
+- content_for :sidebar do
+  = render 'partials/sidebar', show_topics: false
 
-  .label
-    .label__caption Avatar colour
-    input name="avatar_colour" value=@current_user.avatar_colour
+.profileContainer
+  .profileTitle Your details
 
-  .label
-    .label__caption Avatar face
-    input name="avatar_face" value=@current_user.avatar_face
+  = form_tag preferences_path, method: :patch do |f|
+    
+    .profileLabel
+      .profileLabel__title Profile picture
 
-  .label
-    .label__caption Username
-    input name="name" value=@current_user.name
+      - selected_colour = 1
+      - selected_face = 1
+      .profileAvatar__row
+        .profileAvatar__avatar-container
+          .profileAvatar__avatar
+            = render 'user/avatar', user: @current_user
+        .profileAvatar__faces-container
+          - i = 1
+          - 1.upto(10) do |i|
+            .profileAvatar__face
+              input type="radio" name="avatar_face" value=i
+              .avatar data-colour=selected_colour data-face=i
 
-  button Save
+      .profileAvatar__row
+        .profileAvatar__colours-container
+          - j = 1
+          - 1.upto(10) do |j|
+            .profileAvatar__colour
+              input type="radio" name="avatar_colour" value=j
+              .avatar data-colour=j data-face=nil
+      button.profileButton Save
 
-hr
+    .label
+      .profileLabel__title Avatar colour
+      input name="avatar_colour" value=@current_user.avatar_colour
 
-= form_tag update_password_path, method: :patch do |f|
+    .label
+      .profileLabel__title Avatar face
+      input name="avatar_face" value=@current_user.avatar_face
 
-  .label
-    .label__caption Current password
-    input type="password" name="current_password"
+  = form_tag preferences_path, method: :patch do |f|
 
-  .label
-    .label__caption New password
-    input type="password" name="password"
+    .profileLabel
+      .profileLabel__title Username
+      input.input__textfield name="name" value=@current_user.name
 
-  .label
-    .label__caption Confirm new password
-    input type="password" name="password_confirmation"
+      button.profileButton Save
 
-  button Update password
+
+  = form_tag update_password_path, method: :patch do |f|
+
+    .profileLabel
+      .profileLabel__title Current password
+      input.input__textfield type="password" name="current_password"
+
+      .profileLabel__title New password
+      input.input__textfield type="password" name="password"
+
+      .profileLabel__title Confirm new password
+      input.input__textfield type="password" name="password_confirmation"
+
+      button.profileButton Update password
