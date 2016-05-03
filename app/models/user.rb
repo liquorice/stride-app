@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   # --- Validations ---
   has_secure_password
   validates :name, presence: true, length: { minimum: 2 }, uniqueness: { scope: :site }
-  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true, allow_blank: false
   validates :avatar_colour, inclusion: { in: AvatarHelper.avatar_colours }
   validates :avatar_face, inclusion: { in: AvatarHelper.avatar_faces}
 

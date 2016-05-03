@@ -34,6 +34,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_user
+    # Require a logged in user of any access level
+    # Otherwise, 403
+    unless @current_user
+      raise Exceptions::NotAuthorisedError
+    end
+  end
+
   def require_existence(object)
     # Check that an object/model exists
     # If not, 404
