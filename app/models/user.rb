@@ -1,13 +1,16 @@
 class User < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   # --- Associations ---
   belongs_to :site
   belongs_to :access_level
   has_many :topic_threads
   has_many :posts
+  has_many :password_requests
 
   # --- Validations ---
   has_secure_password
-  validates :name, presence: true, length: { minimum: 2 }, uniqueness: true
+  validates :name, presence: true, length: { minimum: 2 }, uniqueness: { scope: :site }
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
   validates :avatar_colour, inclusion: { in: AvatarHelper.avatar_colours }
   validates :avatar_face, inclusion: { in: AvatarHelper.avatar_faces}
@@ -28,6 +31,12 @@ class User < ActiveRecord::Base
 
   def update_last_seen
     update(last_seen: Time.now)
+  end
+
+  def send_password_reset(host)
+    request = password_requests.create
+    reset_url = password_reset_path(request.token)
+    UserMailer.password_reset(host, self, reset_url).deliver_now
   end
 
 end

@@ -22,5 +22,8 @@ module StrideApp
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Use Amazon SES for mailing
+    config.action_mailer.delivery_method = :aws_sdk
   end
 end

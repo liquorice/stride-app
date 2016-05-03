@@ -39,6 +39,13 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.6)
       execjs
+    aws-sdk-core (2.3.0)
+      jmespath (~> 1.0)
+    aws-sdk-rails (1.0.1)
+      aws-sdk-resources (~> 2)
+      railties (>= 3)
+    aws-sdk-resources (2.3.0)
+      aws-sdk-core (= 2.3.0)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -71,7 +78,10 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
+    jmespath (1.2.4)
+      json_pure (>= 1.8.1)
     json (1.8.3)
+    json_pure (1.8.3)
     kgio (2.10.0)
     libv8 (3.16.14.13)
     loofah (2.0.3)
@@ -178,6 +188,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  aws-sdk-rails (~> 1.0)
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller

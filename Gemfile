@@ -36,6 +36,9 @@ gem 'capistrano-rails', group: :development
 gem 'capistrano-rbenv', '~> 2.0'
 gem 'capistrano3-unicorn'
 
+# AWS tools for email sending with Amazon SES
+gem 'aws-sdk-rails', '~> 1.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

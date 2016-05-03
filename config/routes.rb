@@ -30,6 +30,12 @@ Rails.application.routes.draw do
   get 'register' => 'users#register', as: :register
   post 'register' => 'users#signup'
 
+  # Password resets
+  get 'forgot' => 'password_requests#forgot'
+  post 'forgot' => 'password_requests#send_password_reset'
+  get 'reset_password/:token' => 'password_requests#reset', as: :password_reset
+  post 'reset_password/:token' => 'password_requests#do_reset'
+
   # Admin
   scope :admin do
     get '' => 'landing#admin', as: :admin

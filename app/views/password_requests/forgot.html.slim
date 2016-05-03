@@ -1,0 +1,11 @@
+h1 Password reset
+
+= form_for(:user, url: forgot_path) do |f|
+  p Note: Only users with email addresses can reset their account
+
+  p
+    | Username
+    br
+    = f.text_field :name
+
+  button Request password email
