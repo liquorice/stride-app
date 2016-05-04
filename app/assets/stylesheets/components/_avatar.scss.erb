@@ -9,17 +9,9 @@
 }
 
 @mixin avatarSize-medium {
-  @include breakpoint(medium) {
-    height: 50px;
-    width: 50px;
-  }
-  @include breakpoint(small) {
-    height: 50px;
-    width: 50px;
-  }
-  @include breakpoint(mini) {
-    height: 50px;
-    width: 50px;
+  @include breakpoint(mini, small) {
+    height: 45px;
+    width: 45px;
   }
   height: 50px;
   width: 50px;

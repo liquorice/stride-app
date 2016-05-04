@@ -16,37 +16,38 @@
     .profileLabel
       .profileLabel__title Profile picture
 
-      - selected_face = 1
-      .profileAvatar__row
-        .profileAvatar__avatar-container
-          .profileAvatar__avatar
-            = render 'user/avatar', user: @current_user
-        .profileAvatar__faces-container
-          - i = 1
-          - 1.upto(10) do |i|
-            .profileAvatar__face-option
-              label
-                input type="radio" name="avatar_face" value=i
-                .avatar data-colour="" data-face=i
-                .avatar__outline
+      .profileAvatar__avatar-container
+        .profileAvatar__avatar
+          = render 'user/avatar', user: @current_user
 
-      .profileAvatar__row
-        .profileAvatar__colour-container
-          .profileLabel__title Select colour
-          - j = 1
-          - 1.upto(10) do |j|
-            .profileAvatar__colour-option
-              label
-                input type="radio" name="avatar_colour" value=j
-                .avatar data-colour=j data-face=""
-                .avatar__outline
+      .profileAvatar__faces-container
+        .profileLabel__title Select features
+        - i = 1
+        - 1.upto(10) do |i|
+          .profileAvatar__face-option
+            label
+              input type="radio" name="avatar_face" value=i
+              .avatar data-colour="" data-face=i
+              .avatar__outline
+
+      .profileAvatar__colour-container
+        .profileLabel__title Select colour
+        - j = 1
+        - 1.upto(10) do |j|
+          .profileAvatar__colour-option
+            label
+              input type="radio" name="avatar_colour" value=j
+              .avatar data-colour=j data-face=""
+              .avatar__outline
 
       button.profileButton Save
 
   = form_tag preferences_path, method: :patch do |f|
 
     .profileLabel
-      .profileLabel__title Username
+      .profileLabel__title
+        | Username
+        span.alert *
       input.input__textfield name="name" value=@current_user.name
 
       button.profileButton Save
@@ -55,13 +56,29 @@
   = form_tag update_password_path, method: :patch do |f|
 
     .profileLabel
-      .profileLabel__title Current password
+      .profileLabel__title
+        | Current password
+        span.alert *
       input.input__textfield type="password" name="current_password"
 
-      .profileLabel__title New password
+      .profileLabel__title
+        | New password
+        span.alert *
       input.input__textfield type="password" name="password"
 
-      .profileLabel__title Confirm new password
+      .profileLabel__title
+        | Confirm new password
+        span.alert *
       input.input__textfield type="password" name="password_confirmation"
 
-      button.profileButton Update password
+      button.profileButton Save
+
+  = form_tag preferences_path, method: :patch do |f|
+
+    .profileLabel
+      .profileLabel__title Email (optional)
+      .profileLabel__desc
+        | Please note, your email address will not be visible to anyone else, and will only be used to recover a lost password.
+      input.input__textfield name="email" placeholder="Enter email address"
+
+      button.profileButton Save
