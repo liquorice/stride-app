@@ -11,8 +11,8 @@
 .profileContainer
   .profileTitle Your details
 
-  = form_tag preferences_path, method: :patch do |f|
-    
+  = form_for @current_user, url: preferences_path, method: :patch do |f|
+
     .profileLabel
       .profileLabel__title Profile picture
 
@@ -26,7 +26,7 @@
         - 1.upto(10) do |i|
           .profileAvatar__face-option
             label
-              input type="radio" name="avatar_face" value=i
+              input type="radio" name="user[avatar_face]" value=i
               .avatar data-colour="" data-face=i
               .avatar__outline
 
@@ -36,22 +36,17 @@
         - 1.upto(10) do |j|
           .profileAvatar__colour-option
             label
-              input type="radio" name="avatar_colour" value=j
+              input type="radio" name="user[avatar_colour]" value=j
               .avatar data-colour=j data-face=""
               .avatar__outline
-
-      button.profileButton Save
-
-  = form_tag preferences_path, method: :patch do |f|
 
     .profileLabel
       .profileLabel__title
         | Username
         span.alert *
-      input.input__textfield name="name" value=@current_user.name
+      = f.text_field :name, class: 'input__textfield'
 
       button.profileButton Save
-
 
   = form_tag update_password_path, method: :patch do |f|
 
@@ -73,12 +68,12 @@
 
       button.profileButton Save
 
-  = form_tag preferences_path, method: :patch do |f|
+  = form_for @current_user, url: preferences_path, method: :patch do |f|
 
     .profileLabel
       .profileLabel__title Email (optional)
       .profileLabel__desc
         | Please note, your email address will not be visible to anyone else, and will only be used to recover a lost password.
-      input.input__textfield name="email" placeholder="Enter email address"
+      = f.text_field :email, placeholder: 'Enter email address', class: 'input__textfield'
 
       button.profileButton Save
