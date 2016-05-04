@@ -6,7 +6,6 @@
 
 .profileLabel {
   margin-bottom: 2.75rem;
-  padding: 0 10px;
 
   &.bottomMargin-small {
     margin-bottom: 7px;
@@ -58,7 +57,7 @@
     float: left;
     height: 8.25rem;
     min-height: 8.25rem;
-    width: 35%;
+    width: 33.9%;
   }
 
     .profileAvatar__avatar {
@@ -76,45 +75,105 @@
 .profileAvatar__faces-container {
   display: block;
   float: left;
-  width: 65%;
+  width: 66.1%;
   background-color: $white;
   height: 8.25rem;
   min-height: 8.25rem;
-  padding: 1rem 0.35rem;
+  padding: 1.2rem 1rem;
 }
   
-  .profileAvatar__face > input {
-    display: none;
-  }
-
-.profileAvatar__colours-container {
-  border-top: 2px solid rgba($grey-warm, 0.1);
-  display: block;
-  max-width: 25.25rem;
-  background-color: $white;
-  padding: 1rem 0.35rem;
-  overflow: auto;
-}
-  .profileAvatar__face, .profileAvatar__colour {
-    @include avatarSize-medium;
-    display: block;
+  .profileAvatar__face-option {
     float: left;
-    margin: 0.25rem;
-    padding: 2px;
+    margin: 0.2rem 0.1rem;
+    height: 52px;
+    width: 52px;
 
-    &:hover {
-      border: 2px solid orange;
+    label > input {
+      display: none;
+    }
+
+    label > input + .avatar {
+      cursor: pointer;
+      &:hover ~ .avatar__outline {
+        border: 2px solid mix($links, $white, 40%);
+      }
+    }
+
+    label > input:checked ~ .avatar__outline {
+      border: 2px solid mix($links, $white, 40%);
       border-radius: 50%;
+    }
+
+    .avatar {
+      @include avatarSize-medium;
+      display: block;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      &:after {
+        background-color: $bg;
+      }
+    }
+
+    .avatar__outline {
+      height: 52px;
+      width: 52px;
+      position: relative;
+      top: -51px;
+      left: -1px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: border 100ms ease-in;
     }
   }
 
-  .profileAvatar__colour {
-    height: 34px;
-    width: 34px;
-  }
+.profileAvatar__colour-container {
+  border-top: 2px solid rgba($grey-warm, 0.1);
+  display: block;
+  width: 100%;
+  background-color: $white;
+  padding: 1rem 1rem;
+  overflow: auto;
+}
+  .profileAvatar__colour-option {
+    float: left;
+    margin: 0.5rem 0.4906rem 0.25rem 0;
+    height: 35px;
+    width: 35px;
 
-  .profileAvatar__colour > input {
-    display: none;
+    label > input {
+      display: none;
+    }
+
+    label > input + .avatar {
+      cursor: pointer;
+      &:hover ~ .avatar__outline {
+        border: 2px solid mix($links, $white, 40%);
+      }
+    }
+
+    label > input:checked ~ .avatar__outline {
+      border: 2px solid mix($links, $white, 40%);
+      border-radius: 50%;
+    }
+
+    .avatar {
+      height: 33px;
+      width: 33px;
+      display: block;
+      border: 2px solid transparent;
+      border-radius: 50%;
+    }
+
+    .avatar__outline {
+      height: 35px;
+      width: 35px;
+      position: relative;
+      top: -34px;
+      left: -1px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: border 100ms ease-in;
+    }
   }
 
 .profileButton {

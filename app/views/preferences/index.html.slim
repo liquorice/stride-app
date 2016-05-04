@@ -16,7 +16,6 @@
     .profileLabel
       .profileLabel__title Profile picture
 
-      - selected_colour = 1
       - selected_face = 1
       .profileAvatar__row
         .profileAvatar__avatar-container
@@ -25,26 +24,24 @@
         .profileAvatar__faces-container
           - i = 1
           - 1.upto(10) do |i|
-            .profileAvatar__face
-              input type="radio" name="avatar_face" value=i
-              .avatar data-colour=selected_colour data-face=i
+            .profileAvatar__face-option
+              label
+                input type="radio" name="avatar_face" value=i
+                .avatar data-colour="" data-face=i
+                .avatar__outline
 
       .profileAvatar__row
-        .profileAvatar__colours-container
+        .profileAvatar__colour-container
+          .profileLabel__title Select colour
           - j = 1
           - 1.upto(10) do |j|
-            .profileAvatar__colour
-              input type="radio" name="avatar_colour" value=j
-              .avatar data-colour=j data-face=nil
+            .profileAvatar__colour-option
+              label
+                input type="radio" name="avatar_colour" value=j
+                .avatar data-colour=j data-face=""
+                .avatar__outline
+
       button.profileButton Save
-
-    .label
-      .profileLabel__title Avatar colour
-      input name="avatar_colour" value=@current_user.avatar_colour
-
-    .label
-      .profileLabel__title Avatar face
-      input name="avatar_face" value=@current_user.avatar_face
 
   = form_tag preferences_path, method: :patch do |f|
 
