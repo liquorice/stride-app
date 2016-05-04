@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 
     if user.authenticate(params[:session][:password])
       log_in(user)
+      flash[:success] = "Welcome back, #{user.name}"
       redirect_to topics_preview_path
     else
       failed

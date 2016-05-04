@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_site
+    @host = request.host
     @site = Site.find_by_host(request.host)
     raise Exceptions::NotFoundError unless @site
   end
@@ -31,6 +32,20 @@ class ApplicationController < ActionController::Base
     unless @current_user && @current_user.can?(permission)
       raise Exceptions::NotAuthorisedError
     end
+  end
+
+  def require_user
+    # Require a logged in user of any access level
+    # Otherwise, 403
+    unless @current_user
+      raise Exceptions::NotAuthorisedError
+    end
+  end
+
+  def require_existence(object)
+    # Check that an object/model exists
+    # If not, 404
+    raise Exceptions::NotFoundError if object.nil?
   end
 
   def not_found

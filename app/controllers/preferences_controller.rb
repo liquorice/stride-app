@@ -1,11 +1,11 @@
 class PreferencesController < ApplicationController
 
   def index
-    require_permission :preferences_modify
+    require_user
   end
 
   def update
-    require_permission :preferences_modify
+    require_user
 
     if @current_user.update(preferences_params)
       flash[:success] = "Preferences succesfully updated"
@@ -18,7 +18,7 @@ class PreferencesController < ApplicationController
   end
 
   def update_password
-    require_permission :preferences_modify
+    require_user
 
     # Confirm current password is correct before proceeding
     unless @current_user.authenticate(params[:current_password])
@@ -26,7 +26,12 @@ class PreferencesController < ApplicationController
       return redirect_to preferences_path
     end
 
-    # raise password_params.inspect
+    # Coerce a blank password to an empty password to
+    # force validation to fail
+    password_params = password_reset_params
+    if password_params[:password].blank?
+      password_params[:password] = nil
+    end
 
     # Attempt to update username and password
     if @current_user.update(password_params)
@@ -44,8 +49,11 @@ class PreferencesController < ApplicationController
     params.permit(:name, :avatar_colour, :avatar_face)
   end
 
-  def password_params
-    params.permit(:password, :password_confirmation)
+  def password_reset_params
+    params.permit(
+      :password,
+      :password_confirmation
+    )
   end
 
 end
