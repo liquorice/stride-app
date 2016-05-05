@@ -20,7 +20,10 @@
         .profileAvatar__avatar
           = render 'user/avatar', user: @current_user
 
-      .profileAvatar__faces-container
+      input type="checkbox" style="display: none" id="showEdit__avatar"
+      label.btn__editProfile for="showEdit__avatar" Edit
+
+      .profileAvatar__faces-container.visible__edit
         .profileLabel__title Select features
         - i = 1
         - 1.upto(10) do |i|
@@ -30,7 +33,7 @@
               .avatar data-colour="" data-face=i
               .avatar__outline
 
-      .profileAvatar__colour-container
+      .profileAvatar__colour-container.visible__edit
         .profileLabel__title Select colour
         - j = 1
         - 1.upto(10) do |j|
@@ -40,7 +43,7 @@
               .avatar data-colour=j data-face=""
               .avatar__outline
 
-      button.profileButton Save
+      button.btn__saveProfile.visible__edit Save
 
   = form_tag preferences_path, method: :patch do |f|
 
@@ -48,37 +51,56 @@
       .profileLabel__title
         | Username
         span.alert *
-      input.input__textfield name="name" value=@current_user.name
 
-      button.profileButton Save
+      input type="checkbox" style="display: none" id="showEdit__username"
+      p.visible__default = @current_user.name
+      label.btn__editProfile for="showEdit__username" Edit
+
+      input.input__textfield.visible__edit name="name" value=@current_user.name
+
+      button.btn__saveProfile Save
 
 
   = form_tag update_password_path, method: :patch do |f|
+    // ^ TODO: Implement funcitonality
 
     .profileLabel
-      .profileLabel__title
+      input type="checkbox" style="display: none" id="showEdit__pw"
+      .profileLabel__title.visible__default
+        | Password
+        span.alert *
+      p.visible__default = "••••••••••••"
+      label.btn__editProfile for="showEdit__pw" Edit
+
+      .profileLabel__title.visible__edit
         | Current password
         span.alert *
-      input.input__textfield type="password" name="current_password"
+      input.input__textfield.visible__edit type="password" name="current_password"
 
-      .profileLabel__title
+      .profileLabel__title.visible__edit
         | New password
         span.alert *
-      input.input__textfield type="password" name="password"
+      input.input__textfield.visible__edit type="password" name="password"
 
-      .profileLabel__title
+      .profileLabel__title.visible__edit
         | Confirm new password
         span.alert *
-      input.input__textfield type="password" name="password_confirmation"
+      input.input__textfield.visible__edit type="password" name="password_confirmation"
 
-      button.profileButton Save
+      button.btn__saveProfile.visible__edit Save
 
   = form_tag preferences_path, method: :patch do |f|
+    // ^ TODO: Implement funcitonality
 
     .profileLabel
       .profileLabel__title Email (optional)
       .profileLabel__desc
         | Please note, your email address will not be visible to anyone else, and will only be used to recover a lost password.
-      input.input__textfield name="email" placeholder="Enter email address"
 
-      button.profileButton Save
+      input type="checkbox" style="display: none" id="showEdit__email"
+      p.visible__default = @current_user.email || "Not provided"
+      label.btn__editProfile for="showEdit__email" Edit
+
+      input.input__textfield.visible__edit name="email" placeholder="Enter email address" value=@current_user.email
+
+      button.btn__saveProfile.visible__edit Save

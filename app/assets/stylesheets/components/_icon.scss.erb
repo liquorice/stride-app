@@ -60,9 +60,16 @@ $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.
   background-position: center center;
 }
 
-@mixin icon__edit {
+@mixin icon__edit-white {
   background-size: 0.9em 0.9em;
   background-image: url("<%= asset_data_uri 'icons/icon_edit-white.svg' %>");
+  background-repeat: no-repeat;
+  background-position: center 82%;
+}
+
+@mixin icon__edit-blue {
+  background-size: 11px 11px;
+  background-image: url("<%= asset_data_uri 'icons/icon_edit-blue.svg' %>");
   background-repeat: no-repeat;
   background-position: center 82%;
 }
