@@ -1,3 +1,5 @@
+// General Preference View styles
+
 .profileContainer {
   max-width: 488px;
   overflow: auto;
@@ -27,18 +29,72 @@
     @include p-meta;
   }
 
+.btn__saveProfile {
+  @include button-primary-short;
+  display: none;
+  padding-top: 0;
+}
+
+.btn__editProfile {
+  @include p-meta;
+  color: $links;
+  cursor: pointer;
+  display: block;
+  margin-top: 0.3rem;
+  padding-right: 1rem;
+  width: 20%;
+
+  &:before {
+    @include icon__edit-blue;
+    content: " ";
+    float: left;
+    height: 1em;
+    margin: 2px 1px 0 0;
+    width: 1em;
+  }
+}
+
+p.visible__default {
+  @include p-regular;
+}
+
+.visible__edit {
+  display: none;
+}
+
+input#showEdit__avatar:checked,
+input#showEdit__username:checked,
+input#showEdit__pw:checked,
+input#showEdit__email:checked {
+  & ~ .visible__edit {
+    display: inline-block;
+  }
+
+  & ~ .btn__saveProfile {
+    display: block;
+  }
+
+  & ~ .btn__editProfile, & ~ .visible__default {
+    display: none;
+  }
+}
+
+// Avatar preference styles
+
+// User avatar display
 .profileAvatar__avatar-container {
   @include breakpoint(small, mini) {
-    border-right: none;
-    float: none;
+    display: block;
     height: 162px;
+    margin-bottom: 0;
+    margin-right: 0;
     width: 162px;
   }
   background-color: $white;
-  border-right: 2px solid rgba($grey-warm, 0.1);
-  display: block;
-  float: left;
+  display: inline-block;
   height: 8.25rem;
+  margin-bottom: -0.125rem;
+  margin-right: -0.125rem;
   margin-top: 7px;
   width: 33.9%;
 }
@@ -55,22 +111,25 @@
     margin: 1rem auto 1rem;
   }
 
+// Face options display
 .profileAvatar__faces-container {
   @include breakpoint(small, mini) {
+    border-left: none;
     border-top: 2px solid rgba($grey-warm, 0.1);
-    float: none;
-    margin-top: 0;
+    display: block;
+    margin: 0;
     min-height: 150px;
     padding: 1.1rem 1.1rem;
     width: 100%;
   }
   background-color: $white;
-  display: block;
-  float: left;
+  border-left: 2px solid rgba($grey-warm, 0.1);
   height: 8.25rem;
+  margin-bottom: -0.125rem;
+  margin-left: -0.125rem;
   margin-top: 7px;
   padding: 1.2rem 1rem;
-  width: 66.1%;
+  width: 66.3%;
 
   .profileLabel__title {
     @include breakpoint(small, mini) {
@@ -112,6 +171,12 @@
       border-radius: 50%;
       border: 2px solid transparent;
       display: block;
+
+      &[primary] {
+        &:after {
+          background-color: $primary;
+        }
+      }
       &:after {
         background-color: $bg;
       }
@@ -135,18 +200,19 @@
     }
   }
 
+// Colour options display
 .profileAvatar__colour-container {
   @include breakpoint(small, mini) {
-    float: none;
+    display: block;
+    margin-top: 0;
     min-height: 155px;
     padding: 1.1rem 1.1rem;
   }
   background-color: $white;
   border-top: 2px solid rgba($grey-warm, 0.1);
-  display: block;
-  float: left;
   height: 5.75rem;
   margin-bottom: 0.6rem;
+  margin-top: -0.125rem;
   min-height: 5.75rem;
   padding: 1rem 1rem 0;
   width: 100%;
@@ -208,9 +274,3 @@
       width: 35px;
     }
   }
-
-.profileButton {
-  @include button-primary-meta;
-  display: block;
-  padding-top: 0;
-}

@@ -19,3 +19,26 @@
     transition: all 100ms ease-out;
   }
 }
+
+.warning {
+  @include p-regular;
+  display: block;
+  background-color: rgba($primary, 0.2);
+  width: 100%;
+  padding: 1rem;
+
+  ul {
+    margin-bottom: 0.5rem;
+  }
+
+  li {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+
+    &:before {
+      content: "–";
+      padding-right: 5px;
+      margin-left: -0.9rem;
+    }
+  }
+}

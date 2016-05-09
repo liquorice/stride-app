@@ -112,9 +112,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: $avatar-skin-primary;;
+    background: $avatar-skin-primary;
     border-radius: 50%;
     z-index: 1;
+  }
+
+  &[data-colour='0']:after {
+    background: $avatar-skin-primary;
   }
 
   &[data-colour='1']:after {

@@ -1,5 +1,7 @@
 - options ||= {}
 - value ||= nil
+- name ||= nil
+- id ||= nil
 
 / For string/symbol/integer mismatches
 - options.stringify_keys!
@@ -10,7 +12,7 @@
 
 .dropdown.js-dropdown
   .dropdown__display.js-display = options[value] || default
-  select data-type='dropdown'
+  select data-type='dropdown' name=name id=id
     - if allow_none
       option value='' selected=('selected' if value == '') #{default}
     - options.each do |k, v|

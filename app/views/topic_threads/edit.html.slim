@@ -1,3 +1,52 @@
 h1 Edit thread
 
-= render 'form'
+= form_for @thread do |f|
+  .label
+    .label__title Show/hide this thread publicly
+    .label__desc This post can be removed from public view.
+
+    label.toggle
+      = f.check_box :public
+      .toggle__text Public
+      .toggle__text Hidden
+
+  .label
+    .label__title Lock/unlock this thread
+    .label__desc Locking will prevent any further activity. Thread will still remain visible.
+
+    label.toggle
+      = f.check_box :locked
+      .toggle__text Unlocked
+      .toggle__text Locked
+
+  .label.bottomMargin-small
+    .label__title
+      | Title of thread
+      span.alert *
+    .form__textfield
+      = f.text_field :name, class:"input__textfield", required:"true"
+
+  .label
+    .label__title
+      | Select forum category
+      span.alert *
+
+    = render 'components/dropdown',
+      name: "topic_thread[topic_id]",
+      id: "topic_name",
+      options: Hash[@site.topics.pluck(:id, :name)],
+      value: @thread.topic_id
+
+  .label
+    .label__title Tags
+    p TODO
+
+  .form__buttons
+    .form__button-standard Cancel
+    button.form__button-primary Save
+
+  .label
+    .label__required
+      | You have required fields to complete (
+      span.alert *
+      ')
