@@ -30,18 +30,24 @@
           .profileAvatar__face-option
             label
               input type="radio" name="avatar_face" value=i
-              .avatar data-colour="" data-face=i
+              // TODO: Check for moderator, manually adding Superuser check for review
+              .avatar data-colour="" data-face=i primary=(@current_user.superuser == true)
               .avatar__outline
 
-      .profileAvatar__colour-container.visible__edit
-        .profileLabel__title Select colour
-        - j = 1
-        - 1.upto(10) do |j|
-          .profileAvatar__colour-option
-            label
-              input type="radio" name="avatar_colour" value=j
-              .avatar data-colour=j data-face=""
-              .avatar__outline
+      // TODO: Check for moderator, manually adding Superuser check for review
+      - if @current_user.superuser == false
+        .profileAvatar__colour-container.visible__edit
+          .profileLabel__title Select colour
+          - j = 1
+          - 1.upto(10) do |j|
+            .profileAvatar__colour-option
+              label
+                input type="radio" name="avatar_colour" value=j
+                .avatar data-colour=j data-face=""
+                .avatar__outline
+      - else
+        input style="display: none;" name="avatar_colour" value="0"
+        div style="margin-bottom: 0.6rem;"
 
       button.btn__saveProfile.visible__edit Save
 
@@ -89,7 +95,7 @@
       button.btn__saveProfile.visible__edit Save
 
   = form_tag preferences_path, method: :patch do |f|
-    // ^ TODO: Implement funcitonality and test once the email isn't hardcoded
+    // ^ TODO: Test funcitonality once the email isn't hardcoded and param is permitted
 
     .profileLabel
       .profileLabel__title Email (optional)

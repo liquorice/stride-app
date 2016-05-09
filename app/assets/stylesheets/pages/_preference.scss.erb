@@ -30,7 +30,7 @@
   }
 
 .btn__saveProfile {
-  @include button-primary-meta;
+  @include button-primary-short;
   display: none;
   padding-top: 0;
 }
@@ -171,6 +171,12 @@ input#showEdit__email:checked {
       border-radius: 50%;
       border: 2px solid transparent;
       display: block;
+
+      &[primary] {
+        &:after {
+          background-color: $primary;
+        }
+      }
       &:after {
         background-color: $bg;
       }
