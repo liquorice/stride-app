@@ -13,31 +13,31 @@
 - content_for :sidebar do
   = render 'partials/sidebar', show_topics: true
 
-.postDetails
-  .postDetails__createdBy
-    .postDetails__createdBy-avatar
+.threadDetails
+  .threadDetails__createdBy
+    .threadDetails__createdBy-avatar
       = render 'user/avatar', user: @thread.user
 
-    .postDetails__createdBy-user
+    .threadDetails__createdBy-user
       strong Created by
       h2 = @thread.user.name.capitalize
 
-  .postDetails__createdDate
+  .threadDetails__createdDate
     strong Created
     h2 = @thread.created_at.strftime('%x')
 
-  .postDetails__views
+  .threadDetails__views
     strong Views
     h2 XXX
 
-  .postDetails__replies
+  .threadDetails__replies
     strong Replies
     h2 = @thread.posts_count
 
-  .postDetails__mobile
-    .postDetails__mobile-createdDate Created: #{@thread.created_at.strftime('%x')}
-    .postDetails__mobile-views Views: XXX
-    .postDetails__mobile-replies Replies: #{@thread.posts_count}
+  .threadDetails__mobile
+    .threadDetails__mobile-createdDate Created: #{@thread.created_at.strftime('%x')}
+    .threadDetails__mobile-views Views: XXX
+    .threadDetails__mobile-replies Replies: #{@thread.posts_count}
 
 = render @posts
 = render 'partials/pagination', paginated: @posts

@@ -1,4 +1,4 @@
-.postDetails {
+.threadDetails {
   @include breakpoint(mini, small, medium) {
     height: 7.161rem;
   }
@@ -7,7 +7,7 @@
   margin-bottom: 6px;
 }
 
-.postDetails__mobile {
+.threadDetails__mobile {
   @include breakpoint(small, medium) {
     display: block;
     float: left;
@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-  .postDetails__mobile-createdDate {
+  .threadDetails__mobile-createdDate {
     @include p-meta;
     @include ff_adelle-bold;
     color: $green-light;
@@ -31,7 +31,7 @@
     margin-right: 0.15rem;
   }
 
-  .postDetails__mobile-views {
+  .threadDetails__mobile-views {
     @include p-meta;
     @include ff_adelle-bold;
     color: $green-mid;
@@ -39,7 +39,7 @@
     margin-right: 0.15rem;
   }
 
-  .postDetails__mobile-replies {
+  .threadDetails__mobile-replies {
     @include p-meta;
     @include ff_adelle-bold;
     color: $green-dark;
@@ -48,7 +48,7 @@
   }
 
 
-.postDetails__createdBy {
+.threadDetails__createdBy {
   @include breakpoint(small, medium) {
     height: 4.6rem;
     padding: 0.7rem 0 0.7rem 1.65rem;
@@ -67,13 +67,13 @@
   width: 55.8%;
 }
 
-  .postDetails__createdBy-avatar {
+  .threadDetails__createdBy-avatar {
     @include avatarSize-large;
     display: block;
     float: left;
   }
 
-  .postDetails__createdBy-user {
+  .threadDetails__createdBy-user {
     @include p-meta;
     @include breakpoint(small, medium) {
       height: auto;
@@ -97,7 +97,7 @@
     }
   }
 
-.postDetails__createdDate {
+.threadDetails__createdDate {
   @include p-meta;
   @include breakpoint(mini, small, medium) {
     display: none;
@@ -118,7 +118,7 @@
   }
 }
 
-.postDetails__views {
+.threadDetails__views {
   @include p-meta;
   @include breakpoint(mini, small, medium) {
     display: none;
@@ -139,7 +139,7 @@
   }
 }
 
-.postDetails__replies {
+.threadDetails__replies {
   @include p-meta;
   @include breakpoint(mini, small, medium) {
     display: none;
