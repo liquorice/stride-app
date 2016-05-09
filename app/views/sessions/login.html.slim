@@ -1,4 +1,4 @@
-.modalContent__login
+.modalContent__small
   h1 Log into #{@site.name}
 
   = form_for(:session, url: login_path) do |f|
@@ -19,7 +19,7 @@
         = f.check_box "Stay logged in", class:"input__checkbox"
         .form__checkbox
       .checkbox__text style="float:left;" Stay logged in
-      a.label__link href=forgot_path Lost password
+      a.label__link href=forgot_path data-modal=true Lost password
 
     .label
       a.form__button-standard.form__button-fullWidth href=register_path Register new account

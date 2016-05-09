@@ -1,4 +1,4 @@
-.modalContent__login
+.modalContent__small
   h1 Lost Password
 
   = form_for(:user, url: forgot_path) do |f|
@@ -10,4 +10,4 @@
         = f.text_field :name, class:"input__textfield", placeholder:"Enter username", required:"true"
 
     button.form__button-primary.form__button-fullWidth Send reset email
-    a.label__link href=login_path Back to Log in
+    a.label__link href=login_path data-modal=true Back to Log in
