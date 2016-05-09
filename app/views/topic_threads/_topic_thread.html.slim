@@ -19,14 +19,15 @@
     .thread__name
       h2 = topic_thread.name
 
-    .thread__latest
-      p
-        .thread__latest-avatar
-          = render 'user/avatar', user: topic_thread.latest_post.user
+    - unless topic_thread.latest_post == nil
+      .thread__latest
+        p
+          .thread__latest-avatar
+            = render 'user/avatar', user: topic_thread.latest_post.user
 
-        strong = topic_thread.latest_post.user.name
-        = " said, #{time_ago_in_words(topic_thread.latest_post.created_at)} ago "
-        strong = topic_thread.latest_post.preview_snippet
+          strong = topic_thread.latest_post.user.name
+          = " said, #{time_ago_in_words(topic_thread.latest_post.created_at)} ago "
+          strong = topic_thread.latest_post.preview_snippet
 
   .thread__created data-locked=topic_thread.locked
     strong
