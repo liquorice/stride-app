@@ -1,11 +1,13 @@
-h1 Password reset
+.modalContent__login
+  h1 Lost Password
 
-= form_for(:user, url: forgot_path) do |f|
-  p Note: Only users with email addresses can reset their account
+  = form_for(:user, url: forgot_path) do |f|
+    .label
+      .label__title Username
+      .label__desc Note: Only users with email addresses can reset their account
 
-  p
-    | Username
-    br
-    = f.text_field :name
+      .form__textfield
+        = f.text_field :name, class:"input__textfield", placeholder:"Enter username", required:"true"
 
-  button Request password email
+    button.form__button-primary.form__button-fullWidth Send reset email
+    a.label__link href=login_path Back to Log in
