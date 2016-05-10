@@ -21,7 +21,7 @@
           = insert_svg "triangle.svg"
 
         .toolbar__dropdown
-          a href="#" #{@current_user.name}
+          span #{@current_user.name}
           a href=preferences_path Preferences
           a href=logout_path data-method='post' Log out
     - else

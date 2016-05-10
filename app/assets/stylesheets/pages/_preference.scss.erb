@@ -54,6 +54,10 @@
   }
 }
 
+input.hidden {
+  display: none;
+}
+
 p.visible__default {
   @include p-regular;
 }
@@ -100,7 +104,7 @@ input#showEdit__email:checked {
 }
 
   .profileAvatar__avatar {
-    @include avatarSize-overlarge;
+    @include avatar-overlarge;
     @include breakpoint (small, mini) {
       display: inline-block;
       height: 124px;
@@ -167,7 +171,7 @@ input#showEdit__email:checked {
     }
 
     .avatar {
-      @include avatarSize-medium;
+      @include avatar-medium;
       border-radius: 50%;
       border: 2px solid transparent;
       display: block;
@@ -199,6 +203,10 @@ input#showEdit__email:checked {
       width: 52px;
     }
   }
+
+.profileAvatar__spacer {
+  margin-bottom: 0.6rem;
+}
 
 // Colour options display
 .profileAvatar__colour-container {

@@ -1,7 +1,7 @@
 module AvatarHelper
 
   def self.avatar_colours
-    1..10
+    0..10
   end
 
   def self.avatar_faces

@@ -8,13 +8,13 @@
         | Password
         span.alert *
       .form__textfield
-        = f.password_field :password, class:"input__textfield", placeholder:"Enter password", required:"true"
+        = f.password_field :password, class:"input__textfield", placeholder:"Enter password"
 
       .label__title
         | Password confirmation
         span.alert *
       .form__textfield
-        = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password", required:"true"
+        = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password"
 
     .label
       button.form__button-standard.form__button-fullWidth Reset

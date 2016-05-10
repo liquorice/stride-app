@@ -6,7 +6,7 @@ h1 Create new thread
       | Title of thread
       span.alert *
     .form__textfield
-      = f.text_field :name, placeholder:"Enter title", class:"input__textfield", required:"true"
+      = f.text_field :name, placeholder:"Enter title", class:"input__textfield"
 
   .label
     .label__title
@@ -29,7 +29,7 @@ h1 Create new thread
 
   .label
     label.checkbox
-      = check_box_tag 'similarThread__check', false, false, class:"input__checkbox", required:"true"
+      = check_box_tag 'similarThread__check', false, false, class:"input__checkbox"
       .form__checkbox
     .checkbox__text I have checked to see if a thread that is similar to this one already exists on the site.
 
@@ -42,9 +42,3 @@ h1 Create new thread
   .form__buttons
     .form__button-standard Cancel
     button.form__button-primary Create
-
-  .label
-    .label__required
-      | You have required fields to complete (
-      span.alert *
-      ')

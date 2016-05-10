@@ -249,7 +249,7 @@
   }
 
     .toolbar__menu-avatar {
-      @include avatarSize-small;
+      @include avatar-small;
       @include breakpoint(small, mini, medium, large) {
         margin-top: 0.75rem;
       }
@@ -294,7 +294,7 @@
       visibility: visible;
     }
 
-    a {
+    a, span {
       @include ff_adelle-regular;
       @include breakpoint(huge, overlarge) {
         font-size: 0.75rem;
@@ -308,12 +308,16 @@
       display: block;
       padding: 10px 15px;
       min-width: 230px;
-      border-top: 1px solid rgba($grey-warm, 0.1);
+    }
 
-      &:first-child {
-        @include ff_adelle-bold;
-        border-top: 0;
-      }
+    span {
+      @include ff_adelle-bold;
+      border-top: 0;
+      cursor: default;
+    }
+
+    a {
+      border-top: 1px solid rgba($grey-warm, 0.1);
 
       &:hover {
         background: rgba($grey-warm, 0.08);

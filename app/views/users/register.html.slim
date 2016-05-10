@@ -7,7 +7,7 @@ h1 Register
       | Username
       span.alert *
     .form__textfield
-      = f.text_field :name, class:"input__textfield", placeholder:"Enter username", required:"true"
+      = f.text_field :name, class:"input__textfield", placeholder:"Enter username"
 
   .label
     .label__title Email address (optional)
@@ -19,21 +19,16 @@ h1 Register
       | Password
       span.alert *
     .form__textfield
-      = f.password_field :password, class:"input__textfield", placeholder:"Enter password", required:"true"
+      = f.password_field :password, class:"input__textfield", placeholder:"Enter password"
 
     .label__title
       | Password confirmation
       span.alert *
     .form__textfield
-      = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password", required:"true"
+      = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password"
 
   .form__buttons
     .form__button-standard Cancel
     button.form__button-primary Register
 
   // TODO : Implement google recaptcha
-  .label
-    .label__required
-      | You have required fields to complete (
-      span.alert *
-      ')

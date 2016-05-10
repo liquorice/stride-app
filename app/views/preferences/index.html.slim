@@ -20,7 +20,7 @@
         .profileAvatar__avatar
           = render 'user/avatar', user: @current_user
 
-      input type="checkbox" style="display: none" id="showEdit__avatar"
+      input.hidden type="checkbox" id="showEdit__avatar"
       label.btn__editProfile for="showEdit__avatar" Edit
 
       .profileAvatar__faces-container.visible__edit
@@ -46,8 +46,8 @@
                 .avatar data-colour=j data-face=""
                 .avatar__outline
       - else
-        input style="display: none;" name="avatar_colour" value="0"
-        div style="margin-bottom: 0.6rem;"
+        input.hidden name="avatar_colour" value="0"
+        .profileAvatar__spacer
 
       button.btn__saveProfile.visible__edit Save
 
@@ -58,7 +58,7 @@
         | Username
         span.alert *
 
-      input type="checkbox" style="display: none" id="showEdit__username"
+      input.hidden type="checkbox" id="showEdit__username"
       p.visible__default = @current_user.name
       label.btn__editProfile for="showEdit__username" Edit
 
@@ -70,7 +70,7 @@
   = form_tag update_password_path, method: :patch do |f|
 
     .profileLabel
-      input type="checkbox" style="display: none" id="showEdit__pw"
+      input.hidden type="checkbox" id="showEdit__pw"
       .profileLabel__title.visible__default
         | Password
         span.alert *
@@ -102,7 +102,7 @@
       .profileLabel__desc
         | Please note, your email address will not be visible to anyone else, and will only be used to recover a lost password.
 
-      input type="checkbox" style="display: none" id="showEdit__email"
+      input.hidden type="checkbox" id="showEdit__email"
       p.visible__default = @current_user.email || "Not provided"
       label.btn__editProfile for="showEdit__email" Edit
 
