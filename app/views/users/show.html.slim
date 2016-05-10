@@ -14,20 +14,26 @@
       .userOverview__avatar
         = render 'user/avatar', user: @user
     .userOverview__status
-      / TODO : This check is only for Superuser, who doesn't seem to have access_level in the model, if there will be an access_level for Superuser, remove the if statement
-      - if @user.access_level
+      - if @current_user.can?(:accessLevel_set)
+        = form_tag set_user_access_level_path, method: :patch do |f|
+          = render 'components/dropdown',
+            name: "user[access_level_id]",
+            options: Hash[@site.access_levels.pluck(:id, :name)],
+            value: @user.access_level.id
+
+          button Update access level
+
+      - else
         .large__text
-          = "Status: #{@user.access_level.name}"
-        label.checkbox
-          = check_box "Moderator", class:"input__checkbox"
-          .form__checkbox
-        / TODO : Need to implement functionality ^
-        .checkbox__text Moderator
+          = "Access Level: #{@user.access_level.name}"
+
+      - if @current_user.can?(:user_suspend)
         .mobile__hide
           a.button__suspend href="#" Suspend user
           .text__suspend
             strong Suspending a user 
             | will log them out and prevent them from logging back in
+
   .mobile__show
     a.button__suspend href="#" Suspend user
     .text__suspend
@@ -61,6 +67,7 @@
     .userThreads__title Threads created
   - @user.topic_threads.each do |thread|
     .userThread data-hidden=!thread.public?
+
       - if !thread.public?
         .userThread__hidden
           | Thread is not public

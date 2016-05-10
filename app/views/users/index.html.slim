@@ -13,7 +13,7 @@
   - content_for :sidebar do
     = render 'partials/sidebar', show_topics: false
 
-  - @access_levels.each do |access_level|
+  - @access_levels.reverse.each do |access_level|
     .usersTable
       .usersTable__titles
         .usersTable__column
