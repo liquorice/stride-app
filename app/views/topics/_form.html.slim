@@ -4,21 +4,15 @@
       | Title of forum
       span.alert *
     .form__textfield
-        = f.text_field :name, class:"input__textfield", required:"true"
+        = f.text_field :name, class:"input__textfield"
 
   .label
     .label__title
       | Forum description
       span.alert *
     .form__textarea
-        = f.text_area :description, class:"input__textarea", required:"true"
+        = f.text_area :description, class:"input__textarea"
 
   .form__buttons
     .form__button-standard Cancel
     button.form__button-primary Save
-
-  .label
-    .label__required
-      | You have required fields to complete (
-      span.alert *
-      ')

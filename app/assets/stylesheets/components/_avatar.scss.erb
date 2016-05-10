@@ -1,14 +1,14 @@
-@mixin avatarSize-mini {
+@mixin avatar-mini {
   height: 18.1px;
   width: 18.1px;
 }
 
-@mixin avatarSize-small {
+@mixin avatar-small {
   height: 25px;
   width: 25px;
 }
 
-@mixin avatarSize-medium {
+@mixin avatar-medium {
   @include breakpoint(mini, small) {
     height: 45px;
     width: 45px;
@@ -17,7 +17,7 @@
   width: 50px;
 }
 
-@mixin avatarSize-large {
+@mixin avatar-large {
   @include breakpoint(small, medium) {
     height: 52px;
     width: 52px;
@@ -30,7 +30,7 @@
   width: 60px;
 }
 
-@mixin avatarSize-overlarge {
+@mixin avatar-overlarge {
   @include breakpoint(medium) {
     height: 114px;
     width: 114px;

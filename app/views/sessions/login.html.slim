@@ -5,11 +5,11 @@
     .label
       .label__title Username or email
       .form__textfield
-        = f.text_field :name, class:"input__textfield", required:"true"
+        = f.text_field :name, class:"input__textfield"
 
       .label__title Password
       .form__textfield
-        = f.password_field :password, class:"input__textfield", required:"true"
+        = f.password_field :password, class:"input__textfield"
 
     .label.bottomMargin-small
       button.form__button-primary.form__button-fullWidth Log in
@@ -18,7 +18,7 @@
       label.checkbox
         = f.check_box "Stay logged in", class:"input__checkbox"
         .form__checkbox
-      .checkbox__text style="float:left;" Stay logged in
+      .checkbox__text.leftFloat Stay logged in
       a.label__link href=forgot_path data-modal=true Lost password
 
     .label

@@ -5,13 +5,11 @@
 
   - if current_user_can?(:topicThreads_create)
     a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new Thread
-
-  // Uncomment permissions check when ready
-  / - if current_user_can?(:topics_create)
-  a.btn__newTopicActive href=new_topic_path data-modal=true Create new Topic
+  - if current_user_can?(:topics_create)
+    a.btn__newTopicActive href=new_topic_path data-modal=true Create new Topic
   // Add permissions check when ready
-  / - if current_user_can?(:chat_create)
-  a.btn__newChatActive href="#" data-modal=true Setup new Chat
+  / - if current_user_can?(:chats_create)
+  / a.btn__newChatActive href="#" data-modal=true Setup new Chat
 
 .side__group
   .sideMenu
