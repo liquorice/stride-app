@@ -2,17 +2,24 @@ class PasswordRequestsController < ApplicationController
   layout 'modal'
 
   def send_password_reset
-    if user = @site.users.find_by(name: params[:user][:name])
+    # Attempt to find user(s) by name, or failing that by email address
+    # Whilst usernames are enforced unique, emails are not,
+    # so where is used rather than find, with results then iterated over
+    users = @site.users.where(name: params[:user][:name])
+    if users.empty?
+      users = @site.users.where(email: params[:user][:name])
+    end
+
+    users.each do |user|
       unless user.email.blank?
         # Only send email to users with an email address,
         # but pretend it was sent regardless to not leak
         # information about accounts
         user.send_password_reset(@host)
       end
-      render :reset_sent
-    else
-      render :no_user
     end
+
+    render :reset_sent
   end
 
   def reset
