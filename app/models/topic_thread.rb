@@ -1,11 +1,16 @@
 class TopicThread < ActiveRecord::Base
+
+  # --- Associations ---
   belongs_to :topic
   belongs_to :user
   has_many :posts
 
   scope :preview, -> { where(public: true).limit(4) }
-
   default_scope { order(pinned: :desc) }
+
+  # --- Validations ---
+  validates :name, presence: true, length: { minimum: 2 }
+  validate :must_perform_similar_thread_check
 
   self.per_page = 8
 
@@ -38,4 +43,14 @@ class TopicThread < ActiveRecord::Base
   def latest_post
     posts.visible.last
   end
+
+  private
+
+  def must_perform_similar_thread_check
+    unless similar_thread_check
+      errors.add(:base, 'must check that no similar threads exist')
+    end
+  end
+
 end
+
