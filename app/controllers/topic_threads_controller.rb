@@ -80,7 +80,8 @@ class TopicThreadsController < ApplicationController
       :locked,
       :public,
       :topic_id,
-      :similar_thread_check
+      :similar_thread_check,
+      :tags => []
     )
   end
 

@@ -34,6 +34,8 @@ Module.register('modal', function() {
         new_content = $( "<div>" ).append($.parseHTML(response)).find('.modalContainer');
         hide_loading();
         popup_content.empty().append(new_content);
+
+        window.init_applies(popup_content);
       }
     });
 

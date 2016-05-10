@@ -48,3 +48,65 @@
     color: $links;
   }
 }
+
+// Tags editor
+
+.tags {
+  @include p-regular;
+  background: $white;
+  border-bottom: 1px solid rgba($grey-warm, 0.12);
+  color: $grey-warm;
+  cursor: text;
+  margin-top: 7px;
+  overflow: hidden;
+  padding: 10px 0 0 10px;
+  resize: none;
+  width: 100%;
+
+  &.focus {
+    border-bottom: 1px solid $links;
+    box-shadow: 0px 0px 3px 1px rgba($links, 0.15);
+  }
+}
+
+  .tags__tag {
+    background: $grey-warm;
+    clear: none;
+    color: $white;
+    float: left;
+    margin-bottom: 12px;
+    margin-right: 12px;
+
+    .tags.focus & {
+      background: $links;
+    }
+  }
+
+    .tags__tag-display {
+      display: inline-block;
+      padding: 2px 10px;
+    }
+
+    .tags__tag-remove {
+      // TODO replace this placeholder style
+      background: red;
+      cursor: pointer;
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+    }
+
+  .tags__entry {
+    @include p-regular;
+    background: transparent;
+    clear: none;
+    color: $grey-warm;
+    display: block;
+    float: left;
+    margin: 1px;
+    padding: 4px 0;
+
+    &:focus {
+      color: $links;
+    }
+  }

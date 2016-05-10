@@ -39,7 +39,9 @@ h1 Edit thread
 
   .label
     .label__title Tags
-    p TODO
+    = render 'components/tags',
+      name: 'topic_thread[tags]',
+      value: @thread.tags
 
   .form__buttons
     .form__button-standard Cancel

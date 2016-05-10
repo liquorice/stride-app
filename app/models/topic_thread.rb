@@ -11,6 +11,7 @@ class TopicThread < ActiveRecord::Base
   # --- Validations ---
   validates :name, presence: true, length: { minimum: 2 }
   validate :must_perform_similar_thread_check
+  before_save :cleanup_tags
 
   self.per_page = 8
 
@@ -45,6 +46,12 @@ class TopicThread < ActiveRecord::Base
   end
 
   private
+
+  def cleanup_tags
+    if self.tags
+      self.tags = self.tags.map(&:strip).reject(&:blank?).uniq
+    end
+  end
 
   def must_perform_similar_thread_check
     unless similar_thread_check
