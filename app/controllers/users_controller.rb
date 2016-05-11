@@ -19,6 +19,9 @@ class UsersController < ApplicationController
   def signup
     @user = @site.users.new(new_user_params)
 
+    # Assign the 0th access group to the user
+    @user.access_level = @site.access_levels.first
+
     if @user.save
       flash[:success] = "Account created, welcome #{@user.name}"
       log_in(@user)
@@ -27,7 +30,15 @@ class UsersController < ApplicationController
       flash.now[:error] = @user.errors.full_messages.to_sentence
       render :register, layout: 'modal'
     end
+  end
 
+  def set_access_level
+    require_permission :accessLevel_set
+    @user = @site.users.find(params[:id])
+
+    @user.update(access_level_id: params[:user][:access_level_id])
+    flash[:success] = "Access level updated for #{@user.name}"
+    redirect_to user_path(@user)
   end
 
   private

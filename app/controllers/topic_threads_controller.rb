@@ -18,10 +18,20 @@ class TopicThreadsController < ApplicationController
 
   def create
     require_permission :topicThreads_create
-    @thread = @site.topic_threads.new(thread_params)
+    @thread = @current_user.topic_threads.new(thread_params)
 
     if @thread.save
       flash[:success] = "#{@thread.name} succesfully created"
+
+      # If any post body was provided, attempt to create a new post
+      first_post_content = params[:first_post]
+
+      unless first_post_content.blank?
+        @post = @thread.posts.new(user: @current_user, content: first_post_content)
+        # TODO catch this potential error
+        @post.save
+      end
+
       redirect_to topic_thread_path(@thread)
     else
       flash.now[:error] = @thread.errors.full_messages.to_sentence
@@ -69,7 +79,9 @@ class TopicThreadsController < ApplicationController
       :name,
       :locked,
       :public,
-      :topic_id
+      :topic_id,
+      :similar_thread_check,
+      :tags => []
     )
   end
 

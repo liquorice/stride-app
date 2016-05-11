@@ -4,6 +4,10 @@
     = f.text_field :name
 
   .label
+    .label__caption Ordinal
+    = f.text_field :ordinal
+
+  .label
     .label__caption Permissions
     - AccessLevel.permissions_list.each do |k, v|
       label.checkbox

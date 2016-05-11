@@ -18,6 +18,7 @@
 //= require post-content
 //= require post-reply
 //= require dropdown
+//= require tags
 //= require href
 //= require modal
 //= require notification

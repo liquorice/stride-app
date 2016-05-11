@@ -5,6 +5,8 @@ class AccessLevel < ActiveRecord::Base
   validates :name, presence: true
   validates :site, presence: true
 
+  default_scope { order(ordinal: :asc) }
+
   def self.permissions_list
     # Load permissions_list from file
     @permissions_list ||= YAML.load_file(

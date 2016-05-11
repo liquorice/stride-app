@@ -1,0 +1,17 @@
+- value ||= []
+- name ||= nil
+
+.tags.js-tags
+  - value.each do |v|
+    .tags__tag.js-tag
+      input type="hidden" name="#{name}[]" value=v
+      .tags__tag-display.js-tag-display = v
+      .tags__tag-remove.js-tag-remove
+
+  script.js-template type="x-template"
+    .tags__tag.js-tag
+      input type="hidden" name="#{name}[]"
+      .tags__tag-display.js-tag-display
+      .tags__tag-remove.js-tag-remove
+
+  input.tags__entry.js-tags-entry

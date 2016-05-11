@@ -23,13 +23,12 @@ h1 Create new thread
     .label__title Add first message (optional)
     .label__desc You can add the first message to this thread, or you can leave it for other users.
 
-    // TODO create new post
     .form__textarea
-      = text_area_tag 'first__post', nil, placeholder:"Add first message", class:"input__textarea"
+      = text_area_tag 'first_post', nil, placeholder:"Add first message", class:"input__textarea"
 
   .label
     label.checkbox
-      = check_box_tag 'similarThread__check', false, false, class:"input__checkbox"
+      = f.check_box :similar_thread_check, class:"input__checkbox"
       .form__checkbox
     .checkbox__text I have checked to see if a thread that is similar to this one already exists on the site.
 
