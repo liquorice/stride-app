@@ -1,3 +1,10 @@
+$toolbar-overlarge: 65px;
+$toolbar-large: 53px;
+$toolbar-medium: 60px;
+$toolbar-small: 50px;
+
+$navigation-medium: 40px;
+
 html {
   @include breakpoint(huge) {
     font-size: 20px;
@@ -22,7 +29,8 @@ html {
 
   &.wf-loading {
     .header,
-    .container,
+    .main,
+    .page,
     .getSupport,
     .footer {
       opacity: 0;
@@ -44,6 +52,129 @@ body {
   min-height: 100%;
   position: relative;
   width: 100%;
+}
+
+// Load transistions
+
+.header {
+  opacity: 1;
+  transition: all 200ms ease-out 200ms;
+}
+
+.main {
+  opacity: 1;
+  transition: all 200ms ease-out 400ms;
+}
+
+.page {
+  opacity: 1;
+  transition: all 200ms ease-out 600ms;
+}
+
+.getSupport {
+  opacity: 1;
+  transition: all 200ms ease-out 800ms;
+}
+
+.footer {
+  opacity: 1;
+  transition: all 200ms ease-out 1000ms;
+}
+
+// Layout
+
+.constrained {
+  @include breakpoint(small) {
+    width: 84%;
+  }
+  @include breakpoint(mini) {
+    width: 90%;
+  }
+
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
+  position: relative;
+  width: 71%;
+
+  .header & {
+    @include breakpoint(medium, small, mini) {
+      width: 100%;
+    }
+    background-color: $white;
+    overflow: visible;
+  }
+}
+
+.header {
+  @include breakpoint(huge, overlarge) {
+    height: $toolbar-overlarge;
+  }
+  @include breakpoint(large) {
+    height: $toolbar-large;
+  }
+  @include breakpoint(medium) {
+    height: calc(#{$toolbar-medium} + #{$navigation-medium});
+  }
+  @include breakpoint(small, mini) {
+    height: calc(#{$toolbar-small} + #{$navigation-medium});
+  }
+  background-color: $white;
+  border-bottom: 1px solid rgba($grey-warm, 0.15);
+  position: fixed;
+  width: 100%;
+  z-index: 800;
+}
+
+.main {
+  @include breakpoint(huge, overlarge) {
+    padding-top: $toolbar-overlarge;
+  }
+  @include breakpoint(large) {
+    padding-top: $toolbar-large;
+  }
+  @include breakpoint(medium) {
+    padding-top: calc(#{$toolbar-medium} + #{$navigation-medium});
+  }
+  @include breakpoint(small, mini) {
+    padding-top: calc(#{$toolbar-small} + #{$navigation-medium});
+  }
+  z-index: 1;
+}
+
+.page {
+  @include breakpoint(small, mini) {
+    padding-top: 1.2rem;
+  }
+  background-color: $bg;
+  padding-top: 3.158rem;
+  position: relative;
+}
+
+.sidebar {
+  @include breakpoint(huge, overlarge, large, medium) {
+    width: 23.34%;
+    float: left;
+  }
+  @include breakpoint(small, mini) {
+    margin-bottom: 20px;
+    margin-right: 0;
+    width: 100%;
+  }
+  position: relative;
+}
+
+.content {
+  @include breakpoint(huge, overlarge, large, medium) {
+    margin-left: calc(23.34% + 24px);
+  }
+  @include breakpoint(small, mini) {
+    margin-bottom: 20px;
+    margin-right: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+  position: relative;
 }
 
 // Notifications
@@ -73,64 +204,4 @@ body {
   &.success {
     border: 10px solid green;
   }
-}
-
-// Layout
-
-main {
-  @include breakpoint(huge, overlarge) {
-    padding-top: 65px;
-  }
-  @include breakpoint(large, medium) {
-    padding-top: 53px;
-  }
-  @include breakpoint(small, mini) {
-    padding-top: 90px;
-  }
-}
-
-
-.page {
-  @include breakpoint(medium) {
-    padding-bottom: 3.36rem;
-    padding-top: 2.4rem;
-  }
-  @include breakpoint(small, mini) {
-    padding-bottom: 3.15rem;
-    padding-top: 3rem;
-  }
-  p {
-    margin: 0 auto;
-    max-width: 45em;
-  }
-  background-color: $bg;
-  padding-bottom: 3.675rem;
-  padding-top: 2.45rem;
-  position: relative;
-}
-
-.sidebar {
-  @include breakpoint(huge, overlarge, large, medium) {
-    width: columns(9);
-    float: left;
-  }
-  @include breakpoint(small, mini) {
-    margin-bottom: 20px;
-    margin-right: 0;
-    width: mobile_columns(28);
-  }
-  position: relative;
-}
-
-.content {
-  @include breakpoint(huge, overlarge, large, medium) {
-    margin-left: columns(10);
-  }
-  @include breakpoint(small, mini) {
-    margin-bottom: 20px;
-    margin-right: 0;
-    padding-left: 0;
-    width: mobile_columns(28);
-  }
-  position: relative;
 }
