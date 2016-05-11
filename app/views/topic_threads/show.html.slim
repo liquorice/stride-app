@@ -1,9 +1,11 @@
 - content_for :dark_strip do
-  h3.topic__title
-    a href=topic_path(@thread.topic)
-      =< @thread.topic.name
-  h3.thread__title
-    =< @thread.name
+  .strip__dark-thread
+    h2
+      a href=topic_path(@thread.topic) 
+        = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+        =< @thread.topic.name
+    h1
+      =< @thread.name
 
 - if current_user_can?(:threads_modify)
   - content_for :edit_strip do

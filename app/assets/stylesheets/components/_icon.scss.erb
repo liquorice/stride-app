@@ -74,11 +74,6 @@ $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.
   background-position: center 82%;
 }
 
-@mixin icon__back {
-  @include icon__standard;
-  background: url("<%= asset_data_uri 'icons/icon_back-arrow-white.svg' %>") no-repeat;
-}
-
 @mixin icon__first {
   background-size: 10.8px 10.1px;
   background-image: $icon-pagination-first-grey;
@@ -118,4 +113,11 @@ $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 8.925px 8.925px;
+}
+
+.icon__back {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  height: 15.7px;
+  width: 15.7px;
 }

@@ -1,6 +1,7 @@
 - if current_user_can?(:users_view)
   - content_for :dark_strip do
-    h2.small All Users
+    .strip__dark-regular
+      h1 All Users
 
   - content_for :light_strip do
     .users__search

@@ -14,52 +14,71 @@
 }
 
 .strip__dark {
-  @include breakpoint(huge, overlarge) {
-    padding-top: 18px;
+  text-align: center;
+}
+
+  .strip__dark-forum {
+    @include breakpoint(small, mini) {
+      padding: 1.567rem 0;
+    }
+    padding: 0.9902rem 0;
   }
-  @include breakpoint(large) {
-    padding-top: 34px;
+
+  .strip__dark-topic {
+    @include breakpoint(small, mini) {
+      padding: 2.254rem 0;
+    }
+    padding: 3.2635rem 0;
   }
-  @include breakpoint(medium) {
-    padding-top: 32px;
-  }
-  @include breakpoint(small) {
-    padding-top: 23px;
-  }
-  @include breakpoint(mini) {
-    padding-top: 13.5px;
+
+  .strip__dark-thread,
+  .strip__dark-regular {
+    @include breakpoint(small, mini) {
+      padding: 2.254rem 0;
+    }
+    padding: 2.9713rem 0;
   }
 
   h1 {
-    @include forum-heading;
-    line-height: .9;
-    margin-top: 1.5rem;
-    text-align: center;
-  }
+    .strip__dark-forum & {
+      @include heading-forum;
+    }
 
-  h2 {
-    @include topic-heading;
-    margin-top: 1rem;
-    text-align: center;
-    padding-bottom: 1rem;
+    .strip__dark-topic & {
+      @include heading-topic;
+    }
 
-    &.small {
-      padding-bottom: 0;
+    .strip__dark-thread &,
+    .strip__dark-regular & {
+      @include heading-thread;
     }
   }
 
-  h3.topic__title, h3.users__title {
-    @include topic-heading-sub;
-    position: relative;
-    text-align: center;
-  }
+  h2 {
+    .strip__dark-topic &,
+    .strip__dark-thread &,
+    .strip__dark-regular & {
+      @include heading-breadcrumb;
+    }
 
-  h3.thread__title, h3.user__title {
-    @include thread-heading;
-    position: relative;
-    text-align: center;
+    .strip__dark-topic & a:hover,
+    .strip__dark-thread & a:hover,
+    .strip__dark-regular & a:hover {
+      color: $primary;
+      transition: all 200ms ease-out;
+    }
+
+    .strip__dark-topic & a:hover > svg,
+    .strip__dark-thread & a:hover > svg,
+    .strip__dark-regular & a:hover > svg {
+      .st0,
+      .st1,
+      .st2 {
+        stroke: $primary;
+        transition: all 200ms ease-out;
+      }
+    }
   }
-}
 
 .strip__edit {
   margin-bottom: -2.1em;
@@ -108,7 +127,7 @@
   }
 
   p {
-    @include p-large;
+    @include p-leading;
     text-align: center;
     a {
       @include links;

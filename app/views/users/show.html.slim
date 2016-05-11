@@ -1,9 +1,12 @@
 - if current_user_can?(:users_view)
   - content_for :dark_strip do
-    h3.users__title
-      a href=users_path All Users
-    h3.user__title
-      =< @user.name
+    .strip__dark-regular
+      h2
+        a href=users_path
+          = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+          | All Users
+      h1
+        =< @user.name
 
   - content_for :sidebar do
     = render 'partials/sidebar', show_topics: false

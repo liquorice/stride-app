@@ -1,6 +1,11 @@
 - content_for :dark_strip do
-  h2
-    =< @topic.name
+  .strip__dark-topic
+    h2
+      a href=topics_preview_path 
+        = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+        | Forums
+    h1
+      =< @topic.name
 
 - if current_user_can?(:topics_modify)
   - content_for :edit_strip do
