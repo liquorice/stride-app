@@ -22,7 +22,9 @@ html
     .modalOverlay.js-popup
       .constrained
         .modalOverlay__close.js-popup-close
-        .modalOverlay__loading Loading…
+        .modalOverlay__loading
+          = insert_svg("icons/icon-spinner.svg")
+          | Loading…
         .modalContainer.js-popup-content
 
     - if flash[:success]

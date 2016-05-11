@@ -34,17 +34,17 @@
   }
 
   .modalOverlay__loading {
-    // TODO style this MC
-    // TODO ask AT regarding loading style
-    color: purple;
-    display: none;
-    font-family: 'Comic Sans MS', fantasy;
-    font-size: 50px;
-    padding: 100px;
-    text-align: center;
+    @include topMessage;
+    background-color: $white;
+    opacity: 0;
+    top: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
 
     .modalOverlay.loading & {
-      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
     }
   }
 

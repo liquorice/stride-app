@@ -180,28 +180,32 @@ body {
 // Notifications
 
 .notification {
-  // TODO Style this MC
-  background: #fff;
-  font-family: 'Comic Sans MS', fantasy;
-  left: 100px;
-  padding: 30px;
-  position: fixed;
-  right: 100px;
-  text-align: center;
-  top: 100px;
-  transition: all .3s;
-  z-index: 2000;
-
+  @include topMessage;
+  @include breakpoint(huge, overlarge) {
+    top: $toolbar-overlarge;
+  }
+  @include breakpoint(large) {
+    top: $toolbar-large;
+  }
+  @include breakpoint(medium) {
+    top: calc(#{$toolbar-medium} + #{$navigation-medium});
+  }
+  @include breakpoint(small, mini) {
+    top: calc(#{$toolbar-small} + #{$navigation-medium});
+  }
+  
   &.hidden {
     opacity: 0;
+    transform: translateY(-10px);
     visibility: hidden;
   }
 
   &.error {
-    border: 10px solid red;
+    background-color: mix($alert, $white, 10%);
+    color: $alert;
   }
 
   &.success {
-    border: 10px solid green;
+    background-color: $white;
   }
 }
