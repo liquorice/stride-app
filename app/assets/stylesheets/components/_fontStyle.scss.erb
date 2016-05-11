@@ -5,10 +5,18 @@
 
 @mixin h1-regular {
   @include ff_quatroSlab;
+  @include breakpoint (medium) {
+    font-size: 2.2rem;
+  }
+  @include breakpoint (small, mini) {
+    font-size: 1.86667rem;
+  }
   color: $black;
+  font-size: 2.5rem;
+  font-weight: 900;
   letter-spacing: -0.01em;
   line-height: 1.1;
-  margin-bottom: 0.5em;
+  margin: 0 0 0.5em;
 }
 
 @mixin h1-primary {
@@ -18,13 +26,28 @@
 
 @mixin h1-flood {
   @include ff_flood;
-  @include breakpoint(small, mini) {
-    font-size: 2.4rem;
+  @include breakpoint (huge) {
+    font-size: 140px;
   }
+  @include breakpoint (overlarge) {
+    font-size: 120px;
+  }
+  @include breakpoint (large) {
+    font-size: 100px;
+  }
+  @include breakpoint (medium) {
+    font-size: 92px;
+  }
+  @include breakpoint (small) {
+    font-size: 72px;
+  }
+
   color: $black;
-  font-size: 3.2rem;
-  line-height: 0.96em;
-  margin-bottom: 0.6rem;
+  font-size: 3.333334rem;
+  transform: rotate(-5deg);
+  color: $blue-dark;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5em;
 }
 
 @mixin h2-regular {
