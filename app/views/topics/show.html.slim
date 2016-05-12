@@ -17,5 +17,11 @@
 - content_for :sidebar do
   = render 'partials/sidebar', show_topics: true
 
-= render @threads
-= render 'partials/pagination', paginated: @threads
+.threads
+  - if @threads.count > 0
+    = render @threads
+    = render 'partials/pagination', paginated: @threads
+  - else
+    .threads__empty
+      = insert_svg("empty-avatar.svg", class:"icon__avatar")
+      | There's nothing here! Be the first to create a new thread.
