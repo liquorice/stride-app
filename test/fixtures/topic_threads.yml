@@ -1,9 +1,10 @@
 <% ['pete', 'dale'].each do |site| %>
-  <% 4.times.each do |i| %>
+  <% 2.times.each do |i| %>
     <% 25.times.each do |j| %>
       topicThread_<%= i %>_<%= j %>_<%= site %>:
         topic: topic_<%= i %>_<%= site %>
-        name: "<%= LibLib.sentences(1..3, :title) %>"
+        name: "<%= LibLib.line(:title) %>"
+        similar_thread_check: true
         user: admin_<%= site %>
         <% if j == 9 %>
         locked: true

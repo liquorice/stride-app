@@ -8,6 +8,10 @@ class LibLib
       build(:name)
     end
 
+    def line(*pattern_names)
+      build(pattern_names.sample.to_s).humanize
+    end
+
     def sentence(*pattern_names)
       build(pattern_names.sample.to_s).humanize + '.'
     end
@@ -19,7 +23,7 @@ class LibLib
 
     def paragraphs(count, *pattern_names)
       count = count.to_a.sample if count.instance_of? Range
-      count.times.map{ sentences(1..10, *pattern_names) }.join("\n\n")
+      count.times.map{ sentences(1..4, *pattern_names) }.join("\n\n\n")
     end
 
     private

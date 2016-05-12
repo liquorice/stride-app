@@ -1,8 +1,11 @@
 <% ['pete', 'dale'].each do |site| %>
-  <% 4.times.each do |i| %>
-    topic_<%= i %>_<%= site %>:
-      site: <%= site %>
-      name: <%= LibLib.sentence(:title) %>
-      description: "<%= LibLib.sentences(1..4, :grimm) %>"
-  <% end %>
+  topic_0_<%= site %>:
+    site: <%= site %>
+    name: This is forum one
+    description: "The first of the test forums"
+
+  topic_1_<%= site %>:
+    site: <%= site %>
+    name: Second forum
+    description: "Forum number two, here it is!"
 <% end %>
