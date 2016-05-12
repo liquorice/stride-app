@@ -21,7 +21,7 @@ class TopicThreadsController < ApplicationController
     @thread = @current_user.topic_threads.new(thread_params)
 
     if @thread.save
-      flash[:success] = "#{@thread.name} succesfully created"
+      flash[:success] = "#{@thread.name} successfully created"
 
       # If any post body was provided, attempt to create a new post
       first_post_content = params[:first_post]
@@ -49,7 +49,7 @@ class TopicThreadsController < ApplicationController
     @thread = @site.topic_threads.find(params[:id])
 
     if @thread.update(thread_params)
-      flash[:success] = "#{@thread.name} succesfully updated"
+      flash[:success] = "#{@thread.name} successfully updated"
       redirect_to topic_thread_path(@thread)
     else
       flash.now[:error] = @thread.errors.full_messages.to_sentence
@@ -63,10 +63,10 @@ class TopicThreadsController < ApplicationController
 
     if @thread.pinned
       @thread.update(pinned: false)
-      flash[:success] = "#{@thread.name} succesfully unpinned"
+      flash[:success] = "#{@thread.name} successfully unpinned"
     else
       @thread.update(pinned: true)
-      flash[:success] = "#{@thread.name} succesfully pinned"
+      flash[:success] = "#{@thread.name} successfully pinned"
     end
 
     redirect_to topic_path(@thread.topic)
