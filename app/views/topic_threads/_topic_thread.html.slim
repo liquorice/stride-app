@@ -5,7 +5,7 @@
     - if current_user_can?(:topicThreads_modify)
       a href=toggle_topic_thread_pin_path(topic_thread) data-method='patch'
         - if topic_thread.pinned
-          = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pin")
+          = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pin pinned")
         - else
           = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pin unpinned")
 
