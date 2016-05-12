@@ -1,0 +1,19 @@
+- content_for :dark_strip do
+  .strip__dark-topic
+    h2
+      a href=topics_preview_path
+        = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+        | Forums
+    h1 Hidden threads
+
+- content_for :sidebar do
+  = render 'partials/sidebar', show_topics: true
+
+.threads
+  - if @threads.any?
+    = render @threads
+
+  - else
+    .threads__empty
+      = insert_svg("empty-avatar.svg", class:"icon__avatar")
+      | There are no hidden threads

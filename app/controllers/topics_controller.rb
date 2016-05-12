@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = @site.topics.find(params[:id])
-    @threads = @topic.topic_threads.paginate(:page => params[:page])
+    @threads = @topic.topic_threads.where(public: true).paginate(:page => params[:page])
   end
 
   # Admin

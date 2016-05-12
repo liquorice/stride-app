@@ -1,12 +1,25 @@
 class TopicThreadsController < ApplicationController
-  layout 'modal', except: ['show']
+  layout 'modal', except: ['show', 'hidden']
 
   # Public
 
   def show
     @thread = @site.topic_threads.find(params[:id])
+
+    # Only show thread if it is public, or if the user can edit threads
+    unless @thread.public?
+      unless current_user_can?(:topicThreads_modify)
+        raise Exceptions::NotFoundError
+      end
+    end
+
     @posts = @thread.posts_for_page(params[:page])
     @topic = @thread.topic
+  end
+
+  def hidden
+    require_permission :topicThreads_modify
+    @threads = @site.topic_threads.where(public: false)
   end
 
   # Admin

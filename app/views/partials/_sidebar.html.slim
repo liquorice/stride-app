@@ -12,6 +12,8 @@
   .sideMenu
     - if current_user_can?(:users_view)
       a href=users_path View all users
+    - if current_user_can?(:topicThreads_modify)
+      a href=hidden_threads_path View hidden threads
     a href="#" Community rules
     a href="#" Privacy statement
 

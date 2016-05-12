@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # Threads
   resources :topic_threads, path: 'thread'
+  get 'threads/hidden' => 'topic_threads#hidden', as: :hidden_threads
   patch 'thread/:id/toggle_pin' => 'topic_threads#toggle_pin', as: :toggle_topic_thread_pin
 
   # Posts
