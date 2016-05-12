@@ -7,16 +7,13 @@
     a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new Forum
   - if current_user_can?(:topics_create)
     a.btn__newTopicActive href=new_topic_path data-modal=true Create new Topic
+
   // Add permissions check when ready
   / - if current_user_can?(:chats_create)
   / a.btn__newChatActive href="#" data-modal=true Setup new Chat
 
 .side__group
   .sideMenu
-    a href="#" Upcoming live chats
-    // Add permissions check when ready
-    / - if current_user_can?(:users_view)
-    a href="#" Archived chats
     - if current_user_can?(:users_view)
       a href=users_path View all users
     a href="#" Community rules
