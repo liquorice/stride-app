@@ -109,10 +109,10 @@ $standard-margin: 0.6rem;
 // H2 Styles
 
 @mixin h2-regular {
+  @include ff_adelle-bold;
   color: $black;
-  font-size: 1.46rem;
-  line-height: 1.2;
-  margin: 1em 0 $standard-margin;
+  font-size: 1.263rem;
+  line-height: 1.33334;
 }
 
 @mixin h2-primary {
@@ -121,8 +121,14 @@ $standard-margin: 0.6rem;
 }
 
 @mixin h2-flood {
-  @include h2-regular;
   @include ff_flood;
+  color: $green-dark;
+  font-size: 2.105rem;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  a {
+    color: $green-dark;
+  }
 }
 
 // H3 Styles
