@@ -11,204 +11,226 @@
   background: $white;
   cursor: pointer;
   height: 5rem;
-  margin-bottom: 0.36rem;
+  margin-bottom: 0.3rem;
   box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
 }
 
-.thread__mobile {
-  @include breakpoint(mini, small, medium) {
-    display: block;
-    float: left;
-  }
-  display: none;
-  height: 2.5rem;
-  width: 100%;
-  background: $white;
-  margin-bottom: 6px;
-  box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
-
-  &[data-pinned] {
-    border-left: 6px solid $blue-dark;
-    .thread__mobile-created {
-      padding: 0.6rem 1rem;
+  .thread:hover {
+    & * {
+      background: mix($links, $white, 8%);
+      color: $links;
+      transition: all 100ms ease-out;
     }
-  }
-}
 
-.thread__mobile-created {
-  @include p-meta;
-  @include ff_adelle-bold;
-  color: $green-light;
-  display: block;
-  float: left;
-  width: 50%;
-  padding: 0.6rem 0 0.6rem calc(1rem + 6px);
-  height: 2.5rem;
-  border-top: 2px solid rgba($grey-warm, 0.1);
-}
-
-.thread__mobile-replies {
-  @include p-meta;
-  @include ff_adelle-bold;
-  color: $green-dark;
-  display: block;
-  float: left;
-  width: 50%;
-  border-left: 2px solid rgba($grey-warm, 0.1);
-  padding: 0.6rem 0 0.6rem 1rem;
-  height: 2.5rem;
-  border-top: 2px solid rgba($grey-warm, 0.1);
-}
-
-.thread__preview {
-  @include p-meta;
-  @include breakpoint(small, medium) {
-    width: 100%;
-  }
-  @include breakpoint(mini) {
-    width: 100%;
-    max-height: 8rem;
-    height: auto;
-  }
-  background: $white;
-  cursor: pointer;
-  display: block;
-  float: left;
-  padding: 0.75rem 0.5rem;
-  width: 68.9%;
-  height: 5rem;
-  border-left: 6px solid $white;
-
-  &[data-pinned] {
-    border-left: 6px solid $blue-dark;
-  }
-
-  &[data-locked] {
-    .thread__name {
-      h2 {
-        color: $grey-warm;
+    & .thread__preview{
+      @include breakpoint(mini, small, medium) {
+        border-left: 4px solid mix($links, $white, 8%);
       }
-      &:before {
-        @include icon__lock;
-        content: " ";
-        float: left;
-        margin-top: 0.71em;
+      border-left: 6px solid mix($links, $white, 8%);
+
+      &[data-pinned] {
+        @include breakpoint(mini, small, medium) {
+          border-left: 4px solid $blue-dark;
+        }
+        border-left: 6px solid $blue-dark;
       }
     }
   }
-}
 
-.thread__name {
-  display: block;
-  float: left;
-  max-width: 92%;
-  h2 {
-    @include h2-regular;
-    @include breakpoint(mini) {
-      max-height: 3.3em;
+  .threadMobile {
+    @include breakpoint(mini, small, medium) {
+      display: block;
+      float: left;
     }
-    color: $primary;
-    font-size: 1.65em;
-    line-height: 1.5;
-    margin-bottom: 0.2em;
-    overflow: hidden;
-    word-break: break-word;
-    max-height: 1.65em;
-  }
-}
+    display: none;
+    height: 2.5rem;
+    width: 100%;
+    background: $white;
+    margin-bottom: 6px;
+    box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
 
-.thread__latest {
-  @include breakpoint(mini) {
-    max-height: 2.8em;
+    &[data-pinned] {
+      border-left: 4px solid $blue-dark;
+      .threadMobile__created {
+        padding: 0.6rem 0.85rem;
+      }
+    }
   }
-  display: block;
-  float: left;
-  width: 100%;
-  max-height: 1.4em;
-  overflow: hidden;
-  word-break: break-word;
-  p {
+
+    .threadMobile__created {
+      @include p-meta;
+      @include ff_adelle-bold;
+      border-top: 1px solid rgba($grey-warm, 0.1);
+      color: $green-light;
+      display: block;
+      float: left;
+      height: 2.5rem;
+      padding: 0.6rem 0 0.6rem calc(0.85rem + 4px);
+      width: 50%;
+    }
+
+    .threadMobile__replies {
+      @include p-meta;
+      @include ff_adelle-bold;
+      border-left: 1px solid rgba($grey-warm, 0.1);
+      border-top: 1px solid rgba($grey-warm, 0.1);
+      color: $green-dark;
+      display: block;
+      float: left;
+      height: 2.5rem;
+      padding: 0.6rem 0 0.6rem 0.85rem;
+      width: 50%;
+    }
+
+  .thread__preview {
     @include p-meta;
-  }
-}
-
-  .thread__latest-avatar {
-    @include avatar-mini;
-    @include breakpoint(mini) {
-      display: inline-block;
-      float: none;
-      margin-bottom: -0.25em;
+    @include breakpoint(mini, small, medium) {
+      border-left: 4px solid $white;
+      width: 100%;
     }
+    @include breakpoint(mini) {
+      max-height: 8rem;
+      height: auto;
+      padding: 0.9rem 0.85rem;
+    }
+    background: $white;
+    cursor: pointer;
     display: block;
     float: left;
-    margin-right: 0.25em;
+    padding: 0.6rem 1rem;
+    width: 69%;
+    height: 5rem;
+    border-left: 6px solid $white;
+
+    &[data-pinned] {
+      @include breakpoint(mini, small, medium) {
+        border-left: 4px solid $blue-dark;
+      }
+      border-left: 6px solid $blue-dark;
+    }
+
+    &[data-locked] {
+      .thread__name {
+        h2 {
+          color: $grey-warm;
+        }
+        &:before {
+          @include icon__lock;
+          content: " ";
+          float: left;
+          margin-top: 0.71em;
+        }
+      }
+    }
   }
 
-.thread__created {
-  @include p-meta;
-  @include breakpoint(mini, small, medium) {
-    display: none;
-  }
-  border-left: 2px solid rgba($grey-warm, 0.1);
-  color: $green-light;
-  cursor: pointer;
-  display: block;
-  float: left;
-  padding: 1rem 0.5rem;
-  width: 18.1%;
-  height: 5rem;
+    .thread__name {
+      display: block;
+      float: left;
+      max-width: 91%;
 
-  h2 {
-    @include h2-regular;
-    color: $green-light;
-    font-size: 1.65em;
-    line-height: 1.5;
-  }
+      h2 {
+        @include h2-primary;
+        @include breakpoint(mini) {
+          -webkit-line-clamp: 2;
+          margin-bottom: 0.35em;
+          max-height: 2.6em;
+        }
+        margin-bottom: 0.25em;
+        overflow: hidden;
+        max-height: 1.4em;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+      }
+    }
 
-  h4 {
-    font-size: 1.22rem;
-    line-height: 1;
-  }
-}
+    .thread__latest {
+      @include breakpoint(mini) {
+        max-height: 3.6em;
+        -webkit-line-clamp: 2;
+      }
+      float: left;
+      width: 100%;
+      max-height: 1.8em;
+      overflow: hidden;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      display: -webkit-box;
 
-.thread__replies {
-  @include p-meta;
-  @include breakpoint(mini, small, medium) {
-    display: none;
-  }
-  border-left: 2px solid rgba($grey-warm, 0.1);
-  color: $green-mid;
-  cursor: pointer;
-  display: block;
-  float: left;
-  padding: 1rem 0.5rem;
-  width: 13%;
-  height: 5rem;
+      a {
+        @include p-meta;
+        border-bottom: none;
+        line-height: 1.8;
+      }
 
-  h2 {
-    @include h2-regular;
-    color: $green-mid;
-    font-size: 1.65em;
-    line-height: 1.5;
-  }
+      a, a > strong {
+        color: $grey-warm !important;
+      }
 
-  h4 {
-    font-size: 1.22rem;
-    line-height: 1;
-  }
-}
+      a:hover,
+      a:hover > strong {
+        color: $links !important;
+        box-shadow: none;
+      }
+    }
 
-.icon__pinned {
-  float: left;
-  height: 1rem;
-  margin: 0.68em 0.34em 0 0.2em;
-  width: 0.9rem;
-}
+      .thread__latest-avatar {
+        @include avatar-mini;
+        @include breakpoint(mini, small, medium, large) {
+          margin-top: 0.15em;
+        }
+        @include breakpoint(mini) {
+          display: inline-block;
+          float: none;
+          margin-bottom: -0.25em;
+        }
+        display: block;
+        float: left;
+        margin-right: 0.25em;
+        margin-top: 0.25em;
+      }
 
-.icon__unpinned {
-  float: left;
-  height: 0.55rem;
-  margin: 1em 0.34em 0 0.2em;
-  opacity: 0.5;
-  width: 0.65rem;
-}
+    .thread__created {
+      @include p-meta;
+      @include breakpoint(mini, small, medium) {
+        display: none;
+      }
+      border-left: 1px solid rgba($grey-warm, 0.1);
+      color: $green-light;
+      cursor: pointer;
+      display: block;
+      float: left;
+      padding: 1.1rem 0.7rem;
+      width: 18%;
+      height: 5rem;
+
+      h2 {
+        @include h2-regular;
+        color: $green-light;
+        padding-top: 0.1em;
+      }
+    }
+
+    .thread__replies {
+      @include p-meta;
+      @include breakpoint(mini, small, medium) {
+        display: none;
+      }
+      border-left: 1px solid rgba($grey-warm, 0.1);
+      color: $green-mid;
+      cursor: pointer;
+      display: block;
+      float: left;
+      padding: 1rem 0.7rem;
+      width: 13%;
+      height: 5rem;
+
+      h2 {
+        @include h2-regular;
+        color: $green-mid;
+        padding-top: 0.1em;
+      }
+    }

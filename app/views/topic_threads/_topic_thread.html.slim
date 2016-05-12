@@ -5,13 +5,13 @@
     - if current_user_can?(:topicThreads_modify)
       a href=toggle_topic_thread_pin_path(topic_thread) data-method='patch'
         - if topic_thread.pinned
-          = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pinned")
+          = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pin")
         - else
-          = insert_svg("icons/icon_pin-grey-warm.svg", class:"icon__unpinned")
+          = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pin unpinned")
 
     - else
       - if topic_thread.pinned
-        = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pinned")
+        = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pin")
 
     / - if topic_thread.locked
     /   p Locked
@@ -21,7 +21,7 @@
 
     - unless topic_thread.latest_post == nil
       .thread__latest
-        p
+        a href=post_path(topic_thread.latest_post)
           .thread__latest-avatar
             = render 'user/avatar', user: topic_thread.latest_post.user
 
@@ -41,6 +41,6 @@
     h2
       = ("#{topic_thread.posts_count / 1000}k" if topic_thread.posts_count > 1000 ) || topic_thread.posts_count
 
-  .thread__mobile data-pinned=topic_thread.pinned
-    .thread__mobile-created Created: #{topic_thread.created_at.strftime('%x')}
-    .thread__mobile-replies = ("Replies: #{topic_thread.posts_count / 1000}k" if topic_thread.posts_count > 1000 ) || "Replies: #{topic_thread.posts_count}"
+  .threadMobile data-pinned=topic_thread.pinned
+    .threadMobile__created Created: #{topic_thread.created_at.strftime('%x')}
+    .threadMobile__replies = ("Replies: #{topic_thread.posts_count / 1000}k" if topic_thread.posts_count > 1000 ) || "Replies: #{topic_thread.posts_count}"
