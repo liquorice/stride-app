@@ -84,7 +84,7 @@ body {
 // Layout
 
 .constrained {
-  @include breakpoint(small) {
+  @include breakpoint(large, small) {
     width: 84%;
   }
   @include breakpoint(mini) {
@@ -144,10 +144,10 @@ body {
 
 .page {
   @include breakpoint(small, mini) {
-    padding-top: 1.2rem;
+    padding-top: 0.6rem;
   }
   background-color: $bg;
-  padding-top: 3.158rem;
+  padding-top: 2.558rem;
   position: relative;
 }
 
@@ -161,6 +161,7 @@ body {
     margin-right: 0;
     width: 100%;
   }
+  padding-top: 0.6rem;
   position: relative;
 }
 
