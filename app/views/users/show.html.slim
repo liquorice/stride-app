@@ -50,6 +50,7 @@
         = @user.created_at.strftime('%x')
       .userOverview__column
         strong Last active
+        / TODO Whoa nelly! This spaghetti needs to be cleaned up and put into a helper
         = ("Today" if Time.at(@user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(@user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || @user.last_seen.strftime('%x')
       .userOverview__column
         strong Threads
