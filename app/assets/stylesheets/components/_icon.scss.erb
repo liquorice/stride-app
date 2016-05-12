@@ -35,7 +35,7 @@ $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.
 
 @mixin icon__newThreadInactive {
   @include icon__standard;
-  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue copy 2.svg' %>") no-repeat;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--grey.svg' %>") no-repeat;
 }
 
 @mixin icon__newThreadActive {
@@ -45,7 +45,7 @@ $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.
 
 @mixin icon__newTopicActive {
   @include icon__standard;
-  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue copy.svg' %>") no-repeat;
+  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-topics--blue.svg' %>") no-repeat;
 }
 
 @mixin icon__newChatActive {
@@ -131,7 +131,11 @@ $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.
   transition: all 100ms ease-out;
   width: 16px;
 
-  &:hover {
+  .st0 {
+    stroke: none;
+  }
+
+  &.pinned:hover {
     height: 11px;
     margin: calc(0.6em + 5px) calc(0.3em + 5px) 0 0.15em;
     width: 11px;
@@ -151,4 +155,13 @@ $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.
     margin: 0.6em 0.3em 0 0.15em;
     width: 16px;
   }
+}
+
+.icon__avatar {
+  display: inline-block;
+  height: 2.947rem;
+  width: 2.947rem;
+  // & * {
+  //   stroke: none !important;
+  // }
 }

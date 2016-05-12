@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10.4 10.09"><defs><style>.a,.c,.d{fill:none;}.b{clip-path:url(#a);}.c,.d{stroke:#7a706c;stroke-miterlimit:10;stroke-width:1.25px;}.d{stroke-linecap:round;}</style><clipPath id="a" transform="translate(-6.98 -6.77)"><rect class="a" width="24" height="24"/></clipPath></defs><title>search</title><g class="b"><circle class="c" cx="4.63" cy="4.63" r="4"/></g><line class="d" x1="7.62" y1="7.32" x2="9.77" y2="9.46"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-300 391.9 10.4 10.1" style="enable-background:new -300 391.9 10.4 10.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#7A706C;}
+</style>
+<title>search</title>
+<g>
+	<g>
+		<path class="st0" d="M-295.4,401.2c-2.6,0-4.6-2.1-4.6-4.6c0-2.6,2.1-4.6,4.6-4.6c2.5,0,4.6,2.1,4.6,4.6
+			C-290.7,399.1-292.8,401.2-295.4,401.2z M-295.4,393.2c-1.9,0-3.4,1.5-3.4,3.4c0,1.9,1.5,3.4,3.4,3.4c1.9,0,3.4-1.5,3.4-3.4
+			C-292,394.7-293.5,393.2-295.4,393.2z"/>
+	</g>
+</g>
+<path class="st0" d="M-290.2,402c-0.2,0-0.3-0.1-0.4-0.2l-2.1-2.1c-0.2-0.2-0.2-0.6,0-0.9c0.2-0.2,0.6-0.2,0.9,0l2.1,2.1
+	c0.2,0.2,0.2,0.6,0,0.9C-289.9,401.9-290.1,402-290.2,402z"/>
+</svg>

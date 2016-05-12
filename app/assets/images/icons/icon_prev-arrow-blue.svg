@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="-295 391.9 5.9 10.1" style="enable-background:new -295 391.9 5.9 10.1;" xml:space="preserve">
+	 viewBox="-597 783.8 5.9 10.1" style="enable-background:new -597 783.8 5.9 10.1;" xml:space="preserve">
 <style type="text/css">
-	.st0{clip-path:url(#SVGID_2_);fill:#1C7FA0;}
+	.st0{fill:#1C7FA0;}
 </style>
 <g>
-	<defs>
-		<rect id="SVGID_1_" x="-295" y="391.9" width="5.9" height="10.1"/>
-	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-	</clipPath>
-	<polygon class="st0" points="-290,402 -295,397 -290,391.9 -289.1,392.8 -293.2,397 -289.1,401.1 	"/>
+	<g>
+		<polygon class="st0" points="-592,793.9 -597,788.9 -592,783.8 -591.1,784.7 -595.2,788.9 -591.1,793 		"/>
+	</g>
 </g>
 </svg>
