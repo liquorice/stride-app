@@ -44,12 +44,12 @@
       @include heading-forum;
     }
 
-    .strip__dark-topic & {
+    .strip__dark-topic &,
+    .strip__dark-regular & {
       @include heading-topic;
     }
 
-    .strip__dark-thread &,
-    .strip__dark-regular & {
+    .strip__dark-thread & {
       @include heading-thread;
     }
   }
@@ -68,15 +68,11 @@
       transition: all 200ms ease-out;
     }
 
-    .strip__dark-topic & a:hover > svg,
-    .strip__dark-thread & a:hover > svg,
-    .strip__dark-regular & a:hover > svg {
-      .st0,
-      .st1,
-      .st2 {
-        stroke: $primary;
-        transition: all 200ms ease-out;
-      }
+    .strip__dark-topic & a:hover > svg *,
+    .strip__dark-thread & a:hover > svg *,
+    .strip__dark-regular & a:hover > svg * {
+      fill: $primary;
+      transition: all 200ms ease-out;
     }
   }
 

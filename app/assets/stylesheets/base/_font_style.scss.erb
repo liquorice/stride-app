@@ -49,9 +49,8 @@ $standard-margin: 0.6rem;
     font-size: 1.933rem;
   }
   font-size: 3.368rem;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
   color: $white;
 }
 
@@ -61,8 +60,8 @@ $standard-margin: 0.6rem;
     font-size: 1.933rem;
   }
   letter-spacing: -0.01em;
-  line-height: 1.1;
-  font-size: 2.737rem;
+  line-height: 1.11;
+  font-size: 2.474rem;
   color: $white;
 }
 
@@ -77,6 +76,13 @@ $standard-margin: 0.6rem;
   a {
     color: $white;
   }
+}
+
+@mixin title-reply {
+  @include ff_adelle-bold;
+  color: $white;
+  font-size: 1.053rem;
+  margin: 0 0 $standard-margin;
 }
 
 // H1 Styles
@@ -102,8 +108,14 @@ $standard-margin: 0.6rem;
 }
 
 @mixin h1-flood {
-  @include h1-regular;
   @include ff_flood;
+  @include breakpoint (small, mini) {
+    font-size: 1.737rem;
+    letter-spacing: -0.025em;
+  }
+  color: $white;
+  font-size: 3.368rem;
+  letter-spacing: -0.02em;
 }
 
 // H2 Styles
@@ -146,8 +158,14 @@ $standard-margin: 0.6rem;
 }
 
 @mixin h3-flood {
-  @include h3-regular;
   @include ff_flood;
+  color: $green-dark;
+  font-size: 2.105rem;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  a {
+    color: $green-dark;
+  }
 }
 
 // P Styles
