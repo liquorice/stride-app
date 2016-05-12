@@ -10,8 +10,9 @@ Module.register('modal', function() {
     popup = $('.js-popup');
     popup_content = $('.js-popup-content')
 
-    $('a[data-modal]').on('click', load_popup);
-    popup.find('.js-popup-close').on('click', hide_popup);
+    $('body').on('click', 'a[data-modal]', load_popup);
+    $('body').on('click', '.js-popup-close', hide_popup);
+    $(document).on('keydown', keypress);
   };
 
   var load_popup = function(e) {
@@ -23,6 +24,7 @@ Module.register('modal', function() {
 
     show_popup();
     show_loading();
+    popup_content.empty();
 
     $.ajax({
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
@@ -31,9 +33,10 @@ Module.register('modal', function() {
       type: 'get',
       success: function(response) {
         var new_content;
-        new_content = $( "<div>" ).append($.parseHTML(response)).find('.modalContainer');
+        new_content = $( "<div>" ).append($.parseHTML(response));
+
         hide_loading();
-        popup_content.empty().append(new_content);
+        popup_content.append(new_content.find('.modalContainer'));
 
         window.init_applies(popup_content);
       }
@@ -56,6 +59,12 @@ Module.register('modal', function() {
 
   var hide_loading = function() {
     popup.removeClass('loading');
+  };
+
+  var keypress = function(e) {
+    if (e.keyCode == 27) {
+      hide_popup();
+    }
   };
 
   init();
