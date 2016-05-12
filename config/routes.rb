@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'logout' => 'sessions#destroy'
 
   # Topics
-  resources :topics, path: 'topic'
+  resources :topics, path: 'forum'
 
   # Threads
   resources :topic_threads, path: 'thread'
