@@ -4,7 +4,7 @@
     a.btn__newThreadInactive href=login_path data-modal=true Create new Thread
 
   - if current_user_can?(:topicThreads_create)
-    a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new Thread
+    a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new Forum
   - if current_user_can?(:topics_create)
     a.btn__newTopicActive href=new_topic_path data-modal=true Create new Topic
   // Add permissions check when ready

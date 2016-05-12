@@ -1,6 +1,10 @@
 - if current_user_can?(:users_view)
   - content_for :dark_strip do
     .strip__dark-regular
+      h2
+        a href=topics_preview_path 
+          = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+          | Forums
       h1 All Users
 
   - content_for :light_strip do
