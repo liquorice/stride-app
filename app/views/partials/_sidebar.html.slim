@@ -4,9 +4,9 @@
     a.btn__newThreadInactive href=login_path data-modal=true Create new Thread
 
   - if current_user_can?(:topicThreads_create)
-    a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new Forum
+    a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new thread
   - if current_user_can?(:topics_create)
-    a.btn__newTopicActive href=new_topic_path data-modal=true Create new Topic
+    a.btn__newTopicActive href=new_topic_path data-modal=true Create new forum
 
 .side__group
   .sideMenu
@@ -18,7 +18,7 @@
 - if show_topics
   .side__group
     .sideTopics
-      h2 Forum Topics:
+      h2 Forums:
 
       ul
         - @site.topics.each do |topic|
