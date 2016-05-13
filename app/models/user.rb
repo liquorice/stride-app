@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :password_requests
 
+  default_scope { order(created_at: :desc) }
+
   # --- Validations ---
   has_secure_password
   validates :name, presence: true, length: { minimum: 2 }, uniqueness: { scope: :site }, username: true
