@@ -31,7 +31,7 @@
   .thread__created data-locked=topic_thread.locked
     strong Created
     h2
-      =< topic_thread.created_at.strftime('%x')
+      =< topic_thread.created_at.strftime('%d/%m/%y')
 
   .thread__replies data-locked=topic_thread.locked
     strong Replies
@@ -39,5 +39,5 @@
       = ("#{topic_thread.posts_count / 1000}k" if topic_thread.posts_count > 1000 ) || topic_thread.posts_count
 
   .mobile-thread data-pinned=topic_thread.pinned
-    .mobile-thread__created Created: #{topic_thread.created_at.strftime('%x')}
+    .mobile-thread__created Created: #{topic_thread.created_at.strftime('%d/%m/%y')}
     .mobile-thread__replies = ("Replies: #{topic_thread.posts_count / 1000}k" if topic_thread.posts_count > 1000 ) || "Replies: #{topic_thread.posts_count}"

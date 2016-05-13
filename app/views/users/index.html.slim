@@ -35,21 +35,21 @@
             .userRow__column-avatar
               = render "user/avatar", user: user
             = user.name
-          .userRow__column = user.created_at.strftime('%x')
+          .userRow__column = user.created_at.strftime('%d/%m/%y')
           .userRow__column
-            = ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%x')
+            = ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%d/%m/%y')
           .userRow__column
             = ("#{user.posts.count / 1000}k" if user.posts.count > 1000 ) || user.posts.count
           .userRow__column 0
           .userRow__column-mobile
             strong
               | Joined
-            =< user.created_at.strftime('%x')
+            =< user.created_at.strftime('%d/%m/%y')
         .userRow-mobile
           .userRow__column-mobile
             .break
               | Last active
-            =< ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%x')
+            =< ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%d/%m/%y')
           .userRow__column-mobile
             .break
               | Forum replies

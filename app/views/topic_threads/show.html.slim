@@ -34,7 +34,7 @@
 
   .threadDetails__createdDate
     strong Created
-    h2 = @thread.created_at.strftime('%x')
+    h2 = @thread.created_at.strftime('%d/%m/%y')
 
   .threadDetails__views
     strong Views
@@ -45,7 +45,7 @@
     h2 = @thread.posts_count
 
   .threadDetails__mobile
-    .threadDetails__mobile-createdDate Created: #{@thread.created_at.strftime('%x')}
+    .threadDetails__mobile-createdDate Created: #{@thread.created_at.strftime('%d/%m/%y')}
     .threadDetails__mobile-views Views: XXX
     .threadDetails__mobile-replies Replies: #{@thread.posts_count}
 

@@ -1,7 +1,7 @@
 .post.js-post data-hidden=post.hidden?
   - if post.hidden?
     .post__hidden
-      | Reply hidden by moderator #{post.hidden_at.strftime('%x')}
+      | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
 
   - if post.visible || current_user_can?(:post_moderate)
     .post__details
@@ -9,7 +9,7 @@
         = "Forums > #{post.topic_thread.topic.name} > "
         a href=topic_thread_path(post.topic_thread) = post.topic_thread.name
       .post__details-date 
-        = "#{post.created_at.strftime('%x')} at #{post.created_at.strftime("%I")}:#{post.created_at.strftime("%M")}#{post.created_at.strftime('%P')}"
+        = "#{post.created_at.strftime('%d/%m/%y')} at #{post.created_at.strftime("%I")}:#{post.created_at.strftime("%M")}#{post.created_at.strftime('%P')}"
 
       - if current_user_can? :post_moderate
         .post__moderation
