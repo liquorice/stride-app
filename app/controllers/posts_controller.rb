@@ -6,6 +6,16 @@ class PostsController < ApplicationController
     @thread = @site.topic_threads.find(params[:id])
     @post = @thread.posts.new(user: @current_user, content: params[:content])
 
+    if @thread.locked
+      flash[:error] = "Posts can not be added to locked threads"
+      return redirect_to topic_thread_path(@thread)
+    end
+
+    unless @thread.public
+      flash[:error] = "Posts can not be added to hidden threads"
+      return redirect_to topic_thread_path(@thread)
+    end
+
     # TODO catch post errors
     @post.save
 

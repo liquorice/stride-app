@@ -3,14 +3,17 @@
     site: <%= site %>
     name: Admin
     permissions_data: { 'accessLevels_modify': true }
+    ordinal: 2
 
   moderator_<%= site %>:
     site: <%= site %>
     name: Moderator
     permissions_data: { }
+    ordinal: 1
 
   user_<%= site %>:
     site: <%= site %>
     name: User
     permissions_data: { }
+    ordinal: 0
 <% end %>

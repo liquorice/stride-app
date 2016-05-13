@@ -7,8 +7,8 @@ h1 Edit thread
 
     label.toggle
       = f.check_box :public
-      .toggle__text Public
       .toggle__text Hidden
+      .toggle__text Public
 
   .label
     .label__title Lock/unlock this thread
@@ -44,5 +44,5 @@ h1 Edit thread
       value: @thread.tags
 
   .form__buttons
-    .form__button-standard Cancel
+    .form__button-standard.js-popup-close Cancel
     button.form__button-primary Save

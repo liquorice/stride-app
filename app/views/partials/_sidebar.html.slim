@@ -4,28 +4,23 @@
     a.btn__newThreadInactive href=login_path data-modal=true Create new Thread
 
   - if current_user_can?(:topicThreads_create)
-    a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new Forum
+    a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new thread
   - if current_user_can?(:topics_create)
-    a.btn__newTopicActive href=new_topic_path data-modal=true Create new Topic
-  // Add permissions check when ready
-  / - if current_user_can?(:chats_create)
-  / a.btn__newChatActive href="#" data-modal=true Setup new Chat
+    a.btn__newTopicActive href=new_topic_path data-modal=true Create new forum
 
 .side__group
   .sideMenu
-    a href="#" Upcoming live chats
-    // Add permissions check when ready
-    / - if current_user_can?(:users_view)
-    a href="#" Archived chats
     - if current_user_can?(:users_view)
       a href=users_path View all users
+    - if current_user_can?(:topicThreads_modify)
+      a href=hidden_threads_path View hidden threads
     a href="#" Community rules
     a href="#" Privacy statement
 
-- unless !show_topics
+- if show_topics
   .side__group
     .sideTopics
-      h2 Forum Topics:
+      h2 Forums:
 
       ul
         - @site.topics.each do |topic|
