@@ -41,16 +41,19 @@
 
   h1 {
     .strip__dark-forum & {
-      @include heading-forum;
+      @include h1-level1;
     }
 
-    .strip__dark-topic &,
-    .strip__dark-regular & {
-      @include heading-topic;
+    .strip__dark-topic & {
+      @include h1-level2;
     }
 
     .strip__dark-thread & {
-      @include heading-thread;
+      @include h1-level3;
+    }
+
+    .strip__dark-regular & {
+      @include h1-level4;
     }
   }
 
@@ -58,7 +61,7 @@
     .strip__dark-topic &,
     .strip__dark-thread &,
     .strip__dark-regular & {
-      @include heading-breadcrumb;
+      @include h1-breadcrumb;
     }
 
     .strip__dark-topic & a:hover,
