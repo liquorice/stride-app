@@ -22,6 +22,6 @@
     = render @threads
     = render 'partials/pagination', paginated: @threads
   - else
-    .threads__empty
+    .message-noThreads
       = insert_svg("empty-avatar.svg", class:"icon__avatar")
       | There's nothing here! Be the first to create a new thread.

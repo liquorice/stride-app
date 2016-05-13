@@ -15,10 +15,13 @@
 - content_for :sidebar do
   = render 'partials/sidebar', show_topics: true
 
-- unless @thread.public?
+- if !@thread.public || @thread.locked
   // TODO hidden threads styling
   .warning
-    strong This thread is hidden from public view.
+    - if !@thread.public
+      strong This thread is hidden from public view.
+    - elsif @thread.locked
+      strong This thread is locked.
 
 .threadDetails
   .threadDetails__createdBy
@@ -49,7 +52,16 @@
 = render @posts
 = render 'partials/pagination', paginated: @posts
 
-- if current_user_can?(:post_create) && @thread.public?
+
+- if !@thread.public || @thread.locked
+  // TODO hidden and locked threads styling
+  .warning style="margin-top: 0.6rem;"
+    - if !@thread.public
+      strong This thread is hidden. Replies cannot be posted.
+    - if @thread.locked
+      strong This thread is locked. Replies cannot be posted.
+
+- elsif current_user_can?(:post_create) && @thread.public?
   .postReply.js-postReply
     .postReply__title
       h3 Post a reply
@@ -59,11 +71,6 @@
       .postReply__button
         button Post
       .postReply__clear.js-clear Clear
-
-- elsif !@thread.public
-  // TODO hidden threads styling
-  .warning style="margin-top: 0.6rem;"
-    strong This thread is hidden. Replies cannot be posted.
 
 - else
   .postReply
