@@ -7,7 +7,7 @@
     h1
       =< @thread.name
 
-- if current_user_can?(:threads_modify)
+- if current_user_can?(:topicThreads_modify)
   - content_for :edit_strip do
     a href=edit_topic_thread_path(@thread) data-modal=true
       .btn__edit Edit details
