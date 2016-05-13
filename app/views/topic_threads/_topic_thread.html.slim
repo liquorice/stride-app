@@ -1,8 +1,8 @@
-.thread data-href=topic_thread_path(topic_thread) data-hidden=topic_thread.hideen
-  / thread class to check for hidden posts styling
+.thread data-href=topic_thread_path(topic_thread) data-hidden=!topic_thread.public
+  // TODO thread locked styling
 
   .thread__preview data-pinned=topic_thread.pinned data-locked=topic_thread.locked
-    - if current_user_can?(:topicThreads_modify)
+    - if current_user_can?(:topicThreads_modify) && topic_thread.public?
       a href=toggle_topic_thread_pin_path(topic_thread) data-method='patch'
         - if topic_thread.pinned
           = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pin pinned")
@@ -13,13 +13,10 @@
       - if topic_thread.pinned
         = insert_svg("icons/icon_pin-green-dark.svg", class:"icon__pin")
 
-    / - if topic_thread.locked
-    /   p Locked
-
     .thread__name
       h2 = topic_thread.name
 
-    - unless topic_thread.latest_post == nil
+    - if topic_thread.latest_post && topic_thread.public?
       .thread__latest
         a href=post_path(topic_thread.latest_post)
           .thread__latest-avatar
@@ -28,6 +25,9 @@
           strong = topic_thread.latest_post.user.name
           = " said, #{time_ago_in_words(topic_thread.latest_post.created_at)} ago "
           strong = topic_thread.latest_post.preview_snippet
+    - elsif not topic_thread.public
+      .thread__latest
+        strong Post is hidden from public view
 
   .thread__created data-locked=topic_thread.locked
     strong

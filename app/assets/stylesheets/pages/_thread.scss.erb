@@ -27,6 +27,27 @@
   box-shadow: 0 1pt 0 0 rgba($grey-warm, 0.15);
 }
 
+  .thread[data-hidden] {
+    & * {
+      background: mix($grey-warm, $white, 10%);
+      color: $grey-warm;
+    }
+    
+    & .thread__preview{
+      @include breakpoint(mini, small, medium) {
+        border-left: 4px solid mix($grey-warm, $white, 10%);
+      }
+      border-left: 6px solid mix($grey-warm, $white, 10%);
+
+      &[data-pinned] {
+        @include breakpoint(mini, small, medium) {
+          border-left: 4px solid mix($grey-warm, $white, 10%);
+        }
+        border-left: 6px solid mix($grey-warm, $white, 10%);
+      }
+    }
+  }
+
   .thread:hover {
     & * {
       background: mix($links, $white, 8%);

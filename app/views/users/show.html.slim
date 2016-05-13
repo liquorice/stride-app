@@ -16,19 +16,21 @@
     .userOverview__avatar-container
       .userOverview__avatar
         = render 'user/avatar', user: @user
+
+    // TODO Styling for new access level change display
     .userOverview__status
-      - if @current_user.can?(:accessLevel_set)
-        = form_tag set_user_access_level_path, method: :patch do |f|
-          = render 'components/dropdown',
-            name: "user[access_level_id]",
-            options: Hash[@site.access_levels.pluck(:id, :name)],
-            value: @user.access_level.id
-
-          button Update access level
-
-      - else
-        .large__text
+      .large__text
           = "Access Level: #{@user.access_level.name}"
+      - if @current_user.can?(:accessLevel_set)
+        .dropdown__accesslevel
+          = form_tag set_user_access_level_path, method: :patch do |f|
+            = render 'components/dropdown',
+              name: "user[access_level_id]",
+              options: Hash[@site.access_levels.pluck(:id, :name)],
+              value: @user.access_level.id,
+              size: 'small'
+
+            button.button__accesslevel Update access level
 
       - if @current_user.can?(:user_suspend)
         .mobile__hide

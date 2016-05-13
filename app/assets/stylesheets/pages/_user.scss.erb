@@ -122,6 +122,17 @@
     }
   }
 
+  .dropdown__accesslevel * {
+    display: inline-block;
+  }
+
+  .button__accesslevel {
+    @include button-primary-meta;
+    display: inline-block;
+    margin-left: 0.6rem;
+    vertical-align: top;
+  }
+
   .text__suspend {
     @include p-meta;
     display: block;
@@ -141,7 +152,6 @@
     }
     background-color: rgba($alert, 0.2);
     color: $black;
-    margin: 1rem 0 0.3rem;
 
     &:before {
       content: url("<%= asset_data_uri 'icons/icon_suspend-black.svg' %>");

@@ -16,8 +16,9 @@
   = render 'partials/sidebar', show_topics: true
 
 - unless @thread.public?
-  div style="padding: 20px; border: 10px solid red"
-    This thread is hidden from public view.
+  // TODO hidden threads styling
+  .warning
+    strong This thread is hidden from public view.
 
 .threadDetails
   .threadDetails__createdBy
@@ -48,7 +49,7 @@
 = render @posts
 = render 'partials/pagination', paginated: @posts
 
-- if current_user_can? :post_create
+- if current_user_can?(:post_create) && @thread.public?
   .postReply.js-postReply
     .postReply__title
       h3 Post a reply
@@ -58,6 +59,11 @@
       .postReply__button
         button Post
       .postReply__clear.js-clear Clear
+
+- elsif !@thread.public
+  // TODO hidden threads styling
+  .warning style="margin-top: 0.6rem;"
+    strong This thread is hidden. Replies cannot be posted.
 
 - else
   .postReply

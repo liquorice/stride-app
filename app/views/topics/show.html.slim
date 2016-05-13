@@ -18,7 +18,7 @@
   = render 'partials/sidebar', show_topics: true
 
 .threads
-  - if @threads.any ?
+  - if @threads.any?
     = render @threads
     = render 'partials/pagination', paginated: @threads
   - else
