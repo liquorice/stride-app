@@ -36,7 +36,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post succesfully hidden"
     else
       @post.update(visible: true, hidden_at: nil)
-      flash[:success] = "Post successfully unhidden"
+      flash[:success] = "Post successfully shown"
     end
 
     redirect_to @post.direct_path
