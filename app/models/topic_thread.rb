@@ -6,7 +6,7 @@ class TopicThread < ActiveRecord::Base
   has_many :posts
 
   scope :preview, -> { where(public: true).limit(4) }
-  default_scope { order(pinned: :desc) }
+  default_scope { order(pinned: :desc, created_at: :desc) }
 
   # --- Validations ---
   validates :name, presence: true, length: { minimum: 2 }
