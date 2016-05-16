@@ -13,7 +13,7 @@
       .btn__edit Edit details
 
 - content_for :sidebar do
-  = render 'partials/sidebar', show_topics: true
+  = render 'partials/sidebar'
 
 - if !@thread.public || @thread.locked
   // TODO hidden threads styling

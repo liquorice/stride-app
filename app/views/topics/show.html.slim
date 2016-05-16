@@ -15,7 +15,7 @@
   p = @topic.description
 
 - content_for :sidebar do
-  = render 'partials/sidebar', show_topics: true
+  = render 'partials/sidebar'
 
 .threads
   - if @threads.any?

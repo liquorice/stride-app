@@ -1,99 +1,80 @@
 //
-// Button Mixins
+// Sidebar Button Mixins
 //
 
-@mixin btn__sideBar {
+@mixin btn-sideBar {
   @include ff_adelle-regular;
   border-radius: 0;
   margin: 0;
-  overflow: hidden;
   width: 100%;
 }
 
-@mixin btn__sideBar-icon {
-  @include btn__sideBar;
-  @include ff_adelle-regular;
+@mixin btn-sideBar-icon {
+  @include btn-short;
+  @include btn-sideBar;
+  @include btn-mid;
+  margin-bottom: 2px;
+  padding: 0.571em 0 0.643em 0.89em;
 
   &:before {
     content: " ";
     float: left;
-    margin: 0 10px 0 0;
+    height: 0.737rem;
+    margin: 0 0.4737rem 0 0;
+    width: 0.737rem;
   }
-}
 
-@mixin btn__sideBar-text {
-  @include btn-short;
-  @include btn__sideBar;
-  @include p-meta;
-  background-color: $bg;
-  padding: 0.2em 0.857em;
+  &.inactive {
+    background: rgba($grey-warm, 0.08);
+    color: rgba($black, 0.5);
 
-  &:after {
-    @include icon__sideMenu;
-    content: " ";
-    float: right;
-    height: 1rem;
-    vertical-align: baseline;
-    width: 0.35rem;
+    &:hover {
+      background: rgba($grey-warm, 0.08);
+      color: rgba($black, 0.5);
+    }
   }
 }
 
 //
-// Buttons
+// Sidebar Buttons
 //
 
-.btn__sideLogin {
-  @include btn-short;
+.btn__loginRegister {
+  @include btn-sideBar-icon;
   @include btn-primary;
-  @include btn__sideBar-icon;
 
   &:before {
     @include icon__login;
   }
 }
 
-.btn__newThreadInactive {
-  @include btn-short;
-  @include btn__sideBar-icon;
-  color: rgba($black, 0.5);
+.btn__newThread {
+  @include btn-sideBar-icon;
 
   &:before {
-    @include icon__newThreadInactive;
+    @include icon__newThread;
   }
 
-  &:hover {
-    background: rgba($grey-warm, 0.08);
-    color: rgba($black, 0.5);
-  }
-}
-
-.btn__newThreadActive {
-  @include btn-short;
-  @include btn-mid;
-  @include btn__sideBar-icon;
-
-  &:before {
-    @include icon__newThreadActive;
+  &.inactive {
+    &:before {
+      @include icon__newThread-inactive;
+    }
   }
 }
 
-.btn__newTopicActive {
-  @include btn-short;
-  @include btn-mid;
-  @include btn__sideBar-icon;
+.btn__newTopic {
+  @include btn-sideBar-icon;
 
   &:before {
-    @include icon__newTopicActive;
+    @include icon__newTopic;
   }
 }
 
-.btn__newChatActive {
-  @include btn-short;
-  @include btn-mid;
-  @include btn__sideBar-icon;
+.btn__newChat {
+  @include btn-sideBar-icon;
 
   &:before {
-    @include icon__newChatActive;
+    @include icon__newChat;
   }
 }
 
@@ -102,12 +83,12 @@
 //
 
 .sidebar {
-  .side__group:nth-child(n+2) {
-    padding: 20px 0;
+  .sidebar__group:nth-child(n+2) {
     border-bottom: 1px solid rgba($grey-warm, 0.1);
+    padding: 0.6316rem 0 0.8421rem;
   }
 
-  .side__group:last-child {
+  .sidebar__group:last-child {
     @include breakpoint(small, mini) {
       border-bottom: 1px solid rgba($grey-warm, 0.1);
     }
@@ -115,40 +96,58 @@
   }
 }
 
-.sideMenu {
+.sideBar__menu {
   a {
-    @include btn__sideBar-text;
+    @include p-meta;
+    @include btn-sideBar;
+    background-color: $bg;
+    color: $grey-warm;
+    display: block;
+    padding: 0.3546em 1.4283em 0.4288em 1.1271em;
+
+    &:after {
+      @include icon__arrow-right;
+      float: right;
+      height: 0.5263rem;
+      vertical-align: baseline;
+      width: 0.2632rem;
+    }
+
+    &:hover {
+      background: rgba($grey-warm, 0.18);
+      box-shadow: none;
+      color: $black;
+      transition: all 100ms ease-out;
+    }
   }
 }
 
-.sideTopics {
-  @include p-meta;
-
+.sideBar__forums {
   h2 {
+    @include p-meta;
     @include ff_adelle-bold;
-    padding: 0.5em 0.857em 0.5em;
+    color: $grey-warm;
+    padding: 0.5688em 1.4283em 0.4288em 1.1271em;
   }
 
-  li {
-    padding: 0.4em 0.857em;
+  a {
+    @include p-meta;
+    color: $grey-warm;
+    display: block;
+    padding: 0.3546em 1.4283em 0.4288em 1.1271em;
 
-    a {
-      border: 0;
-      color: $grey-warm;
+    &:hover {
+      background: rgba($grey-warm, 0.18);
+      box-shadow: none;
+      color: $black;
+      transition: all 100ms ease-out;
+    }
 
+    &[data-active] {
+      @include ff_adelle-boldItalic;
+      color: $primary;
       &:hover {
-        background: rgba($grey-warm, 0.18);
-        box-shadow: none;
-        color: $black;
-        transition: all 100ms ease-out;
-      }
-
-      &[data-active] {
-        @include ff_adelle-boldItalic;
-        color: $primary;
-        &:hover {
-          background: none;
-        }
+        background: none;
       }
     }
   }

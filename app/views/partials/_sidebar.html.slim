@@ -1,15 +1,15 @@
-.side__group
+.sidebar__group
   - unless @current_user
-    a.btn__sideLogin href=login_path data-modal=true Login or Register
-    a.btn__newThreadInactive href=login_path data-modal=true Create new Thread
+    a.btn__loginRegister href=login_path data-modal=true Login or Register
+    a.btn__newThread.inactive href=login_path data-modal=true Create new Thread
 
   - if current_user_can?(:topics_create)
-    a.btn__newTopicActive href=new_topic_path data-modal=true Create new forum
+    a.btn__newTopic href=new_topic_path data-modal=true Create new Forum
   - if current_user_can?(:topicThreads_create)
-    a.btn__newThreadActive href=new_topic_thread_path data-modal=true Create new thread
+    a.btn__newThread href=new_topic_thread_path data-modal=true Create new Thread
 
-.side__group
-  .sideMenu
+.sidebar__group
+  .sideBar__menu
     - if current_user_can?(:users_view)
       a href=users_path View all users
     - if current_user_can?(:topicThreads_modify)
@@ -17,13 +17,8 @@
     a href="#" Community rules
     a href="#" Privacy statement
 
-- if show_topics
-  .side__group
-    .sideTopics
-      h2 Forums:
-
-      ul
-        - @site.topics.each do |topic|
-          li
-            a href=topic_path(topic) data-active=(topic == @topic)
-              = topic.name
+.sidebar__group
+  .sideBar__forums
+    h2 Forums:
+    - @site.topics.each do |topic|
+        a href=topic_path(topic) data-active=(topic == @topic) = topic.name

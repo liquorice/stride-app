@@ -12,52 +12,28 @@ $icon-pagination-prev-blue: url("<%= asset_data_uri 'icons/icon_prev-arrow-blue.
 $icon-pagination-next-blue: url("<%= asset_data_uri 'icons/icon_next-arrow-blue.svg' %>");
 $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.svg' %>");
 
-@mixin icon__standard {
-  height: 0.9rem;
-  width: 0.9rem;
-
-  @include breakpoint(medium) {
-    height: 11px;
-    width: 11px;
-    margin-top: 3px;
-  }
-  @include breakpoint(mini, small) {
-    height: 11px;
-    width: 11px;
-    margin-top: 5px;
-  }
-}
-
 @mixin icon__login {
-  @include icon__standard;
-  background: url("<%= asset_data_uri 'icons/side-bar-icons_profile--white.svg' %>") no-repeat;
+  content: url("<%= asset_data_uri 'icons/side-bar-icons_profile--white.svg' %>");
 }
 
-@mixin icon__newThreadInactive {
-  @include icon__standard;
-  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--grey.svg' %>") no-repeat;
+@mixin icon__newThread-inactive {
+  content: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--grey.svg' %>");
 }
 
-@mixin icon__newThreadActive {
-  @include icon__standard;
-  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue.svg' %>") no-repeat;
+@mixin icon__newThread {
+  content: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue.svg' %>");
 }
 
-@mixin icon__newTopicActive {
-  @include icon__standard;
-  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-topics--blue.svg' %>") no-repeat;
+@mixin icon__newTopic {
+  content: url("<%= asset_data_uri 'icons/side-bar-icons_plus-topics--blue.svg' %>");
 }
 
-@mixin icon__newChatActive {
-  @include icon__standard;
-  background: url("<%= asset_data_uri 'icons/side-bar-icons_plus-chat--blue.svg' %>") no-repeat;
+@mixin icon__newChat {
+  content: url("<%= asset_data_uri 'icons/side-bar-icons_plus-chat--blue.svg' %>");
 }
 
-@mixin icon__sideMenu {
-  background-size: 1rem 0.55rem;
-  background-image: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-right--grey-warm.svg' %>");
-  background-repeat: no-repeat;
-  background-position: center center;
+@mixin icon__arrow-right {
+  content: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-right--grey-warm.svg' %>");
 }
 
 @mixin icon__edit-white {
