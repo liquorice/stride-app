@@ -22,5 +22,6 @@
 //= require href
 //= require modal
 //= require notification
+//= require mobile-menu
 
 //= require main

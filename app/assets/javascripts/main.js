@@ -7,6 +7,7 @@
     Module.apply(container.find('.js-postReply'), 'postReply');
     Module.apply(container.find('.js-notification'), 'notification');
     Module.apply(container.find('.js-tags'), 'tags');
+    Module.apply(container.find('.js-sidebar'), 'mobileMenu');
   }
 
   var init = function(container) {
