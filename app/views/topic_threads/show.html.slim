@@ -7,7 +7,7 @@
     h1
       =< @thread.name
 
-- if current_user_can?(:threads_modify)
+- if current_user_can?(:topicThreads_modify)
   - content_for :edit_strip do
     a href=edit_topic_thread_path(@thread) data-modal=true
       .btn__edit Edit details
@@ -30,11 +30,11 @@
 
     .threadDetails__createdBy-user
       strong Created by
-      h2 = @thread.user.name.capitalize
+      h2 = @thread.user.name
 
   .threadDetails__createdDate
     strong Created
-    h2 = @thread.created_at.strftime('%x')
+    h2 = @thread.created_at.strftime('%d/%m/%y')
 
   .threadDetails__views
     strong Views
@@ -45,7 +45,7 @@
     h2 = @thread.posts_count
 
   .threadDetails__mobile
-    .threadDetails__mobile-createdDate Created: #{@thread.created_at.strftime('%x')}
+    .threadDetails__mobile-createdDate Created: #{@thread.created_at.strftime('%d/%m/%y')}
     .threadDetails__mobile-views Views: XXX
     .threadDetails__mobile-replies Replies: #{@thread.posts_count}
 

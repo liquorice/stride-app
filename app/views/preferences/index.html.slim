@@ -33,8 +33,6 @@
               .avatar data-face=avatar_face
               .avatar__outline
 
-      // TODO: Check for moderator, manually adding Superuser check for review
-
       - unless @current_user.can?(:special_avatar)
         .profileAvatar__colour-container.visible__edit
           .profileLabel__title Select colour

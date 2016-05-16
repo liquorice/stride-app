@@ -3,7 +3,7 @@
 
   - if post.hidden?
     .post__hidden
-      | Reply hidden by moderator #{post.hidden_at.strftime('%x')}
+      | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
 
   - if post.visible || current_user_can?(:post_moderate)
     .post__details
