@@ -12,6 +12,18 @@ $icon-pagination-prev-blue: url("<%= asset_data_uri 'icons/icon_prev-arrow-blue.
 $icon-pagination-next-blue: url("<%= asset_data_uri 'icons/icon_next-arrow-blue.svg' %>");
 $icon-pagination-last-blue: url("<%= asset_data_uri 'icons/icon_last-arrow-blue.svg' %>");
 
+@mixin icon__mobileMenu-show {
+  content: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-down--blue--bold.svg' %>");
+  height: 12px;
+  width: 12px;
+}
+
+@mixin icon__mobileMenu-hide {
+  content: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-up--blue--bold.svg' %>");
+  height: 12px;
+  width: 12px;
+}
+
 @mixin icon__login {
   content: url("<%= asset_data_uri 'icons/side-bar-icons_profile--white.svg' %>");
 }
