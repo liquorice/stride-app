@@ -22,7 +22,7 @@
 }
 
 @mixin btn__sideBar-text {
-  @include button-short;
+  @include btn-short;
   @include btn__sideBar;
   @include p-meta;
   background-color: $bg;
@@ -43,7 +43,8 @@
 //
 
 .btn__sideLogin {
-  @include button-primary-short;
+  @include btn-short;
+  @include btn-primary;
   @include btn__sideBar-icon;
 
   &:before {
@@ -52,7 +53,7 @@
 }
 
 .btn__newThreadInactive {
-  @include button-short;
+  @include btn-short;
   @include btn__sideBar-icon;
   color: rgba($black, 0.5);
 
@@ -67,7 +68,8 @@
 }
 
 .btn__newThreadActive {
-  @include button-midLevel-short;
+  @include btn-short;
+  @include btn-mid;
   @include btn__sideBar-icon;
 
   &:before {
@@ -76,7 +78,8 @@
 }
 
 .btn__newTopicActive {
-  @include button-midLevel-short;
+  @include btn-short;
+  @include btn-mid;
   @include btn__sideBar-icon;
 
   &:before {
@@ -85,7 +88,8 @@
 }
 
 .btn__newChatActive {
-  @include button-midLevel-short;
+  @include btn-short;
+  @include btn-mid;
   @include btn__sideBar-icon;
 
   &:before {

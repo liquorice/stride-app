@@ -127,7 +127,8 @@
   }
 
   .button__accesslevel {
-    @include button-primary-meta;
+    @include btn-meta;
+    @include btn-primary;
     display: inline-block;
     margin-left: 0.6rem;
     vertical-align: top;
@@ -139,7 +140,7 @@
   }
 
   .button__suspend {
-    @include button-meta;
+    @include btn-meta;
     @include ff_adelle-bold;
     @include breakpoint (huge, overlarge, large, medium, small, mini) {
       padding: 0.32em 0.75em 0.4877em;
