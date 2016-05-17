@@ -9,8 +9,7 @@
 
 - if current_user_can?(:topicThreads_modify)
   - content_for :edit_strip do
-    a href=edit_topic_thread_path(@thread) data-modal=true
-      .btn__edit Edit details
+    a.btn__edit href=edit_topic_thread_path(@thread) data-modal=true Edit details
 
 - content_for :sidebar do
   = render 'partials/sidebar'
@@ -24,15 +23,18 @@
       strong This thread is locked.
 
 .threadDetails
-  .threadDetails__createdBy
-    .threadDetails__createdBy-avatar
+  .threadDetails__created
+    .threadDetails__created-avatar
       = render 'user/avatar', user: @thread.user
 
-    .threadDetails__createdBy-user
+    .threadDetails__created-user
       strong Created by
-      h2 = @thread.user.name
+      h2
+        = @thread.user.name
+        - if @thread.user.access_level.ordinal > 0
+          span = "(#{@thread.user.access_level.name})"
 
-  .threadDetails__createdDate
+  .threadDetails__date
     strong Created
     h2 = @thread.created_at.strftime('%d/%m/%y')
 
@@ -44,10 +46,10 @@
     strong Replies
     h2 = @thread.posts_count
 
-  .threadDetails__mobile
-    .threadDetails__mobile-createdDate Created: #{@thread.created_at.strftime('%d/%m/%y')}
-    .threadDetails__mobile-views Views: XXX
-    .threadDetails__mobile-replies Replies: #{@thread.posts_count}
+  .mobile-threadDetails
+    .mobile-threadDetails-date Created: #{@thread.created_at.strftime('%d/%m/%y')}
+    .mobile-threadDetails-views Views: XXX
+    .mobile-threadDetails-replies Replies: #{@thread.posts_count}
 
 = render @posts
 = render 'partials/pagination', paginated: @posts
