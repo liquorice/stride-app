@@ -1,23 +1,30 @@
 @mixin pagination__btn {
-  content: " ";
-  display: inline-block;
-  height: 10.8px;
-  line-height: 1.4;
-  width: 10.1px;
-}
-
-.pagination {
-  @include breakpoint(mini) {
-    padding-top: 1.334rem;
-    width: 242.84px;
+  @include btn-short;
+  @include p-meta;
+  @include breakpoint (small, mini) {
+    height: 1.6rem;
+    line-height: 0.9;
   }
-  display: block;
-  margin: auto auto;
-  text-align: center;
-  width: 342px;
+  background-color: $white;
+  border-radius: 0;
+  color: $grey-warm;
+  height: 1.579rem;
+  line-height: 1;
+  margin: 0;
 
-  .disabled {
+  &:hover {
+    background: rgba($links, 0.2);
+    color: $blue-dark;
+  }
+
+  &:not(.disabled):hover > svg * {
+    fill: $blue-dark;
+  }
+
+  &.disabled {
     background: rgba($bg-dark, 0.5);
+    color: $grey-warm;
+    cursor: default;
     opacity: 0.7;
 
     &:hover {
@@ -25,132 +32,68 @@
       color: $grey-warm;
     }
   }
+
+  &.disabled svg > *,
+  &.disabled:hover svg > * {
+    fill: mix($grey-warm, $white, 70%);
+  }
+}
+
+.pagination {
+  display: block;
+  margin-top: 7px;
+  margin: auto auto;
+  text-align: center;
 }
 
 .pagination__link,
 .pagination__display {
-  @include btn-meta;
-  @include ff_adelle-regular;
-  background-color: $white;
-  border-radius: 0;
-  margin: 0;
-
-  &:hover {
-    background: rgba($links, 0.2);
-    color: $blue-dark;
-  }
-}
-
-.pagination__link.disabled {
-  cursor: default;
-}
-
-.pagination__link, {
-  @include breakpoint(mini) {
-    padding: 0.167rem 0.2rem;
-  }
-  padding: 0.5357rem 0.2rem;
+  @include pagination__btn;
 }
 
 .pagination__display {
   @include breakpoint(mini) {
-    padding: 0.167rem 0.2rem;
     width: 83.25px;
   }
-  padding: 0.5357rem 0;
+  padding-left: 0;
+  padding-right: 0;
   width: 150px;
 }
 
+.pagination__link.first,
+.pagination__link.prev {
+  @include breakpoint(small, mini) {
+    padding-left: 0.566em;
+    padding-right: 0.6245em;
+  }
+  padding-left: 0.6428em;
+}
+
+.pagination__link.next,
+.pagination__link.last {
+  @include breakpoint(small, mini) {
+    padding-left: 0.6245em;
+    padding-right: 0.566em;
+  }
+  padding-right: 0.6428em;
+}
+
 .pagination__link.first {
-  @include breakpoint(mini) {
-    width: 24px;
-  }
   border-bottom-left-radius: 3px;
-  border-right: 2px solid rgba($grey-warm, 0.1);
+  border-right: 1px solid rgba($grey-warm, 0.1);
   border-top-left-radius: 3px;
-  width: 30.84px;
-  &:before {
-    @include icon__first;
-    @include pagination__btn;
-  }
-  &:hover {
-    &:before {
-      background-image: $icon-pagination-first-blue;
-    }
-  }
-  &.disabled {
-    &:before {
-      background-image: $icon-pagination-first-grey;
-    }
-  }
 }
 
 .pagination__link.prev {
-  @include breakpoint(mini) {
-    width: 52.8px;
-  }
-  border-right: 2px solid rgba($grey-warm, 0.1);
-  width: 62.76px;
-  &:before {
-    @include icon__prev;
-    @include pagination__btn;
-    margin-right: 3px;
-  }
-  &:hover {
-    &:before {
-      background-image: $icon-pagination-prev-blue;
-    }
-  }
-  &.disabled {
-    &:before {
-      background-image: $icon-pagination-prev-grey;
-    }
-  }
+  border-right: 1px solid rgba($grey-warm, 0.1);
 }
 
 .pagination__link.next {
-  @include breakpoint(mini) {
-    width: 52.8px;
-  }
-  border-left: 2px solid rgba($grey-warm, 0.1);
-  width: 62.76px;
-  &:after {
-    @include icon__next;
-    @include pagination__btn;
-    margin-left: 3px;
-  }
-  &:hover {
-    &:after {
-      background-image: $icon-pagination-next-blue;
-    }
-  }
-  &.disabled {
-    &:after {
-      background-image: $icon-pagination-next-grey;
-    }
-  }
+  border-left: 1px solid rgba($grey-warm, 0.1);
 }
 
 .pagination__link.last {
-  @include breakpoint(mini) {
-    width: 24px;
-  }
   border-bottom-right-radius: 3px;
-  border-left: 2px solid rgba($grey-warm, 0.1);
+  border-left: 1px solid rgba($grey-warm, 0.1);
   border-top-right-radius: 3px;
-  width: 30.84px;
-  &:after {
-    @include icon__last;
-    @include pagination__btn;
-  }
-  &:hover {
-    &:after {
-      background-image: $icon-pagination-last-blue;
-    }
-  }
-  &.disabled {
-    &:after {
-      background-image: $icon-pagination-last-grey;
-    }
-  }
 }

@@ -7,16 +7,28 @@
   .pagination
     - if current_page > 1
       a.pagination__link.first href='?page=1'
-      a.pagination__link.prev href="?page=#{previous_page}" Prev
+        = insert_svg("icons/icon_first-arrow.svg", class:"icon__pagination")
+      a.pagination__link.prev href="?page=#{previous_page}"
+        = insert_svg("icons/icon_prev-arrow.svg", class:"icon__pagination")
+        | Prev
     - else
       span.pagination__link.first.disabled
-      span.pagination__link.prev.disabled Prev
+        = insert_svg("icons/icon_first-arrow.svg", class:"icon__pagination inactive")
+      span.pagination__link.prev.disabled
+        = insert_svg("icons/icon_prev-arrow.svg", class:"icon__pagination inactive")
+        | Prev
 
     span.pagination__display Page #{current_page} of #{total_pages}
 
     - if current_page < total_pages
-      a.pagination__link.next href="?page=#{next_page}" Next
+      a.pagination__link.next href="?page=#{next_page}"
+        | Next
+        = insert_svg("icons/icon_next-arrow.svg", class:"icon__pagination")
       a.pagination__link.last href="?page=#{total_pages}"
+        = insert_svg("icons/icon_last-arrow.svg", class:"icon__pagination")
     - else
-      span.pagination__link.next.disabled Next
+      span.pagination__link.next.disabled
+        | Next
+        = insert_svg("icons/icon_next-arrow.svg", class:"icon__pagination inactive")
       span.pagination__link.last.disabled
+        = insert_svg("icons/icon_last-arrow.svg", class:"icon__pagination inactive")
