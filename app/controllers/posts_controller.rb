@@ -19,6 +19,7 @@ class PostsController < ApplicationController
     # TODO catch post errors
     @post.save
 
+    flash[:success] = "Posts successfully created"
     redirect_to @post.direct_path
   end
 
