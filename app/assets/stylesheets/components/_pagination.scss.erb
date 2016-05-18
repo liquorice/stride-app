@@ -22,19 +22,18 @@
   }
 
   &.disabled {
-    background: rgba($bg-dark, 0.5);
-    color: $grey-warm;
+    background: rgba($grey-warm, 0.1);
+    color: mix($grey-warm, $white, 70%);
     cursor: default;
-    opacity: 0.7;
 
     &:hover {
-      background: rgba($bg-dark, 0.5);
-      color: $grey-warm;
+      background: rgba($grey-warm, 0.1);
+      color: mix($grey-warm, $white, 70%);
     }
   }
 
-  &.disabled svg > *,
-  &.disabled:hover svg > * {
+  &.disabled svg *,
+  &.disabled:hover svg * {
     fill: mix($grey-warm, $white, 70%);
   }
 }
