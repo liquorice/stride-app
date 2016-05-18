@@ -4,17 +4,17 @@
       | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
 
   - if post.visible || current_user_can?(:post_moderate)
-    .post__details
-      .post__details-text
+    .postDetails
+      .postDetails-text
         = "Forums > #{post.topic_thread.topic.name} > "
         a href=topic_thread_path(post.topic_thread) = post.topic_thread.name
-      .post__details-date 
+      .postDetails-date 
         = "#{post.created_at.strftime('%d/%m/%y')} at #{post.created_at.strftime("%I")}:#{post.created_at.strftime("%M")}#{post.created_at.strftime('%P')}"
 
       - if current_user_can? :post_moderate
-        .post__moderation
-          .post__optionButton
-          .post__optionMenu
+        .postModerate
+          .postModerate-button
+          .postModerate-menu
             a href=toggle_post_visibility_path(post) data-method="patch"
               - if post.visible
                 | Hide this reply

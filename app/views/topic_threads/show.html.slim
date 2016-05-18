@@ -15,12 +15,17 @@
   = render 'partials/sidebar'
 
 - if !@thread.public || @thread.locked
-  // TODO hidden threads styling
-  .warning
+  .message-threadDisabled
     - if !@thread.public
-      strong This thread is hidden from public view.
+      p.hidden
+        ' Hidden thread.
+        span.italic Edit details 
+        ' to unhide.
     - elsif @thread.locked
-      strong This thread is locked.
+      p.locked
+        ' Locked thread.
+        span.italic Edit details 
+        ' to unlock.
 
 .threadDetails
   .threadDetails__created
@@ -54,16 +59,7 @@
 = render @posts
 = render 'partials/pagination', paginated: @posts
 
-
-- if !@thread.public || @thread.locked
-  // TODO hidden and locked threads styling
-  .warning style="margin-top: 0.6rem;"
-    - if !@thread.public
-      strong This thread is hidden. Replies cannot be posted.
-    - if @thread.locked
-      strong This thread is locked. Replies cannot be posted.
-
-- elsif current_user_can?(:post_create) && @thread.public?
+- if current_user_can?(:post_create) && @thread.public? && !@thread.locked
   .postReply.js-postReply
     .postReply__title
       h3 Post a reply
@@ -72,12 +68,11 @@
 
       .postReply__button
         button Post
-      .postReply__clear.js-clear Clear
+      .postReply__clear.js-clear
 
-- else
-  .postReply
-    .postReply__disabled
-      p
-        ' Please
-        a href=login_path data-modal=true login or register 
-        ' to reply
+- elsif !current_user_can?(:post_create)
+  .message-replyDisabled
+    h3
+      ' Please
+      a href=login_path data-modal=true login or register 
+      ' to reply

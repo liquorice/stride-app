@@ -1,13 +1,10 @@
+// Post Styles
+
 .post {
   background-color: $white;
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 6px;
   position: relative;
-
-  &[data-hidden] {
-    background: rgba($bg-dark, 0.5);
-    border-left: 0.37rem solid #36545c;
-  }
 }
 
   .permalinkAnchor {
@@ -15,198 +12,233 @@
     height: 0px;
     overflow: hidden;
     position: absolute;
+    top: 0;
     width: 0px;
-
-    // TODO
-    // This is the amount to scroll the page down to compensate
-    // for the floating header, and should be breakpoint-aware
-    top: -60px;
   }
 
-  .post__hidden {
-    @include h3-regular;
-    background-color: $bg-dark;
-    font-size: 1rem;
-    line-height: 1;
-    margin-bottom: 0;
-    padding: 1rem 2.5rem 1.24rem 1.23rem;
-    width: 100%;
-  }
+  .post[data-hidden] {
+    background: rgba($bg-dark, 0.5);
+    border-left: 6px solid $green-dark;
 
-  .post__details {
-    @include breakpoint(mini) {
-      padding: 1rem 0 0 1.1rem;
-    }
-    height: 5rem;
-    padding: 1.15rem 0 0 1.65rem;
-    position: relative;
-    width: 100%;
-  }
-
-    .post__details-avatar {
-      @include avatar-large;
-      display: block;
-      float: left;
-
-      .post[data-hidden] & {
-        opacity: 0.5;
-      }
-    }
-
-    .post__details-text {
-      @include p-meta;
-      @include breakpoint(mini) {
-        padding: 0.25rem 3rem 0 0.85rem;
-        margin-left: 47px;
-
-        strong {
-          display: block;
-        }
-      }
-      margin-left: 60px;
-      padding: 1rem 1rem 0 0.85rem;
-
-      a {
-        border-bottom: 0;
-      }
-
-      a.permalink {
-        @include p-meta;
-
-        &:hover {
-          box-shadow: none;
-        }
-      }
-
-      .post[data-hidden] & {
-        opacity: 0.5;
-      }
-    }
-
-    .post__moderation {
-      height: 1.3rem;
-      position: absolute;
-      right: 1.5rem;
-      top: 2rem;
-      width: 1.3rem;
-    }
-
-      .post__optionButton {
-        content: url("<%= asset_data_uri 'icons/icon_dots-grey.svg' %>");
-        cursor: pointer;
-        height: 1.3rem;
-        position: absolute;
-        top: 0;
-        width: 1.3rem;
-      }
-
-      .post__optionMenu {
-        background-color: $white;
-        border-radius: 3px;
-        box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.15);
-        opacity: 0;
-        position: absolute;
-        right: -0.16rem;
-        top: 1.66rem;
-        transition: all 200ms ease-out;
-        visibility: hidden;
-        z-index: 1000;
-
-        .post__moderation:hover & {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        &:before {
-          border-color: transparent transparent $white transparent;
-          border-style: solid;
-          border-width: 0.4rem;
-          content: "";
-          height: 0;
-          position: absolute;
-          right: 0.5rem;
-          top: -0.7rem;
-          width: 0;
-        }
-
-        a {
-          @include p-meta;
-          border: 0;
-          color: $grey-warm;
-          display: block;
-          min-width: 8.75rem;
-          padding: 0.65rem;
-        }
-
-      }
-
-  .post__content {
-    @include breakpoint(mini) {
-      padding: 0 1.3rem 0 1.1rem;
-    }
-    margin-bottom: 0.5rem;
-    margin-top: 0.25rem;
-    overflow: hidden;
-    padding: 0 2.5rem 0 1.65rem;
-    position: relative;
-    transition: max-height 0.5s ease;
-
-    p {
-      @include p-regular;
-      margin-bottom: 0.3rem;
-    }
-
-    .post.needsCropping & {
-      max-height: 400px;
-
-      &:after {
-        background-image: linear-gradient(top, rgba($white, 0) 0%, rgba($white, 1) 100%);
-        bottom: 0;
-        content: '';
-        display: block;
-        height: 60px;
-        position: absolute;
-        right: 0;
-        width: 100%;
-      }
-    }
-
-    .post[data-hidden].needsCropping &:after {
-       background-image: linear-gradient(top, rgba($bg-dark, 0) 0%, rgba($bg-dark, 0.5) 100%) !important;
-    }
-
-    .post.needsCropping.expanded & {
-      max-height: 3000px;
-
-      &:after {
-        background-image: none !important;
-      }
-    }
-
-    .post[data-hidden] & {
+    & .postDetails-avatar,
+    & .postDetails-text,
+    & .post__content {
       opacity: 0.5;
     }
+
+    &.needsCropping .post__content:after {
+      background-image: linear-gradient(top, rgba($bg-dark, 0) 0%, rgba($bg-dark, 0.5) 100%) !important;
+    }
   }
 
-    .post__buttons {
-      @include breakpoint(mini) {
-        padding: 0.55rem 0 1.75rem 1.1rem;
-      }
-      padding: 0.55rem 0 1.75rem 1.65rem;
+// Post Detail Styles
+
+.postDetails {
+  @include breakpoint(mini) {
+    padding: 1.067rem 0 0 1.067rem;
+  }
+  height: 5rem;
+  padding: 1.421rem 0 0 1.579rem;
+  position: relative;
+  width: 100%;
+
+  & > * {
+    display: block;
+    float: left;
+  }
+}
+
+  .postDetails-avatar {
+    @include avatar-large;
+  }
+
+  .postDetails-text {
+    @include p-meta;
+    @include breakpoint(huge, overlarge, large, medium, small) {
+      max-width: 67%;
+      overflow: hidden;
+      padding: 0.9474rem 0 0 0.4737rem;
+      text-overflow: ellipsis;
+    }
+    @include breakpoint(mini) {
+      max-width: 70%;
+      padding: 0.4737rem 0 0 0.4737rem;
     }
 
-    .post__showMore,
-    .post__showLess {
-      @include btn-meta;
-      @include btn-mid;
-      @include breakpoint(huge, overlarge, large, medium, small, mini) {
-        line-height: 1.4;
-        padding-top: 0.357em;
+    strong {
+      @include breakpoint(mini) {
+        display: block;
       }
-      cursor: pointer;
-      display: none;
-      margin-right: 0.15rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
+
+    a {
+      @include links;
+      border-bottom: 0;
+    }
+
+    a.permalink {
+      @include p-meta;
+      color: $grey-warm;
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+// Post Moderator Options Styles
+
+.postModerate,
+.postModerate-button {
+  @include breakpoint(mini) {
+    height: 1.133rem;
+    width: 1.133rem;
+  }
+  height: 1.211rem;
+  position: absolute;
+  width: 1.211rem;
+
+  &:hover > .postModerate-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.postModerate {
+  @include breakpoint(mini) {
+    right: 1.067rem;
+    top: 2rem;
+  }
+  right: 1.684rem;
+  top: 2.474rem;
+}
+
+.postModerate-button {
+  @include icon__option;
+  cursor: pointer;
+  top: 0;
+}
+
+  .postModerate-menu {
+    background-color: $white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.15);
+    opacity: 0;
+    position: absolute;
+    right: -0.16rem;
+    top: 1.66rem;
+    transition: all 200ms ease-out;
+    visibility: hidden;
+    z-index: 1000;
+
+    &:before {
+      border-color: transparent transparent $white transparent;
+      border-style: solid;
+      border-width: 0.4rem;
+      content: "";
+      height: 0;
+      position: absolute;
+      right: 0.5rem;
+      top: -0.7rem;
+      width: 0;
+    }
+
+    a {
+      @include p-meta;
+      border: 0;
+      color: $grey-warm;
+      display: block;
+      min-width: 8.75rem;
+      padding: 0.65rem;
+    }
+  }
+
+// Post Content Styles
+
+.post__content {
+  @include breakpoint(mini) {
+    margin-bottom: 0.5333rem;
+    margin-top: 0;
+    padding: 0 1.067rem;
+  }
+  margin-bottom: 0.3684rem;
+  margin-top: 0.3684rem;
+  overflow: hidden;
+  padding: 0 1.579rem;
+  position: relative;
+  transition: max-height 0.5s ease;
+
+  p {
+    @include p-short;
+    margin-bottom: 0.4rem;
+  }
+
+  .post.needsCropping & {
+    max-height: 400px;
+
+    &:after {
+      background-image: linear-gradient(top, rgba($white, 0) 0%, rgba($white, 1) 100%);
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 60px;
+      position: absolute;
+      right: 0;
+      width: 100%;
+    }
+  }
+
+  .post.needsCropping.expanded & {
+    max-height: 3000px;
+
+    &:after {
+      background-image: none !important;
+    }
+  }
+}
+
+// Post Button Styles
+
+.post__buttons {
+  @include breakpoint(mini) {
+    padding: 0 0 1.067rem 1.067rem;
+  }
+  padding: 0 0 1.75rem 1.579rem;
+}
+
+  .post__quote {
+    @include btn-meta;
+    margin: 0;
+
+    &:before {
+      @include icon__quote;
+      content: "";
+      display: inline-block;
+      height: 6.1px;
+      margin-right: -2px;
+      vertical-align: super;
+      width: 6.6px;
+    }
+
+    .post__buttons[data-hidden] & {
+      display: none;
+    }
+  }
+
+  .post__showMore,
+  .post__showLess {
+    @include btn-meta;
+    @include btn-blue;
+    cursor: pointer;
+    display: none;
+    margin-right: 0.15rem;
+
+    .post__buttons[data-hidden] & {
+      @include btn-mid;
+    }
+  }
 
     .post__showMore {
       .post.needsCropping & {
@@ -221,13 +253,4 @@
       .post.needsCropping.expanded & {
         display: inline-block;
       }
-    }
-
-    .post__quote {
-      @include btn-meta;
-      @include breakpoint(huge, overlarge, large, medium, small, mini) {
-        line-height: 1.4;
-        padding-top: 0.357em;
-      }
-      margin: 0;
     }

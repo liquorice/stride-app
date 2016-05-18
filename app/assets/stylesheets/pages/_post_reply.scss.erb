@@ -1,26 +1,11 @@
+// Post Reply Textarea Styles
+
 .postReply {
   display: table;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding-bottom: 6.211rem;
+  padding-top: 2.105rem;
   width: 100%;
 }
-
-  .postReply__disabled {
-    background-color: $bg-dark;
-    display: table-row;
-    width: 100%;
-
-    p {
-      @include p-regular;
-      color: $grey-warm;
-      margin-bottom: 0;
-      padding: 0.4rem 1.2rem;
-
-      a {
-        border: none;
-      }
-    }
-  }
 
   .postReply__title {
     background-color: $green-mid;
@@ -29,8 +14,14 @@
 
     h3 {
       @include h3-regular;
+      @include breakpoint (mini, small) {
+        @include p-short;
+        @include ff-adelle-bold;
+        color: $white;
+        padding: 0.334rem 1.2rem;
+      }
       color: $white;
-      padding: 0.4rem 1.2rem;
+      padding: 0.4rem 1.421rem 0.6105rem;
     }
   }
 
@@ -40,18 +31,18 @@
     width: 100%;
 
     textarea {
-      @include p-regular;
-      @include breakpoint(large) {
-        width: 85.8%;
-      }
+      @include p-short;
       @include breakpoint(medium) {
-        width: 82.2%;
+        width: 75.8%;
       }
       @include breakpoint(small) {
-        width: 81.6%;
+        width: 79.3%;
       }
       @include breakpoint(mini) {
         width: 100%;
+      }
+      @include breakpoint(mini, small) {
+        padding: 1.133rem 1.133rem 1.2rem;
       }
       box-sizing:padding-box;
       display: block;
@@ -60,9 +51,32 @@
       line-height: 1;
       margin-bottom: 0;
       overflow: hidden;
-      padding: 1.2rem 1rem;
+      padding: 1.211rem 1.421rem 1.316rem;
       resize: none;
-      width: 87.6%;
+      width: 84.2%;
+    }
+  }
+
+// Post Reply Textarea Button Styles
+
+  .postReply__button {
+    @include breakpoint(mini) {
+      padding: 0 0.8rem 0.734rem;
+    }
+    background-color: $white;
+    display: table-cell;
+    float: right;
+    padding: 0.6316rem 0.6842rem;
+
+    button {
+      @include btn-short;
+      margin-bottom: 0;
+      transition: all 100ms ease-out;
+
+      .postReply.hasContent & {
+        @include btn-primary;
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -73,31 +87,12 @@
     }
     background-color: $bg-dark;
     border-radius: 50%;
+    content: "";
     cursor: pointer;
     display: none;
     float: right;
     height: 17px;
-    margin-right: 10px;
-    margin-top: 1.2rem;
+    margin-top: 0.4667rem;
     position: relative;
-    text-indent: -5000px;
     width: 17px;
-  }
-
-  .postReply__button {
-    background-color: $white;
-    display: table-cell;
-    float: right;
-    padding: 0.65rem;
-
-    button {
-      @include btn-standard;
-      padding: 0.571em 0.877em 0.643em;
-      transition: all 100ms ease-out;
-
-      .postReply.hasContent & {
-        background-color: $primary;
-        color: $white;
-      }
-    }
   }

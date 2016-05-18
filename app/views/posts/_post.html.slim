@@ -2,15 +2,15 @@
   a.permalinkAnchor name="post-#{post.id}" &nbsp;
 
   - if post.hidden?
-    .post__hidden
+    .message-postHidden
       | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
 
   - if post.visible || current_user_can?(:post_moderate)
-    .post__details
-      .post__details-avatar
+    .postDetails
+      .postDetails-avatar
         = render 'user/avatar', user: post.user
 
-      .post__details-text
+      .postDetails-text
         strong
           - if current_user_can?(:users_view)
             a href=user_path(post.user)
@@ -22,9 +22,9 @@
           = "#{time_ago_in_words(post.created_at)} ago"
 
       - if current_user_can? :post_moderate
-        .post__moderation
-          .post__optionButton
-          .post__optionMenu
+        .postModerate
+          .postModerate-button
+          .postModerate-menu
             a href=toggle_post_visibility_path(post) data-method="patch"
               - if post.visible
                 | Hide this reply
@@ -34,10 +34,10 @@
     .post__content.js-postContent
       = simple_format(post.content)
 
-    .post__buttons
+    .post__buttons data-hidden=post.hidden?
       .post__showMore.js-post-toggle
         | Show more
       .post__showLess.js-post-toggle
         | Show less
       .post__quote
-        | "Quote
+        | Quote
