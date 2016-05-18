@@ -13,48 +13,43 @@
         label for="search-box"
           .users__search-clear.js-clear Clear
         input id="query" type="text" name="query" placeholder="Search users"
-      // Need to implement search functionality
+      // TODO : Need to implement search functionality
 
   - content_for :sidebar do
     = render 'partials/sidebar'
 
   - @access_levels.reverse.each do |access_level|
     .usersTable
-      .usersTable__titles
-        .usersTable__column
-          h2 = access_level.name.pluralize
+      .usersHeader
+        h3
+          = access_level.name.pluralize
           span = "(#{access_level.users.count})"
-        .usersTable__column Joined
-        .usersTable__column Last active
-        .usersTable__column Forum replies
-        .usersTable__column Chat messages
+        h4 Joined
+        h4 Last active
+        h4 Forum replies
+        h4 Chat messages
 
       - access_level.users.each do |user|
-        .userRow data-href=user_path(user)
-          .userRow__column.bold
-            .userRow__column-avatar
+        .usersRow data-href=user_path(user)
+          h3
+            .usersRow-avatar
               = render "user/avatar", user: user
             = user.name
-          .userRow__column = user.created_at.strftime('%d/%m/%y')
-          .userRow__column
-            = ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%d/%m/%y')
-          .userRow__column
-            = ("#{user.posts.count / 1000}k" if user.posts.count > 1000 ) || user.posts.count
-          .userRow__column 0
-          .userRow__column-mobile
-            strong
-              | Joined
+          h4 = user.created_at.strftime('%d/%m/%y')
+          h4 = user_last_active(user.last_seen)
+          h4 = ("#{user.posts.count / 1000}k" if user.posts.count > 1000 ) || user.posts.count
+          h4 0
+
+          .mobile-usersRow__column
+            strong Joined
             =< user.created_at.strftime('%d/%m/%y')
-        .userRow-mobile
-          .userRow__column-mobile
-            .break
-              | Last active
-            =< ("Today" if Time.at(user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || user.last_seen.strftime('%d/%m/%y')
-          .userRow__column-mobile
-            .break
-              | Forum replies
+        .mobile-usersRow
+          .mobile-usersRow__column
+            strong Last active
+            =< user_last_active(user.last_seen)
+          .mobile-usersRow__column
+            strong Forum replies
             =< ("#{user.posts.count / 1000}k" if user.posts.count > 1000) || user.posts.count
-          .userRow__column-mobile 
-            .break
-              | Chat messages
+          .mobile-usersRow__column
+            strong Chat messages
             =< "0"
