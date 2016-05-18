@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
     if @post.visible
       @post.update(visible: false, hidden_at: Time.now)
-      flash[:success] = "Post succesfully hidden"
+      flash[:success] = "Post successfully hidden"
     else
       @post.update(visible: true, hidden_at: nil)
       flash[:success] = "Post successfully shown"
