@@ -104,6 +104,6 @@
       p.visible__default = @current_user.email || "Not provided"
       label.btn__editProfile for="showEdit__email" Edit
 
-      input.input__textfield.visible__edit name="email" placeholder="Enter email address" value=@current_user.email
+      input.input__textfield.visible__edit name="user[email]" placeholder="Enter email address" value=@current_user.email
 
       button.btn__saveProfile.visible__edit Save
