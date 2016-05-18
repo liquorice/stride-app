@@ -22,6 +22,7 @@
 
 .sidebar__group
   .sideBar__forums
-    h2 Forums:
+    h2
+      a href=topics_preview_path Forums:
     - @site.topics.each do |topic|
-        a href=topic_path(topic) data-active=(topic == @topic) = topic.name
+      a href=topic_path(topic) data-active=(topic == @topic) = topic.name
