@@ -57,11 +57,29 @@
   width: 1rem;
 }
 
+@mixin icon__hide {
+  background-image: url("<%= asset_data_uri 'icons/icons_hide.svg' %>");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+}
+
 @mixin icon__clear {
   background-image: url("<%= asset_data_uri 'icons/icon_cross-grey.svg' %>");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 8.925px 8.925px;
+}
+
+@mixin icon__quote {
+  background-image: url("<%= asset_data_uri 'icons/icon_quote.svg' %>");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 6.6px 6.1px;
+}
+
+@mixin icon__option {
+  content: url("<%= asset_data_uri 'icons/icon_dots-grey.svg' %>");
 }
 
 .icon__pagination {
