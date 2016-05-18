@@ -1,0 +1,21 @@
+.userThread data-hidden=!thread.public? data-locked=thread.locked
+  - if !thread.public?
+    .message-postHidden
+      | Thread hidden by moderator
+  - elsif thread.locked?
+    .message-postHidden
+      | Thread locked by moderator
+
+  .userThread__details
+    h4
+      = "Forums > #{thread.topic.name} > "
+      a href=topic_thread_path(thread) = thread.name
+    p
+      strong Created: 
+      = "#{thread.created_at.strftime("%I")}:#{thread.created_at.strftime("%M")}#{thread.created_at.strftime('%P')}"
+    p
+      strong Replies: 
+      = thread.posts_count
+
+    .userThread__view
+      a href=topic_thread_path(thread) View thread

@@ -11,89 +11,81 @@
   - content_for :sidebar do
     = render 'partials/sidebar'
 
-.userOverview
-  .userOverview__row
-    .userOverview__avatar-container
-      .userOverview__avatar
-        = render 'user/avatar', user: @user
+  .userSection
+    .userDetails__row
+      .userDetails__avatar-container
+        .userDetails__avatar
+          = render 'user/avatar', user: @user
 
-    // TODO Styling for new access level change display
-    .userOverview__status
-      .large__text
-          = "Access Level: #{@user.access_level.name}"
-      - if @current_user.can?(:accessLevel_set)
-        .dropdown__accesslevel
-          = form_tag set_user_access_level_path, method: :patch do |f|
-            = render 'components/dropdown',
-              name: "user[access_level_id]",
-              options: Hash[@site.access_levels.pluck(:id, :name)],
-              value: @user.access_level.id,
-              size: 'small'
+      // TODO Styling for new access level change display
+      .userDetails__status
+        .large__text
+            = "Access Level: #{@user.access_level.name}"
+        - if @current_user.can?(:accessLevel_set)
+          .dropdown__accesslevel
+            = form_tag set_user_access_level_path, method: :patch do |f|
+              = render 'components/dropdown',
+                name: "user[access_level_id]",
+                options: Hash[@site.access_levels.pluck(:id, :name)],
+                value: @user.access_level.id,
+                size: 'small'
 
-            button.button__accesslevel Update access level
+              button.button__accesslevel Update access level
 
-      - if @current_user.can?(:user_suspend)
-        .mobile__hide
-          a.button__suspend href="#" Suspend user
-          .text__suspend
-            strong Suspending a user 
-            | will log them out and prevent them from logging back in
+        - if @current_user.can?(:user_suspend)
+          .mobile__hide
+            a.button__suspend href="#" Suspend user
+            .text__suspend
+              strong Suspending a user 
+              | will log them out and prevent them from logging back in
 
-  .mobile__show
-    a.button__suspend href="#" Suspend user
-    .text__suspend
-      strong Suspending a user 
-      | will log them out and prevent them from logging back in
+    .mobile__show
+      a.button__suspend href="#" Suspend user
+      .text__suspend
+        strong Suspending a user 
+        | will log them out and prevent them from logging back in
 
-  .userOverview__row
-    .mobile__row
-      .userOverview__column.first
-        strong Joined
-        = @user.created_at.strftime('%d/%m/%y')
-      .userOverview__column
-        strong Last active
-        / TODO Whoa nelly! This spaghetti needs to be cleaned up and put into a helper
-        = ("Today" if Time.at(@user.last_seen.beginning_of_day).to_date === Time.at(Time.now.beginning_of_day).to_date) || ("Yesterday" if Time.at(@user.last_seen.beginning_of_day).to_date === (Time.at(Time.now.beginning_of_day).to_date - 1)) || @user.last_seen.strftime('%d/%m/%y')
-      .userOverview__column
-        strong Threads
-        = @user.topic_threads.count
-    .mobile__row
-      .userOverview__column
-        strong Forum replies
-        = @user.posts.count
-      .userOverview__column
-        strong Chat messages
-        = "TODO"
-      .userOverview__column.last
-        strong Notifications
-        = "TODO- e.g. SMS, Email, Twitter, Facebook"
+    .userDetails__row
+      .mobile__row
+        .userDetails__column.first
+          strong Joined
+          = @user.created_at.strftime('%d/%m/%y')
+        .userDetails__column
+          strong Last active
+          = user_last_active(@user.last_seen)
+        .userDetails__column
+          strong Threads
+          = @user.topic_threads.count
+      .mobile__row
+        .userDetails__column
+          strong Forum replies
+          = @user.posts.count
+        .userDetails__column
+          strong Chat messages
+          = "TODO"
+        .userDetails__column.last
+          strong Notifications
+          = "TODO- e.g. SMS, Email, Twitter"
 
-.userThreads
-  - if @user.topic_threads.count > 0
-    .userThreads__title Threads created
-  - @user.topic_threads.each do |thread|
-    .userThread data-hidden=!thread.public?
 
-      - if !thread.public?
-        .userThread__hidden
-          | Thread is not public
 
-      .userThread__details
-        .userThread__details-text
-          = "Forums > #{thread.topic.name} > "
-          a href=topic_thread_path(thread) = thread.name
-        .userThread__details-date
-          strong Created: 
-          = "#{thread.created_at.strftime("%I")}:#{thread.created_at.strftime("%M")}#{thread.created_at.strftime('%P')}"
-          .userThread__details-padding
-          strong Replies: 
-          = thread.posts_count
-      .userThread__view
-        a href=topic_thread_path(thread) View thread
+  .userSection
+    h3 Threads created
+    - if @user.topic_threads.count > 0
+      - @user.topic_threads.each do |thread|
+        = render "user/thread", thread: thread
+    - else
+      .message-noThreads
+        = insert_svg("empty-avatar.svg", class:"icon__avatar")
+        | This user has not created any threads
 
-.userPosts
-  - if @user.posts.count > 0
-    .userPosts__title Replies to threads
-  - @user.posts.each do |post|
-    .userPosts__content
-      = render "user/post", post: post
+
+  .userSection
+    h3 Replies to threads
+    - if @user.posts.count > 0
+      - @user.posts.each do |post|
+        = render "user/post", post: post
+    - else
+      .message-noThreads
+        = insert_svg("empty-avatar.svg", class:"icon__avatar")
+        | This user has not replied to any posts

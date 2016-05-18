@@ -1,36 +1,37 @@
-.post.js-post data-hidden=post.hidden?
-  - if post.hidden?
-    .message-postHidden
-      | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
+.userPosts__content
+  .post.js-post data-hidden=post.hidden?
+    - if post.hidden?
+      .message-postHidden
+        | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
 
-  - if post.visible || current_user_can?(:post_moderate)
-    .postDetails
-      .postDetails-text
-        = "Forums > #{post.topic_thread.topic.name} > "
-        a href=topic_thread_path(post.topic_thread) = post.topic_thread.name
-      .postDetails-date 
-        = "#{post.created_at.strftime('%d/%m/%y')} at #{post.created_at.strftime("%I")}:#{post.created_at.strftime("%M")}#{post.created_at.strftime('%P')}"
+    - if post.visible || current_user_can?(:post_moderate)
+      .postDetails
+        .postDetails-text
+          = "Forums > #{post.topic_thread.topic.name} > "
+          a href=topic_thread_path(post.topic_thread) = post.topic_thread.name
+        .postDetails-date 
+          = "#{post.created_at.strftime('%d/%m/%y')} at #{post.created_at.strftime("%I")}:#{post.created_at.strftime("%M")}#{post.created_at.strftime('%P')}"
 
-      - if current_user_can? :post_moderate
-        .postModerate
-          .postModerate-button
-          .postModerate-menu
-            a href=toggle_post_visibility_path(post) data-method="patch"
-              - if post.visible
-                | Hide this reply
-              - else
-                | Show this reply
+        - if current_user_can? :post_moderate
+          .postModerate
+            .postModerate-button
+            .postModerate-menu
+              a href=toggle_post_visibility_path(post) data-method="patch"
+                - if post.visible
+                  | Hide this reply
+                - else
+                  | Show this reply
 
-    .post__content.js-postContent
-      = simple_format(post.content)
+      .post__content.js-postContent
+        = simple_format(post.content)
 
-    .post__buttons
-      .post__showMore.js-post-toggle
-        | Show more
-      .post__showLess.js-post-toggle
-        | Show less
-      .post__quote
-        | "Quote
+      .post__buttons
+        .post__showMore.js-post-toggle
+          | Show more
+        .post__showLess.js-post-toggle
+          | Show less
+        .post__quote
+          | "Quote
 
-    .post__view
-      a href=post_path(post) View reply
+      .post__view
+        a href=post_path(post) View reply

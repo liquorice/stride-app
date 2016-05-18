@@ -1,12 +1,15 @@
-.userOverview, .userThreads, .userPosts {
+.userSection {
   width: 100%;
-  margin-bottom: 2.5rem;
-}
+  margin-bottom: 1.789rem;
 
-.userOverview__title, .userThreads__title, .userPosts__title {
-  @include p-leading;
-  @include ff_adelle-bold;
-  color: $black;
+  &:first-child {
+    margin-bottom: 2.526rem;
+  }
+
+  h3 {
+    @include h3-regular;
+    margin-bottom: 0.5789rem;
+  }
 }
 
 .mobile__show {
@@ -36,7 +39,7 @@
   display: inline;
 }
 
-.userOverview__row {
+.userDetails__row {
   background-color: $white;
   display: block;
   width: 100%;
@@ -56,7 +59,7 @@
   }
 }
 
-  .userOverview__avatar-container {
+  .userDetails__avatar-container {
     @include breakpoint(small) {
       min-width: 8rem;
     }
@@ -73,7 +76,7 @@
     min-width: 8.25rem;
   }
 
-    .userOverview__avatar {
+    .userDetails__avatar {
       @include avatar-overlarge;
       @include breakpoint (large) {
         margin: 0.8rem auto 0.8rem;
@@ -85,7 +88,7 @@
       margin: 1rem auto 1rem;
     }
 
-  .userOverview__status {
+  .userDetails__status {
     @include breakpoint (large) {
       padding: 0.5rem 0.8rem;
     }
@@ -170,7 +173,7 @@
     }
   }
 
-.userOverview__column {
+.userDetails__column {
   @include p-meta;
   @include breakpoint(overlarge) {
     padding: 1rem 0.5rem;
@@ -218,74 +221,68 @@
   }
 }
 
+
+
+
 .userThread {
   background-color: $white;
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 6px;
   position: relative;
 
-  &[data-hidden] {
+  &[data-hidden],
+  &[data-locked] {
     background: rgba($bg-dark, 0.5);
-    border-left: 0.37rem solid #36545c;
+    border-left: 6px solid $green-dark;
+
+    .userThread__details {
+      opacity: 0.5;
+    }
+  }
+
+  &[data-locked] {
+    color: $grey-warm;
   }
 }
-
-  .userThread__hidden {
-    @include h3-regular;
-    background-color: $bg-dark;
-    font-size: 1rem;
-    line-height: 1;
-    margin-bottom: 0;
-    padding: 1rem 2.5rem 1.24rem 1.23rem;
-    width: 100%;
-  }
 
   .userThread__details {
     @include breakpoint(mini) {
       padding: 1rem 1.1rem 0;
     }
     height: auto;
-    padding: 1.15rem 0 0 1.65rem;
+    padding: 1.211rem 1.579rem 1.474rem;
     position: relative;
     width: 100%;
-  }
 
-    .userThread__details-text {
-      @include p-regular;
+    h4 {
+      @include p-short;
       @include ff_adelle-bold;
-      height: auto;
-      margin-bottom: 0.35rem;
-      margin-left: 0;
-      padding: 0;
+      margin-bottom: 0.6316rem;
+      line-height: 1;
 
       a {
+        @include links;
+        @include ff_adelle-bold;
         border-bottom: 0;
       }
+    }
 
-      .userThread[data-hidden] & {
-        opacity: 0.5;
+    p {
+      @include p-meta;
+      display: inline-block;
+      margin-right: 0.5263rem;
+      color: $grey-warm;
+    }
+  }
+    .userThread__view {
+      padding-top: 0.5263rem;
+      a {
+        @include p-short;
+        @include links;
       }
     }
 
-    .userThread__details-date {
-      @include p-meta;
-    }
 
-    .userThread__details-padding {
-      display: inline-block;
-      min-width: 15px;
-    }
-
-  .userThread__view {
-    @include breakpoint(mini) {
-      padding: 0.55rem 0 1.55rem 1.1rem;
-    }
-    padding: 0.55rem 0 1.55rem 1.65rem;
-    a {
-      @include p-regular;
-      @include links;
-    }
-  }
 
 .userPosts__content {
   .postDetails {
