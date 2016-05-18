@@ -222,9 +222,10 @@
 }
 
 
+// User View Thread and Posts Styles
 
-
-.userThread {
+.userThread,
+.userPost {
   background-color: $white;
   display: block;
   margin-bottom: 6px;
@@ -235,7 +236,8 @@
     background: rgba($bg-dark, 0.5);
     border-left: 6px solid $green-dark;
 
-    .userThread__details {
+    .userThread__details,
+    .userPost__details {
       opacity: 0.5;
     }
   }
@@ -245,12 +247,9 @@
   }
 }
 
-  .userThread__details {
-    @include breakpoint(mini) {
-      padding: 1rem 1.1rem 0;
-    }
+  .userThread__details,
+  .userPost__details {
     height: auto;
-    padding: 1.211rem 1.579rem 1.474rem;
     position: relative;
     width: 100%;
 
@@ -274,51 +273,43 @@
       color: $grey-warm;
     }
   }
-    .userThread__view {
-      padding-top: 0.5263rem;
-      a {
-        @include p-short;
-        @include links;
-      }
-    }
 
-
-
-.userPosts__content {
-  .postDetails {
-    height: auto;
-  }
-
-  .postDetails-text {
-    @include p-regular;
-    @include ff_adelle-bold;
+  .userThread__details {
     @include breakpoint(mini) {
-      padding-right: 50px;
+      padding: 1rem 1.1rem 0;
     }
-    height: auto;
-    margin-left: 0;
-    padding: 0;
-    a {
-      border-bottom: none;
-    }
+    padding: 1.211rem 1.579rem 1.474rem;
   }
 
-  .postDetails-date {
-    @include p-meta;
-  }
-
-  .post__buttons {
-    padding-bottom: 0.55rem;
-  }
-
-  .post__view {
+  .userPost__details {
     @include breakpoint(mini) {
-      padding: 0.55rem 0 1.55rem 1.1rem;
+      padding: 1rem 1.1rem 0;
     }
-    padding: 0.55rem 0 1.55rem 1.65rem;
+    padding: 1.211rem 1.579rem 0;
+  }
+
+  .userPost__moderate {
+    top: 1.211rem;
+    right: 0.7895rem;
+  }
+
+  .userPost__button {
+    padding-bottom: 0;
+  }
+
+  .userThread__view,
+  .userPost__view {
     a {
-      @include p-regular;
+      @include p-short;
       @include links;
     }
   }
-}
+
+  .userThread__view {
+    padding-top: 0.5263rem;
+  }
+
+  .userPost__view {
+    padding: 0.5263rem 1.579rem 1.474rem;
+  }
+
