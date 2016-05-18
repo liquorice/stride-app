@@ -1,6 +1,6 @@
 .post.js-post data-hidden=post.hidden?
   - if post.hidden?
-    .post__hidden
+    .message-postHidden
       | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
 
   - if post.visible || current_user_can?(:post_moderate)
