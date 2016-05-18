@@ -45,6 +45,10 @@
         strong Suspending a user 
         | will log them out and prevent them from logging back in
 
+    // TODO style this link
+    - unless @user.email.blank?
+      a data-method="post" href=user_password_reset_path(@user) Send password reset email
+
     .userDetails__row
       .mobile__row
         .userDetails__column.first

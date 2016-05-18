@@ -41,6 +41,20 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def send_password_reset
+    require_permission :users_view
+    @user = @site.users.find(params[:id])
+
+    unless @user.email.blank?
+      @user.send_password_reset(@host)
+      flash[:success] = "Password reset email sent to #{@user.name}"
+    else
+      flash[:error] = "#{@user.name} does not have a saved email address"
+    end
+
+    redirect_to user_path(@user)
+  end
+
   private
 
   def new_user_params

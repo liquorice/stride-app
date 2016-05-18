@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   # Users
   get 'users' => 'users#index'
   get 'user/:id' => 'users#show', as: :user
+  post 'user/:id/send_password_reset' => 'users#send_password_reset', as: :user_password_reset
   patch 'user/:id/set_access_level' => 'users#set_access_level', as: :set_user_access_level
   get 'preferences' => 'preferences#index'
   patch 'preferences' => 'preferences#update'
