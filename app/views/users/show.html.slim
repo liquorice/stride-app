@@ -26,7 +26,7 @@
             = form_tag set_user_access_level_path, method: :patch do |f|
               = render 'components/dropdown',
                 name: "user[access_level_id]",
-                options: Hash[@site.access_levels.pluck(:id, :name)],
+                options: access_levels_hash_for_user(@current_user),
                 value: @user.access_level.id,
                 size: 'small'
 

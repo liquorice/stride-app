@@ -36,8 +36,14 @@ class UsersController < ApplicationController
     require_permission :accessLevel_set
     @user = @site.users.find(params[:id])
 
-    @user.update(access_level_id: params[:user][:access_level_id])
-    flash[:success] = "Access level updated for #{@user.name}"
+    new_access_level = @site.access_levels.find(params[:user][:access_level_id])
+    if @current_user.can_set_access_level?(new_access_level)
+      @user.update(access_level_id: new_access_level.id)
+      flash[:success] = "Access level updated for #{@user.name}"
+    else
+      flash[:error] = "Unable to update access level for #{@user.name}"
+    end
+
     redirect_to user_path(@user)
   end
 

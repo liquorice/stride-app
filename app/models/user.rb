@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     superuser || permissions.key?(permission.to_s)
   end
 
+  def can_set_access_level?(level)
+    level.ordinal <= self.access_level.ordinal
+  end
+
   def update_last_seen
     update(last_seen: Time.now)
   end
