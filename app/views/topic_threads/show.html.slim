@@ -69,6 +69,11 @@
     .postReply__title
       h3 Post a reply
     = form_tag new_post_path(@thread), method: :post, class:"postReply__form" do |f|
+      .js-quoted
+        p.js-quoted-display
+        input.js-quoted-post-id type='hidden' name='quoted_post_id'
+        span.js-quoted-clear X
+
       textarea.js-textarea name='content' placeholder='Enter text…'
 
       .postReply__button

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519103345) do
+ActiveRecord::Schema.define(version: 20160519120824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160519103345) do
     t.integer  "user_id"
     t.boolean  "visible",         default: true
     t.datetime "hidden_at"
+    t.integer  "quoted_post_id"
   end
 
   add_index "posts", ["topic_thread_id"], name: "index_posts_on_topic_thread_id", using: :btree

@@ -1,9 +1,17 @@
+- being_quoted ||= false
+
 .post.js-post data-hidden=post.hidden?
   a.permalinkAnchor name="post-#{post.id}" &nbsp;
 
   - if post.hidden?
     .message-postHidden
       | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
+
+  - unless being_quoted
+    - if post.quoted_post
+      .post__quoted style="margin: 20px; border: 1px solid red;"
+        = render post.quoted_post, being_quoted: true
+
 
   - if post.visible || current_user_can?(:post_moderate)
     .postDetails
@@ -21,23 +29,25 @@
         a.permalink href=post_path(post)
           = "#{time_ago_in_words(post.created_at)} ago"
 
-      - if current_user_can? :post_moderate
-        .postModerate
-          .postModerate-button
-          .postModerate-menu
-            a href=toggle_post_visibility_path(post) data-method="patch"
-              - if post.visible
-                | Hide this reply
-              - else
-                | Show this reply
+      - unless being_quoted
+        - if current_user_can? :post_moderate
+          .postModerate
+            .postModerate-button
+            .postModerate-menu
+              a href=toggle_post_visibility_path(post) data-method="patch"
+                - if post.visible
+                  | Hide this reply
+                - else
+                  | Show this reply
 
-    .post__content.js-postContent
+    .post__content.js-postContent data-quoted=being_quoted
       = simple_format(post.content)
 
-    .post__buttons data-hidden=post.hidden?
-      .post__showMore.js-post-toggle
-        | Show more
-      .post__showLess.js-post-toggle
-        | Show less
-      .post__quote
-        | Quote
+    - unless being_quoted
+      .post__buttons data-hidden=post.hidden?
+        .post__showMore.js-post-toggle
+          | Show more
+        .post__showLess.js-post-toggle
+          | Show less
+        .post__quote.js-post-quote data-post-id=post.id data-post-description="Quoting #{post.user.name}: #{post.preview_snippet}"
+          | Quote
