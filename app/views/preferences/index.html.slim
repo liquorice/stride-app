@@ -9,101 +9,92 @@
 - content_for :sidebar do
   = render 'partials/sidebar'
 
-.profileContainer
-  .profileTitle Your details
+.profile
+  h2 Your details
 
-  = form_for @current_user, url: preferences_path, method: :patch do |f|
+  = form_for @current_user, url: preferences_path, html: {class: "js-profile"}, method: :patch do |f|
 
-    .profileLabel
-      .profileLabel__title Profile picture
+    h3 Profile picture
 
-      .profileAvatar__avatar-container
-        .profileAvatar__avatar
-          = render 'user/avatar', user: @current_user
+    .profileAvatar
+      .profileAvatar__avatar
+        = render 'user/avatar', user: @current_user
 
-      input.hidden type="checkbox" id="showEdit__avatar"
-      label.btn__editProfile for="showEdit__avatar" Edit
+    .profileFace.view-edit
+      h3 Select features
+      - AvatarHelper.avatar_faces.each do |avatar_face|
+        .profileFace__option
+          label
+            input type="radio" name="user[avatar_face]" value=avatar_face checked=(@current_user.avatar_face == avatar_face)
+            .avatar data-face=avatar_face
+            .avatar__outline
 
-      .profileAvatar__faces-container.visible__edit
-        .profileLabel__title Select features
-        - AvatarHelper.avatar_faces.each do |avatar_face|
-          .profileAvatar__face-option
+    - unless @current_user.can?(:special_avatar)
+      .profileColour.view-edit
+        h3 Select colour
+
+        - AvatarHelper.avatar_colours.each do |avatar_colour|
+          .profileColour__option
             label
-              input type="radio" name="user[avatar_face]" value=avatar_face checked=(@current_user.avatar_face == avatar_face)
-              .avatar data-face=avatar_face
+              input type="radio" name="user[avatar_colour]" value=avatar_colour checked=(@current_user.avatar_colour == avatar_colour)
+              .avatar data-colour=avatar_colour
               .avatar__outline
 
-      - unless @current_user.can?(:special_avatar)
-        .profileAvatar__colour-container.visible__edit
-          .profileLabel__title Select colour
+    .btn__profile-edit.js-profile-edit.view-default Edit
+    button.view-edit Save
+    .btn__profile-cancel.js-profile-edit.view-edit Cancel
 
-          - AvatarHelper.avatar_colours.each do |avatar_colour|
-            .profileAvatar__colour-option
-              label
-                input type="radio" name="user[avatar_colour]" value=avatar_colour checked=(@current_user.avatar_colour == avatar_colour)
-                .avatar data-colour=avatar_colour
-                .avatar__outline
-      - else
-        .profileAvatar__spacer
+  = form_tag preferences_path, class: "js-profile", method: :patch do |f|
 
-      button.btn__saveProfile.visible__edit Save
+    h3
+      | Username
+      span.alert *
 
-  = form_tag preferences_path, method: :patch do |f|
+    p.view-default = @current_user.name
 
+    input.input__textfield.view-edit name="name" value=@current_user.name
 
-    .profileLabel
-      .profileLabel__title
-        | Username
-        span.alert *
+    .btn__profile-edit.js-profile-edit.view-default Edit
+    button.view-edit Save
+    .btn__profile-cancel.js-profile-edit.view-edit Cancel
 
-      input.hidden type="checkbox" id="showEdit__username"
-      p.visible__default = @current_user.name
-      label.btn__editProfile for="showEdit__username" Edit
+  = form_tag update_password_path, class: "js-profile", method: :patch do |f|
 
-      input.input__textfield.visible__edit name="name" value=@current_user.name
+    h3.view-default
+      | Password
+      span.alert *
+    p.view-default = "••••••••••••"
 
-      button.btn__saveProfile Save
+    h3.view-edit
+      | Current password
+      span.alert *
+    input.input__textfield.view-edit type="password" name="current_password"
 
-  = form_tag update_password_path, method: :patch do |f|
+    h4.view-edit
+      | New password
+      span.alert *
+    input.input__textfield.view-edit type="password" name="password"
 
-    .profileLabel
-      input.hidden type="checkbox" id="showEdit__pw"
-      .profileLabel__title.visible__default
-        | Password
-        span.alert *
-      p.visible__default = "••••••••••••"
-      label.btn__editProfile for="showEdit__pw" Edit
+    h4.view-edit
+      | Confirm new password
+      span.alert *
+    input.input__textfield.view-edit type="password" name="password_confirmation"
 
-      .profileLabel__title.visible__edit
-        | Current password
-        span.alert *
-      input.input__textfield.visible__edit type="password" name="current_password"
-
-      .profileLabel__title.visible__edit
-        | New password
-        span.alert *
-      input.input__textfield.visible__edit type="password" name="password"
-
-      .profileLabel__title.visible__edit
-        | Confirm new password
-        span.alert *
-      input.input__textfield.visible__edit type="password" name="password_confirmation"
-
-      button.btn__saveProfile.visible__edit Save
+    .btn__profile-edit.js-profile-edit.view-default Edit
+    button.view-edit Save
+    .btn__profile-cancel.js-profile-edit.view-edit Cancel
 
 
-  = form_tag preferences_path, method: :patch do |f|
-    // ^ TODO: Test funcitonality once the email isn't hardcoded and param is permitted
+  = form_tag preferences_path, class: "js-profile", method: :patch do |f|
 
-    .profileLabel
-      .profileLabel__title Email (optional)
-      .profileLabel__desc
-        | Please note, your email address will not be visible to anyone else, and will only be used to recover a lost password.
+    h3 Email (optional)
+    p
+      | Please note, your email address will not be visible to anyone else, and will only be used to recover a lost password.
 
-      input.hidden type="checkbox" id="showEdit__email"
-      p.visible__default = @current_user.email || "Not provided"
-      label.btn__editProfile for="showEdit__email" Edit
+    p.view-default = @current_user.email || "Not provided"
 
-      input.input__textfield.visible__edit name="user[email]" placeholder="Enter email address" value=@current_user.email
+    input.input__textfield.view-edit name="user[email]" placeholder="Enter email address" value=@current_user.email
 
-      button.btn__saveProfile.visible__edit Save
+    .btn__profile-edit.js-profile-edit.view-default Edit
+    button.view-edit Save
+    .btn__profile-cancel.js-profile-edit.view-edit Cancel
