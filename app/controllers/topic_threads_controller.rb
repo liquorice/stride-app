@@ -1,5 +1,6 @@
 class TopicThreadsController < ApplicationController
   layout 'modal', except: ['show', 'hidden']
+  impressionist actions: ['show']
 
   # Public
 

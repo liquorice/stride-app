@@ -1,5 +1,5 @@
 class TopicThread < ActiveRecord::Base
-
+  is_impressionable :counter_cache => true
   # --- Associations ---
   belongs_to :topic
   belongs_to :user
