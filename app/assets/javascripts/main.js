@@ -3,6 +3,7 @@
   'use strict';
 
   var init_applies = function(container) {
+    Module.apply(container.find('.js-profile'), 'profileEdit');
     Module.apply(container.find('.js-post'), 'postContent');
     Module.apply(container.find('.js-postReply'), 'postReply');
     Module.apply(container.find('.js-notification'), 'notification');
