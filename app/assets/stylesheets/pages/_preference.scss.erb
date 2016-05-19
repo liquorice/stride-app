@@ -1,125 +1,139 @@
-// General Preference View styles
+// Preference View Button Styles
 
-.profileContainer {
-  max-width: 488px;
-  overflow: auto;
-  width: 100%;
-}
-
-.profileTitle {
-  @include h2-level3;
-  // line-height: 1.9rem;
-  margin-bottom: 2.75rem;
-}
-
-.profileLabel {
-  margin-bottom: 2.5rem;
-}
-
-  .profileLabel__title {
-    @include p-meta;
-    @include ff_adelle-bold;
-    .alert {
-      color: $alert;
-    }
-  }
-
-  .profileLabel__desc {
-    @include p-meta;
-  }
-
-.btn__saveProfile {
-  @include btn-short;
-  @include btn-primary;
-  display: none;
-  padding-top: 0;
-}
-
-.btn__editProfile {
+@mixin button-profile {
   @include p-meta;
-  color: $links;
+  @include links;
+  border-bottom: none;
   cursor: pointer;
   display: block;
-  margin-top: 0.3rem;
-  padding-right: 1rem;
-  width: 20%;
+  width: 5.421rem;
+}
+
+.btn__profile-cancel {
+  @include button-profile;
+  margin-left: 6px;
+}
+
+.btn__profile-edit {
+  @include button-profile;
+  margin-top: 11px;
 
   &:before {
     @include icon__edit-blue;
     content: " ";
     float: left;
-    height: 1em;
-    margin: 2px 1px 0 0;
-    width: 1em;
+    height: 11px;
+    margin: 2px 4px 0 0;
+    width: 11px;
   }
 }
 
-input.hidden {
-  display: none;
-}
+// General Preference View Styles
 
-p.visible__default {
-  @include p-regular;
-}
+.profile {
+  max-width: 25.68rem;
+  overflow: auto;
+  width: 100%;
 
-.visible__edit {
-  display: none;
-}
-
-input#showEdit__avatar:checked,
-input#showEdit__username:checked,
-input#showEdit__pw:checked,
-input#showEdit__email:checked {
-  & ~ .visible__edit {
-    display: inline-block;
+  h2 {
+    @include h2-level3;
+    margin-bottom: 2.579rem;
   }
 
-  & ~ .btn__saveProfile {
-    display: block;
-  }
-
-  & ~ .btn__editProfile, & ~ .visible__default {
+  button {
+    @include btn-meta;
+    @include btn-primary;
+    @include ff_adelle-bold;
     display: none;
+    margin-top: 13px;
   }
+
+  form {
+    font-size: 0;
+    height: auto;
+    margin-bottom: 2.632rem;
+    overflow: auto;
+
+    h3, h4 {
+      @include p-meta;
+      @include ff_adelle-bold;
+      color: $grey-warm;
+      margin-bottom: 1px;
+      .alert {
+        color: $alert;
+      }
+    }
+
+    h4 {
+      margin-top: 14px;
+    }
+
+    p {
+      @include p-meta;
+      color: $grey-warm;
+      margin-bottom: 1px;
+      &.view-default {
+        @include p-short;
+        margin-bottom: 3px;
+      }
+    }
+
+    input {
+      display: none;
+      margin-top: 5px;
+    }
+  }
+
+  form.edit {
+    margin-bottom: 2.421rem;
+
+    & > .view-edit {
+      display: inline-block;
+    }
+
+    & > .view-default {
+      display: none;
+    }
+  }
+}
+
+.view-edit {
+  display: none;
 }
 
 // Avatar preference styles
 
 // User avatar display
-.profileAvatar__avatar-container {
+.profileAvatar {
   @include breakpoint(small, mini) {
     display: block;
-    height: 162px;
+    height: 10.87rem;
     margin-bottom: 0;
     margin-right: 0;
-    width: 162px;
+    width: 10.87rem;
   }
   background-color: $white;
   display: inline-block;
-  height: 8.25rem;
-  margin-bottom: -0.125rem;
-  margin-right: -0.125rem;
-  margin-top: 7px;
-  width: 33.9%;
+  height: 8.579rem;
+  margin-top: 4px;
+  width: 8.579rem;
+  padding: 1.105rem 1.105rem;
 }
 
   .profileAvatar__avatar {
     @include avatar-overlarge;
     @include breakpoint (small, mini) {
-      display: inline-block;
       height: 124px;
       margin: 1.2rem 1.2rem;
       width: 124px;
     }
-    display: block;
-    margin: 1rem auto 1rem;
   }
 
 // Face options display
-.profileAvatar__faces-container {
+.profileFace {
   @include breakpoint(small, mini) {
     border-left: none;
-    border-top: 2px solid rgba($grey-warm, 0.1);
+    border-top: 1px solid rgba($grey-warm, 0.1);
     display: block;
     margin: 0;
     min-height: 150px;
@@ -127,15 +141,13 @@ input#showEdit__email:checked {
     width: 100%;
   }
   background-color: $white;
-  border-left: 2px solid rgba($grey-warm, 0.1);
-  height: 8.25rem;
-  margin-bottom: -0.125rem;
-  margin-left: -0.125rem;
-  margin-top: 7px;
-  padding: 1.2rem 1rem;
-  width: 66.3%;
+  border-left: 1px solid rgba($grey-warm, 0.1);
+  height: 8.579rem;
+  margin-top: 4px;
+  padding: 1.15rem 0.86rem;
+  width: calc(17.11rem - 1px);
 
-  .profileLabel__title {
+  h3 {
     @include breakpoint(small, mini) {
       display: block;
     }
@@ -143,99 +155,16 @@ input#showEdit__email:checked {
   }
 }
   
-  .profileAvatar__face-option {
+  .profileFace__option {
     @include breakpoint(small, mini) {
       height: 48px;
       margin: 0.25rem 0.175rem 0 0;
       width: 48px;
     }
     float: left;
-    height: 52px;
-    margin: 0.2rem 0.1rem;
-    width: 52px;
-
-    label > input {
-      display: none;
-    }
-
-    label > input + .avatar {
-      cursor: pointer;
-      &:hover ~ .avatar__outline {
-        border: 2px solid mix($links, $white, 40%);
-      }
-    }
-
-    label > input:checked ~ .avatar__outline {
-      border-radius: 50%;
-      border: 2px solid mix($links, $white, 40%);
-    }
-
-    .avatar {
-      @include avatar-medium;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      display: block;
-
-      &[primary] {
-        &:after {
-          background-color: $primary;
-        }
-      }
-      &:after {
-        background-color: $bg;
-      }
-    }
-
-    .avatar__outline {
-      @include breakpoint(small, mini) {
-        height: 48px;
-        left: -2px;
-        top: -47px;
-        width: 48px;
-      }
-      border-radius: 50%;
-      border: 2px solid transparent;
-      height: 52px;
-      left: -1px;
-      position: relative;
-      top: -51px;
-      transition: border 100ms ease-in;
-      width: 52px;
-    }
-  }
-
-.profileAvatar__spacer {
-  margin-bottom: 0.6rem;
-}
-
-// Colour options display
-.profileAvatar__colour-container {
-  @include breakpoint(small, mini) {
-    display: block;
-    margin-top: 0;
-    min-height: 155px;
-    padding: 1.1rem 1.1rem;
-  }
-  background-color: $white;
-  border-top: 2px solid rgba($grey-warm, 0.1);
-  height: 5.75rem;
-  margin-bottom: 0.6rem;
-  margin-top: -0.125rem;
-  min-height: 5.75rem;
-  padding: 1rem 1rem 0;
-  width: 100%;
-}
-
-  .profileAvatar__colour-option {
-    @include breakpoint(small, mini) {
-      height: 43px;
-      margin: 0.5rem 0.4906rem 0 0;
-      width: 43px;
-    }
-    float: left;
-    height: 35px;
-    margin: 0.5rem 0.4906rem 0.25rem 0;
-    width: 35px;
+    height: 56px;
+    width: 56px;
+    margin: 2px 1px; 
 
     label > input {
       display: none;
@@ -261,8 +190,103 @@ input#showEdit__email:checked {
       border-radius: 50%;
       border: 2px solid transparent;
       display: block;
-      height: 33px;
-      width: 33px;
+      height: 52px;
+      width: 52px;
+      top: 2px;
+      left: 2px;
+
+      &[primary] {
+        &:after {
+          background-color: $primary;
+        }
+      }
+      &:after {
+        background-color: $bg;
+      }
+    }
+
+    .avatar__outline {
+      @include breakpoint(small, mini) {
+        height: 48px;
+        left: -2px;
+        top: -47px;
+        width: 48px;
+      }
+      border-radius: 50%;
+      border: 2px solid transparent;
+      height: 56px;
+      position: relative;
+      top: -52px;
+      transition: border 100ms ease-in;
+      width: 56px;
+    }
+  }
+
+// Colour options display
+.profileColour {
+  @include breakpoint(small, mini) {
+    display: block;
+    margin-top: 0;
+    min-height: 155px;
+    padding: 1.1rem 1.1rem;
+  }
+  background-color: $white;
+  border-top: 1px solid rgba($grey-warm, 0.1);
+  min-height: 5.75rem;
+  padding: 1.105rem calc(1.105rem - 2px) 0.8947rem;
+  width: calc(25.689rem - 1px);
+
+  & > h3 {
+    margin-left: 2px;
+  }
+}
+
+  .profileColour__option {
+    @include breakpoint(small, mini) {
+      height: 43px;
+      margin: 0.5rem 0.4906rem 0 0;
+      width: 43px;
+    }
+    float: left;
+    height: 40px;
+    width: 40px;
+    margin: 9px 2px;
+
+    label > input {
+      display: none;
+    }
+
+    label > input + .avatar {
+      cursor: pointer;
+      &:hover ~ .avatar__outline {
+        border: 2px solid mix($links, $white, 40%);
+      }
+    }
+
+    label > input:checked ~ .avatar__outline {
+      border-radius: 50%;
+      border: 2px solid mix($links, $white, 40%);
+    }
+
+    .avatar {
+      @include breakpoint(small, mini) {
+        height: 41px;
+        width: 41px;
+      }
+      border-radius: 50%;
+      border: 2px solid transparent;
+      display: block;
+      height: 36px;
+      width: 36px;
+      top: 2px;
+      left: 2px;
+
+      &:after {
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+      }
     }
 
     .avatar__outline {
@@ -274,11 +298,10 @@ input#showEdit__email:checked {
       }
       border-radius: 50%;
       border: 2px solid transparent;
-      height: 35px;
-      left: -1px;
+      height: 40px;
       position: relative;
-      top: -34px;
+      top: -36px;
       transition: border 100ms ease-in;
-      width: 35px;
+      width: 40px;
     }
   }
