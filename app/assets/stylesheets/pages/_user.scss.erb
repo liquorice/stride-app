@@ -9,6 +9,15 @@
   h3 {
     @include h3-regular;
     margin-bottom: 0.5789rem;
+
+    &.short {
+      @include h3-short;
+    }
+  }
+
+  p {
+    @include p-meta;
+    color: $grey-warm;
   }
 }
 
@@ -144,19 +153,8 @@
 
   .button__suspend {
     @include btn-meta;
+    @include btn-alert;
     @include ff_adelle-bold;
-    @include breakpoint (huge, overlarge, large, medium, small, mini) {
-      padding: 0.32em 0.75em 0.4877em;
-    }
-    @include breakpoint (medium, small) {
-      margin: 0.65rem 0 0.1rem;
-    }
-    @include breakpoint (mini) {
-      margin: 0 0 0.1rem;
-    }
-    background-color: rgba($alert, 0.2);
-    color: $black;
-
     &:before {
       content: url("<%= asset_data_uri 'icons/icon_suspend-black.svg' %>");
       display: inline-block;
@@ -165,11 +163,6 @@
       position: relative;
       top: 0.088em;
       width: 11px;
-    }
-
-    &:hover {
-      background-color: $alert;
-      color: $black;
     }
   }
 
@@ -221,6 +214,26 @@
   }
 }
 
+
+// User View Hide Activity Styles
+
+.button_hideActivity {
+  @include btn-meta;
+  @include btn-alert;
+  @include ff_adelle-bold;
+  margin-bottom: 7px;
+  margin-top: 4px;
+
+  &:before {
+    @include icon__hide;
+    background-size: 11px 11px;
+    content: " ";
+    display: inline-block;
+    height: 11px;
+    margin-right: 6px;
+    width: 11px;
+  }
+}
 
 // User View Thread and Posts Styles
 

@@ -61,32 +61,42 @@
 }
 
 @mixin btn-mid {
-  background: white;
+  background: $white;
   color: $links;
 
   &:hover {
-    background: mix($links, white, 20%);
+    background: mix($links, $white, 20%);
     color: $blue-dark;
   }
 }
 
 @mixin btn-primary {
   background: $primary;
-  color: white;
+  color: $white;
 
   &:hover {
     background: $primary-dark;
-    color: white;
+    color: $white;
   }
 }
 
 @mixin btn-blue {
-  background: mix($links, white, 8%);
+  background: mix($links, $white, 8%);
   color: $links;
   &:hover {
     color: $blue-dark;
     box-shadow: none;
-    background: mix($links, white, 20%);
+    background: mix($links, $white, 20%);
+  }
+}
+
+@mixin btn-alert {
+  background: mix($alert, $white, 20%);
+  color: $black;
+
+  &:hover {
+    background: $alert;
+    color: $black;
   }
 }
 
