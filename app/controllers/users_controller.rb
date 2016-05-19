@@ -61,6 +61,21 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def hide_activity
+    require_permission :user_hideActivity
+    @user = @site.users.find(params[:id])
+
+    # Hide all public posts
+    @user.posts.visible.update_all(visible: false, hidden_at: Time.now)
+
+    # Hide all public threads
+    @user.topic_threads.visible.update_all(public: false)
+
+    flash[:success] = "All activity hidden for #{@user.name}"
+
+    redirect_to user_path(@user)
+  end
+
   private
 
   def new_user_params

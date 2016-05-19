@@ -6,6 +6,7 @@ class TopicThread < ActiveRecord::Base
   has_many :posts
 
   scope :preview, -> { where(public: true).limit(4) }
+  scope :visible, -> { where(public: true) }
   default_scope { order(pinned: :desc, created_at: :desc) }
 
   # --- Validations ---

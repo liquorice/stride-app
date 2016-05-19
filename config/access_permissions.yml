@@ -9,4 +9,5 @@ preferences_modify: Modify own preferences
 users_view: View information about other users
 special_avatar: Use special colour for avatar
 accessLevel_set: Set a users access level
+user_hideActivity: Hide all threads and posts by user
 user_suspend: Change a users suspension status
