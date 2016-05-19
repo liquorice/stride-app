@@ -56,8 +56,13 @@
     .mobile-threadDetails-views Views: XXX
     .mobile-threadDetails-replies Replies: #{@thread.posts_count}
 
-= render @posts
-= render 'partials/pagination', paginated: @posts
+- if @posts.any?
+  = render @posts
+  = render 'partials/pagination', paginated: @posts
+- else
+  .message-noThreads
+    = insert_svg("empty-avatar.svg", class:"icon__avatar")
+    | There's nothing here! Be the first to post a reply.
 
 - if current_user_can?(:post_create) && @thread.public? && !@thread.locked
   .postReply.js-postReply
