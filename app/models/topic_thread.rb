@@ -16,6 +16,10 @@ class TopicThread < ActiveRecord::Base
 
   self.per_page = 8
 
+  def self.for_tag(tag)
+    where("? = ANY (tags)", tag)
+  end
+
   def posts_count
     posts.count
   end
@@ -44,6 +48,17 @@ class TopicThread < ActiveRecord::Base
 
   def latest_post
     posts.visible.last
+  end
+
+  def export_to_json
+    {
+      id: id,
+      name: name,
+      created_at: created_at.to_i,
+      created_by: user.name,
+      views: impressions_count,
+      posts: posts_count,
+    }
   end
 
   private

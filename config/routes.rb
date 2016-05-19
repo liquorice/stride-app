@@ -43,6 +43,11 @@ Rails.application.routes.draw do
   get 'reset_password/:token' => 'password_requests#reset', as: :password_reset
   post 'reset_password/:token' => 'password_requests#do_reset'
 
+  # API
+  scope :api do
+    get 'threads_for_tag/:tag' => 'api#threads_for_tag'
+  end
+
   # Admin
   scope :admin do
     get '' => 'landing#admin', as: :admin
