@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510171453) do
+ActiveRecord::Schema.define(version: 20160519103345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160510171453) do
     t.integer  "avatar_colour",   default: 1
     t.integer  "avatar_face",     default: 1
     t.datetime "last_seen"
+    t.boolean  "suspended",       default: false
   end
 
   add_index "users", ["access_level_id"], name: "index_users_on_access_level_id", using: :btree

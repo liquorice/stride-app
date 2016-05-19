@@ -76,6 +76,26 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def suspend
+    require_permission :user_suspend
+    @user = @site.users.find(params[:id])
+
+    @user.update(suspended: true)
+    flash[:success] = "#{@user.name} has been suspended"
+
+    redirect_to user_path(@user)
+  end
+
+  def unsuspend
+    require_permission :user_suspend
+    @user = @site.users.find(params[:id])
+
+    @user.update(suspended: false)
+    flash[:success] = "#{@user.name} has been unsuspended"
+
+    redirect_to user_path(@user)
+  end
+
   private
 
   def new_user_params

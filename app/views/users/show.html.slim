@@ -33,17 +33,16 @@
               button.button__accesslevel Update access level
 
         - if @current_user.can?(:user_suspend)
-          .mobile__hide
-            a.button__suspend href="#" Suspend user
-            .text__suspend
-              strong Suspending a user 
-              | will log them out and prevent them from logging back in
+          - if @user.suspended?
+            a href=unsuspend_user_path(@user) data-method="post" Un-suspend user
+          - else
+            a href=suspend_user_path(@user) data-method="post" Suspend user
 
-    .mobile__show
-      a.button__suspend href="#" Suspend user
-      .text__suspend
-        strong Suspending a user 
-        | will log them out and prevent them from logging back in
+        - else
+          - if @user.suspended?
+            p User is suspended
+          - else
+            p User is not suspended
 
     // TODO style this link
     - unless @user.email.blank?
