@@ -39,6 +39,9 @@ Module.register('modal', function() {
         popup_content.append(new_content.find('.modalContainer'));
 
         window.init_applies(popup_content);
+
+        // Put focus on first input in modal
+        popup_content.find('input').not('[type=hidden]').eq(0).trigger('focus');
       }
     });
 
