@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def can_set_access_level?(level)
+    return true if superuser
     level.ordinal <= self.access_level.ordinal
   end
 
