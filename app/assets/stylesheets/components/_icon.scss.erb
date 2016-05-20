@@ -45,6 +45,9 @@
 }
 
 @mixin icon__edit-blue {
+  @include breakpoint (small, mini) {
+    background-size: 9px 9px;
+  }
   background-size: 11px 11px;
   background-image: url("<%= asset_data_uri 'icons/icon_edit-blue.svg' %>");
   background-repeat: no-repeat;

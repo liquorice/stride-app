@@ -16,10 +16,18 @@
 
 .btn__profile-edit {
   @include button-profile;
+  @include breakpoint (small, mini) {
+    margin-top: 6px;
+  }
   margin-top: 11px;
 
   &:before {
     @include icon__edit-blue;
+    @include breakpoint (small, mini) {
+      height: 9px;
+      width: 9px;
+      margin: 5px 3px 0 0;
+    }
     content: " ";
     float: left;
     height: 11px;
@@ -37,6 +45,9 @@
 
   h2 {
     @include h2-level3;
+    @include breakpoint (small, mini) {
+      margin-bottom: 1.8rem;
+    }
     margin-bottom: 2.579rem;
   }
 
@@ -44,11 +55,18 @@
     @include btn-meta;
     @include btn-primary;
     @include ff_adelle-bold;
+    @include breakpoint (small, mini) {
+      margin-top: 16px;
+      margin-left: 16px;
+    }
     display: none;
     margin-top: 13px;
   }
 
   form {
+    @include breakpoint (small, mini) {
+      margin-bottom: 2rem;
+    }
     font-size: 0;
     height: auto;
     margin-bottom: 2.632rem;
@@ -108,15 +126,15 @@
   @include breakpoint(small, mini) {
     display: block;
     height: 10.87rem;
-    width: 10.87rem;
     margin-top: 7px;
+    width: 10.87rem;
   }
   background-color: $white;
   display: inline-block;
   height: 8.579rem;
   margin-top: 4px;
-  width: 8.579rem;
   padding: 1.105rem 1.105rem;
+  width: 8.579rem;
 }
 
   .profileAvatar__avatar {
@@ -133,10 +151,9 @@
   @include breakpoint(small, mini) {
     border-left: none;
     border-top: 1px solid rgba($grey-warm, 0.1);
-    display: block;
-    margin: 0;
+    margin-top: 0;
     min-height: 150px;
-    padding: 1.1rem 1.1rem;
+    padding: 0.8rem 1.1rem;
     width: 100%;
   }
   background-color: $white;
@@ -149,6 +166,7 @@
   h3 {
     @include breakpoint(small, mini) {
       display: block;
+      font-weight: 400 !important;
     }
     display: none;
   }
@@ -156,14 +174,14 @@
   
   .profileFace__option {
     @include breakpoint(small, mini) {
-      height: 48px;
-      margin: 0.25rem 0.175rem 0 0;
-      width: 48px;
+      height: 46px;
+      margin: 4px 2px;
+      width: 46px;
     }
     float: left;
     height: 56px;
-    width: 56px;
     margin: 2px 1px; 
+    width: 56px;
 
     label > input {
       display: none;
@@ -183,16 +201,17 @@
 
     .avatar {
       @include breakpoint(small, mini) {
-        height: 41px;
-        width: 41px;
+        height: 42px;
+        left: 0;
+        width: 42px;
       }
       border-radius: 50%;
       border: 2px solid transparent;
       display: block;
       height: 52px;
-      width: 52px;
-      top: 2px;
       left: 2px;
+      top: 2px;
+      width: 52px;
 
       &[primary] {
         &:after {
@@ -206,10 +225,10 @@
 
     .avatar__outline {
       @include breakpoint(small, mini) {
-        height: 48px;
+        height: 46px;
         left: -2px;
-        top: -47px;
-        width: 48px;
+        top: -42px;
+        width: 46px;
       }
       border-radius: 50%;
       border: 2px solid transparent;
@@ -224,10 +243,9 @@
 // Colour options display
 .profileColour {
   @include breakpoint(small, mini) {
-    display: block;
     margin-top: 0;
     min-height: 155px;
-    padding: 1.1rem 1.1rem;
+    padding: 0.8rem 1.1rem;
     width: 100%;
   }
   background-color: $white;
@@ -237,20 +255,24 @@
   width: calc(25.689rem - 1px);
 
   & > h3 {
+    @include breakpoint (small, mini) {
+      font-weight: 400 !important;
+      margin-left: 0px;
+    }
     margin-left: 2px;
   }
 }
 
   .profileColour__option {
     @include breakpoint(small, mini) {
-      height: 43px;
-      margin: 0.5rem 0.4906rem 0 0;
-      width: 43px;
+      height: 44px;
+      margin: 5px 3px;
+      width: 44px;
     }
     float: left;
     height: 40px;
-    width: 40px;
     margin: 9px 2px;
+    width: 40px;
 
     label > input {
       display: none;
@@ -270,31 +292,30 @@
 
     .avatar {
       @include breakpoint(small, mini) {
-        height: 41px;
-        width: 41px;
+        height: 40px;
+        width: 40px;
       }
       border-radius: 50%;
       border: 2px solid transparent;
       display: block;
       height: 36px;
-      width: 36px;
-      top: 2px;
       left: 2px;
+      top: 2px;
+      width: 36px;
 
       &:after {
         height: 100%;
-        width: 100%;
         left: 0;
         top: 0;
+        width: 100%;
       }
     }
 
     .avatar__outline {
       @include breakpoint(small, mini) {
-        height: 43px;
-        left: -1px;
-        top: -42px;
-        width: 43px;
+        height: 44px;
+        top: -40px;
+        width: 44px;
       }
       border-radius: 50%;
       border: 2px solid transparent;
