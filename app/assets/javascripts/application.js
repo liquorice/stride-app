@@ -20,6 +20,7 @@
 //= require dropdown
 //= require tags
 //= require href
+//= require search
 //= require modal
 //= require notification
 //= require mobile-menu

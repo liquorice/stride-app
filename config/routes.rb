@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   get 'users' => 'users#index'
   get 'user/:id' => 'users#show', as: :user
   post 'user/:id/send_password_reset' => 'users#send_password_reset', as: :user_password_reset
+  post 'user/:id/hide_activity' => 'users#hide_activity', as: :hide_user_activity
+  post 'user/:id/suspend' => 'users#suspend', as: :suspend_user
+  post 'user/:id/unsuspend' => 'users#unsuspend', as: :unsuspend_user
+
   patch 'user/:id/set_access_level' => 'users#set_access_level', as: :set_user_access_level
   get 'preferences' => 'preferences#index'
   patch 'preferences' => 'preferences#update'
@@ -38,6 +42,11 @@ Rails.application.routes.draw do
   post 'forgot' => 'password_requests#send_password_reset'
   get 'reset_password/:token' => 'password_requests#reset', as: :password_reset
   post 'reset_password/:token' => 'password_requests#do_reset'
+
+  # API
+  scope :api do
+    get 'threads_for_tag/:tag' => 'api#threads_for_tag'
+  end
 
   # Admin
   scope :admin do

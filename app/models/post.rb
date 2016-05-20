@@ -25,4 +25,8 @@ class Post < ActiveRecord::Base
     !visible
   end
 
+  def quoted_post
+    Post.where(id: quoted_post_id).first
+  end
+
 end

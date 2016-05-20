@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # The % will be replaced by the site name
+  config.kb_path = 'http://%.org.au'
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

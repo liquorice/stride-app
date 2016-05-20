@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   rescue_from Exceptions::NotFoundError, with: :not_found
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Exceptions::NotAuthorisedError, with: :not_authorised
+  rescue_from Exceptions::SuspendedUserError, with: :suspended
   private
 
   def check_for_user
@@ -54,6 +55,11 @@ class ApplicationController < ActionController::Base
 
   def not_authorised
     render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+  end
+
+  def suspended
+    flash.discard
+    render 'user/suspended'
   end
 
 end

@@ -6,11 +6,11 @@
     span.toolbar__logo-alt
       = @site.name
   .toolbar__search
-    form.toolbar__search-form action="/search"
+    form.toolbar__search-form.js-search action=link_to_kb('search')
       label for="search-box"
         span Search
         = insert_svg "search.svg"
-      input id="query" type="text" name="query"
+      input.js-search-input type="text"
 
   .toolbar__user
     - if @current_user
@@ -32,8 +32,8 @@ ul.navigation role="navigation"
   li
     a.active href=topics_preview_path Forums
   li
-    a href="http://stage.#{@site.name}.org.au/articles" Articles
+    a href=link_to_kb('articles') Articles
   li
-    a href="http://stage.#{@site.name}.org.au/support" Support
+    a href=link_to_kb('support') Support
   li
-    a href="http://stage.#{@site.name}.org.au/about" About
+    a href=link_to_kb('about') About

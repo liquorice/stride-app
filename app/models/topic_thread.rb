@@ -1,11 +1,12 @@
 class TopicThread < ActiveRecord::Base
-
+  is_impressionable :counter_cache => true
   # --- Associations ---
   belongs_to :topic
   belongs_to :user
   has_many :posts
 
   scope :preview, -> { where(public: true).limit(4) }
+  scope :visible, -> { where(public: true) }
   default_scope { order(pinned: :desc, created_at: :desc) }
 
   # --- Validations ---
@@ -14,6 +15,10 @@ class TopicThread < ActiveRecord::Base
   before_save :cleanup_tags
 
   self.per_page = 8
+
+  def self.for_tag(tag)
+    where("? = ANY (tags)", tag)
+  end
 
   def posts_count
     posts.count
@@ -43,6 +48,17 @@ class TopicThread < ActiveRecord::Base
 
   def latest_post
     posts.visible.last
+  end
+
+  def export_to_json
+    {
+      id: id,
+      name: name,
+      created_at: created_at.to_i,
+      created_by: user.name,
+      views: impressions_count,
+      posts: posts_count,
+    }
   end
 
   private

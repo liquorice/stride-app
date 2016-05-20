@@ -4,7 +4,16 @@ class PostsController < ApplicationController
     require_permission :post_create
 
     @thread = @site.topic_threads.find(params[:id])
-    @post = @thread.posts.new(user: @current_user, content: params[:content])
+
+    # Test that quoted post exists in thread
+    quoted_post = @thread.posts.visible.where(id: params[:quoted_post_id])
+    quoted_post_id = quoted_post.any? ? quoted_post.first.id : nil
+
+    @post = @thread.posts.new(
+      user: @current_user,
+      content: params[:content],
+      quoted_post_id: quoted_post_id
+    )
 
     if @thread.locked
       flash[:error] = "Posts can not be added to locked threads"

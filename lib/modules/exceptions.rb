@@ -4,4 +4,8 @@ module Exceptions
 
   class NotAuthorisedError < StandardError
   end
+
+  class SuspendedUserError < StandardError
+  end
+
 end

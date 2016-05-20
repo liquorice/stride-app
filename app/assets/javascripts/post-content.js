@@ -9,7 +9,7 @@ Module.register('postContent', function(_container) {
 
   var init = function() {
     container = _container;
-    content = container.find('.js-postContent');
+    content = container.find('.js-postContent').not('[data-quoted]');
     toggle = container.find('.js-post-toggle');
 
     if (content.height() > MAX_HEIGHT + HEIGHT_TOLERANCE) {

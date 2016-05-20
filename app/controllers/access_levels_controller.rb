@@ -48,7 +48,7 @@ class AccessLevelsController < ApplicationController
     # is possible to have an access level with no permissions
     params[:permissions_data] ||= {}
 
-    safe = params.require(:access_level).permit(:name)
+    safe = params.require(:access_level).permit(:name, :ordinal)
     safe[:permissions_data] = params[:permissions_data]
 
     safe

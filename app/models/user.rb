@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :password_requests
 
   default_scope { order(created_at: :desc) }
+  scope :active, -> { where(suspended: false) }
 
   # --- Validations ---
   has_secure_password
@@ -33,6 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def can_set_access_level?(level)
+    return true if superuser
     level.ordinal <= self.access_level.ordinal
   end
 

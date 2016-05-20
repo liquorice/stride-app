@@ -1,8 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # config.site_url = 'stage.dokio.co'
-  # config.action_controller.asset_host = "asset-%d.#{config.site_url}"
+  # The % will be replaced by the site name
+  config.kb_path = 'http://stage.%.org.au'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

@@ -23,4 +23,9 @@ module ApplicationHelper
     last_seen.strftime('%d/%m/%y')
   end
 
+  def link_to_kb(path)
+    kb_path = Rails.configuration.kb_path.gsub('%', @site.name)
+    "#{kb_path}/#{path}"
+  end
+
 end

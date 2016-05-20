@@ -45,7 +45,7 @@
 
   .threadDetails__views
     strong Views
-    h2 XXX
+    h2 = @thread.impressions_count
 
   .threadDetails__replies
     strong Replies
@@ -53,7 +53,7 @@
 
   .mobile-threadDetails
     .mobile-threadDetails-date Created: #{@thread.created_at.strftime('%d/%m/%y')}
-    .mobile-threadDetails-views Views: XXX
+    .mobile-threadDetails-views Views: @thread.impressions_count
     .mobile-threadDetails-replies Replies: #{@thread.posts_count}
 
 - if @posts.any?
@@ -69,6 +69,11 @@
     .postReply__title
       h3 Post a reply
     = form_tag new_post_path(@thread), method: :post, class:"postReply__form" do |f|
+      .js-quoted
+        p.js-quoted-display
+        input.js-quoted-post-id type='hidden' name='quoted_post_id'
+        span.js-quoted-clear X
+
       textarea.js-textarea name='content' placeholder='Enter text…'
 
       .postReply__button

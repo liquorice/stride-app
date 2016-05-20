@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510171453) do
+ActiveRecord::Schema.define(version: 20160519131219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,31 @@ ActiveRecord::Schema.define(version: 20160510171453) do
   end
 
   add_index "access_levels", ["site_id"], name: "index_access_levels_on_site_id", using: :btree
+
+  create_table "impressions", force: :cascade do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
   create_table "password_requests", force: :cascade do |t|
     t.integer  "user_id"
@@ -44,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160510171453) do
     t.integer  "user_id"
     t.boolean  "visible",         default: true
     t.datetime "hidden_at"
+    t.integer  "quoted_post_id"
   end
 
   add_index "posts", ["topic_thread_id"], name: "index_posts_on_topic_thread_id", using: :btree
@@ -67,6 +93,7 @@ ActiveRecord::Schema.define(version: 20160510171453) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.boolean  "similar_thread_check"
+    t.integer  "impressions_count"
   end
 
   add_index "topic_threads", ["topic_id"], name: "index_topic_threads_on_topic_id", using: :btree
@@ -94,6 +121,7 @@ ActiveRecord::Schema.define(version: 20160510171453) do
     t.integer  "avatar_colour",   default: 1
     t.integer  "avatar_face",     default: 1
     t.datetime "last_seen"
+    t.boolean  "suspended",       default: false
   end
 
   add_index "users", ["access_level_id"], name: "index_users_on_access_level_id", using: :btree
