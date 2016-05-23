@@ -25,5 +25,6 @@
 //= require notification
 //= require mobile-menu
 //= require profile-edit
+//= require textarea-resize
 
 //= require main

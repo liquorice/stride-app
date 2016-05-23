@@ -9,7 +9,7 @@ Module.register('postReply', function(_container) {
 
   var init = function() {
     container = _container;
-    textarea = container.find('.js-textarea');
+    textarea = container.find('.js-post-reply');
 
     quoted_container = container.find('.js-quoted');
     quoted_input = quoted_container.find('.js-quoted-post-id');
