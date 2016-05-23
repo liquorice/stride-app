@@ -1,3 +1,5 @@
+// Modal Styles
+
 .modalOverlay {
   background-color: $bg;
   bottom: 0;
@@ -20,17 +22,14 @@
 
   .modalOverlay__close {
     @include icon__clear;
-    @include breakpoint (mini) {
-      right: 0;
-    }
     background-color: $bg-dark;
+    margin-top: 65px;
     border-radius: 50%;
     cursor: pointer;
-    height: 50px;
+    height: 42px;
     position: absolute;
-    right: 20px;
-    top: 20px;
-    width: 50px;
+    right: 0;
+    width: 42px;
   }
 
   .modalOverlay__loading {
@@ -48,15 +47,24 @@
     }
   }
 
-
 .modalContainer {
+  margin-top: 65px;
+  z-index: 1;
+}
+
+.modalContent {
+  max-width: 508px;
+  padding-top: 78px;
+  margin: auto;
+  padding-bottom: 155px;
+
   h1 {
     @include h2-level3;
     @include breakpoint (mini) {
       padding: 10px 50px 10px 10px;
     }
-    margin-bottom: 1rem;
-    padding: 10px;
+    margin-bottom: 2.474rem;
+    padding: 0 10px;
   }
 
   .alert {
@@ -64,21 +72,31 @@
   }
 
   .label {
-    margin-bottom: 2.75rem;
+    margin-bottom: 14px;
     padding: 0 10px;
 
-    &.bottomMargin-small {
+    &.small {
       margin-bottom: 7px;
+    }
+
+    &.large {
+      margin-bottom: 57px;
+    }
+
+    &.xlarge {
+      margin-bottom: 87px;
     }
   }
 
     .label__title {
       @include p-meta;
       @include ff_adelle-bold;
+      color: $grey-warm;
     }
 
     .label__desc {
       @include p-meta;
+      color: $grey-warm;
     }
 
     a.label__link {
@@ -100,32 +118,31 @@
       margin-top: 15px;
     }
 
-  .form__buttons {
-    padding: 0 10px;
-  }
-
-  .form__button-standard {
+  .form__button {
     @include btn-standard;
-    margin-right: 5px;
-  }
-
-  .form__button-primary {
-    @include btn-standard;
-    @include btn-primary;
-    margin-right: 5px;
-  }
-
-  .form__button-fullWidth {
-    max-width: 360px;
+    margin-left: 10px;
     text-align: center;
-    width: 100%;
-  }
-}
+    width: 8.368rem;
+    margin-top: 7px;
 
-.modalContent {
-  margin: auto;
-  max-width: 536px;
-  width: 100%;
+    &.primary {
+      @include btn-primary;
+    }
+
+    &.fullwidth {
+      max-width: 360px;
+      text-align: center;
+      width: 100%;
+    }
+
+    &.margin-med {
+      margin-top: 20px;
+    }
+
+    &.margin-none {
+      margin-top: 0;
+    }
+  }
 }
 
 .modalContent__small {
