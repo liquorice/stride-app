@@ -1,110 +1,59 @@
-//
-// Tags
-//
-
-@mixin tags {
-  li {
-    @include ff_adelle-regular;
-    @include unselectable;
-    @include breakpoint(huge, overlarge, large) {
-      font-size: 0.75rem;
-    }
-    border-radius: 2px;
-    color: $blue-mid;
-    display: inline-block;
-    font-size: 13px;
-    line-height: 1.4;
-    margin-right: 0.3em;
-    margin-top: 0.3em;
-    overflow: hidden;
-
-    a {
-      display: block;
-      padding: 0.21em 0.75em 0.2877em 0.75em;
-      transition: background-color 200ms, color 200ms;
-
-      &:hover {
-        color: $blue-dark;
-        background-color: mix($links, white, 20%);
-      }
-    }
-  }
-}
-
-@mixin tags-light {
-  @include tags;
-
-  li a {
-    background-color: $white;
-    color: $links;
-  }
-}
-
-@mixin tags-dark {
-  @include tags;
-
-  li a {
-    background-color: mix($links, $white, 10%);
-    color: $links;
-  }
-}
-
 // Tags editor
 
 .tags {
-  @include p-regular;
+  @include p-meta;
   background: $white;
   border-bottom: 1px solid rgba($grey-warm, 0.12);
   color: $grey-warm;
   cursor: text;
   margin-top: 7px;
+  min-height: 40px;
   overflow: hidden;
-  padding: 10px 0 0 10px;
+  padding: 0 12px;
   resize: none;
   width: 100%;
 
   &.focus {
     border-bottom: 1px solid $links;
     box-shadow: 0px 0px 3px 1px rgba($links, 0.15);
+    color: $links;
   }
 }
 
   .tags__tag {
-    background: $grey-warm;
+    @include btn-meta;
     clear: none;
-    color: $white;
     float: left;
-    margin-bottom: 12px;
-    margin-right: 12px;
+    margin-right: 7px;
 
     .tags.focus & {
-      background: $links;
+      @include btn-blue;
     }
   }
 
     .tags__tag-display {
       display: inline-block;
-      padding: 2px 10px;
     }
 
     .tags__tag-remove {
-      // TODO replace this placeholder style
-      background: red;
+      @include icon__clear;
+      background-color: $bg-dark;
+      border-radius: 50%;
       cursor: pointer;
       display: inline-block;
       height: 1em;
+      vertical-align: sub;
       width: 1em;
     }
 
   .tags__entry {
-    @include p-regular;
+    @include p-short;
     background: transparent;
     clear: none;
     color: $grey-warm;
     display: block;
     float: left;
-    margin: 1px;
-    padding: 4px 0;
+    padding: 7px;
 
     &:focus {
       color: $links;

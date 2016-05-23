@@ -1,41 +1,36 @@
-// Textfield style
+// Text Input Mixin
 
-.input__textfield {
-  @include p-regular;
+@mixin input-text {
+  @include p-short;
   border-bottom: 1px solid rgba($grey-warm, 0.12);
   color: $grey-warm;
-  height: 40px;
-  padding-left: 14px;
-  width: 100%;
-  margin-top: 7px;
-
-  &:focus {
-    color: $links;
-    border-bottom: 1px solid $links;
-    box-shadow: 0px 0px 3px 1px rgba($links, 0.15);
-  }
-}
-
-// Textarea style
-
-.input__textarea {
-  @include p-regular;
-  border-bottom: 1px solid rgba($grey-warm, 0.12);
-  color: $grey-warm;
-  height: 173px;
   margin-top: 7px;
   padding: 12px;
-  resize: none;
   width: 100%;
 
   &:focus {
-    color: $links;
     border-bottom: 1px solid $links;
     box-shadow: 0px 0px 3px 1px rgba($links, 0.15);
+    color: $links;
   }
 }
 
-// Checkbox style
+// Textfield
+
+.input__textfield {
+  @include input-text;
+  height: 40px;
+}
+
+// Textarea
+
+.input__textarea {
+  @include input-text;
+  min-height: 139px;
+  resize: none;
+}
+
+// Checkbox
 
 .checkbox {
   cursor: pointer;
@@ -109,7 +104,7 @@
   float: left;
 }
 
-// Toggle style
+// Toggle
 
 .toggle {
   @include p-meta;
@@ -135,10 +130,11 @@
     user-select: none;
 
     &:first-of-type {
+      color: $grey-warm;
       margin-right: 34px;
       padding-right: 5px;
 
-      .toggle input:checked & ~ {
+      .toggle input:checked ~ & {
         color: rgba($grey-warm, 0.5);
       }
 
