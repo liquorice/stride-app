@@ -139,15 +139,16 @@
 
   .profileAvatar__avatar {
     @include avatar-overlarge;
-    @include breakpoint (small, mini) {
-      height: 8.267rem;
-      margin: auto;
-      width: 8.267rem;
-    }
   }
 
 // Face options display
 .profileFace {
+  @include breakpoint(large) {
+    padding: 1.15rem 0.77rem;
+  }
+  @include breakpoint(medium) {
+    padding: 1.15rem 0.71rem;
+  }
   @include breakpoint(small, mini) {
     border-left: none;
     border-top: 1px solid rgba($grey-warm, 0.1);
@@ -179,9 +180,9 @@
       width: 46px;
     }
     float: left;
-    height: 56px;
+    height: calc(2.526rem + 8px);
     margin: 2px 1px; 
-    width: 56px;
+    width: calc(2.526rem + 8px);
 
     label > input {
       display: none;
@@ -208,10 +209,10 @@
       border-radius: 50%;
       border: 2px solid transparent;
       display: block;
-      height: 52px;
+      height: calc(2.526rem + 4px);
       left: 2px;
       top: 2px;
-      width: 52px;
+      width: calc(2.526rem + 4px);
 
       &[primary] {
         &:after {
@@ -232,11 +233,11 @@
       }
       border-radius: 50%;
       border: 2px solid transparent;
-      height: 56px;
+      height: calc(2.526rem + 8px);
       position: relative;
-      top: -52px;
+      top: calc(-2.526rem - 4px);
       transition: border 100ms ease-in;
-      width: 56px;
+      width: calc(2.526rem + 8px);
     }
   }
 
@@ -270,9 +271,9 @@
       width: 44px;
     }
     float: left;
-    height: 40px;
+    height: calc(1.684rem + 8px);
     margin: 9px 2px;
-    width: 40px;
+    width: calc(1.684rem + 8px);
 
     label > input {
       display: none;
@@ -298,10 +299,10 @@
       border-radius: 50%;
       border: 2px solid transparent;
       display: block;
-      height: 36px;
+      height: calc(1.684rem + 4px);
       left: 2px;
       top: 2px;
-      width: 36px;
+      width: calc(1.684rem + 4px);
 
       &:after {
         height: 100%;
@@ -319,10 +320,10 @@
       }
       border-radius: 50%;
       border: 2px solid transparent;
-      height: 40px;
+      height: calc(1.684rem + 8px);
       position: relative;
-      top: -36px;
+      top: calc(-1.684rem - 4px);
       transition: border 100ms ease-in;
-      width: 40px;
+      width: calc(1.684rem + 8px);
     }
   }

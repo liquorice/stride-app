@@ -31,20 +31,13 @@
 }
 
 @mixin avatar-overlarge {
-  @include breakpoint(medium) {
-    height: 114px;
-    width: 114px;
+  @include breakpoint (small, mini) {
+    height: 8.267rem;
+    margin: auto;
+    width: 8.267rem;
   }
-  @include breakpoint(small) {
-    height: 105px;
-    width: 105px;
-  }
-  @include breakpoint(mini) {
-    height: 70px;
-    width: 70px;
-  }
-  height: 124px;
-  width: 124px;
+  height: 6.526rem;
+  width: 6.526rem;
 }
 
 .avatar {
