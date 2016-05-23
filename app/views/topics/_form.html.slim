@@ -1,18 +1,17 @@
 = form_for @topic do |f|
-  .label.bottomMargin-small
+  .label
     .label__title 
       | Title of forum
       span.alert *
     .form__textfield
-        = f.text_field :name, class:"input__textfield"
+        = f.text_field :name, placeholder:"Enter forum title", class:"input__textfield"
 
   .label
     .label__title
       | Forum description
       span.alert *
-    .form__textarea
-        = f.text_area :description, class:"input__textarea"
+    .form__textarea.js-textarea
+        = f.text_area :description, placeholder:"Enter forum description", class:"input__textarea js-free-text"
 
-  .form__buttons
-    .form__button-standard.js-popup-close Cancel
-    button.form__button-primary Save
+  .form__button.js-popup-close Cancel
+  button.form__button.primary Save

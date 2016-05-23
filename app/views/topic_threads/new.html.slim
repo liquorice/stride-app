@@ -1,14 +1,14 @@
 h1 Create new thread
 
 = form_for @thread do |f|
-  .label.bottomMargin-small
+  .label
     .label__title
       | Title of thread
       span.alert *
     .form__textfield
       = f.text_field :name, placeholder:"Enter title", class:"input__textfield"
 
-  .label
+  .label.large
     .label__title
       | Select forum
       span.alert *
@@ -19,25 +19,24 @@ h1 Create new thread
       options: Hash[@site.topics.pluck(:id, :name)],
       value: @thread.topic_id
 
-  .label.bottomMargin-small
+  .label
     .label__title Add first message (optional)
     .label__desc You can add the first message to this thread, or you can leave it for other users.
 
-    .form__textarea
-      = text_area_tag 'first_post', nil, placeholder:"Add first message", class:"input__textarea"
+    .form__textarea.js-textarea
+      = text_area_tag 'first_post', nil, placeholder:"Add first message", class:"input__textarea js-free-text"
 
-  .label
+  .label.xlarge
     label.checkbox
       = f.check_box :similar_thread_check, class:"input__checkbox"
       .form__checkbox
     .checkbox__text I have checked to see if a thread that is similar to this one already exists on the site.
 
   .label
-    .warning
-      strong Before adding a thread, please note:
+    .message-modal
+      h3 Before adding a thread, please note:
       ul
         li = "A thread can only be edited or deleted by a #{@site.name.capitalize} moderator"
 
-  .form__buttons
-    .form__button-standard.js-popup-close Cancel
-    button.form__button-primary Create
+  .form__button.js-popup-close Cancel
+  button.form__button.primary Create

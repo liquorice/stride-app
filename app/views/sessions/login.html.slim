@@ -1,20 +1,21 @@
-.modalContent__small
+.modal__small
   h1 Log into #{@site.name}
 
   = form_for(:session, url: login_path) do |f|
     .label
-      .label__title Username or email
+      .label__desc Username or email
       .form__textfield
         = f.text_field :name, class:"input__textfield"
 
-      .label__title Password
+    .label.med
+      .label__desc Password
       .form__textfield
         = f.password_field :password, class:"input__textfield"
 
-    .label.bottomMargin-small
-      button.form__button-primary.form__button-fullWidth Log in
-
     .label
+      button.form__button.primary.fullwidth Log in
+
+    .label.med
       label.checkbox
         = f.check_box "Stay logged in", class:"input__checkbox"
         .form__checkbox
@@ -22,6 +23,8 @@
       a.label__link href=forgot_path data-modal=true Lost password
 
     .label
-      a.form__button-standard.form__button-fullWidth href=register_path Register new account
-      .label__required
+      a.form__button.fullwidth href=register_path Register new account
+
+    .label
+      .label__desc
         | Registering allows you to create new threads and replies, and contribute to the live chats.

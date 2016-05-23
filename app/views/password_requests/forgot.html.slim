@@ -1,13 +1,20 @@
-.modalContent__small
-  h1 Lost Password
+.modal__small
+  h2 Lost Password
 
   = form_for(:user, url: forgot_path) do |f|
-    .label
-      .label__title Username or email
-      .label__desc Note: Only users with email addresses can reset their account
-
+    .label.med
+      .label__desc Username or email
       .form__textfield
         = f.text_field :name, class:"input__textfield", placeholder:"Enter username"
 
-    button.form__button-primary.form__button-fullWidth Send reset email
-    a.label__link href=login_path data-modal=true Back to Log in
+    .label
+      .message-modal
+        h3 Please note:
+        ul
+          li = "Only users with email addresses can reset their account"
+
+    .label
+      button.form__button.primary.fullwidth Send reset email
+
+    .label
+      a.label__link href=login_path data-modal=true Back to Log in

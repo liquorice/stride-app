@@ -1,7 +1,6 @@
 h1 Register
 
 = form_for(:user, url: register_path) do |f|
-  
   .label
     .label__title
       | Username
@@ -9,10 +8,10 @@ h1 Register
     .form__textfield
       = f.text_field :name, class:"input__textfield", placeholder:"Enter username"
 
-  .label
+  .label.large
     .label__title Email address (optional)
     .form__textfield
-      = f.text_field :email, placeholder:"Enter email address (optional)", class:"input__textfield"
+      = f.text_field :email, placeholder:"Enter email address", class:"input__textfield"
 
   .label
     .label__title
@@ -21,14 +20,14 @@ h1 Register
     .form__textfield
       = f.password_field :password, class:"input__textfield", placeholder:"Enter password"
 
+  .label.large
     .label__title
       | Password confirmation
       span.alert *
     .form__textfield
       = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password"
 
-  .form__buttons
-    .form__button-standard Cancel
-    button.form__button-primary Register
+  .form__button Cancel
+  button.form__button.primary Register
 
   // TODO : Implement google recaptcha

@@ -1,20 +1,19 @@
-.modalContent__small
-  h1 Reset password
+.modal__small
+  h2 Reset password
 
   = form_for(:user, url: password_reset_path(@password_request.token)) do |f|
-
     .label
-      .label__title
+      .label__desc
         | Password
         span.alert *
       .form__textfield
         = f.password_field :password, class:"input__textfield", placeholder:"Enter password"
 
-      .label__title
+    .label.large
+      .label__desc
         | Password confirmation
         span.alert *
       .form__textfield
         = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password"
 
-    .label
-      button.form__button-standard.form__button-fullWidth Reset
+    button.form__button.fullwidth Reset
