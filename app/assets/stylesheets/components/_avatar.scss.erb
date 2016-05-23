@@ -6,6 +6,15 @@
 @mixin avatar-small {
   height: 25px;
   width: 25px;
+
+  .avatar {
+    &:after {
+      height: 23px;
+      left: 1px;
+      top: 1px;
+      width: 23px;
+    }
+  }
 }
 
 @mixin avatar-medium {
