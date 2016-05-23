@@ -53,10 +53,11 @@
 }
 
 .modalContent {
-  max-width: 508px;
-  padding-top: 78px;
   margin: auto;
+  max-width: 508px;
   padding-bottom: 155px;
+  padding-top: 78px;
+  width: 100%;
 
   h1 {
     @include h2-level3;
@@ -67,86 +68,94 @@
     padding: 0 10px;
   }
 
+  h2 {
+    @include h2-level3;
+    @include breakpoint (mini) {
+      padding: 10px 50px 10px 10px;
+    }
+    font-size: 2.237rem;
+    margin-bottom: 1.579rem;
+    padding: 0 10px;
+  }
+
+  & .modal__small {
+    margin: auto;
+    max-width: 340px;
+    width: 100%;
+  }
+
   .alert {
     color: $alert;
   }
 
   .label {
     margin-bottom: 14px;
+    overflow: auto;
     padding: 0 10px;
 
     &.small {
       margin-bottom: 7px;
     }
 
+    &.med {
+      margin-bottom: 34px;
+    }
+
     &.large {
-      margin-bottom: 57px;
+      margin-bottom: 54px;
     }
 
     &.xlarge {
       margin-bottom: 87px;
     }
+
+    button,
+    .form__button {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
-    .label__title {
-      @include p-meta;
-      @include ff_adelle-bold;
-      color: $grey-warm;
-    }
+  .label__title {
+    @include p-meta;
+    @include ff_adelle-bold;
+    color: $grey-warm;
+  }
 
-    .label__desc {
-      @include p-meta;
-      color: $grey-warm;
-    }
+  .label__desc {
+    @include p-meta;
+    color: $grey-warm;
+  }
 
-    a.label__link {
-      @include p-meta;
-      @include links;
-      float: right;
-    }
+  a.label__link {
+    @include p-meta;
+    @include links;
+    float: right;
+  }
 
-    .label__required {
-      @include p-meta;
-      margin-top: 10px;
-    }
+  .dropdown {
+    margin: 7px 0 0 0;
+  }
 
-    .dropdown {
-      margin: 7px 0 0 0;
-    }
-
-    .toggle {
-      margin-top: 15px;
-    }
+  .toggle {
+    margin-top: 15px;
+  }
 
   .form__button {
     @include btn-standard;
     margin-left: 10px;
-    text-align: center;
-    width: 8.368rem;
     margin-top: 7px;
+    text-align: center;
+    width: 6.316rem;
 
     &.primary {
       @include btn-primary;
     }
 
     &.fullwidth {
-      max-width: 360px;
+      max-width: 320px;
       text-align: center;
       width: 100%;
     }
-
-    &.margin-med {
-      margin-top: 20px;
-    }
-
-    &.margin-none {
-      margin-top: 0;
-    }
   }
-}
-
-.modalContent__small {
-  margin: auto;
-  max-width: 360px;
-  width: 100%;
 }
