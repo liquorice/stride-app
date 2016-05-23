@@ -25,7 +25,7 @@ html
         .modalOverlay__loading
           = insert_svg("icons/icon-spinner.svg", class:"icon__loading")
           | Loading…
-        .modalContainer.js-popup-content
+        .js-popup-content
 
     - if flash[:success]
       .notification.success.js-notification = flash[:success]
