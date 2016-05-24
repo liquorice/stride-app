@@ -19,13 +19,15 @@
     - if !@thread.public
       p.hidden
         ' Hidden thread.
-        span.italic Edit details 
-        ' to unhide.
+        - if current_user_can?(:topicThreads_modify)
+          span.italic Edit details 
+          ' to unhide.
     - elsif @thread.locked
       p.locked
         ' Locked thread.
-        span.italic Edit details 
-        ' to unlock.
+        - if current_user_can?(:topicThreads_modify)
+          span.italic Edit details 
+          ' to unlock.
 
 .threadDetails
   .threadDetails__created
