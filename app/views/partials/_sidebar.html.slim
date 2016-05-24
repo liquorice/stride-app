@@ -6,13 +6,13 @@
   | Hide
 
 .sidebar__group
-  / - unless @current_user
-  a.btn__loginRegister href=login_path data-modal=true
-    = insert_svg("icons/side-bar-icons_profile.svg", class:"icon__sidebar")
-    | Login or Register
-  a.btn__newThread.inactive href=login_path data-modal=true
-    = insert_svg("icons/side-bar-icons_plus-threads.svg", class:"icon__sidebar")
-    | Create new Thread
+  - unless @current_user
+    a.btn__loginRegister href=login_path data-modal=true
+      = insert_svg("icons/side-bar-icons_profile.svg", class:"icon__sidebar")
+      | Login or Register
+    a.btn__newThread.inactive href=login_path data-modal=true
+      = insert_svg("icons/side-bar-icons_plus-threads.svg", class:"icon__sidebar")
+      | Create new Thread
 
   - if current_user_can?(:topics_create)
     a.btn__newTopic href=new_topic_path data-modal=true
