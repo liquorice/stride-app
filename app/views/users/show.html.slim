@@ -1,6 +1,7 @@
 - if current_user_can?(:users_view)
   - content_for :dark_strip do
     .strip__dark-regular
+      .strip__modOnly Only visible to moderators
       h2
         a href=users_path
           = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")

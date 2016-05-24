@@ -1,14 +1,31 @@
+// Moderator Only Message Styles
+
+.strip__modOnly {
+  @include p-meta;
+  background-color: $black;
+  color: $white;
+  font-size: 13px;
+  left: 0;
+  line-height: 1.6;
+  opacity: 0.7;
+  padding: 0 6px;
+  position: absolute;
+  top: 0;
+}
+
+// Strip Styles
+
 .strip__dark {
   @include retina() {
   background:
-    url('header-forum@2x.png') top left repeat,
-    url('noise-diamonds-283x283-@2x.png') top left repeat;
+    url('header-forum@2x.png') center center repeat,
+    url('noise-diamonds-283x283-@2x.png') center center repeat;
     background-color: $teal;
     background-size: 660px 235px, 283px 283px;
   }
   background:
-  url('header-forum.png') top left repeat,
-  url('noise-diamonds-283x283-@2x.png') top left repeat;
+  url('header-forum.png') center center repeat,
+  url('noise-diamonds-283x283-@2x.png') center center repeat;
   background-color: $teal;
   background-size: 660px 235px, 283px 283px;
 }
