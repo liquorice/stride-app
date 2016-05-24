@@ -5,6 +5,8 @@ Module.register('postReply', function(_container) {
   var container;
   var quoted_container;
   var quoted_input;
+  var quoted_user;
+  var quoted_time;
   var quoted_display;
 
   var init = function() {
@@ -13,6 +15,8 @@ Module.register('postReply', function(_container) {
 
     quoted_container = container.find('.js-quoted');
     quoted_input = quoted_container.find('.js-quoted-post-id');
+    quoted_user = quoted_container.find('.js-quoted-user');
+    quoted_time = quoted_container.find('.js-quoted-time');
     quoted_display = quoted_container.find('.js-quoted-display');
 
     setup_clear();
@@ -54,6 +58,8 @@ Module.register('postReply', function(_container) {
 
       quoted_container.addClass('active');
       quoted_input.val(quote_button.attr('data-post-id'));
+      quoted_user.text(quote_button.attr('data-post-user'));
+      quoted_time.text(quote_button.attr('data-post-time'));
       quoted_display.text(quote_button.attr('data-post-description'));
     });
 
@@ -65,6 +71,8 @@ Module.register('postReply', function(_container) {
   var clear_quote = function() {
     quoted_container.removeClass('active');
     quoted_input.val('');
+    quoted_user.text('');
+    quoted_time.text('');
     quoted_display.text('');
   }
 

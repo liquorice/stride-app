@@ -1,3 +1,81 @@
+// Quote Styles
+
+.post-quoted {
+  padding: 1.579rem 1.737rem 0;
+
+  & .post {
+    background-color: rgba($grey-warm, 0.07);
+    padding-bottom: 0.7895rem;
+
+    .postDetails {
+      @include breakpoint (small, mini) {
+        height: 4.25rem;
+      }
+      height: 4rem;
+    }
+
+    .postDetails-avatar {
+      @include avatar-medium;
+    }
+
+    .postDetails-text {
+      @include breakpoint (small, mini) {
+        padding: 0.267rem 0 0 0.4737rem;
+      }
+      padding: 0.3684rem 0.5263rem 0;
+    }
+
+    .post__content p {
+      @include p-meta;
+    }
+  }
+
+}
+
+.postQuote {
+  @include icon__quote;
+  background-color: rgba($grey-warm, 0.07);
+  background-position: 5px 5px;
+  background-size: 1rem;
+  display: none;
+  margin: 1.053rem 1.421rem 1.263rem;
+  padding: 0.7895rem 1.579rem;
+
+  p,
+  span {
+    @include p-meta;
+  }
+
+  p.quote__user,
+  span {
+    color: $grey-warm;
+    display: inline-block;
+  }
+
+  p.quote__user {
+    @include ff-adelle-bold;
+  }
+
+  &.active {
+    display: block;
+  }
+}
+
+  .postQuote__clear {
+    @include btn-meta;
+    margin-top: 1.263rem;
+
+    &:before {
+      @include icon__clear;
+      content: "";
+      cursor: pointer;
+      display: inline-block;
+      height: 17px;
+      vertical-align: sub;
+      width: 17px;
+    }
+  }
+
 // Post Styles
 
 .post {
@@ -5,6 +83,10 @@
   display: block;
   margin-bottom: 6px;
   position: relative;
+
+  & + .pagination {
+    margin-top: 35px;
+  }
 }
 
   .permalinkAnchor {
@@ -64,6 +146,7 @@
       max-width: 70%;
       padding: 0.4737rem 0 0 0.4737rem;
     }
+    color: $grey-warm;
 
     strong {
       @include breakpoint(mini) {

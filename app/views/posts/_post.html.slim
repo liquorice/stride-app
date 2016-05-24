@@ -9,7 +9,7 @@
 
   - unless being_quoted
     - if post.quoted_post
-      .post__quoted style="margin: 20px; border: 1px solid red;"
+      .post-quoted
         = render post.quoted_post, being_quoted: true
 
 
@@ -49,5 +49,5 @@
           | Show more
         .post__showLess.js-post-toggle
           | Show less
-        .post__quote.js-post-quote data-post-id=post.id data-post-description="Quoting #{post.user.name}: #{post.preview_snippet}"
+        .post__quote.js-post-quote data-post-id=post.id data-post-user="#{post.user.name}" data-post-time=" said, #{time_ago_in_words(post.created_at)} ago" data-post-description="#{post.preview_snippet} ..."
           | Quote
