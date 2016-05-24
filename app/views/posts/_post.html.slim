@@ -29,6 +29,11 @@
         a.permalink href=post_path(post)
           = "#{time_ago_in_words(post.created_at)} ago"
 
+      - if post === @thread.posts.first
+        .post__firstLast Beginning of thread
+      - elsif post === @thread.posts.last
+        .post__firstLast End of thread
+
       - unless being_quoted
         - if current_user_can? :post_moderate
           .postModerate
