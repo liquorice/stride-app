@@ -20,12 +20,16 @@ html
     .modalContainer
       .modalContent
         - if flash[:success]
-          .notifications
-            .notification.success = flash[:success]
+          .notification.success.js-notification
+            .constrained
+              = flash[:success]
+              .notification__close.js-notification-close
 
         - if flash[:error]
-          .notifications
-            .notification.error = flash[:error]
+          .notification.error.js-notification
+            .constrained
+              = flash[:error]
+              .notification__close.js-notification-close
 
         = yield
 

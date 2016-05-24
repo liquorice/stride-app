@@ -196,7 +196,6 @@ body {
 
 .notification {
   @include topMessage;
-
   @include breakpoint(huge, overlarge) {
     top: $toolbar-overlarge;
   }
@@ -209,6 +208,8 @@ body {
   @include breakpoint(small, mini) {
     top: calc(#{$toolbar-small} + #{$navigation-medium});
   }
+
+  color: $grey-warm;
   
   &.hidden {
     opacity: 0;
@@ -228,4 +229,22 @@ body {
   .modalContent & {
     top: 0;
   }
+}
+
+.notification__close {
+  @include icon__clear;
+  @include breakpoint(mini, small, medium) {
+    right: 24px;
+  }
+
+  background-color: $bg-dark;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  height: 20px;
+  position: relative;
+  right: 38px;
+  width: 20px;
+  z-index: 751;
 }

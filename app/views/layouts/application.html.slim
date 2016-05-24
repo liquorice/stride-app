@@ -28,10 +28,16 @@ html
         .js-popup-content
 
     - if flash[:success]
-      .notification.success.js-notification = flash[:success]
+      .notification.success.js-notification
+        .constrained
+          = flash[:success]
+          .notification__close.js-notification-close
 
     - if flash[:error]
-      .notification.error.js-notification = flash[:error]
+      .notification.error.js-notification
+        .constrained
+          = flash[:error]
+          .notification__close.js-notification-close
 
     header.header
       .constrained
