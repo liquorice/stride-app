@@ -72,13 +72,13 @@
       h3 Post a reply
     = form_tag new_post_path(@thread), method: :post, class:"postReply__form" do |f|
       .postQuote.js-quoted
-        p
-          strong Full quote will be displayed upon posting.
         p.quote__user.js-quoted-user
         span.js-quoted-time
-        p.js-quoted-display
+        p.quote__display.js-quoted-display
         input.js-quoted-post-id type='hidden' name='quoted_post_id'
-        .postQuote__clear.js-quoted-clear Remove quote
+        p
+          | (Quote will be displayed in full.)
+        .postQuote__clear.js-quoted-clear Remove
 
       textarea.js-post-reply name='content' placeholder='Enter text…'
 
