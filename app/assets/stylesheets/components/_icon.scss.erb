@@ -1,35 +1,3 @@
-@mixin icon__mobileMenu-show {
-  content: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-down--blue--bold.svg' %>");
-  height: 12px;
-  width: 12px;
-}
-
-@mixin icon__mobileMenu-hide {
-  content: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-up--blue--bold.svg' %>");
-  height: 12px;
-  width: 12px;
-}
-
-@mixin icon__login {
-  content: url("<%= asset_data_uri 'icons/side-bar-icons_profile--white.svg' %>");
-}
-
-@mixin icon__newThread-inactive {
-  content: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--grey.svg' %>");
-}
-
-@mixin icon__newThread {
-  content: url("<%= asset_data_uri 'icons/side-bar-icons_plus-threads--blue.svg' %>");
-}
-
-@mixin icon__newTopic {
-  content: url("<%= asset_data_uri 'icons/side-bar-icons_plus-topics--blue.svg' %>");
-}
-
-@mixin icon__newChat {
-  content: url("<%= asset_data_uri 'icons/side-bar-icons_plus-chat--blue.svg' %>");
-}
-
 @mixin icon__arrow-right {
   content: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-right--grey-warm.svg' %>");
 }
@@ -83,6 +51,14 @@
 
 @mixin icon__option {
   content: url("<%= asset_data_uri 'icons/icon_dots-grey.svg' %>");
+}
+
+.icon__sidebar {
+  display: inline-block;
+  height: 0.737rem;
+  width: 0.737rem;
+  vertical-align: baseline;
+  margin-right: 0.2105rem;
 }
 
 .icon__pagination {

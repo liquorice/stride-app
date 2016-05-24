@@ -1,15 +1,27 @@
-.btn__menu-show.js-menu-toggle Menu
-.btn__menu-hide.js-menu-toggle Hide
+.btn__menu-show.js-menu-toggle
+  = insert_svg("icons/side-bar-icons_arrow-down--bold.svg", class:"icon__sidebar")
+  | Menu
+.btn__menu-hide.js-menu-toggle
+  = insert_svg("icons/side-bar-icons_arrow-up--bold.svg", class:"icon__sidebar")
+  | Hide
 
 .sidebar__group
-  - unless @current_user
-    a.btn__loginRegister href=login_path data-modal=true Login or Register
-    a.btn__newThread.inactive href=login_path data-modal=true Create new Thread
+  / - unless @current_user
+  a.btn__loginRegister href=login_path data-modal=true
+    = insert_svg("icons/side-bar-icons_profile.svg", class:"icon__sidebar")
+    | Login or Register
+  a.btn__newThread.inactive href=login_path data-modal=true
+    = insert_svg("icons/side-bar-icons_plus-threads.svg", class:"icon__sidebar")
+    | Create new Thread
 
   - if current_user_can?(:topics_create)
-    a.btn__newTopic href=new_topic_path data-modal=true Create new Forum
+    a.btn__newTopic href=new_topic_path data-modal=true
+      = insert_svg("icons/side-bar-icons_plus-topics.svg", class:"icon__sidebar")
+      | Create new Forum
   - if current_user_can?(:topicThreads_create)
-    a.btn__newThread href=new_topic_thread_path data-modal=true Create new Thread
+    a.btn__newThread href=new_topic_thread_path data-modal=true
+      = insert_svg("icons/side-bar-icons_plus-threads.svg", class:"icon__sidebar")
+      | Create new Thread
 
 .sidebar__group
   .sideBar__menu

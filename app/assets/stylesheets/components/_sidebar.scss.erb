@@ -13,15 +13,14 @@
   @include btn-short;
   @include btn-sideBar;
   @include btn-mid;
+  @include breakpoint (mini, small) {
+    padding: 0.571em 0 0.643em 1rem;
+  }
   margin-bottom: 2px;
   padding: 0.571em 0 0.643em 0.89em;
 
-  &:before {
-    content: " ";
-    float: left;
-    height: 0.737rem;
-    margin: 0 0.4737rem 0 0;
-    width: 0.737rem;
+  &:hover > svg * {
+    fill: $blue-dark;
   }
 
   &.inactive {
@@ -32,6 +31,10 @@
       background: rgba($grey-warm, 0.08);
       color: rgba($black, 0.5);
     }
+
+    & > svg * {
+      fill: rgba($black, 0.5);
+    }
   }
 }
 
@@ -39,42 +42,17 @@
 // Sidebar Buttons
 //
 
-.btn__loginRegister {
-  @include btn-sideBar-icon;
-  @include btn-primary;
-
-  &:before {
-    @include icon__login;
-  }
-}
-
-.btn__newThread {
-  @include btn-sideBar-icon;
-
-  &:before {
-    @include icon__newThread;
-  }
-
-  &.inactive {
-    &:before {
-      @include icon__newThread-inactive;
-    }
-  }
-}
-
+.btn__loginRegister,
+.btn__newThread,
 .btn__newTopic {
   @include btn-sideBar-icon;
-
-  &:before {
-    @include icon__newTopic;
-  }
 }
 
-.btn__newChat {
-  @include btn-sideBar-icon;
+.btn__loginRegister {
+  @include btn-primary;
 
-  &:before {
-    @include icon__newChat;
+  &:hover > svg * {
+    fill: $white;
   }
 }
 
@@ -102,10 +80,6 @@
 }
 
 .btn__menu-show {
-  &:before {
-    @include icon__mobileMenu-show;
-  }
-
   .sidebar.expanded & {
     display: none;
   }
@@ -113,11 +87,6 @@
 
 .btn__menu-hide {
   display: none;
-
-  &:before {
-    @include icon__mobileMenu-hide;
-  }
-
   .sidebar.expanded & {
     display: block;
   }
