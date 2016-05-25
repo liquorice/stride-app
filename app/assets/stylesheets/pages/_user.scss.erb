@@ -1,8 +1,8 @@
 .userSection {
-  width: 100%;
   margin-bottom: 1.789rem;
+  width: 100%;
 
-  &:first-child {
+  &.large {
     margin-bottom: 2.526rem;
   }
 
@@ -19,33 +19,10 @@
     @include p-meta;
     color: $grey-warm;
   }
-}
 
-.mobile__show {
-  @include breakpoint(mini) {
-    display: block;
-    width: 100%;
+  .alert {
+    color: $alert;
   }
-  background-color: $white;
-  border-top: 2px solid rgba($grey-warm, 0.1);
-  display: none;
-  padding: 1.1rem 1.1rem;
-}
-
-.mobile__hide {
-  @include breakpoint(mini) {
-    display: none;
-  }
-}
-
-.mobile__row {
-  @include breakpoint(mini, small, medium) {
-    border-top: 2px solid rgba($grey-warm, 0.1);
-    display: block;
-    padding: 0.55rem 0.523rem;
-    width: 100%;
-  }
-  display: inline;
 }
 
 .userDetails__row {
@@ -54,170 +31,250 @@
   width: 100%;
 
   &:first-child {
-    @include breakpoint(mini) {
-      height: 5.73rem;
+    @include breakpoint(medium, small, mini) {
+      height: auto;
+      overflow: auto;
     }
-    height: 8.25rem;
+    height: 8.579rem;
   }
 
   &:nth-child(n+2) {
     @include breakpoint(mini, small, medium) {
       border-top: none;
     }
-    border-top: 2px solid rgba($grey-warm, 0.1);
+    border-top: 1px solid rgba($grey-warm, 0.1);
   }
 }
 
+// User Details First Row Styles
+
   .userDetails__avatar-container {
-    @include breakpoint(small) {
-      min-width: 8rem;
+    @include breakpoint(small, mini) {
+      height: 10.87rem;
+      width: 10.87rem;
     }
-    @include breakpoint(mini) {
-      height: 5.73rem;
-      min-height: 5.73rem;
-      min-width: 5.73rem;
-    }
-    border-right: 2px solid rgba($grey-warm, 0.1);
     display: block;
     float: left;
-    height: 8.25rem;
-    min-height: 8.25rem;
-    min-width: 8.25rem;
+    height: 8.579rem;
+    padding: 1.105rem 1.105rem;
+    width: 8.579rem;
   }
 
     .userDetails__avatar {
       @include avatar-overlarge;
-      @include breakpoint (large) {
-        margin: 0.8rem auto 0.8rem;
-      }
-      @include breakpoint(mini) {
-        margin: 0.55rem auto 0.55rem;
-      }
-      display: block;
-      margin: 1rem auto 1rem;
     }
 
-  .userDetails__status {
-    @include breakpoint (large) {
-      padding: 0.5rem 0.8rem;
-    }
-    @include breakpoint (medium, small) {
-      padding: 0.35rem 0.8rem;
-      width: 70%;
-    }
-    @include breakpoint (mini) {
-      height: 5.73rem;
-      padding: 1rem;
-      width: 70%;
-    }
+
+  .userDetails__access,
+  .userDetails__suspend {
+    border-left: 1px solid rgba($grey-warm, 0.1);
     display: block;
     float: left;
-    height: 8.25rem;
-    padding: 0.75rem 1rem;
-    width: 76%;
+    height: 8.579rem;
 
-    .large__text {
-      @include p-leading;
+    h3 {
+      @include p-short;
       @include ff_adelle-bold;
-      @include breakpoint (medium, small, mini) {
-        margin-bottom: 0.1rem;
+      line-height: 1;
+      margin-bottom: 0.6316rem;
+    }
+  }
+
+
+  .userDetails__access {
+    @include breakpoint(small, mini) {
+      border-left: none;
+      border-top: 1px solid rgba($grey-warm, 0.1);
+      height: auto;
+      width: 100% !important;
+    }
+    min-width: 8.526rem;
+    padding: 1.158rem 1.263rem;
+    width: 21.77%;
+  }
+
+  .userDetails__suspend {
+    @include breakpoint(medium, small, mini) {
+      border-left: none;
+      border-top: 1px solid rgba($grey-warm, 0.1);
+      height: auto;
+      width: 100% !important;
+    }
+    padding: 1.158rem 0.5rem 1.158rem 1.579rem;
+    
+    p {
+     @include breakpoint(medium, small, mini) {
+        max-width: 100%;
       }
-      color: $black;
-      display: block;
-      margin-bottom: 0.3rem;
+      max-width: 13.32rem;
     }
 
-    .checkbox__text {
+    a {
+      @include btn-meta;
       @include ff_adelle-bold;
-      color: $black;
-      float: none;
+      margin: 3px 0 4px;
+
+      &.suspend {
+        @include btn-alert;
+        &:before {
+          content: url("<%= asset_data_uri 'icons/icon_suspend-black.svg' %>");
+          display: inline-block;
+          height: 11px;
+          margin-right: 5px;
+          position: relative;
+          top: 0.088em;
+          width: 11px;
+        }
+      }
+
+      &.unsuspend {
+        @include btn-blue;
+      }
     }
   }
 
-  .dropdown__accesslevel * {
-    display: inline-block;
+// User Details Second Row Styles
+
+  .mobile__row {
+    @include breakpoint(mini, small, medium) {
+      border-top: 1px solid rgba($grey-warm, 0.1);
+      display: block;
+      padding: 1.158rem 1.579rem;
+      width: 100%;
+    }
+    display: inline;
   }
 
-  .button__accesslevel {
-    @include btn-meta;
-    @include btn-primary;
-    display: inline-block;
-    margin-left: 0.6rem;
-    vertical-align: top;
-  }
+    .userDetails__column {
+      @include p-meta;
+      @include breakpoint(mini, small, medium) {
+        width: 32%;
+        padding: 0;
+      }
+      @include breakpoint(large, overlarge, huge) {
+        &.first {
+          padding-left: 1.205rem;
+          width: 15%;
+        }
 
-  .text__suspend {
-    @include p-meta;
-    display: block;
-  }
+        &.second {
+          width: 14%;
+        }
 
-  .button__suspend {
-    @include btn-meta;
-    @include btn-alert;
-    @include ff_adelle-bold;
-    &:before {
-      content: url("<%= asset_data_uri 'icons/icon_suspend-black.svg' %>");
+        &.third {
+          width: 12%;
+        }
+
+        &.fourth {
+          width: 17%;
+        }
+
+        &.fifth {
+          width: 18%;
+        }
+      }
+
+      color: $grey-warm;
       display: inline-block;
+      padding: 0.9474rem 0 1.316rem;
+      text-align: left;
+      vertical-align: top;
+
+      strong {
+        display: block;
+      }
+    }
+
+// User Password Reset Email Styles
+
+.userSection {
+  form {
+    p {
+      @include p-meta;
+      color: $grey-warm;
+      margin-bottom: 1px;
+      &.view-default {
+        @include p-short;
+        margin-top: 2px;
+        margin-bottom: 3px;
+      }
+    }
+
+    button {
+      @include btn-meta;
+      @include btn-primary;
+      @include ff_adelle-bold;
+      @include breakpoint (small, mini) {
+        margin-top: 16px;
+        margin-left: 16px;
+      }
+      display: none;
+      margin-top: 13px;
+    }
+  }
+
+  form.edit {
+
+    & > .view-edit {
+      display: inline-block;
+    }
+
+    & > .view-default {
+      display: none;
+    }
+  }
+
+  .view-edit {
+    display: none;
+  }
+}
+
+.btn__email-edit,
+.btn__email-cancel {
+  @include p-meta;
+  @include links;
+  border-bottom: none;
+  cursor: pointer;
+  display: block;
+  width: 5.421rem;
+}
+
+  .btn__email-cancel {
+    margin-left: 6px;
+  }
+
+  .btn__email-edit {
+    @include breakpoint (small, mini) {
+      margin-top: 6px;
+    }
+    margin-top: 11px;
+
+    &:before {
+      @include icon__edit-blue;
+      @include breakpoint (small, mini) {
+        height: 9px;
+        width: 9px;
+        margin: 5px 3px 0 0;
+      }
+      content: " ";
+      float: left;
       height: 11px;
-      margin-right: 5px;
-      position: relative;
-      top: 0.088em;
+      margin: 2px 4px 0 0;
       width: 11px;
     }
   }
 
-.userDetails__column {
-  @include p-meta;
-  @include breakpoint(overlarge) {
-    padding: 1rem 0.5rem;
-  }
-  @include breakpoint(large) {
-    min-width: 4.65rem;
-    padding: 1rem 0.5rem;
-  }
-  @include breakpoint(mini, small, medium) {
-    min-width: 5.5rem;
-    padding: 0 0.55rem;
-    width: 32%;
-  }
-  display: inline-block;
-  min-width: 6rem;
-  padding: 1rem;
-  vertical-align: top;
-
-  strong {
-    display: block;
-  }
-
-  &.first {
-    @include breakpoint(overlarge, huge) {
-      padding-left: 2rem;
-    }
-    @include breakpoint(large) {
-      padding-left: 1.15rem;
-    }
-  }
-
-  &.last {
-    @include breakpoint(huge) {
-      max-width: 11.1rem;
-      padding-right: 1rem;
-    }
-    @include breakpoint(overlarge) {
-      max-width: 10.49rem;
-      padding-right: 1rem;
-    }
-    @include breakpoint(large) {
-      max-width: 8.2rem;
-      padding-right: 0.8rem;
-    }
-  }
+.btn__resetEmail {
+  @include btn-meta;
+  @include ff_adelle-bold;
+  text-align: center;
+  width: 5.263rem;
 }
 
 
 // User View Hide Activity Styles
 
-.button_hideActivity {
+.btn__hideActivity {
   @include btn-meta;
   @include btn-alert;
   @include ff_adelle-bold;
