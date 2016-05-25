@@ -11,3 +11,4 @@ special_avatar: Use special colour for avatar
 accessLevel_set: Set a users access level
 user_hideActivity: Hide all threads and posts by user
 user_suspend: Change a users suspension status
+user_changeEmail: Change another users email address
