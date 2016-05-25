@@ -17,6 +17,7 @@
 //= require module
 //= require post-content
 //= require post-reply
+//= require radiobutton
 //= require dropdown
 //= require tags
 //= require href

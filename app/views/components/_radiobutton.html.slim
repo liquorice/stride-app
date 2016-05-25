@@ -1,0 +1,16 @@
+- options ||= {}
+- value ||= nil
+- name ||= nil
+
+/ For string/symbol/integer mismatches
+- options.stringify_keys!
+- value = value.to_s
+
+- default = options[value] || options.values.first
+
+.radiobuttons
+  - options.each do |k, v|
+    label
+      = v
+      input.js-radiobutton type="radio" name=name value="#{k}" checked=(v == default)
+      .radiobutton
