@@ -2,7 +2,6 @@
 - value ||= nil
 - name ||= nil
 - id ||= nil
-- size ||= nil
 
 / For string/symbol/integer mismatches
 - options.stringify_keys!
@@ -11,8 +10,8 @@
 - allow_none ||= false
 - default = (allow_none) ? '(None)' : options.values.first
 
-.dropdown.js-dropdown class=size
-  .dropdown__display.js-display class=size = options[value] || default
+.dropdown.js-dropdown
+  .dropdown__display.js-display = options[value] || default
   select data-type='dropdown' name=name id=id
     - if allow_none
       option value='' selected=('selected' if value == '') #{default}

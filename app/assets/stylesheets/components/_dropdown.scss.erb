@@ -13,10 +13,6 @@
     display: block;
     border: 0;
   }
-
-  &.small {
-    width: 181px;
-  }
 }
 
   .dropdown__display {
@@ -30,13 +26,4 @@
     line-height: 40px;
     padding-left: 14px;
     width: 100%;
-
-    &.small {
-      @include p-meta;
-      background: $bg url("<%= asset_data_uri 'icons/dropdown-arrow-down.svg' %>") 100% center no-repeat;
-      color: $black;
-      height: 26px;
-      line-height: 26px;
-      padding-left: 8px;
-    }
   }
