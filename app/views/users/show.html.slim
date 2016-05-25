@@ -71,15 +71,16 @@
         strong Change user's email address (Admins Only)
       p Please note, this should only be done at the request of the user.
 
-      // TODO Change form_tag path once controller method for moderator to change user email has been implemented
-      = form_tag preferences_path, class: "js-profile", method: :patch do |f|
-        p.view-default = @user.email || "Not provided"
+      // TODO JB: Please pop the path for admins to change user email here!
 
-        input.input__textfield.view-edit name="user[email]" placeholder="Enter email address" value=@user.email
+      / = form_tag PATH_FOR_CHANGING_EMAIL, class: "js-profile", method: :patch do |f|
+      /   p.view-default = @user.email || "Not provided"
 
-        .btn__email-edit.js-profile-edit.view-default Edit
-        button.view-edit Save
-        .btn__email-cancel.js-profile-edit.view-edit Cancel
+      /   input.input__textfield.view-edit name="user[email]" placeholder="Enter email address" value=@user.email
+
+      /   .btn__email-edit.js-profile-edit.view-default Edit
+      /   button.view-edit Save
+      /   .btn__email-cancel.js-profile-edit.view-edit Cancel
 
   .userSection.large
     p
