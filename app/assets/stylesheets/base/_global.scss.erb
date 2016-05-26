@@ -1,5 +1,4 @@
 $toolbar-overlarge: 65px;
-$toolbar-large: 53px;
 $toolbar-medium: 60px;
 $toolbar-small: 50px;
 
@@ -84,10 +83,19 @@ body {
 // Layout
 
 .constrained {
-  @include breakpoint(large, small) {
+  @media screen and (min-width: 1400px) {
+    width: 71%;
+  }
+  @media screen and (min-width: 1200px) and (max-width: 1399px) {
+    width: 75%;
+  }
+  @media screen and (min-width: 900px) and (max-width: 1199px) {
     width: 84%;
   }
-  @include breakpoint(mini) {
+  @media screen and (min-width: 720px) and (max-width: 899px) {
+    width: 90%;
+  }
+  @include breakpoint(small, mini) {
     width: 90%;
   }
 
@@ -95,10 +103,9 @@ body {
   max-width: 1200px;
   overflow: hidden;
   position: relative;
-  width: 71%;
 
   .header & {
-    @include breakpoint(medium, small, mini) {
+    @include breakpoint(large, medium, small, mini) {
       width: 100%;
     }
     background-color: $white;
@@ -110,10 +117,7 @@ body {
   @include breakpoint(huge, overlarge) {
     height: $toolbar-overlarge;
   }
-  @include breakpoint(large) {
-    height: $toolbar-large;
-  }
-  @include breakpoint(medium) {
+  @include breakpoint(large, medium) {
     height: calc(#{$toolbar-medium} + #{$navigation-medium});
   }
   @include breakpoint(small, mini) {
@@ -130,10 +134,7 @@ body {
   @include breakpoint(huge, overlarge) {
     padding-top: $toolbar-overlarge;
   }
-  @include breakpoint(large) {
-    padding-top: $toolbar-large;
-  }
-  @include breakpoint(medium) {
+  @include breakpoint(large, medium) {
     padding-top: calc(#{$toolbar-medium} + #{$navigation-medium});
   }
   @include breakpoint(small, mini) {
@@ -153,7 +154,8 @@ body {
 
 .sidebar {
   @include breakpoint(huge, overlarge, large, medium) {
-    width: 23.34%;
+    // width: 23.34%;
+    width: 24.32432%;
     float: left;
   }
   @include breakpoint(small, mini) {
@@ -167,7 +169,7 @@ body {
 
 .content {
   @include breakpoint(huge, overlarge, large, medium) {
-    margin-left: calc(23.34% + 24px);
+    margin-left: calc(24.32432% + 24px);
   }
   @include breakpoint(small, mini) {
     margin-bottom: 20px;
@@ -199,10 +201,7 @@ body {
   @include breakpoint(huge, overlarge) {
     top: $toolbar-overlarge;
   }
-  @include breakpoint(large) {
-    top: $toolbar-large;
-  }
-  @include breakpoint(medium) {
+  @include breakpoint(large, medium) {
     top: calc(#{$toolbar-medium} + #{$navigation-medium});
   }
   @include breakpoint(small, mini) {
