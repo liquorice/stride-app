@@ -4,15 +4,29 @@
 }
 
 @mixin avatar-small {
-  height: 25px;
-  width: 25px;
+  @include breakpoint(medium, large, overlarge, huge){
+    height: 25px;
+    width: 25px;
 
-  .avatar {
-    &:after {
-      height: 23px;
-      left: 1px;
-      top: 1px;
-      width: 23px;
+    .avatar {
+      &:after {
+        height: 23px;
+        left: 1px;
+        top: 1px;
+        width: 23px;
+      }
+    }
+  }
+  @include breakpoint(small, mini) {
+    height: 24px;
+    width: 24px;
+    .avatar {
+      &:after {
+        height: 22px;
+        left: 1px;
+        top: 1px;
+        width: 22px;
+      }
     }
   }
 }
