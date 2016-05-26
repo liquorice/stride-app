@@ -13,11 +13,27 @@
   top: 0;
 }
 
-// Strip Styles
+// Default and Error Strip Styles
+
+.strip__default {
+  background: url('noise-diamonds-283x283-@2x.png') center center repeat;
+  background-color: $blue-dark;
+  background-size: 283px 283px;
+}
+
+.strip__default {
+  text-align: center;
+  padding: 2.526rem 0 3.211rem;
+  h1 {
+    @include h1-level3;
+  }
+}
+
+// Forum Strip Styles
 
 .strip__dark {
   @include retina() {
-  background:
+    background:
     url('header-forum@2x.png') center center repeat,
     url('noise-diamonds-283x283-@2x.png') center center repeat;
     background-color: $teal;
@@ -134,5 +150,12 @@
     a {
       @include links;
     }
+  }
+
+  .avatar-error {
+    margin: 0.3684rem auto 1rem;
+    height: 7.263rem;
+    width: 7.263rem;
+    display: block;
   }
 }

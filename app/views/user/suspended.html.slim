@@ -1,1 +1,10 @@
-h1 This account has been suspended
+- content_for :default_strip do
+  h1 Account Suspended
+
+- content_for :light_strip do
+  .avatar-error
+    .avatar data-colour=4 data-face=6
+
+  p
+    | Your account has been suspended by a moderator for a breach of the community guidelines. If you feel like you have been unfairly suspended, please contact the 
+    a href=link_to_kb('about') site administrators.

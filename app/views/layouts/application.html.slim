@@ -44,7 +44,12 @@ html
         = render "/partials/navigation"
 
     main.main id="content" tabindex="0"
-      - if content_for? :dark_strip
+      - if content_for? :default_strip
+        .strip__default
+          .constrained
+            = yield :default_strip
+
+      - elsif content_for? :dark_strip
         .strip__dark
           .constrained
             = yield :dark_strip
