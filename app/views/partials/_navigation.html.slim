@@ -1,13 +1,13 @@
 / TODO renaming
 
 .toolbar
-  a.toolbar__logo href="#"
+  a.toolbar__logo href=topics_preview_path
     = insert_svg "#{@site.name}/logo.svg"
     span.toolbar__logo-alt
       = @site.name
-  .toolbar__search
-    form.toolbar__search-form.js-search action=link_to_kb('search')
-      label for="search-box"
+  .toolbar__search.js-search
+    form.toolbar__search-form.js-search-form action=link_to_kb('search')
+      label.js-search-toggle for="search-box"
         span Search
         = insert_svg "search.svg"
       input.js-search-input type="text"
