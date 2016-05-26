@@ -1,8 +1,8 @@
-$toolbar-overlarge: 65px;
-$toolbar-medium: 60px;
-$toolbar-small: 50px;
+$toolbar-overlarge: 66px;
+$toolbar-medium: 54px;
+$toolbar-small: 51px;
 
-$navigation-medium: 40px;
+$navigation-medium: 41px;
 
 html {
   @include breakpoint(huge) {
@@ -153,8 +153,11 @@ body {
 }
 
 .sidebar {
-  @include breakpoint(huge, overlarge, large, medium) {
-    // width: 23.34%;
+  @include breakpoint(huge, overlarge) {
+    width: 23.34%;
+    float: left;
+  }
+  @include breakpoint(large, medium) {
     width: 24.32432%;
     float: left;
   }
