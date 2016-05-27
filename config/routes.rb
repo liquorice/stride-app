@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   # API
   scope :api do
     get 'threads_for_tag/:tag' => 'api#threads_for_tag'
+    get 'user' => 'api#current_user'
   end
 
   # Admin
