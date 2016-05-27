@@ -54,6 +54,6 @@
         | Show more
       .post__showLess.js-post-toggle
         | Show less
-      - unless being_quoted
+      - unless being_quoted || !current_user_can?(:post_create)
         .post__quote.js-post-quote data-post-id=post.id data-post-user="#{post.user.name}" data-post-time=" said, #{time_ago_in_words(post.created_at)} ago" data-post-description="#{post.preview_snippet} ..."
           | Quote
