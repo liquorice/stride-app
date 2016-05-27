@@ -31,7 +31,7 @@
       }
 
       &:after {
-        background-image: linear-gradient(top, rgba($bg-dark, 0) 0%, rgba($bg-dark, 0.5) 100%) !important;
+        background-image: linear-gradient(top, rgba($grey-warm, 0) 0%, mix($grey-warm, $white, 7%) 100%) !important;
       }
     }
 
@@ -40,7 +40,7 @@
 
       .post__showMore,
       .post__showLess {
-        // @include btn-mid;
+        @include btn-mid;
       }
     }
   }
@@ -96,7 +96,7 @@
   position: relative;
 
   & + .pagination {
-    margin-top: 35px;
+    margin-top: 42px;
   }
 }
 
