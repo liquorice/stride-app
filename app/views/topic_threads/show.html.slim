@@ -93,3 +93,10 @@
       ' Please
       a href=login_path data-modal=true login or register 
       ' to reply
+- elsif !@thread.public || @thread.locked
+  .message-replyDisabled
+    - if !@thread.public
+      - if current_user_can?(:topicThreads_modify)
+        h3 Hidden post. Replies cannot be made.
+    - elsif @thread.locked
+      h3 Locked post. Replies cannot be made.
