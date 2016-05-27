@@ -38,8 +38,9 @@
       strong Created by
       h2
         = @thread.user.name
-        - if @thread.user.access_level.ordinal > 0
-          span = "(#{@thread.user.access_level.name})"
+        - if @thread.user.access_level
+          - if @thread.user.access_level.ordinal > 0
+            span = "(#{@thread.user.access_level.name})"
 
   .threadDetails__date
     strong Created

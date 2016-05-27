@@ -48,11 +48,12 @@
     .post__content.js-postContent data-quoted=being_quoted
       = simple_format(post.content)
 
-    - unless being_quoted
-      .post__buttons data-hidden=post.hidden?
-        .post__showMore.js-post-toggle
-          | Show more
-        .post__showLess.js-post-toggle
-          | Show less
+  
+    .post__buttons data-hidden=post.hidden?
+      .post__showMore.js-post-toggle
+        | Show more
+      .post__showLess.js-post-toggle
+        | Show less
+      - unless being_quoted
         .post__quote.js-post-quote data-post-id=post.id data-post-user="#{post.user.name}" data-post-time=" said, #{time_ago_in_words(post.created_at)} ago" data-post-description="#{post.preview_snippet} ..."
           | Quote
