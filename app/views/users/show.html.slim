@@ -73,14 +73,14 @@
 
       // TODO JB: Please pop the path for admins to change user email here!
 
-      / = form_tag PATH_FOR_CHANGING_EMAIL, class: "js-profile", method: :patch do |f|
-      /   p.view-default = @user.email || "Not provided"
+      = form_tag preferences_path, class: "js-profile", method: :patch do |f|
+        p.view-default = "Email hidden for privacy" if @user.email.blank? || "Email not provided"
 
-      /   input.input__textfield.view-edit name="user[email]" placeholder="Enter email address" value=@user.email
+        input.input__textfield.view-edit name="user[email]" placeholder="Enter email address"
 
-      /   .btn__email-edit.js-profile-edit.view-default Edit
-      /   button.view-edit Save
-      /   .btn__email-cancel.js-profile-edit.view-edit Cancel
+        .btn__email-edit.js-profile-edit.view-default Edit
+        button.view-edit Save
+        .btn__email-cancel.js-profile-edit.view-edit Cancel
 
   .userSection.large
     p
@@ -90,6 +90,7 @@
       a.btn__resetEmail data-method="post" href=user_password_reset_path(@user) Send
     - else
       p This will send a password reset link to the email address above.
+      p This function is only available if an email address has been provided.
 
   - if @current_user.can?(:user_hideActivity)
     .userSection.large

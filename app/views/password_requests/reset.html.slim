@@ -1,3 +1,4 @@
+// TODO Test view
 .modal__small
   h2 Reset password
 
@@ -17,3 +18,9 @@
         = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password"
 
     button.form__button.fullwidth Reset
+
+    .label
+      .message-required
+        | Required fields (
+        span.alert *
+        | )

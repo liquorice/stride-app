@@ -58,6 +58,12 @@
     button.view-edit Save
     .btn__profile-cancel.js-profile-edit.view-edit Cancel
 
+    .message-required.view-edit
+      | Required fields (
+      span.alert *
+      | )
+
+
   = form_tag update_password_path, class: "js-profile", method: :patch do |f|
 
     h3.view-default
@@ -83,6 +89,11 @@
     .btn__profile-edit.js-profile-edit.view-default Edit
     button.view-edit Save
     .btn__profile-cancel.js-profile-edit.view-edit Cancel
+
+    .message-required.view-edit
+      | Required fields (
+      span.alert *
+      | )
 
 
   = form_tag preferences_path, class: "js-profile", method: :patch do |f|

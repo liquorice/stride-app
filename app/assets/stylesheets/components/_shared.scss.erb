@@ -13,6 +13,16 @@
 
 // Messages
 
+.message-required {
+  @include p-meta;
+  color: $grey-warm;
+  display: block;
+  margin-top: 1rem;
+  span.alert {
+    color: $alert;
+  }
+}
+
 .message-noThreads {
   @include p-regular;
   background: $white;
