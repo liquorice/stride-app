@@ -73,14 +73,14 @@
 
       // TODO JB: Please pop the path for admins to change user email here!
 
-      = form_tag preferences_path, class: "js-profile", method: :patch do |f|
-        p.view-default = "Email hidden for privacy" if @user.email.blank? || "Email not provided"
+      / = form_tag PATH_FOR_CHANGING_EMAIL, class: "js-profile", method: :patch do |f|
+      /   p.view-default = "Email hidden for privacy" if @user.email.blank? || "Email not provided"
 
-        input.input__textfield.view-edit name="user[email]" placeholder="Enter email address"
+      /   input.input__textfield.view-edit name="user[email]" placeholder="Enter email address"
 
-        .btn__email-edit.js-profile-edit.view-default Edit
-        button.view-edit Save
-        .btn__email-cancel.js-profile-edit.view-edit Cancel
+      /   .btn__email-edit.js-profile-edit.view-default Edit
+      /   button.view-edit Save
+      /   .btn__email-cancel.js-profile-edit.view-edit Cancel
 
   .userSection.large
     p
