@@ -27,5 +27,6 @@
 //= require mobile-menu
 //= require profile-edit
 //= require textarea-resize
+//= require survey-popup
 
 //= require main

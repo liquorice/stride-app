@@ -12,6 +12,7 @@
     Module.apply(container.find('.js-notification'), 'notification');
     Module.apply(container.find('.js-tags'), 'tags');
     Module.apply(container.find('.js-sidebar'), 'mobileMenu');
+    Module.apply(container.find('.js-survey'), 'survey');
   }
 
   var init = function(container) {
