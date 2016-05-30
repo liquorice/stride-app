@@ -98,6 +98,10 @@ h2 {
 /* Page Styles */
 
 .threads {
+  @include breakpoint(mini, small) {
+    overflow: auto;
+    padding-bottom: 3rem;
+  }
   padding-bottom: 4.105rem;
 }
 
@@ -132,9 +136,9 @@ h2 {
 
       &[data-pinned] {
         @include breakpoint(mini, small, medium) {
-          border-left: 4px solid mix($grey-warm, $white, 10%);
+          border-left: 4px solid $blue-dark;
         }
-        border-left: 6px solid mix($grey-warm, $white, 10%);
+        border-left: 6px solid $blue-dark;
       }
     }
   }
@@ -152,9 +156,13 @@ h2 {
     & .thread__name {
       &:before {
         @include icon__lock;
+        @include breakpoint(mini, small, medium) {
+          margin-top: 0.32em;
+        }
         content: " ";
         float: left;
-        margin-top: 0.71em;
+        margin-top: 0.51em;
+        margin-right: 6px;
       }
     }
   }
