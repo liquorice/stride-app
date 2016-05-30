@@ -83,7 +83,7 @@ class TopicThreadsController < ApplicationController
       flash[:success] = "#{@thread.name} successfully pinned"
     end
 
-    redirect_to topic_path(@thread.topic)
+    redirect_to "#{topic_path(@thread.topic)}##{@thread.id}"
   end
 
   private
