@@ -47,6 +47,20 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def set_email
+    require_permission :user_changeEmail
+
+    @user = @site.users.find(params[:id])
+
+    if @user.update(email: params[:user][:email])
+      flash[:success] = "Email updated for #{@user.name}"
+    else
+      flash.now[:error] = @user.errors.full_messages.to_sentence
+    end
+
+    redirect_to user_path(@user)
+  end
+
   def send_password_reset
     require_permission :users_view
     @user = @site.users.find(params[:id])

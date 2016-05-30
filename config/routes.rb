@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post 'user/:id/unsuspend' => 'users#unsuspend', as: :unsuspend_user
 
   patch 'user/:id/set_access_level' => 'users#set_access_level', as: :set_user_access_level
+  patch 'user/:id/set_email' => 'users#set_email', as: :set_user_email
   get 'preferences' => 'preferences#index'
   patch 'preferences' => 'preferences#update'
   patch 'preferences/password' => 'preferences#update_password', as: :update_password
