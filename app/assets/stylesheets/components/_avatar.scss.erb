@@ -65,14 +65,15 @@
   width: 100%;
 
   &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 200ms ease-in-out;
     z-index: 2;
   }
 
@@ -125,6 +126,7 @@
     left: 2%;
     position: absolute;
     top: 2%;
+    transition: all 200ms ease-in-out;
     width: 96%;
     z-index: 1;
   }

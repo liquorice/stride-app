@@ -17,7 +17,7 @@
     h3 Profile picture
 
     .profileAvatar
-      .profileAvatar__avatar
+      .profileAvatar__avatar.js-profile-avatar
         = render 'user/avatar', user: @current_user
 
     .profileFace.view-edit
@@ -26,7 +26,7 @@
         .profileFace__option
           label
             input type="radio" name="user[avatar_face]" value=avatar_face checked=(@current_user.avatar_face == avatar_face)
-            .avatar data-face=avatar_face
+            .avatar.js-profile-face data-face=avatar_face
             .avatar__outline
 
     - unless @current_user.can?(:special_avatar)
@@ -37,7 +37,7 @@
           .profileColour__option
             label
               input type="radio" name="user[avatar_colour]" value=avatar_colour checked=(@current_user.avatar_colour == avatar_colour)
-              .avatar data-colour=avatar_colour
+              .avatar.js-profile-colour data-colour=avatar_colour
               .avatar__outline
 
     .btn__profile-edit.js-profile-edit.view-default Edit
