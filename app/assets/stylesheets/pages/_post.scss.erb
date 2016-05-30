@@ -96,6 +96,9 @@
   position: relative;
 
   & + .pagination {
+    @include breakpoint(mini) {
+      margin-top: 1.467rem;
+    }
     margin-top: 42px;
   }
 }

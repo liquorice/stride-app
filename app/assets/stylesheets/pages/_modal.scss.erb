@@ -22,6 +22,11 @@
 
   .modalOverlay__close {
     @include icon__clear;
+    @include breakpoint (small, mini) {
+      margin-top: 18px;
+      height: 28px;
+      width: 28px;
+    }
     background-color: $bg-dark;
     margin-top: 65px;
     border-radius: 50%;
@@ -53,6 +58,9 @@
 }
 
 .modalContent {
+  @include breakpoint (small, mini) {
+    padding-top: 0;
+  }
   margin: auto;
   max-width: 508px;
   padding-bottom: 155px;
@@ -62,7 +70,8 @@
   h1 {
     @include h2-level3;
     @include breakpoint (mini) {
-      padding: 10px;
+      padding: 0 0 10px 0;
+      margin-bottom: 1.133rem;
     }
     margin-bottom: 2.474rem;
     padding: 0 10px;
@@ -71,7 +80,7 @@
   h2 {
     @include h2-level3;
     @include breakpoint (mini) {
-      padding: 10px;
+      padding: 0 0 10px 0;
     }
     font-size: 2.237rem;
     margin-bottom: 1.579rem;
@@ -89,23 +98,32 @@
   }
 
   .label {
-    margin-bottom: 14px;
+    @include breakpoint (small, mini) {
+      margin-bottom: 12px;
+      padding: 0;
+    }
+    margin-bottom: 16px;
     overflow: auto;
     padding: 0 10px;
 
-    &.small {
-      margin-bottom: 7px;
-    }
-
     &.med {
+      @include breakpoint (small, mini) {
+        margin-bottom: 24px;
+      }
       margin-bottom: 34px;
     }
 
     &.large {
+      @include breakpoint (small, mini) {
+        margin-bottom: 37px;
+      }
       margin-bottom: 54px;
     }
 
     &.xlarge {
+      @include breakpoint (small, mini) {
+        margin-bottom: 36px;
+      }
       margin-bottom: 87px;
     }
 
@@ -133,16 +151,16 @@
     float: right;
   }
 
-  .dropdown {
-    margin: 7px 0 0 0;
-  }
-
   .toggle {
     margin-top: 15px;
   }
 
   .form__button {
     @include btn-standard;
+    @include breakpoint (small, mini) {
+      margin-left: 0;
+      margin-top: 4px;
+    }
     margin-left: 10px;
     margin-top: 7px;
     text-align: center;

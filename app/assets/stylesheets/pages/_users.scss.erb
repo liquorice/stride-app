@@ -61,11 +61,14 @@
 // All Users View Styles
 
 .usersTable {
-  margin-bottom: 3.474rem;
+  margin-bottom: 3.368rem;
   width: 100%;
 
   &:last-child {
-    padding-bottom: 2.789rem;
+    @include breakpoint (small, mini) {
+      margin-bottom: 4.2rem;
+    }
+    margin-bottom: 6.316rem;
   }
 }
   
