@@ -25,10 +25,22 @@
 
 .message-noThreads {
   @include p-regular;
+  @include breakpoint (medium) {
+    font-size: 0.8235rem;
+    padding: 1.053rem 1.4rem;
+  }
+  @include breakpoint (small, mini) {
+    & > svg {
+      display: block;
+      margin: auto;
+      margin-bottom: 1rem;
+    }
+    text-align: center;
+  }
   background: $white;
   color: $grey-warm;
   min-height: 5rem;
-  padding: 1.053rem 0 1.053rem 1.842rem;
+  padding: 1.053rem 1.842rem;
 }
 
 .message-threadDisabled {
@@ -60,6 +72,9 @@
 }
 
 .message-replyDisabled {
+  @include breakpoint (mini, small) {
+    margin-bottom: 3rem;
+  }
   margin-bottom: 6.579rem;
   margin-top: 1.737rem;
   width: 100%;
@@ -93,6 +108,9 @@
 
 .message-modal {
   @include p-meta;
+  @include breakpoint (small, mini) {
+    padding: 0.6rem 1.067rem;
+  }
   display: block;
   background-color: rgba($primary, 0.2);
   width: 100%;
@@ -100,6 +118,11 @@
 
   h3 {
     @include h3-regular;
+    @include breakpoint (small, mini) {
+      @include p-leading;
+      @include ff-adelle-bold;
+      margin-bottom: 0;
+    }
     margin-bottom: 0.6316rem;
   }
 

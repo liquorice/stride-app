@@ -1,7 +1,11 @@
 .dropdown {
+  @include breakpoint (small, mini) {
+    margin-top: 4px;
+  }
   width: 100%;
   position: relative;
   overflow: hidden;
+  margin: 6px 0 0 0;
 
   select {
     opacity: 0;
@@ -16,7 +20,12 @@
 }
 
   .dropdown__display {
-    @include p-regular;
+    @include p-short;
+    @include breakpoint (small, mini) {
+      height: 32px;
+      line-height: 32px;
+      padding-left: 10px;
+    }
     background: $white url("<%= asset_data_uri 'icons/dropdown-arrow-down.svg' %>") 100% center no-repeat;
     border-bottom: 1px solid rgba($grey-warm, 0.12);
     box-sizing: border-box;

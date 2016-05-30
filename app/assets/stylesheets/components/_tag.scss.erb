@@ -2,6 +2,11 @@
 
 .tags {
   @include p-meta;
+  @include breakpoint (small, mini) {
+    margin-top: 4px;
+    min-height: 32px;
+    padding: 0 11px;
+  }
   background: $white;
   border-bottom: 1px solid rgba($grey-warm, 0.12);
   color: $grey-warm;
@@ -22,6 +27,9 @@
 
   .tags__tag {
     @include btn-meta;
+    @include breakpoint (small, mini) {
+      margin-top: 5px;
+    }
     clear: none;
     float: left;
     margin-right: 7px;
