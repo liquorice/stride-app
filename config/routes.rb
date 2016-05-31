@@ -44,6 +44,9 @@ Rails.application.routes.draw do
   get 'reset_password/:token' => 'password_requests#reset', as: :password_reset
   post 'reset_password/:token' => 'password_requests#do_reset'
 
+  # Community rules
+  get 'community_rules' => 'community_rules#index'
+
   # API
   scope :api do
     get 'threads_for_tag/:tag' => 'api#threads_for_tag'
