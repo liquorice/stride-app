@@ -1,6 +1,7 @@
 footer.footer
   section.footer__logos
     .constrained
+      // TODO Where do these link to??? KB site also has no links???
       p
         = "A "
         a href="/beyond_blue" = "Beyond Blue"
@@ -40,26 +41,27 @@ footer.footer
       .footer__links-right
         ul
           li
-            a href="#" Home
+            a href=link_to_kb('') Home
           li
-            a href="#" Articles
+            a href=link_to_kb('articles') Articles
 
           li
-            a href="#" Forums
+            a href=topics_preview_path Forums
+          // TODO Remove this if launching without chat
           li
             a href="#" Chat
 
           li
-            a href="#" About
+            a href=link_to_kb('about') About
           li
-            a href="#" Support
+            a href=link_to_kb('support') Support
 
           li
-            a href="#" Register
+            a href=register_path data-modal=true Register
           li
-            a href="#" Preferences
+            a href=preferences_path Preferences
 
           li
-            a href="#" Terms of use
+            a href=link_to_kb('terms-of-use') Terms of use
           li
-            a href="#" Privacy policy
+            a href=link_to_kb('privacy-policy') Privacy policy
