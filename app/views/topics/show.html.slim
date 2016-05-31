@@ -19,7 +19,7 @@
 
 .threads
   - if @threads.any?
-    = render @threads
+    = render @threads, new_pin: request.fullpath.split("?")[1]
     = render 'partials/pagination', paginated: @threads
   - else
     .message-noThreads

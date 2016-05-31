@@ -1,4 +1,4 @@
-.thread data-href=topic_thread_path(topic_thread) data-hidden=!topic_thread.public data-locked=topic_thread.locked
+.thread data-href=topic_thread_path(topic_thread) data-hidden=!topic_thread.public data-locked=topic_thread.locked data-new=((topic_thread.id.to_s == new_pin)? true : false)
 
   .thread__preview data-pinned=topic_thread.pinned
     - if current_user_can?(:topicThreads_modify) && topic_thread.public?
