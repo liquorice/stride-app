@@ -1,0 +1,41 @@
+.community__section {
+  margin-bottom: $standard-margin;
+
+  h4 {
+    @include h2-level1;
+    margin-bottom: 0.474rem;
+  }
+
+  p {
+    @include p-regular;
+    margin-bottom: 0.789rem;
+  }
+
+  ol {
+    @include p-regular;
+    counter-reset: item;
+    list-style-position: inside;
+    list-style-type: decimal;
+    margin-bottom: 0.842rem;
+
+    li {
+      display: block;
+      margin-bottom: 0.474rem;
+      margin-left: 1.263rem;
+
+      &:before {
+        @include ff_adelle-bold;
+        color: $primary;
+        content: counter(item) " ";
+        counter-increment: item;
+        display: block;
+        float: left;
+        margin-left: -1.263rem;
+      }
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 6rem;
+  }
+}
