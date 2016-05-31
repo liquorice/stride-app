@@ -84,12 +84,15 @@
         button.view-edit Save
         .btn__email-cancel.js-profile-edit.view-edit Cancel
 
-    - if @user.email.present?
-      .userSection.large
-        p
-          strong Send Password Reset email
-        p This will log the user out and send a password reset link to the email address above.
-        a.btn__resetEmail data-method="post" href=user_password_reset_path(@user) Send
+    .userSection.large
+      p
+        strong Send Password Reset email
+        - unless @user.email.blank?
+          p This will log the user out and send a password reset link to the email address above.
+          a.btn__resetEmail data-method="post" href=user_password_reset_path(@user) Send
+        - else
+          p This will send a password reset link to the email address above.
+          p This function is only available if an email address has been provided.
 
 
   - if @current_user.can?(:user_hideActivity)
