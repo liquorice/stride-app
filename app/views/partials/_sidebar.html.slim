@@ -1,11 +1,14 @@
-.btn__menu-show.js-menu-toggle
-  = insert_svg("icons/side-bar-icons_arrow-down--bold.svg", class:"icon__sidebar")
-  | Menu
-.btn__menu-hide.js-menu-toggle
-  = insert_svg("icons/side-bar-icons_arrow-up--bold.svg", class:"icon__sidebar")
-  | Hide
+- expanded ||= false
 
-.sidebar__group
+- unless expanded
+  .btn__menu-show.js-menu-toggle
+    = insert_svg("icons/side-bar-icons_arrow-down--bold.svg", class:"icon__sidebar")
+    | Menu
+  .btn__menu-hide.js-menu-toggle
+    = insert_svg("icons/side-bar-icons_arrow-up--bold.svg", class:"icon__sidebar")
+    | Hide
+
+.sidebar__group locked-group=expanded
   - unless @current_user
     a.btn__loginRegister href=login_path data-modal=true
       = insert_svg("icons/side-bar-icons_profile.svg", class:"icon__sidebar")
@@ -23,7 +26,7 @@
       = insert_svg("icons/side-bar-icons_plus-threads.svg", class:"icon__sidebar")
       | Create new Thread
 
-.sidebar__group
+.sidebar__group locked-group=expanded
   .sideBar__menu
     - if current_user_can?(:users_view)
       a href=users_path View all users
@@ -32,7 +35,7 @@
     a href=community_rules_path Community rules
     a href=link_to_kb('privacy-policy') Privacy policy
 
-.sidebar__group
+.sidebar__group locked-group=expanded
   .sideBar__forums
     h2
       a href=topics_preview_path Forums

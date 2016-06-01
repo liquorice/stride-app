@@ -70,6 +70,9 @@ html
           - if content_for? :sidebar
             .sidebar.js-sidebar
               = yield :sidebar
+          - elsif content_for? :sidebar_locked
+            .sidebar.expanded.js-sidebar
+              = yield :sidebar_locked
           .content
             = yield
 

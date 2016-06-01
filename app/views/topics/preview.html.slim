@@ -5,8 +5,8 @@
 - content_for :light_strip do
   p Overview content for the forums
 
-- content_for :sidebar do
-  = render 'partials/sidebar'
+- content_for :sidebar_locked do
+  = render 'partials/sidebar', expanded: true
 
 - @topics.each do |topic|
   .topic__preview
