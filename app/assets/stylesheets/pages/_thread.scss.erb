@@ -15,15 +15,14 @@ h2 {
   .thread__name & {
     @include breakpoint(mini) {
       -webkit-line-clamp: 2;
-      margin-bottom: 0.35em;
-      max-height: 2.6em;
+      max-height: 3em;
     }
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     color: $primary;
     display: -webkit-box;
-    margin-bottom: 0.25em;
-    max-height: 1.4em;
+    padding-bottom: 0.5em;
+    max-height: 1.6em;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -217,7 +216,7 @@ h2 {
       @include breakpoint(mini) {
         max-height: 8rem;
         height: auto;
-        padding: 0.9rem 0.85rem;
+        padding: 1rem 0.85rem 0.9rem;
       }
       background: $white;
       border-left: 6px solid $white;
@@ -249,12 +248,12 @@ h2 {
         float: left;
         max-height: 1.8em;
         overflow: hidden;
+        padding-bottom: 0.15em;
         text-overflow: ellipsis;
         width: calc(100% - 4px);
 
         a {
           border-bottom: none;
-          line-height: 1.8;
         }
 
         a, a > strong {
@@ -270,18 +269,18 @@ h2 {
 
         .thread__latest-avatar {
           @include avatar-mini;
-          @include breakpoint(mini, small, medium, large) {
-            margin-top: 0.15em;
+          @include breakpoint(large, medium, small) {
+            margin-top: 0;
           }
           @include breakpoint(mini) {
             display: inline-block;
             float: none;
-            margin-bottom: -0.25em;
+            margin-bottom: -0.35em;
           }
           display: block;
           float: left;
           margin-right: 0.25em;
-          margin-top: 0.25em;
+          margin-top: 0.15em;
         }
 
     .thread__created {
