@@ -61,6 +61,7 @@
 // All Users View Styles
 
 .usersTable {
+  display: block;
   margin-bottom: 3.368rem;
   width: 100%;
 
@@ -69,6 +70,10 @@
       margin-bottom: 4.2rem;
     }
     margin-bottom: 6.316rem;
+  }
+
+  &.hidden {
+    display: none;
   }
 }
   
@@ -127,10 +132,10 @@
     background-color: $white;
     border-bottom: 1px solid rgba($grey-warm, 0.15);
     cursor: pointer;
-    display: block;
+    display: none;
     height: auto;
-    margin-bottom: 3px;
     line-height: 2.211rem;
+    margin-bottom: 3px;
 
     h3 {
       @include p-meta;
@@ -153,6 +158,9 @@
         box-shadow: none;
         margin-bottom: 0;
       }
+      &.visible {
+        display: block;
+      }
     }
 
       .usersRow-avatar {
@@ -162,7 +170,20 @@
         vertical-align: text-top;
       }
 
-// All Users View Mobile Only Styles
+// Mobile Styles
+
+.usersRow.visible {
+  @include breakpoint(mini, small, medium) {
+    & + .mobile-usersRow {
+      display: block;
+    }
+
+    .mobile-usersRow__column,
+    & + .mobile-usersRow .mobile-usersRow__column {
+      display: inline-block;
+    }
+  }
+}
 
 .mobile-usersRow,
 .mobile-usersRow__column {
@@ -170,9 +191,6 @@
 }
 
 .mobile-usersRow {
-  @include breakpoint(mini, small, medium) {
-    display: block;
-  }
   @include breakpoint(mini) {
     padding: 0.2rem 1em;
     line-height: 1;
@@ -185,9 +203,6 @@
 
 .mobile-usersRow__column {
   @include p-meta;
-  @include breakpoint(mini, small, medium) {
-    display: inline-block;
-  }
   color: $grey-warm;
   line-height: 2.211rem;
 

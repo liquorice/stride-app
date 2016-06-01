@@ -20,6 +20,7 @@
     Module.include('dropdown');
     Module.include('href');
     Module.include('modal');
+    Module.include('userSearch');
 
     window.init_applies = init_applies;
   };
