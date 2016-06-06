@@ -13,6 +13,7 @@
     Module.apply(container.find('.js-tags'), 'tags');
     Module.apply(container.find('.js-sidebar'), 'mobileMenu');
     Module.apply(container.find('.js-survey'), 'survey');
+    Module.apply(container, 'manageTopics');
   }
 
   var init = function(container) {

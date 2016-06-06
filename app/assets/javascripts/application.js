@@ -29,6 +29,7 @@
 //= require textarea-resize
 //= require user-search
 //= require just-pinned
+//= require manage-topics
 //= require survey-popup
 
 //= require main
