@@ -21,6 +21,7 @@
     Module.include('href');
     Module.include('modal');
     Module.include('userSearch');
+    Module.include('justPinned');
 
     window.init_applies = init_applies;
   };

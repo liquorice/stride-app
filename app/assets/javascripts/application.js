@@ -28,6 +28,7 @@
 //= require profile-edit
 //= require textarea-resize
 //= require user-search
+//= require just-pinned
 //= require survey-popup
 
 //= require main
