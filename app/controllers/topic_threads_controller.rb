@@ -74,6 +74,7 @@ class TopicThreadsController < ApplicationController
   def toggle_pin
     require_permission :topicThreads_modify
     @thread = @site.topic_threads.find(params[:id])
+    fragment = ''
 
     if @thread.pinned
       @thread.update(pinned: false)
@@ -81,9 +82,10 @@ class TopicThreadsController < ApplicationController
     else
       @thread.update(pinned: true)
       flash[:success] = "#{@thread.name} successfully pinned"
+      fragment = "#pinned-#{@thread.id}"
     end
 
-    redirect_to "#{topic_path(@thread.topic)}?#{@thread.id}"
+    redirect_to "#{topic_path(@thread.topic)}#{fragment}"
   end
 
   private
