@@ -18,7 +18,7 @@
     // TODO Stay logged in functionality
     .label.med
       label.checkbox
-        = f.check_box "Stay logged in", class:"input__checkbox"
+        input.input__checkbox type="checkbox" name="session[remember]" value="1"
         .form__checkbox
       .checkbox__text.leftFloat Stay logged in
       a.label__link href=forgot_path data-modal=true Lost password
