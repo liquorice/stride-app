@@ -1,3 +1,69 @@
 h1 Edit Forum
 
 = render 'form'
+
+// TODO MAIN FORUM EDIT modal view
+
+/ h1 Edit Forums
+
+/ = form_for @topic do |f|
+/   .label
+/     .label__title
+/       | Forums overview
+/       span.alert *
+/     .form__textarea.js-textarea
+/         = f.text_area :description, placeholder:"Enter forums overview", class:"input__textarea js-free-text"
+
+/   .label
+/     .edit__forums-titles
+/       .label__title Forum Title
+/       .label__title Show
+/       .label__title Priority
+
+/     .edit__forums-row
+/       label.checkbox
+/         .checkbox__text = @topic.name
+/         = check_box_tag 'show', true, class:"input__checkbox"
+/         .form__checkbox
+
+/       = render 'components/dropdown',
+/         name: "priority",
+/         id: "priority",
+/         options: {"1" => 1, "2" => 2, "3" => 3},
+/         value: @topic.id,
+/         size: "small"
+
+/     .edit__forums-row
+/       label.checkbox
+/         .checkbox__text First forum
+/         = check_box_tag 'show', true, class:"input__checkbox"
+/         .form__checkbox
+
+/       = render 'components/dropdown',
+/         name: "priority",
+/         id: "priority",
+/         options: {"1" => 1, "2" => 2, "3" => 3},
+/         value: @topic.id,
+/         size: "small"
+
+/     .edit__forums-row
+/       label.checkbox
+/         .checkbox__text Test forum
+/         = check_box_tag 'show', true, class:"input__checkbox"
+/         .form__checkbox
+
+/       = render 'components/dropdown',
+/         name: "priority",
+/         id: "priority",
+/         options: {"1" => 1, "2" => 2, "3" => 3},
+/         value: @topic.id,
+/         size: "small"
+
+/   .form__button.js-popup-close Cancel
+/   button.form__button.primary Save
+
+/   .label
+/     .message-required
+/       | Required fields (
+/       span.alert *
+/       | )

@@ -2,6 +2,11 @@
   .strip__dark-forum
     h1 Forums
 
+// TODO MAIN FORUM EDIT modal link
+- if current_user_can?(:forums_modify)
+  - content_for :edit_strip do
+    a.btn__edit href="EDIT PATH HERE" data-modal=true Edit details
+
 - content_for :light_strip do
   p Overview content for the forums
 
