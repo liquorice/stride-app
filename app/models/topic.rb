@@ -4,6 +4,6 @@ class Topic < ActiveRecord::Base
   validates :name, presence: true
   validates :site, presence: true
 
-  default_scope { order(:name) }
+  default_scope { order(:ordinal) }
 
 end

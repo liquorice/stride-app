@@ -14,6 +14,25 @@ class TopicsController < ApplicationController
 
   # Admin
 
+  def manage
+    require_permission :topics_modify
+    @topics = @site.topics
+
+  end
+
+  def update_order
+    require_permission :topics_modify
+
+    params[:topics_order].each_with_index do |topic_id, index|
+      @site.topics.find(topic_id.to_i).update(ordinal: index)
+    end
+
+    flash[:success] = "Forums succesfully updated"
+    redirect_to topics_preview_path
+
+    params[:topics_order].inspect
+  end
+
   def new
     require_permission :topics_modify
     @topic = @site.topics.new

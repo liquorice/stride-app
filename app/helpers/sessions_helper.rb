@@ -1,12 +1,16 @@
 module SessionsHelper
 
-  def log_in(user)
+  def log_in(user, remember = false)
     ensure_not_suspended(user)
-    session[:user_id] = user.id
+
+    cookies.signed[:user_id] = {
+      value: user.id,
+      expires: (remember ? 1.month.from_now : nil)
+    }
   end
 
   def logged_in?
-    if session[:user_id] && @current_user = User.find(session[:user_id])
+    if cookies.signed[:user_id] && @current_user = User.find_by(id: cookies.signed[:user_id])
       ensure_not_suspended(@current_user)
       @current_user.update_last_seen
       return true
@@ -16,7 +20,7 @@ module SessionsHelper
   end
 
   def log_out
-    session.delete(:user_id)
+    cookies.delete(:user_id)
     @current_user = nil
   end
 

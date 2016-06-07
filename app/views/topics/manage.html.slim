@@ -1,0 +1,14 @@
+/ TODO style this all
+
+h1 Manage forums
+
+= form_tag topics_manage_path, method: :patch do |f|
+
+  ol.js-topics-reorder.topicsReorder
+    - @topics.each do |topic|
+      li
+        span = topic.name
+        input type="hidden" name="topics_order[]" value=topic.id
+
+  .form__button.js-popup-close Cancel
+  button.form__button.primary Save

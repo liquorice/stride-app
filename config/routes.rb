@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   # Topics
   resources :topics, path: 'forum'
+  get 'forums/manage' => 'topics#manage', as: :topics_manage
+  patch 'forums/manage' => 'topics#update_order'
 
   # Threads
   resources :topic_threads, path: 'thread'

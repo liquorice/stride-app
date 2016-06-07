@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     return failed unless user
 
     if user.authenticate(params[:session][:password])
-      log_in(user)
+      log_in(user, params[:session][:remember])
       flash[:success] = "Welcome back, #{user.name}"
       redirect_to topics_preview_path
     else

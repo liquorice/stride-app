@@ -41,3 +41,8 @@
       a href=topics_preview_path Forums
     - @site.topics.each do |topic|
       a href=topic_path(topic) data-active=(topic == @topic) = topic.name
+
+    / TODO style this
+    - if current_user_can?(:topics_modify)
+      a href=topics_manage_path data-modal=true Manage forums
+
