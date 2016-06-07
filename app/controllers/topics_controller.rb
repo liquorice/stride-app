@@ -15,13 +15,12 @@ class TopicsController < ApplicationController
   # Admin
 
   def manage
-    require_permission :topics_modify
+    require_permission :forums_modify
     @topics = @site.topics
-
   end
 
   def update_order
-    require_permission :topics_modify
+    require_permission :forums_modify
 
     params[:topics_order].each_with_index do |topic_id, index|
       @site.topics.find(topic_id.to_i).update(ordinal: index)
