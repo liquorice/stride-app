@@ -1,0 +1,26 @@
+  div
+    h3 = chat_session.name
+    p = chat_session.description
+
+    p
+      | Ended
+      br
+      = chat_session.ended_at
+
+    p
+      | Tags
+      br
+      | Foo bar baz
+
+    p
+      | Messages count
+      br
+      = chat_session.messages_count
+
+    p
+      | Participants count
+      br
+      = chat_session.participants_count
+
+    p
+      a href=chat_session_path(chat_session) View

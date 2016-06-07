@@ -1,0 +1,34 @@
+- content_for :dark_strip do
+  .strip__dark-thread
+    h2
+      a href=chats_path
+        = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+        | Live chats
+    h1
+      =< @chat_session.name
+
+- if current_user_can?(:chat_modify)
+  - content_for :edit_strip do
+    a.btn__edit href=edit_chat_session_path(@chat_session) data-modal=true Edit details
+
+
+- if current_user_can?(:chat_modify)
+
+  - if @chat_session.scheduled_for > Time.now
+    p This chat is scheduled to be opened in #{distance_of_time_in_words(@chat_session.scheduled_for, Time.now)}
+
+  - else
+    p This chat was scheduled to open #{distance_of_time_in_words(@chat_session.scheduled_for, Time.now)} ago
+
+  p
+    | Scheduled start
+    strong = @chat_session.scheduled_for.strftime("%d/%m/%Y %H.%M %Z")
+
+  p
+    a href=start_chat_session_path(@chat_session) data-method="patch" Start this chat session
+
+
+- else
+  p
+    | This chat is scheduled for
+    strong = @chat_session.scheduled_for.strftime("%d/%m/%Y %H.%M %Z")

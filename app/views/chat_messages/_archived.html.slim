@@ -1,0 +1,10 @@
+div style="margin-bottom: 20px"
+  div style="width: 20px; height: 20px; position: relative"
+    = render 'user/avatar', user: chat_message.user
+
+  p = chat_message.content
+
+  p
+    a href=user_path(chat_message.user) = chat_message.user.name
+    span = chat_message.created_at.strftime("%H:%M%p")
+

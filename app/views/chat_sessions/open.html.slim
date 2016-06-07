@@ -1,0 +1,61 @@
+/ 
+/ 
+/ SUPER MESSY WORK IN PROGRESS FROM JB
+/ PLEASE LEAVE AS IS 
+/ 
+/ 
+
+- content_for :dark_strip do
+  .strip__dark-thread
+    h2
+      a href=chats_path
+        = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+        | Live chats
+    h1
+      =< @chat_session.name
+
+- if current_user_can?(:chat_modify)
+  - content_for :edit_strip do
+    a.btn__edit href=edit_chat_session_path(@chat_session) data-modal=true Edit details
+
+- content_for :sidebar_locked do
+  = render 'partials/sidebar', expanded: true
+
+- content_for :footer do
+  = javascript_include_tag 'chat'
+  javascript:
+    var POST_PATH = "#{post_to_chat_session_path(@chat_session)}"
+
+css:
+  .message { padding: 10px; margin: 10px; border: 1px solid black}
+  .messages {
+    position: absolute;
+    border: 1px solid blue;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .message_window {
+    height: 300px;
+    position: relative;
+    overflow-y: scroll;
+  }
+
+p This chat is happening!
+
+hr
+
+.message_window
+  .messages.js-chat-messages
+
+hr
+
+form.js-chat-form
+  input.js-chat-content name="message" placeholder="Enter text"
+  button Say it
+
+hr
+
+- if current_user_can?(:chat_modify)
+  p
+    a href=end_chat_session_path(@chat_session) data-method="patch" data-confirm="Are you sure you want to end this session?" End this chat session

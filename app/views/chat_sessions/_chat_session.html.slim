@@ -3,6 +3,9 @@
   p = chat_session.description
 
   p
+    strong = chat_session.status
+
+  p
     | Date
     br
     = chat_session.scheduled_for.strftime("%d/%m/%Y")
@@ -13,6 +16,11 @@
     = chat_session.scheduled_for.strftime("%H.%M")
     / Timezone
     span = chat_session.scheduled_for.strftime("%Z")
+
+  p
+    | Starts in
+    br
+    = distance_of_future_time_in_words(chat_session.scheduled_for)
 
   a href=chat_session_path(chat_session) View chat
 

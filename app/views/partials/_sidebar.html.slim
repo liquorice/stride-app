@@ -38,6 +38,8 @@
     - if current_user_can?(:topicThreads_modify)
       a href=hidden_threads_path View hidden threads
     a href=chats_path Upcoming live chats
+    - if current_user_can?(:chat_modify)
+      a href=archived_chats_path Archived chats
     a href=community_rules_path Community rules
     a href=link_to_kb('privacy-policy') Privacy policy
 

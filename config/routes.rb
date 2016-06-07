@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   # Chat
   resources :chat_sessions, path: 'chat', except: [:index]
   get 'chats' => 'chat_sessions#index', as: :chats
+  get 'chats/archived' => 'chat_sessions#archived_list', as: :archived_chats
+  patch 'chat/:id/start' => 'chat_sessions#start', as: :start_chat_session
+  patch 'chat/:id/end' => 'chat_sessions#end', as: :end_chat_session
+
+  # Chat messages
+  post 'chat/:id/post' => 'chat_sessions#post', as: :post_to_chat_session
 
   # Topics
   resources :topics, path: 'forum'

@@ -80,3 +80,5 @@ html
     = render "/partials/footer"
 
     = javascript_include_tag 'application'
+    - if content_for? :footer
+      = yield :footer

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% ['pete', 'dale'].each do |site| %>
+  <% 30.times.each do |i| %>
+    <% rand(200).times.each do |j| %>
+      past_chat_session_<%= i %>_<%= site %>_message_<%= j %>:
+        chat_session: past_chat_session_<%= i %>_<%= site %>
+        content: "<%= LibLib.line(:grimm) %>"
+        created_at: <%= i.days.ago + (j * rand(20)) + rand(20) %>
+        user: user_<%= rand(30) %>_<%= site %>
+    <% end %>
+  <% end %>
+<% end %>

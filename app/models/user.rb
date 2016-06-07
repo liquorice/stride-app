@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :topic_threads
   has_many :posts
   has_many :password_requests
+  has_many :chat_messages
 
   default_scope { order(created_at: :desc) }
   scope :active, -> { where(suspended: false) }

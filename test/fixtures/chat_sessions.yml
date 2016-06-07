@@ -8,3 +8,16 @@
       scheduled_for: <%= i.days.from_now %>
   <% end %>
 <% end %>
+
+<% ['pete', 'dale'].each do |site| %>
+  <% 30.times.each do |i| %>
+    past_chat_session_<%= i %>_<%= site %>:
+      site: <%= site %>
+      name: "<%= LibLib.line(:title) %>"
+      description: "<%= LibLib.line(:grimm) %>"
+      status: 2
+      scheduled_for: <%= i.days.ago %>
+      started_at: <%= i.days.ago + (rand(600)) %>
+      ended_at: <%= i.days.ago + (30 * 60) + (rand(30 * 60)) %>
+  <% end %>
+<% end %>

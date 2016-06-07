@@ -6,6 +6,7 @@ class Site < ActiveRecord::Base
   has_many :users
   has_many :password_requests, through: :users
   has_many :chat_sessions
+  has_many :chat_messages, through: :chat_sessions
 
   def self.find_by_host(host)
     # Helper function that searches the host array for a matching site

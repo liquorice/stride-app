@@ -1,0 +1,59 @@
+- content_for :dark_strip do
+  .strip__dark-thread
+    - if current_user_can?(:chat_modify)
+      .strip__modOnly Only visible to moderators
+      h2
+        a href=archived_chats_path
+          = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+          | Archived chats
+    h1
+      = @chat_session.name
+
+- content_for :sidebar_locked do
+  = render 'partials/sidebar', expanded: true
+
+- if current_user_can?(:chat_modify)
+
+  p
+    | Date
+    br
+    = @chat_session.started_at.strftime("%d/%m/%Y")
+
+  p
+    | Started at
+    br
+    = @chat_session.started_at.strftime("%H:%M%p")
+
+  p
+    | Duration
+    br
+    = pluralize((@chat_session.duration / 60).ceil, 'minutes')
+
+  p
+    | Messages count
+    br
+    = @chat_session.messages_count
+
+  p
+    | Participants count
+    br
+    = @chat_session.participants_count
+
+  p
+    | Tags
+    br
+    | Foo bar baz
+
+  p
+    | Notes
+    br
+    | Foo bar baz
+
+  hr
+
+  - @chat_session.chat_messages.each do |chat_message|
+    = render "chat_messages/archived", chat_message: chat_message
+
+- else
+  / TODO content
+  p This chat has ended
