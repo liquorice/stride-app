@@ -1,14 +1,21 @@
-/ TODO style this all
+// TODO MAIN FORUM EDIT modal view
 
 h1 Manage forums
 
 = form_tag topics_manage_path, method: :patch do |f|
+  .label
+    .label__title
+      | Forums overview
+      span.alert *
+    .form__textarea.js-textarea
+      = text_area_tag 'description', "Enter forums overview description", class:"input__textarea js-free-text"
 
-  ol.js-topics-reorder.topicsReorder
-    - @topics.each do |topic|
-      li
-        span = topic.name
-        input type="hidden" name="topics_order[]" value=topic.id
+  .label
+    ol.js-topics-reorder.topicsReorder
+      - @topics.each do |topic|
+        li
+          span = topic.name
+          input type="hidden" name="topics_order[]" value=topic.id
 
   .form__button.js-popup-close Cancel
   button.form__button.primary Save

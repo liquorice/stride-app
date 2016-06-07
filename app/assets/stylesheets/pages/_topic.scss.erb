@@ -36,8 +36,55 @@
     }
   }
 
-// TODO this is placeholder, update with proper styling
+// TODO MAIN FORUM EDIT modal styles
+// TODO Might need to move this later, depending on where the edit ends up
+.edit__forums-titles {
+  border-bottom: 1px solid rgba($grey-warm, 0.15);
 
+  .label__title {
+    display: inline-block;
+    margin-bottom: 6px;
+    width: 68.7%;
+  }
+
+  .label__title:nth-child(n+2) {
+    text-align: right;
+    width: 15%;
+  }
+}
+
+.edit__forums-row + .edit__forums-row {
+  border-top: 1px solid rgba($grey-warm, 0.15);
+}
+
+.edit__forums-row {
+  .checkbox {
+    display: inline-block;
+    margin: 5px 0 4px;
+    width: 84%;
+
+    .checkbox__text {
+      display: inline-block;
+      margin-left: 0;
+    }
+
+    .form__checkbox {
+      left: initial;
+      right: 8px;
+    }
+  }
+
+  .dropdown {
+    display: inline-block;
+    float: right;
+    margin: 3px 0;
+    overflow: initial;
+    width: 54px;
+  }
+}
+
+// TODO MAIN FORUM EDIT modal styles
+// TODO this is placeholder, update with proper styling
 .topicsReorder {
   position: relative;
 

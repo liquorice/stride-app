@@ -410,6 +410,7 @@
       color: $grey-warm;
       display: block;
       height: 100%;
+      transition: background-color 200ms;
       width: 100%;
 
       &.active {
@@ -418,13 +419,17 @@
         color: $primary;
 
         &:hover {
-          color: $blue-mid;
+          @include breakpoint(huge, overlarge, large, medium) {
+            color: $blue-mid;
+          }
         }
       }
 
       &:hover {
-        background-color: $white;
-        color: $blue-mid;
+        @include breakpoint(huge, overlarge, large, medium) {
+          background-color: $white;
+          color: $blue-mid;
+        }
       }
     }
   }

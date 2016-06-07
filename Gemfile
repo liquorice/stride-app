@@ -15,7 +15,8 @@ gem 'uglifier', '>= 1.3.0'
 gem "autoprefixer-rails"
 
 # For uglifier, mebbe?
-gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', '0.12.2', platforms: :ruby
+gem 'libv8', '3.16.14.15'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -32,6 +33,7 @@ gem 'unicorn'
 gem 'will_paginate', '~> 3.0.6'
 
 # Use Capistrano for deployment
+gem 'capistrano', '3.4.0'
 gem 'capistrano-rails', group: :development
 gem 'capistrano-rbenv', '~> 2.0'
 gem 'capistrano3-unicorn'

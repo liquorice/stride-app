@@ -2,6 +2,10 @@
   .strip__dark-forum
     h1 Forums
 
+- if current_user_can?(:forums_modify)
+  - content_for :edit_strip do
+    a.btn__edit href=topics_manage_path data-modal=true Manage forums
+
 - content_for :light_strip do
   p Overview content for the forums
 

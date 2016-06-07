@@ -1,7 +1,7 @@
 footer.footer
   section.footer__logos
     .constrained
-      // TODO Where do these link to??? KB site also has no links???
+      // TODO Client can change these URLs through KB
       p
         = "A "
         a href="/beyond_blue" = "Beyond Blue"
@@ -9,28 +9,33 @@ footer.footer
 
       ul aria-label="Contributors"
         li
-          a href="/beyond_blue"
-            img.logo__beyondBlue alt="Beyond Blue" src="#{asset_path('logos/beyond-blue.png')}"
+          a href="#"
+            img.logo__beyondBlue alt="Beyond Blue" src="#{asset_path('logos/beyond-blue-movember.png')}"
 
         li
-          a href="/vac"
+          a href="#"
             img.logo__vac alt="Victoria Aids Council" src="#{asset_path('logos/vac.png')}"
 
         li
-          a href="/acon"
+          a href="#"
             img.logo__acon alt="ACON" src="#{asset_path('logos/acon.png')}"
 
         li
-          a href="/unsw"
+          a href="#"
             img.logo__unsw alt="The University of New South Wales" src="#{asset_path('logos/unsw.png')}"
 
         li
-          a href="/csrh"
+          a href="#"
             img.logo__csrh alt="Centre for Social Research in Health" src="#{asset_path('logos/csrh.png')}"
 
-        li
-          a href="/movember"
-            img.logo__movember alt="Movember" src="#{asset_path('logos/movember.png')}"
+        - if @site.name == 'pete'
+          li
+            a href="#"
+              img.logo__livingPositive alt="Living Positive Victoria" src="#{asset_path('logos/living-positive-victoria.png')}"
+        - elsif @site.name == 'dale'
+          li
+            a href="#"
+              img.logo__gamma alt="Gamma" src="#{asset_path('logos/gamma.png')}"
 
   section.footer__links
     .constrained
