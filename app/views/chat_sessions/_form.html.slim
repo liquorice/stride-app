@@ -1,0 +1,17 @@
+= form_for @chat_session do |f|
+
+  p
+    | Name
+    = f.text_field :name
+
+  p
+    | Description
+    = f.text_area :description
+
+  p
+    | Scheduled for
+    / TODO IMPLEMENT JQUERY PICKER
+    = f.datetime_local_field :scheduled_for
+
+  .form__button.js-popup-close Cancel
+  button.form__button.primary Save

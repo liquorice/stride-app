@@ -1,0 +1,10 @@
+<% ['pete', 'dale'].each do |site| %>
+  <% 4.times.each do |i| %>
+    chat_session_<%= i %>_<%= site %>:
+      site: <%= site %>
+      name: "<%= LibLib.line(:title) %>"
+      description: "<%= LibLib.line(:grimm) %>"
+      status: 0
+      scheduled_for: <%= i.days.from_now %>
+  <% end %>
+<% end %>

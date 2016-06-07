@@ -1,0 +1,19 @@
+.chatSession
+  h2 = chat_session.name
+  p = chat_session.description
+
+  p
+    | Date
+    br
+    = chat_session.scheduled_for.strftime("%d/%m/%Y")
+
+  p
+    | Time
+    br
+    = chat_session.scheduled_for.strftime("%H.%M")
+    / Timezone
+    span = chat_session.scheduled_for.strftime("%Z")
+
+  a href=chat_session_path(chat_session) View chat
+
+hr

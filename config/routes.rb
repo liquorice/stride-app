@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
 
+  # Chat
+  resources :chat_sessions, path: 'chat', except: [:index]
+  get 'chats' => 'chat_sessions#index', as: :chats
+
   # Topics
   resources :topics, path: 'forum'
   get 'forums/manage' => 'topics#manage', as: :topics_manage
