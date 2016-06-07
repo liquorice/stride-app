@@ -102,6 +102,16 @@
       display: flex;
       justify-content: space-between;
     }
+    @media screen and (min-width: 1200px) and (max-width: 1300px - 1) {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      li:first-of-type {
+        flex: 0 0 100%;
+      }
+    }
     @include breakpoint(large, medium) {
       align-items: center;
       display: flex;
@@ -117,6 +127,13 @@
       @include breakpoint(huge, overlarge) {
         flex: 0 1 auto;
       }
+      @media screen and (min-width: 1200px) and (max-width: 1400px - 1) {
+        flex: 0 1 auto;
+        padding-top: 20px;
+        &:first-of-type {
+          padding-top: 0;
+        }
+      }
       @include breakpoint(large, medium) {
         flex: 0 1 auto;
         padding-top: 20px;
@@ -127,36 +144,43 @@
       }
       @include breakpoint(small, mini) {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 30px;
         text-align: center;
+        &:first-of-type {
+          margin-bottom: 26px;
+        }
       }
       list-style: none;
 
       img {
 
         &.logo__beyondBlue {
-          height: 150px;
-          width: 314px;
+          height: auto;
+          width: 286px;
         }
         &.logo__vac {
-          height: 42px;
-          width: 90px;
+          height: 32px;
+          width: 70px;
         }
         &.logo__acon {
           height: auto;
-          width: 64px;
+          width: 63px;
         }
         &.logo__unsw {
-          height: 42px;
-          width: 161px;
+          height: auto;
+          width: 119px;
         }
         &.logo__csrh {
-          height: 61px;
-          width: 108px;
+          height: 57px;
+          width: 102px;
         }
-        &.logo__movember {
-          height: 77px;
-          width: 43px;
+        &.logo__livingPositive {
+          height: auto;
+          width: 172px;
+        }
+       &.logo__gamma {
+          height: auto;
+          width: 112px;
         }
       }
     }
