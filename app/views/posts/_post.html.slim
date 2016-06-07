@@ -27,7 +27,7 @@
             = post.user.name
         = " said, "
         a.permalink href=post_path(post)
-          = "#{time_ago_in_words(post.created_at)} ago"
+          = "#{time_ago_in_words(post.created_at, locale: 'en-brief')} ago"
 
       - if post === @thread.posts.first
         .post__firstLast Beginning of thread
@@ -48,12 +48,11 @@
     .post__content.js-postContent data-quoted=being_quoted
       = simple_format(post.content)
 
-  
     .post__buttons data-hidden=post.hidden?
       .post__showMore.js-post-toggle
         | Show more
       .post__showLess.js-post-toggle
         | Show less
       - unless being_quoted || !current_user_can?(:post_create) || !@thread.public? || @thread.locked?
-        .post__quote.js-post-quote data-post-id=post.id data-post-user="#{post.user.name}" data-post-time=" said, #{time_ago_in_words(post.created_at)} ago" data-post-description="#{post.preview_snippet} ..."
+        .post__quote.js-post-quote data-post-id=post.id data-post-user="#{post.user.name}" data-post-time=" said, #{time_ago_in_words(post.created_at, locale: 'en-brief')} ago" data-post-description="#{post.preview_snippet} ..."
           | Quote

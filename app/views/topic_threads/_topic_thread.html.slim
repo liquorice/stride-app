@@ -22,7 +22,7 @@
             = render 'user/avatar', user: topic_thread.latest_post.user
 
           strong = topic_thread.latest_post.user.name
-          = " said, #{time_ago_in_words(topic_thread.latest_post.created_at)} ago "
+          = " said, #{time_ago_in_words(topic_thread.latest_post.created_at, locale: 'en-brief')} ago "
           strong = topic_thread.latest_post.preview_snippet
     - elsif not topic_thread.public
       .thread__latest
