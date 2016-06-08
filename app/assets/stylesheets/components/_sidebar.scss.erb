@@ -101,21 +101,21 @@
 //
 
 .sidebar {
-  .sidebar__group[locked-group]:nth-child(n+2) {
-    border-bottom: 1px solid rgba($grey-warm, 0.1);
-    padding: 0.6316rem 0 0.8421rem;
-  }
-
-  .sidebar__group:nth-child(n+4) {
-    border-bottom: 1px solid rgba($grey-warm, 0.1);
-    padding: 0.6316rem 0 0.8421rem;
-  }
-
   .sidebar__group:last-child {
     @include breakpoint(small, mini) {
       border-bottom: 1px solid rgba($grey-warm, 0.1);
     }
     border-bottom: none;
+  }
+
+  .sidebar__group[locked-group]:nth-child(n+2):nth-last-child(2) {
+    border-bottom: 1px solid rgba($grey-warm, 0.1);
+    padding: 0.6316rem 0 0.8421rem;
+  }
+
+  .sidebar__group:nth-child(n+4):nth-last-child(2) {
+    border-bottom: 1px solid rgba($grey-warm, 0.1);
+    padding: 0.6316rem 0 0.8421rem;
   }
 }
 
