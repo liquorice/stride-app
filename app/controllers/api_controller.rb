@@ -37,4 +37,32 @@ class ApiController < ApplicationController
     render json: { chat: chat }
   end
 
+  def forums_overview
+    topics = []
+    @site.topics.first(2).each do |topic|
+      threads = []
+      @topic_threads = topic
+          .topic_threads
+          .visible
+          .where(pinned: false)
+          .by_activity
+          .limit(2)
+
+      @topic_threads.each do |topic_thread|
+        threads.push({
+          data: topic_thread.export_to_json,
+          html: render_to_string(partial: 'topic_threads/topic_thread', locals: { topic_thread: topic_thread })
+        })
+      end
+
+      topics.push({
+        name: topic.name,
+        url: topic_path(topic),
+        threads: threads
+      })
+    end
+
+    render json: topics
+  end
+
 end
