@@ -25,7 +25,6 @@
     a.btn__newThread href=new_topic_thread_path data-modal=true
       = insert_svg("icons/side-bar-icons_plus-threads.svg", class:"icon__sidebar")
       | Create new Thread
-  / TODO style this
   - if current_user_can?(:chat_modify)
     a.btn__newChat href=new_chat_session_path data-modal=true
       = insert_svg("icons/side-bar-icons_plus-chat.svg", class:"icon__sidebar")
@@ -33,13 +32,13 @@
 
 .sidebar__group locked-group=expanded
   .sideBar__menu
-    - if current_user_can?(:users_view)
-      a href=users_path View all users
-    - if current_user_can?(:topicThreads_modify)
-      a href=hidden_threads_path View hidden threads
     a href=chats_path Upcoming live chats
     - if current_user_can?(:chat_modify)
       a href=archived_chats_path Archived chats
+    - if current_user_can?(:topicThreads_modify)
+      a href=hidden_threads_path Hidden threads
+    - if current_user_can?(:users_view)
+      a href=users_path All users
     a href=community_rules_path Community rules
     a href=link_to_kb('privacy-policy') Privacy policy
 
