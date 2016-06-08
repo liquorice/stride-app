@@ -19,4 +19,22 @@ class ApiController < ApplicationController
     render json: { user: user_details }
   end
 
+  def upcoming_chat
+    @chat_sessions = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']])
+    if @chat_sessions.any?
+      chat_session = @chat_sessions.first
+      chat = {
+        name: chat_session.name,
+        description: chat_session.description,
+        url: chat_session_path(chat_session),
+        scheduled_for: chat_session.scheduled_for,
+        status: chat_session.status
+      }
+    else
+      chat = false;
+    end
+
+    render json: { chat: chat }
+  end
+
 end
