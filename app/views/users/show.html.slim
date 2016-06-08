@@ -1,126 +1,125 @@
-- if current_user_can?(:users_view)
-  - content_for :dark_strip do
-    .strip__dark-regular
-      .strip__modOnly Only visible to moderators
-      h2
-        a href=users_path
-          = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
-          | All Users
-      h3
-        =< @user.name
+- content_for :dark_strip do
+  .strip__dark-regular
+    .strip__modOnly Only visible to moderators
+    h2
+      a href=users_path
+        = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+        | All Users
+    h3
+      =< @user.name
 
-  - content_for :sidebar do
-    = render 'partials/sidebar'
+- content_for :sidebar do
+  = render 'partials/sidebar'
+
+.userSection.large
+  .userDetails__row
+    .userDetails__avatar-container
+      .userDetails__avatar
+        = render 'user/avatar', user: @user
+
+    .userDetails__access
+      h3 = "Access Level"
+      - if @current_user.can?(:accessLevel_set)
+        = form_tag set_user_access_level_path, method: :patch do |f|
+          = render 'components/radiobutton',
+            name: "user[access_level_id]",
+            options: access_levels_hash_for_user(@current_user),
+            value: @user.access_level.id
+
+    .userDetails__suspend
+      - if @user.suspended?
+        h3
+          | Status: 
+          span.alert Suspended
+        - if @current_user.can?(:user_suspend)
+          a.unsuspend href=unsuspend_user_path(@user) data-method="post" Allow access
+      - else
+        h3 Status: Allowed access
+        - if @current_user.can?(:user_suspend)
+          a.suspend href=suspend_user_path(@user) data-method="post" Suspend user
+          p
+            strong Suspending a user 
+            ' will log the user out and prevent them from logging back in.
+
+  .userDetails__row
+    .mobile__row
+      .userDetails__column.first
+        strong Joined
+        = @user.created_at.strftime('%d/%m/%y')
+      .userDetails__column.second
+        strong Last active
+        = user_last_active(@user.last_seen)
+      .userDetails__column.third
+        strong Threads
+        = @user.topic_threads.count
+    .mobile__row
+      .userDetails__column.fourth
+        strong Forum replies
+        = @user.posts.count
+      .userDetails__column.fifth
+        strong Chat messages
+        = "TODO"
+      .userDetails__column
+        strong Notifications
+        = "TODO - SMS, Twitter"
+
+- if @current_user.can?(:user_changeEmail)
+  .userSection
+    h3.short Login
+    p
+      strong Change user's email address (Admins Only)
+    p Please note, this should only be done at the request of the user.
+
+    = form_tag set_user_email_path, class: "js-profile", method: :patch do |f|
+      p.view-default
+        - if @user.email.present?
+          | Email hidden for privacy
+        - else
+          | Email not provided
+
+      input.input__textfield.view-edit name="user[email]" placeholder="Enter email address"
+
+      .btn__email-edit.js-profile-edit.view-default Edit
+      button.view-edit Save
+      .btn__email-cancel.js-profile-edit.view-edit Cancel
 
   .userSection.large
-    .userDetails__row
-      .userDetails__avatar-container
-        .userDetails__avatar
-          = render 'user/avatar', user: @user
-
-      .userDetails__access
-        h3 = "Access Level"
-        - if @current_user.can?(:accessLevel_set)
-          = form_tag set_user_access_level_path, method: :patch do |f|
-            = render 'components/radiobutton',
-              name: "user[access_level_id]",
-              options: access_levels_hash_for_user(@current_user),
-              value: @user.access_level.id
-
-      .userDetails__suspend
-        - if @user.suspended?
-          h3
-            | Status: 
-            span.alert Suspended
-          - if @current_user.can?(:user_suspend)
-            a.unsuspend href=unsuspend_user_path(@user) data-method="post" Allow access
-        - else
-          h3 Status: Allowed access
-          - if @current_user.can?(:user_suspend)
-            a.suspend href=suspend_user_path(@user) data-method="post" Suspend user
-            p
-              strong Suspending a user 
-              ' will log the user out and prevent them from logging back in.
-
-    .userDetails__row
-      .mobile__row
-        .userDetails__column.first
-          strong Joined
-          = @user.created_at.strftime('%d/%m/%y')
-        .userDetails__column.second
-          strong Last active
-          = user_last_active(@user.last_seen)
-        .userDetails__column.third
-          strong Threads
-          = @user.topic_threads.count
-      .mobile__row
-        .userDetails__column.fourth
-          strong Forum replies
-          = @user.posts.count
-        .userDetails__column.fifth
-          strong Chat messages
-          = "TODO"
-        .userDetails__column
-          strong Notifications
-          = "TODO - SMS, Twitter"
-
-  - if @current_user.can?(:user_changeEmail)
-    .userSection
-      h3.short Login
-      p
-        strong Change user's email address (Admins Only)
-      p Please note, this should only be done at the request of the user.
-
-      = form_tag set_user_email_path, class: "js-profile", method: :patch do |f|
-        p.view-default
-          - if @user.email.present?
-            | Email hidden for privacy
-          - else
-            | Email not provided
-
-        input.input__textfield.view-edit name="user[email]" placeholder="Enter email address"
-
-        .btn__email-edit.js-profile-edit.view-default Edit
-        button.view-edit Save
-        .btn__email-cancel.js-profile-edit.view-edit Cancel
-
-    .userSection.large
-      p
-        strong Send Password Reset email
-        - unless @user.email.blank?
-          p This will log the user out and send a password reset link to the email address above.
-          a.btn__resetEmail data-method="post" href=user_password_reset_path(@user) Send
-        - else
-          p This will send a password reset link to the email address above.
-          p This function is only available if an email address has been provided.
+    p
+      strong Send Password Reset email
+      - unless @user.email.blank?
+        p This will log the user out and send a password reset link to the email address above.
+        a.btn__resetEmail data-method="post" href=user_password_reset_path(@user) Send
+      - else
+        p This will send a password reset link to the email address above.
+        p This function is only available if an email address has been provided.
 
 
-  - if @current_user.can?(:user_hideActivity)
-    .userSection.large
-      h3.short History
-      p
-        strong Hiding activity 
-        ' will hide all threads, replies and comments from other users.
-      p Activity will still be visible to moderators.
-      a.btn__hideActivity href=hide_user_activity_path(@user) data-method="post" Hide activity
+- if @current_user.can?(:user_hideActivity)
+  .userSection.large
+    h3.short History
+    p
+      strong Hiding activity 
+      ' will hide all threads, replies and comments from other users.
+    p Activity will still be visible to moderators.
+    a.btn__hideActivity href=hide_user_activity_path(@user) data-method="post" Hide activity
 
-  .userSection
-    h3 Threads created
-    - if @user.topic_threads.count > 0
-      - @user.topic_threads.each do |thread|
-        = render "user/thread", thread: thread
-    - else
-      .message-noThreads
-        = insert_svg("empty-avatar.svg", class:"icon__avatar")
-        | This user has not created any threads
+.userSection
+  h3 Threads created
+  - if @user.topic_threads.count > 0
+    - @user.topic_threads.each do |thread|
+      = render "user/thread", thread: thread
+  - else
+    .message-noThreads
+      = insert_svg("empty-avatar.svg", class:"icon__avatar")
+      | This user has not created any threads
 
 
-  .userSection
-    h3 Replies to threads
-    - if @user.posts.count > 0
-      - @user.posts.each do |post|
-        = render "user/post", post: post
-    - else
-      .message-noThreads
-        = insert_svg("empty-avatar.svg", class:"icon__avatar")
-        | This user has not replied to any posts
+.userSection
+  h3 Replies to threads
+  - if @user.posts.count > 0
+    - @user.posts.each do |post|
+      = render "user/post", post: post
+  - else
+    .message-noThreads
+      = insert_svg("empty-avatar.svg", class:"icon__avatar")
+      | This user has not replied to any posts
