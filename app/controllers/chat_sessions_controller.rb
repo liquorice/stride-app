@@ -10,8 +10,8 @@ class ChatSessionsController < ApplicationController
   end
 
   def show
+    require_permission :message_create
     @chat_session = @site.chat_sessions.find(params[:id])
-    require_user
 
     render @chat_session.status
   end
@@ -77,26 +77,58 @@ class ChatSessionsController < ApplicationController
   def post
     require_permission :message_create
     @chat_session = @site.chat_sessions.find(params[:id])
+    @chat_messages = @chat_session.chat_messages
 
-    params[:queue] ||= []
-
-    params[:queue].each do |index, queue_item|
-      case queue_item['type']
-      when 'message'
-        @chat_session.chat_messages.create(
-          content: queue_item['payload']['content'],
-          user: @current_user
-        )
-      end
+    # Ensure the chat session is currently open
+    unless @chat_session.open?
+      render json: {
+        status: 'archived'
+      }
+      return
     end
 
-    sent_at = Time.now.to_i
-    last_seen = params[:last_seen].to_i || 0
+    # Defaults
+    queue = params[:queue] || []
+    last_seen = params[:last_seen] || -1
 
-    render json: {
-      sent_at: sent_at,
-      messages: @chat_session.message_data_since(last_seen)
-    }
+    # Init empty payload
+    payload = {}
+
+    case params[:task]
+    when "history"
+      # Retrieve all messages until now
+      messages = @chat_messages.since(-1)
+    when "update"
+      # Process the pending queue, and send back
+      # all new messages, including private messages,
+      # and excluding messages made by the user
+
+      # Process the queue
+      queue.each do |index, queue_item|
+        case queue_item["type"]
+        when "message"
+          # Create new message
+          @chat_session.chat_messages.create(
+            content: queue_item["payload"]["content"],
+            user: @current_user
+          )
+        end
+      end
+
+      # Retrieve new messages for the user
+      messages = @chat_messages.since(last_seen).for_user(@current_user)
+    end
+
+    # Add any messages to payload
+    if messages.any?
+      payload[:messages] = messages.map(&:to_data)
+      payload[:last_seen] = messages.last.id
+    end
+
+    # Add the timestamp so that the duration can be updated
+    payload[:timestamp] = Time.now.to_i
+
+    render json: payload
   end
 
   private

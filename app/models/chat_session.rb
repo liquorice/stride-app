@@ -30,10 +30,6 @@ class ChatSession < ActiveRecord::Base
     )
   end
 
-  def message_data_since(time)
-    chat_messages.joins(:user).where('chat_messages.created_at > ?', Time.at(time)).pluck(:content, :name, :created_at)
-  end
-
   def messages_count
     chat_messages.count
   end
