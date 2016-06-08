@@ -51,9 +51,14 @@ html
             = yield :default_strip
 
       - elsif content_for? :dark_strip
-        .strip__dark
+        .strip__forum
           .constrained
             = yield :dark_strip
+
+      - elsif content_for? :chat_strip
+        .strip__chat
+          .constrained
+            = yield :chat_strip
 
       - if content_for? :edit_strip
         .strip__edit

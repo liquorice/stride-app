@@ -16,22 +16,38 @@
 // Default and Error Strip Styles
 
 .strip__default {
-  background: url('noise-diamonds-283x283-@2x.png') center center repeat;
   background-color: $blue-dark;
   background-size: 283px 283px;
-}
-
-.strip__default {
-  text-align: center;
+  background: url('noise-diamonds-283x283-@2x.png') center center repeat;
   padding: 2.526rem 0 3.211rem;
+  text-align: center;
+
   h1 {
     @include h1-level3;
   }
 }
 
+// Chat Strip Styles
+
+.strip__chat {
+  @include retina() {
+    background:
+    url('header-chat@2x.png') center center repeat,
+    url('noise-diamonds-283x283-@2x.png') center center repeat;
+    background-color: $grey-cool;
+    background-size: 660px 235px, 283px 283px;
+  }
+  background:
+  url('header-chat.png') center center repeat,
+  url('noise-diamonds-283x283-@2x.png') center center repeat;
+  background-color: $grey-cool;
+  background-size: 660px 235px, 283px 283px;
+  text-align: center;
+}
+
 // Forum Strip Styles
 
-.strip__dark {
+.strip__forum {
   @include retina() {
     background:
     url('header-forum@2x.png') center center repeat,
@@ -44,11 +60,17 @@
   url('noise-diamonds-283x283-@2x.png') center center repeat;
   background-color: $teal;
   background-size: 660px 235px, 283px 283px;
-}
-
-.strip__dark {
   text-align: center;
 }
+
+// Shared Strip Styles
+
+  .strip__dark-chat {
+    @include breakpoint(small, mini) {
+      padding: 2.842rem 0 2.263rem;
+    }
+    padding: 2.842rem 0 2.263rem;
+  }
 
   .strip__dark-forum {
     @include breakpoint(small, mini) {
