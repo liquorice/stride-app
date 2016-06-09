@@ -2,7 +2,7 @@
   admin_<%= site %>:
     site: <%= site %>
     name: Admin
-    permissions_data: { 'accessLevels_modify': true }
+    permissions_data: { 'accessLevels_modify': true, 'message_create': true }
     ordinal: 2
 
   moderator_<%= site %>:

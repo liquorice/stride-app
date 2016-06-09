@@ -19,4 +19,50 @@ class ApiController < ApplicationController
     render json: { user: user_details }
   end
 
+  def upcoming_chat
+    @chat_sessions = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']])
+    if @chat_sessions.any?
+      chat_session = @chat_sessions.first
+      chat = {
+        name: chat_session.name,
+        description: chat_session.description,
+        url: chat_session_path(chat_session),
+        scheduled_for: chat_session.scheduled_for,
+        status: chat_session.status
+      }
+    else
+      chat = false;
+    end
+
+    render json: { chat: chat }
+  end
+
+  def forums_overview
+    topics = []
+    @site.topics.first(2).each do |topic|
+      threads = []
+      @topic_threads = topic
+          .topic_threads
+          .visible
+          .where(pinned: false)
+          .by_activity
+          .limit(2)
+
+      @topic_threads.each do |topic_thread|
+        threads.push({
+          data: topic_thread.export_to_json,
+          html: render_to_string(partial: 'topic_threads/topic_thread', locals: { topic_thread: topic_thread })
+        })
+      end
+
+      topics.push({
+        name: topic.name,
+        url: topic_path(topic),
+        threads: threads
+      })
+    end
+
+    render json: topics
+  end
+
 end

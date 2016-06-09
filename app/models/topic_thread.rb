@@ -9,6 +9,12 @@ class TopicThread < ActiveRecord::Base
   scope :visible, -> { where(public: true) }
   default_scope { order(pinned: :desc, created_at: :desc) }
 
+  scope :by_activity, -> {
+    joins(:posts)
+    .group('topic_threads.id')
+    .order('max(posts.created_at) DESC')
+  }
+
   # --- Validations ---
   validates :name, presence: true, length: { minimum: 2 }
   validate :must_perform_similar_thread_check
@@ -57,7 +63,7 @@ class TopicThread < ActiveRecord::Base
       created_at: created_at.to_i,
       created_by: user.name,
       views: impressions_count,
-      posts: posts_count,
+      posts: posts_count
     }
   end
 

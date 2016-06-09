@@ -1,0 +1,37 @@
+p
+  = @chat_session.description
+
+p
+  strong Duration:
+  span.js-chat-duration
+
+.message_window
+  .messages.js-chat-messages
+
+form.js-chat-form
+  input.js-chat-content name="message" placeholder="Enter text"
+  button Say it
+
+hr
+
+script.js-chat-template type="text/x-template"
+  .message.js-message data-self="$self"
+    div.avatarWrapper
+      .avatar data-colour="$avatar_colour" data-face="$avatar_face"
+    p $content
+    p $user_name
+
+- if current_user_can?(:chat_modify)
+  p
+    a href=end_chat_session_path(@chat_session) data-method="patch" data-confirm="Are you sure you want to end this session?" End this chat session
+
+- content_for :footer do
+  = javascript_include_tag 'chat'
+  javascript:
+    var START_TIME = #{@chat_session.started_at.to_i};
+    var POLL_INTERVAL = 2000;
+    var POST_PATH = "#{post_to_chat_session_path(@chat_session)}"
+    var USER_ID = "#{@current_user.id}";
+    var USER_NAME = "#{@current_user.name}";
+    var AVATAR_COLOUR = "#{@current_user.processed_avatar_colour}";
+    var AVATAR_FACE = "#{@current_user.avatar_face}";
