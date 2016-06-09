@@ -1,0 +1,67 @@
+@mixin chatDetails-column {
+  @include p-meta;
+  display: inline-block;
+  // height: 5rem;
+
+  h2 {
+    @include h2-level1;
+  }
+}
+
+.chatSession {
+  display: block;
+  width: 100%;
+  background-color: $white;
+}
+
+.chatDetails {
+  display: block;
+  width: 100%;
+}
+
+.chatTitle {
+  display: block;
+  width: 100%;
+  // h2, p {
+  //   -webkit-box-orient: vertical;
+  //   display: -webkit-box;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
+
+  h2 {
+    @include h2-level1;
+    // @include breakpoint(mini) {
+    //   -webkit-line-clamp: 2;
+    //   max-height: 3em;
+    // }
+    // -webkit-line-clamp: 1;
+    color: $grey-cool;
+    // padding-bottom: 0.5em;
+    // max-height: 1.6em;
+  }
+
+  p {
+    @include p-short;
+    // @include breakpoint(mini) {
+    //   -webkit-line-clamp: 3;
+    //   max-height: 3em;
+    // }
+    // -webkit-line-clamp: 2;
+    color: $grey-cool;
+    // padding-bottom: 0.5em;
+    // max-height: 1.6em;
+  }
+}
+
+.chatDetails__date {
+  @include chatDetails-column;
+}
+
+.chatDetails__time {
+  @include chatDetails-column;
+}
+
+.chatDetails__soon {
+  @include chatDetails-column;
+}

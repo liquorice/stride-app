@@ -1,27 +1,27 @@
 .chatSession
-  h2 = chat_session.name
-  p = chat_session.description
+  .chatTitle
+    h2 = chat_session.name
+    p = chat_session.description
+    // p = chat_session.status
 
-  p
-    strong = chat_session.status
+  .chatDetails
+    .chatDetails__date
+      strong Date
+      h2 = chat_session.scheduled_for.strftime("%d/%m/%Y")
 
-  p
-    | Date
-    br
-    = chat_session.scheduled_for.strftime("%d/%m/%Y")
+    .chatDetails__time
+      strong Time
+      h2
+        = chat_session.scheduled_for.strftime("%H.%M")
+        // Timezone
+        span = chat_session.scheduled_for.strftime("%Z")
 
-  p
-    | Time
-    br
-    = chat_session.scheduled_for.strftime("%H.%M")
-    / Timezone
-    span = chat_session.scheduled_for.strftime("%Z")
+    - if (chat_session.scheduled_for <= (Date.today + 7.days))
+      .chatDetails__soon
+        - if (chat_session.scheduled_for <= (Time.now + 1.days))
+          strong Chat starts in
+        - else
+          strong Chat live in
+        h2  = distance_of_future_time_in_words(chat_session.scheduled_for)
 
-  p
-    | Starts in
-    br
-    = distance_of_future_time_in_words(chat_session.scheduled_for)
-
-  a href=chat_session_path(chat_session) View chat
-
-hr
+// a href=chat_session_path(chat_session) View chat
