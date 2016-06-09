@@ -1,11 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>500 - Server Error</title>
-  <!-- TODO UPDATE LINK -->
-  <meta http-equiv="refresh"
-   content="0; url=http://stage.pete.org.au/404">
+  <meta charset="utf-8">
+  <title>500 - Server error</title>
+  <link rel="stylesheet" href="stylesheets/pete.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <script type="text/javascript">
+    // TODO Change to real URL before launch
+    var pete_kb = "http://pete.dev/";
+    var dale_kb = "http://dale.dev/";
+    var pete_name = 'pete';
+    var dale_name = 'dale';
+    var pete_colour = '#f97f8b';
+    var dale_colour = '#efa413';
+
+    function siteName() {
+      if ((window.location.hostname).indexOf(pete_name) > -1) {
+        return pete_name;
+      }
+      else if ((window.location.hostname).indexOf(dale_name) > -1) {
+        return dale_name;
+      }
+      return false;
+    }
+
+    function capitalise(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function updateTitle() {
+      document.title = capitalise(siteName()) + ' \xB7 ' + document.title;
+      return true;
+    }
+
+    function daleLogo() {
+      return "<svg class=\"logo\" xmlns=\"http://www.w3.org/2000/svg\" width=\"238.694\" height=\"62\" viewBox=\"0 0 238.694 62\"><style>.logo-path{fill:" + dale_colour + " !important;}</style><path class=\"logo-path\" d=\"M185.168 11.366h1.996c1.826.003 3.018 1.2 3.02 3.045v18.226c0 5.165.004 10.33-.002 15.495-.002 1.67-1.277 2.966-2.895 2.973-.702.003-1.404 0-2.1 0v10.852h25.68V.082H185.17c-.002 3.77-.002 7.476-.002 11.284zM226.7 40.746c-.44-.002-.508.21-.57.57-.47 2.683-.983 5.36-1.43 8.047-.1.603-.282.81-.918.804-3.097-.035-6.194-.016-9.29-.016h-.867v11.797h25.07V40.822c-.132-.03-.2-.062-.27-.062-3.907-.004-7.816.002-11.724-.014zM224.367 12.988c.488 2.154.994 4.305 1.443 6.467.107.516.293.67.815.667 3.564-.023 7.13-.01 10.693-.015.187 0 .374-.035.562-.053V.078h-24.272v12.17h10.562c.074.277.144.507.197.74zM213.646 36.61h11.474V24.14h-11.474v12.47zM162.423.067h-32.666v11.29h1.813c2.04 0 3.18 1.138 3.18 3.178v33.277c0 .246.008.493-.012.737-.104 1.27-1.448 2.527-2.723 2.54-.752.01-1.504.003-2.266.003v10.873h25.762V11.33h6.91V.067zM0 11.356h1.827c2.048 0 3.194 1.135 3.195 3.166v33.35c0 .247.006.494-.018.738-.123 1.232-1.468 2.468-2.704 2.482-.753.01-1.506.002-2.284.002v10.862h25.697V.063H0v11.293zM122.416 48.205C117.41 32.352 112.4 16.5 107.41.643c-.166-.53-.418-.644-.926-.643-6.1.016-12.2.01-18.3.01h-.737l14.698 51.115h-6.842v10.83h31.382V51.12c-.186-.01-.307-.02-.43-.023-2.223-.037-3.162-.746-3.84-2.89zM62.112 20.815c-2.024-9.648-7.83-15.882-17.27-18.744C40.192.66 35.417.156 30.586.027c-.704-.02-1.408-.003-2.115-.003V12.07c.073.025.095.038.118.04.466.035.932.067 1.397.1 5.105.374 8.486 3.027 10.24 7.79 1.388 3.775 1.657 7.718 1.634 11.69-.023 3.85-.34 7.666-1.762 11.295-1.5 3.826-4.145 6.398-8.25 7.253-1.1.23-2.235.28-3.37.415V62c5.81-.04 11.488-.584 16.956-2.516 7.884-2.786 13.254-8.1 15.81-16.087 2.377-7.428 2.458-15 .868-22.582z\"/><path class=\"logo-path\" d=\"M84.933 51.07c-2.434-.097-3.666-1.33-3.505-3.74.092-1.378.376-2.782.814-4.095 2.556-7.66 5.19-15.295 7.77-22.947.144-.428.173-.97.05-1.402-1.287-4.56-2.616-9.106-3.935-13.656-.503-1.736-1.013-3.47-1.51-5.175H73.87v11.302c.933 0 1.793-.008 2.652.002 1.056.01 1.792.648 1.854 1.687.024.398-.105.824-.24 1.21-3.04 8.64-6.086 17.273-9.134 25.907-.964 2.73-1.912 5.47-2.91 8.187-.713 1.938-1.864 2.708-3.895 2.747-.185.003-.37.04-.544.06v10.786h26.22V51.077c-1.032 0-1.987.03-2.94-.007zM167.694 50.155h-9.504v11.788h23.817v-22.77h-12.62l-1.693 10.982z\"/><path class=\"logo-path\" d=\"M88.003 34.16c-.404 1.13-.763 2.277-1.14 3.418-.588 1.786-1.18 3.57-1.795 5.43h11.925L94.35 33.66c-1.977 0-3.915-.01-5.852.022-.172.004-.424.278-.495.477z\"/></svg>";
+    }
+
+    function peteLogo() {
+      return "<svg class=\"logo\" xmlns=\"http://www.w3.org/2000/svg\" width=\"231.45\" height=\"62\" viewBox=\"0 0 231.45 62\"><style>.logo-path{fill:" + pete_colour + " !important;}</style><path class=\"logo-path\" d=\"M25.74.054H0v11.294h1.998c1.828.003 3.02 1.202 3.02 3.048.003 6.13.002 12.26.002 18.39 0 5.12.004 10.24-.002 15.36-.002 1.67-1.278 2.97-2.898 2.975-.703.004-1.405 0-2.1 0V62h32.24V51.09h-6.52V.053zM58.942 11.348h1.997c1.827.003 3.02 1.202 3.02 3.048.003 6.08.002 12.16.002 18.242 0 5.17.004 10.34-.002 15.51-.002 1.67-1.278 2.967-2.898 2.974-.703.003-1.405 0-2.1 0v10.862h25.7V.054h-25.72v11.294zM158.475 51.093c-.593-.083-1.228-.33-1.704-.69-.798-.602-1.12-1.466-1.118-2.518.022-15.63.015-31.258.015-46.887v-.97H134.95v47.71c0 .245.01.492-.006.737-.09 1.336-1.462 2.634-2.8 2.645-.85.007-1.704 0-2.59 0v10.85h31.48V51.12c-.894.002-1.74.09-2.56-.027z\"/><path class=\"logo-path\" d=\"M52.292 6.505c-2.243-2.38-5.06-3.782-8.125-4.734C39.972.468 35.643.087 31.277.01c-.926-.016-1.853-.002-2.79-.002v12.072c.705.06 1.365.1 2.02.177 2.525.29 4.287 1.57 5.17 3.996.902 2.488.962 5.024.273 7.543-.738 2.7-2.382 4.55-5.31 4.953-.702.097-1.415.126-2.15.188v10.788c1.795 0 3.543.09 5.278-.017 4.815-.295 9.52-1.117 13.877-3.335 4.258-2.167 7.103-5.5 8.343-10.152.966-3.628 1.005-7.294.404-10.972-.537-3.292-1.775-6.275-4.1-8.74zM100.514 40.755c-.442-.002-.51.21-.573.57-.47 2.685-.982 5.365-1.43 8.055-.1.603-.283.812-.92.805-3.1-.035-6.2-.016-9.3-.016h-.865v11.805h25.092V40.83c-.13-.03-.2-.06-.27-.06-3.91-.005-7.822 0-11.733-.015zM98.177 12.972c.488 2.156.995 4.31 1.445 6.473.107.517.293.67.816.667 3.568-.023 7.135-.01 10.703-.015.188 0 .376-.035.563-.053V.05H87.41v12.18h10.57c.074.278.144.508.197.742zM158.37 11.87h2.622l1.426 11.416h12.175V.036H158.37V11.87zM132.046 11.854V.024h-16.04V23.25h12.286l1.333-11.398h2.42zM87.446 36.616H98.93V24.133H87.447v12.483zM177.874 11.348h1.997c1.83.003 3.022 1.202 3.023 3.048.002 6.08 0 12.16 0 18.242 0 5.17.005 10.34 0 15.51-.003 1.67-1.28 2.967-2.9 2.974-.702.003-1.404 0-2.1 0v10.862h25.7V.054h-25.718v11.294zM219.446 40.755c-.442-.002-.51.21-.573.57-.47 2.685-.983 5.365-1.43 8.055-.1.603-.284.812-.92.805-3.1-.035-6.2-.016-9.3-.016h-.866v11.805h25.092V40.83c-.132-.03-.2-.06-.27-.06-3.91-.005-7.822 0-11.734-.015zM217.11 12.972c.487 2.156.994 4.31 1.444 6.473.107.517.293.67.816.667 3.568-.023 7.135-.01 10.703-.015.187 0 .375-.035.562-.053V.05H206.34v12.18h10.572c.074.278.144.508.197.742zM206.378 36.616h11.485V24.133h-11.485v12.483z\"/></svg>";
+    }
+
+    function getLogo(sitename) {
+      if (sitename == dale_name) return document.write(daleLogo());
+      if (sitename == pete_name) return document.write(peteLogo());
+    }
+
+    function kbSite(sitename, path) {
+      if (path == null) {
+        if (sitename == dale_name) return location.href=dale_kb;
+        if (sitename == pete_name) return location.href=pete_kb;
+      }
+      else {
+        if (sitename == dale_name) return location.href=dale_kb+path;
+        if (sitename == pete_name) return location.href=pete_kb+path;
+      }
+    }
+  </script>
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'pto6yzk',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
 </head>
-<body>
+
+<body class="page-404 action-" onload="updateTitle();">
+  <header class="header js-header">
+    <div class="header-toolbar">
+      <div class="group">
+        <a class="header-toolbar__logo" id="js-logo" href="/">
+          <script>getLogo(siteName());</script>
+          <span class="header-logo__alt">Pete</span>
+        </a>
+        <a onclick="kbSite(siteName(), 'search');">
+          <div class="header-toolbar__search js-searchForm-container">
+            <form class="header-toolbar__search-form js-searchForm" action="/search">
+              <label for="search-box" class="js-searchForm-toggle">
+                <span>Search</span>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10.4 10.09">
+                  <defs>
+                    <style>.a,.c,.d{fill:none;}.b{clip-path:url(#a);}.c,.d{stroke:#7a706c;stroke-miterlimit:10;stroke-width:1.25px;}.d{stroke-linecap:round;}</style>
+                    <clipPath id="a" transform="translate(-6.98 -6.77)">
+                      <rect class="a" width="24" height="24"></rect>
+                    </clipPath>
+                  </defs>
+                  <g class="b"><circle class="c" cx="4.63" cy="4.63" r="4"></circle></g>
+                  <line class="d" x1="7.62" y1="7.32" x2="9.77" y2="9.46"></line>
+                </svg>
+              </label>
+              <input id="query" type="text" name="query">
+            </form>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <nav class="header-navigation js-submenu">
+      <div class="group" role="navigation">
+        <ul>
+          <li><a class="" href="/">Forums</a></li>
+          <li><a class="" href="#" onclick="kbSite(siteName(), 'articles');">Articles</a></li>
+          <li><a class="" href="#" onclick="kbSite(siteName(), 'support');">Support</a></li>
+          <li><a class="" href="#" onclick="kbSite(siteName(), 'about');">About</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page" id="content" tabindex="0">
+    <div class="error">
+      <header class="standardHeader plain">
+        <div class="constrained">
+          <h1>Internal server error</h1>
+        </div>
+      </header>
+      <div class="error-content">
+        <div class="group">
+          <img class="error-content__image" src="/images/error-man.png" alt="Oh no!" />
+          <p>Oops! Sorry to disappoint, but it seems something has gone wrong on our end. <br>Please try the search bar, or go back to the <a href="javascript: history.go(-1)">page your were on</a>.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <section class="footer-links">
+      <div class="constrained">
+        <div class="footer-links__left">
+          <p class="footer-links__left-copyright">Copyright 2016 VAC</p>
+        </div>
+        <div class="footer-links__right">
+          <ul>
+            <li><a href="#" onclick="kbSite(siteName());">Home</a></li>
+            <li><a href="#" onclick="kbSite(siteName(), 'articles');">Articles</a></li>
+            <li><a href="/">Forums</a></li>
+            <li><a href="/">Chat</a></li>
+            <li><a href="#" onclick="kbSite(siteName(), 'about');">About</a></li>
+            <li><a href="#" onclick="kbSite(siteName(), 'support');">Support</a></li>
+            <li><a href="#" onclick="kbSite(siteName(), 'terms-of-use');">Terms of use</a></li>
+            <li><a href="#" onclick="kbSite(siteName(), 'privacy-policy');">Privacy policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </footer>
+
 </body>
 </html>
