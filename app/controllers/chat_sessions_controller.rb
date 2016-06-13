@@ -103,17 +103,7 @@ class ChatSessionsController < ApplicationController
       # all new messages, including private messages,
       # and excluding messages made by the user
 
-      # Process the queue
-      queue.each do |index, queue_item|
-        case queue_item["type"]
-        when "message"
-          # Create new message
-          @chat_session.chat_messages.create(
-            content: queue_item["payload"]["content"],
-            user: @current_user
-          )
-        end
-      end
+      process_queue
 
       # Retrieve new messages for the user
       messages = @chat_messages.since(last_seen).for_user(@current_user)
@@ -132,6 +122,29 @@ class ChatSessionsController < ApplicationController
   end
 
   private
+
+  def process_queue
+    queue = params[:queue] || []
+
+    queue.each do |index, queue_item|
+      case queue_item["type"]
+      when "message"
+        # Create new message
+        @chat_session.chat_messages.create(
+          content: queue_item["payload"]["content"],
+          user: @current_user
+        )
+      when "delete"
+        # Remove message
+        # Moderators only
+        require_permission :chat_modify
+
+        @chat_session.chat_messages.find_by(
+          id: queue_item["payload"]["message_id"]
+        ).destroy
+      end
+    end
+  end
 
   def chat_session_params
     params.require(:chat_session).permit(

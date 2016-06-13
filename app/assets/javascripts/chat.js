@@ -17,6 +17,8 @@
     duration_display = $('.js-chat-duration');
     template = $('.js-chat-template').text();
 
+    setup_moderator_tools();
+
     form.on('submit', function(e) {
       e.preventDefault();
       send_message();
@@ -141,6 +143,26 @@
     input.val('');
   };
 
+  // Moderation
+
+  var setup_moderator_tools = function() {
+    messages_container.on('click', '.js-chat-delete', function() {
+      var message_el;
+      var message_id;
+
+      message_el = $(this).parents('.js-message');
+      message_id = message_el.attr('data-id');
+
+      add_to_queue(
+        'delete',
+        {
+          message_id: message_id
+        }
+      );
+
+      message_el.addClass('deleted');
+    });
+  };
 
   $(init);
 

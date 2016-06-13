@@ -15,7 +15,11 @@ form.js-chat-form
 hr
 
 script.js-chat-template type="text/x-template"
-  .message.js-message data-self="$self"
+  .message.js-message data-self="$self" data-from="$from" data-id="$id"
+    - if current_user_can?(:chat_modify)
+      ul
+        li.js-chat-delete Delete message
+
     div.avatarWrapper
       .avatar data-colour="$avatar_colour" data-face="$avatar_face"
     p $content
