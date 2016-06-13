@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607134553) do
+ActiveRecord::Schema.define(version: 20160613105440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160607134553) do
     t.integer  "site_id"
     t.datetime "started_at"
     t.datetime "ended_at"
+    t.string   "tags",                       array: true
   end
 
   add_index "chat_sessions", ["site_id"], name: "index_chat_sessions_on_site_id", using: :btree

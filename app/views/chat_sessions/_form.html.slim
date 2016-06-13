@@ -13,5 +13,11 @@
     / TODO IMPLEMENT JQUERY PICKER
     = f.datetime_local_field :scheduled_for
 
+  .label.large
+    .label__title Tags
+    = render 'components/tags',
+      name: 'chat_session[tags]',
+      value: @chat_session.tags
+
   .form__button.js-popup-close Cancel
   button.form__button.primary Save

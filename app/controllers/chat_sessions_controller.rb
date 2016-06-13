@@ -136,7 +136,8 @@ class ChatSessionsController < ApplicationController
   def chat_session_params
     params.require(:chat_session).permit(
       :name,
-      :description
+      :description,
+      :tags => []
     )
   end
 
