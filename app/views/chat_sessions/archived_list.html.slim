@@ -3,8 +3,8 @@
     .strip__modOnly Only visible to moderators
     h1 Archived chats
 
-- content_for :sidebar_locked do
-  = render 'partials/sidebar', expanded: true
+- content_for :sidebar do
+  = render 'partials/sidebar'
 
 - @chat_sessions.each do |chat_session|
   = render 'archived_chat', chat_session: chat_session

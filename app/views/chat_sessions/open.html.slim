@@ -18,7 +18,7 @@
   - content_for :edit_strip do
     a.btn__edit href=edit_chat_session_path(@chat_session) data-modal=true Edit details
 
-- content_for :sidebar_locked do
-  = render 'partials/sidebar', expanded: true
+- content_for :sidebar do
+  = render 'partials/sidebar'
 
 = render 'chat_widget'

@@ -1,5 +1,5 @@
-- content_for :dark_strip do
-  .strip__dark-thread
+- content_for :chat_strip do
+  .strip__dark-chat
     h2
       a href=chats_path
         = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
@@ -11,6 +11,8 @@
   - content_for :edit_strip do
     a.btn__edit href=edit_chat_session_path(@chat_session) data-modal=true Edit details
 
+- content_for :sidebar do
+  = render 'partials/sidebar'
 
 - if current_user_can?(:chat_modify)
 
