@@ -1,27 +1,46 @@
-.chatSession
-  .chatTitle
-    h2 = chat_session.name
-    p = chat_session.description
-    // p = chat_session.status
+- upcoming = true if (chat_session.scheduled_for <= (Time.now + 1.days))
 
-  .chatDetails
-    .chatDetails__date
-      strong Date
-      h2 = chat_session.scheduled_for.strftime("%d/%m/%Y")
+.chatSession upcoming=upcoming
+  .chatUpcoming upcoming=upcoming
+    .chatUpcoming__title
+      p UPCOMING
+      = insert_svg("title-chat-small.svg", class:"heading__chat-small")
+    .chatUpcoming__notify
+      .btn__notify
+        = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+        | Get notified
 
-    .chatDetails__time
-      strong Time
-      h2
-        = chat_session.scheduled_for.strftime("%H.%M")
-        // Timezone
-        span = chat_session.scheduled_for.strftime("%Z")
+  .chatSession__col upcoming=upcoming
+    .chatTitle
+      h2 = chat_session.name
+      p = chat_session.description
 
-    - if (chat_session.scheduled_for <= (Date.today + 7.days))
-      .chatDetails__soon
-        - if (chat_session.scheduled_for <= (Time.now + 1.days))
-          strong Chat starts in
-        - else
-          strong Chat live in
-        h2  = distance_of_future_time_in_words(chat_session.scheduled_for)
+    .chatSession__row upcoming=upcoming
+      .chatDetails__notify
+        .btn__notify
+          = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+          | Get notified
+      .chatDetails
+        .chatDetails__date
+          strong Date
+          h2 = chat_session.scheduled_for.strftime("%d/%m/%y")
 
-// a href=chat_session_path(chat_session) View chat
+        .chatDetails__time
+          strong Time
+          h2
+            = chat_session.scheduled_for.strftime("%l.%M%p").downcase
+            // Timezone
+            span = chat_session.scheduled_for.strftime(" %Z")
+
+      - if (chat_session.scheduled_for <= (Date.today + 7.days))
+        .chatDetails__soon
+          - if (chat_session.scheduled_for <= (Time.now + 1.days))
+            strong Chat starts in
+          - else
+            strong Chat live in
+          h2  = distance_of_future_time_in_words(chat_session.scheduled_for)
+
+    .mobile-chatDetails__notify
+      .btn__notify
+        = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+        | Get notified
