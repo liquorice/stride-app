@@ -422,6 +422,23 @@
       color: $primary;
       line-height: 1;
     }
+
+    .awaiting {
+      @include breakpoint (small) {
+        padding-top: 3px;
+      }
+      @include breakpoint (mini) {
+        padding-top: 0;
+      }
+      padding-top: 6px;
+      p {
+        @include ff-adelle-bold;
+        @include breakpoint (mini) {
+          display: inline-block;
+          font-size: 1.133rem;
+        }
+      }
+    }
   }
 
 
