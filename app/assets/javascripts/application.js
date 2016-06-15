@@ -31,5 +31,6 @@
 //= require just-pinned
 //= require manage-topics
 //= require survey-popup
+//= require chat-bar
 
 //= require main

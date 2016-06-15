@@ -3,6 +3,7 @@
   'use strict';
 
   var init_applies = function(container) {
+    Module.apply(container.find('.js-chatbar'), 'chatbar');
     Module.apply(container.find('.js-radiobutton'), 'radiobutton');
     Module.apply(container.find('.js-textarea'), 'freeText');
     Module.apply(container.find('.js-profile'), 'profileEdit');
