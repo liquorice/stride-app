@@ -1,26 +1,27 @@
-  div
+a.chatArchived__preview href=chat_session_path(chat_session)
+  .text-main
     h3 = chat_session.name
     p = chat_session.description
 
+  .text-sub
     p
-      | Ended
-      br
-      = chat_session.ended_at
+      strong Ended: 
+      = chat_session.ended_at.strftime("%l.%M%p, ").downcase + chat_session.ended_at.strftime("%e %B, %Y")
+
+    // TODO Need moderator name
+    p
+      strong Moderator: 
+      ' CHAT MODERATOR
 
     p
-      | Tags
-      br
-      | Foo bar baz
-
-    p
-      | Messages count
-      br
+      strong Messages: 
       = chat_session.messages_count
 
     p
-      | Participants count
-      br
+      strong Participants: 
       = chat_session.participants_count
 
+    // TODO Tags
     p
-      a href=chat_session_path(chat_session) View
+      strong Tags: 
+      ' Foo bar baz
