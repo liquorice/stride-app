@@ -14,23 +14,38 @@
 - content_for :sidebar do
   = render 'partials/sidebar'
 
-- if current_user_can?(:chat_modify)
+.chatbar
+  .chatbar__title
+    = insert_svg("title-chat-small.svg", class:"heading__chat-small")
+    - if current_user_can?(:chat_modify)
+        a.btn-start href=start_chat_session_path(@chat_session) data-method="patch" Start Chat
+  .chatbar__time
+    p 0 hr 0min 0s
+  .btn-chatbar.js-chatbar
+    = insert_svg("icons/icon_info.svg", class:"icon__info")
+  .chatbar__info
+    p = @chat_session.description
 
-  - if @chat_session.scheduled_for > Time.now
-    p This chat is scheduled to be opened in #{distance_of_time_in_words(@chat_session.scheduled_for, Time.now)}
 
+  / - if @chat_session.scheduled_for > Time.now
+  /   p This chat is scheduled to be opened in #{distance_of_time_in_words(@chat_session.scheduled_for, Time.now)}
+
+  / - else
+  /   p This chat was scheduled to open #{distance_of_time_in_words(@chat_session.scheduled_for, Time.now)} ago
+
+  / p
+  /   | Scheduled start
+  /   strong = @chat_session.scheduled_for.strftime("%d/%m/%Y %H.%M %Z")
+
+  / p
+  /   a href=start_chat_session_path(@chat_session) data-method="patch" Start this chat session
+  / p
+  /   | This chat is scheduled for
+  /   strong = @chat_session.scheduled_for.strftime("%d/%m/%Y %H.%M %Z")
+
+.chatscreen
+  - if current_user_can?(:chat_modify)
+    a href=start_chat_session_path(@chat_session) data-method="patch"
+      = insert_svg("chat_launch.svg", class:"img__launch")
   - else
-    p This chat was scheduled to open #{distance_of_time_in_words(@chat_session.scheduled_for, Time.now)} ago
-
-  p
-    | Scheduled start
-    strong = @chat_session.scheduled_for.strftime("%d/%m/%Y %H.%M %Z")
-
-  p
-    a href=start_chat_session_path(@chat_session) data-method="patch" Start this chat session
-
-
-- else
-  p
-    | This chat is scheduled for
-    strong = @chat_session.scheduled_for.strftime("%d/%m/%Y %H.%M %Z")
+    p Awaiting moderator

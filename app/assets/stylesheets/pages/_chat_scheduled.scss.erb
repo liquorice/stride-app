@@ -1,0 +1,182 @@
+.chatbar {
+  width: 100%;
+  border-bottom: 2px solid rgba($grey-warm, 0.2);
+}
+
+  .chatbar__title {
+    @include breakpoint (medium) {
+      padding: 0.8421rem 0 0.4737rem 1rem;
+    }
+    @include breakpoint (mini) {
+      height: 40px;
+      width: calc(100% - 7.8rem - 40px);
+      padding: 0.8421rem 0 0.4737rem 0.8rem;
+    }
+    @include retina() {
+      background:
+        url('header-chat@2x.png') center center repeat,
+        url('noise-200x200@2x.png') center center repeat;
+      background-color: $grey-cool;
+      background-size: 660px 235px, 283px 283px;
+    }
+
+    background:
+      url('header-chat.png') center center repeat,
+      url('noise-200x200.png') center center repeat;
+    background-color: $grey-cool;
+    background-size: 660px 235px, 283px 283px;
+    padding: 0.8421rem 0 0.4737rem 2.053rem;
+    height: 3.421rem;
+    width: calc(100% - 7.8rem - 3.421rem);
+    float: left;
+
+    .heading__chat-small {
+      @include breakpoint (mini) {
+        width: 78.189px;
+        height: 16px;
+      }
+      height: 1.842rem;
+      width: 9.053rem;
+      float: left;
+
+      path#bolt {
+        fill: $primary;
+      }
+    }
+  }
+
+  .btn-start {
+    @include btn-meta;
+    @include btn-primary;
+    @include ff-adelle-bold;
+    @include breakpoint (small, mini) {
+      display: none;
+    }
+    float: left;
+    cursor: pointer;
+    display: block;
+    margin: 4px 0 0 1rem;
+  }
+
+  .chatbar__time {
+    @include breakpoint (mini) {
+      height: 40px;
+    }
+    background-color: $grey-cool;
+    height: 3.421rem;
+    display: inline-block;
+    width: 7.8rem;
+    float: left;
+
+    p {
+      @include p-meta;
+      @include breakpoint (mini) {
+        line-height: 40px;
+      }
+      color: $white;
+      line-height: 3.421rem;
+      text-align: center;
+    }
+  }
+
+  .btn-chatbar {
+    @include breakpoint (mini) {
+      height: 40px;
+      width: 40px;
+      padding-left: calc((40px/2) - (6px/2));
+      padding-top: calc((40px/2) - (12.12px/2));
+    }
+    display: inline-block;
+    background-color: $black;
+    cursor: pointer;
+    height: 3.421rem;
+    width: 3.421rem;
+    padding-left: calc((3.421rem/2) - (0.5263rem/2));
+    padding-top: calc((3.421rem/2) - (1rem/2));
+
+    .icon__info {
+      @include breakpoint (mini) {
+        height: 12.12px;
+        width: 6px;
+      }
+      height: 1rem;
+      width: 0.5263rem;
+
+      & > * {
+        fill: $blue-light;
+      }
+    }
+  }
+
+    .btn-chatbar:hover,
+    .btn-chatbar.expanded {
+      background-color: $white;
+      transition: all 200ms ease-in;
+      .icon__info > * {
+        fill: $links;
+      }
+    }
+
+    .btn-chatbar:hover ~ .chatbar__info,
+    .btn-chatbar.expanded ~ .chatbar__info {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 200ms ease-out;
+    }
+
+  .chatbar__info {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-5px);
+    background-color: $white;
+    position: absolute;
+    border-bottom: 3px solid rgba($grey-warm, 0.08);
+
+    p {
+      @include p-meta;
+      padding: 1rem 1.333rem;
+    }
+  }
+
+.chatscreen {
+  margin-bottom: 38px;
+  background-color: $bg-dark;
+  text-align: center;
+  height: 11.33rem;
+
+  p {
+    @include p-meta;
+    color: $grey-warm;
+    line-height: 11.33rem;
+  }
+}
+
+  .img__launch {
+    @include breakpoint (small, mini) {
+      display: inline-block;
+    }
+    margin-top: calc((11.33rem/2) - (5.2rem/2));
+    height: 5.2rem;
+    width: 5.2rem;
+    display: none;
+
+    .bg {
+      fill: $primary;
+    }
+
+    &:hover {
+      .bg {
+        transition: all 300ms ease-out;
+        fill: $primary-dark;
+      }
+      .arrow-top {
+        transform: translateY(-5px) translateX(5px);
+        transition: all 300ms ease-in-out;
+      }
+      .arrow-bottom {
+        transform: translateY(5px) translateX(-5px);
+        transition: all 300ms ease-in-out;
+      }
+    }
+  }
