@@ -6,6 +6,7 @@
 - content_for :sidebar do
   = render 'partials/sidebar'
 
-- @chat_sessions.each do |chat_session|
-  = render 'archived_chat', chat_session: chat_session
-= render 'partials/pagination', paginated: @chat_sessions
+.archivedList
+  - @chat_sessions.each do |chat_session|
+    = render 'archived_chat', chat_session: chat_session
+  = render 'partials/pagination', paginated: @chat_sessions
