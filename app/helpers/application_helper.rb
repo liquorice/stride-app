@@ -32,7 +32,7 @@ module ApplicationHelper
     # Returns the distance in words between now and a future time
     # If the supplied time has already passed, treat the event as imminent
     time = [Time.now, time].max
-    distance_of_time_in_words(time, Time.now)
+    distance_of_time_in_words(time, Time.now, include_seconds: true).gsub('about ','').gsub('less than ','').gsub('seconds','sec')
   end
 
 end

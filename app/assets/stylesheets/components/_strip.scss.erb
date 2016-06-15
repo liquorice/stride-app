@@ -46,6 +46,10 @@
 }
 
 .heading__chat {
+  @include breakpoint(small, mini) {
+    height: 3.133rem;
+    width: 15.33rem;
+  }
   display: inline-block;
   height: 5.684rem;
   width: 26.42rem;
@@ -114,7 +118,8 @@
       @include h1-level2;
     }
 
-    .strip__dark-thread & {
+    .strip__dark-thread &,
+    .strip__dark-chat & {
       @include h1-level3;
     }
   }
@@ -122,7 +127,8 @@
   h2 {
     .strip__dark-topic &,
     .strip__dark-thread &,
-    .strip__dark-regular & {
+    .strip__dark-regular &,
+    .strip__dark-chat & {
       @include h1-breadcrumb;
       a {
         padding: 1rem;
@@ -131,14 +137,16 @@
 
     .strip__dark-topic & a:hover,
     .strip__dark-thread & a:hover,
-    .strip__dark-regular & a:hover {
+    .strip__dark-regular & a:hover,
+    .strip__dark-chat & a:hover {
       color: $primary;
       transition: all 200ms ease-out;
     }
 
     .strip__dark-topic & a:hover > svg *,
     .strip__dark-thread & a:hover > svg *,
-    .strip__dark-regular & a:hover > svg * {
+    .strip__dark-regular & a:hover > svg *,
+    .strip__dark-chat & a:hover > svg * {
       fill: $primary;
       transition: all 200ms ease-out;
     }

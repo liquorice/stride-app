@@ -1,65 +1,457 @@
-@mixin chatDetails-column {
-  @include p-meta;
-  display: inline-block;
-  // height: 5rem;
+.chatSession {
+  display: block;
+  margin-bottom: 6px;
+  position: relative;
+  width: 100%;
 
-  h2 {
-    @include h2-level1;
+  &:last-child {
+    margin-bottom: 6.211rem;
+  }
+
+  &[upcoming] {
+    @include breakpoint (huge, overlarge) {
+      max-width: calc(100% - 12.74rem);
+    }
+    @media screen and (min-width: 1200px) and (max-width: 1300px) {
+      max-width: calc(100% - 10.63rem);
+    }
+    @include breakpoint (large) {
+      max-width: calc(100% - 10.63rem);
+    }
+    @include breakpoint (mini) {
+      margin-bottom: 19px;
+    }
+    margin-bottom: 14px;
+    max-width: 100%;
   }
 }
 
-.chatSession {
-  display: block;
-  width: 100%;
-  background-color: $white;
+.chatUpcoming {
+  @media screen and (min-width: 1200px) and (max-width: 1300px) {
+    width: 10.63rem;
+  }
+  @include breakpoint (large) {
+    width: 10.63rem;
+  }
+  @include breakpoint (mini) {
+    padding: 1.8rem 0 1.867rem;
+  }
+  @include retina() {
+    background:
+      url('header-chat@2x.png') center center repeat,
+      url('noise-200x200@2x.png') center center repeat;
+    background-color: $grey-cool;
+    background-size: 660px 235px, 283px 283px;
+  }
+
+  background:
+    url('header-chat.png') center center repeat,
+    url('noise-200x200.png') center center repeat;
+  background-color: $grey-cool;
+  background-size: 660px 235px, 283px 283px;
+  bottom: 0;
+  display: none;
+  left: 0;
+  padding: 1.316rem 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  vertical-align: top;
+  width: 12.74rem;
+
+  &[upcoming] {
+    @include breakpoint (huge, overlarge, large) {
+      display: inline-block;
+
+      &:before {
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid $grey-cool;
+        border-right: 10px solid transparent;
+        border-top: 10px solid transparent;
+        content: "";
+        height:0;
+        position:absolute;
+        right: -20px;
+        top: 28px;
+        width:0;
+        z-index: 20;
+      }
+    }
+    @include breakpoint (medium, small, mini) {
+      display: block;
+      position: relative;
+      width: 100%;
+
+      &:before {
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid $grey-cool;
+        content: "";
+        height:0;
+        position:absolute;
+        right: calc(50% - 5px);
+        top: 100%;
+        width:0;
+        z-index: 20;
+      }
+    }
+  }
+
+  &[upcoming] > .chatUpcoming__title {
+    @include p-meta;
+    color: $white;
+
+    .heading__chat-small {
+      @include breakpoint (medium, small, mini) {
+        width: 172.163px;
+        height: 35.23px;
+      }
+      height: 1.842rem;
+      margin-top: 5px;
+      width: 9.053rem;
+
+      path#bolt {
+        fill: $primary;
+      }
+    }
+  }
+
+  &[upcoming] > .chatUpcoming__notify {
+    @include breakpoint (medium, small, mini) {
+      bottom: 0;
+      padding-top: 4px;
+      position: relative;
+    }
+    bottom: 1.632rem;
+    position: absolute;
+    width: 100%;
+  }
+
+  &[upcoming] .chatUpcoming__notify > .btn__notify {
+    @include btn-short;
+    @include btn-primary;
+    @include breakpoint (mini) {
+      padding: 0.35em 0.857em 0.5em;
+    }
+    cursor: pointer;
+    margin-bottom: 0;
+
+    & > svg *,
+    &:hover > svg * {
+      fill: $white;
+    }
+  }
 }
 
-.chatDetails {
+.chatSession__col {
+  background-color: $white;
   display: block;
-  width: 100%;
+
+  &[upcoming] {
+    @media screen and (min-width: 1200px) and (max-width: 1300px) {
+      left: 10.63rem;
+    }
+    @include breakpoint (large) {
+      left: 10.63rem;
+    }
+    @include breakpoint (medium, small, mini) {
+      display: block;
+      left: 0;
+    }
+    display: inline-block;
+    max-width: none;
+    position: relative;
+    left: 12.74rem;
+  }
 }
 
 .chatTitle {
+  @include breakpoint (mini) {
+    padding: 1rem;
+  }
+
   display: block;
+  padding: 1.316rem 1.158rem 1.158rem;
   width: 100%;
-  // h2, p {
-  //   -webkit-box-orient: vertical;
-  //   display: -webkit-box;
-  //   overflow: hidden;
-  //   text-overflow: ellipsis;
-  // }
 
   h2 {
     @include h2-level1;
-    // @include breakpoint(mini) {
-    //   -webkit-line-clamp: 2;
-    //   max-height: 3em;
-    // }
-    // -webkit-line-clamp: 1;
+    @include breakpoint (mini) {
+      padding-bottom: 0.334rem;
+    }
     color: $grey-cool;
-    // padding-bottom: 0.5em;
-    // max-height: 1.6em;
+    padding-bottom: 0.526rem;
   }
 
   p {
     @include p-short;
-    // @include breakpoint(mini) {
-    //   -webkit-line-clamp: 3;
-    //   max-height: 3em;
-    // }
-    // -webkit-line-clamp: 2;
     color: $grey-cool;
-    // padding-bottom: 0.5em;
-    // max-height: 1.6em;
   }
 }
 
-.chatDetails__date {
-  @include chatDetails-column;
+.chatSession__row {
+  @include breakpoint (mini) {
+    height: auto;
+    overflow: visible;
+  }
+  display: block;
+  height: 5rem;
+  width: 100%;
+
+  &[upcoming] > .chatDetails__notify,
+  &[upcoming] ~ .mobile-chatDetails__notify {
+    display: none;
+  }
+
+  &[upcoming] > .chatDetails {
+    @include breakpoint (huge, overlarge, large) {
+      .chatDetails__date {
+        padding: 1.105rem 0;
+      }
+    }
+    @include breakpoint (large) {
+      margin-left: 1rem;
+      width: calc(98% - 7.211rem - 1rem);
+    }
+    @include breakpoint (medium, small, mini) {
+      float: none;
+      margin-left: 0;
+      width: calc(98% - 8.211rem);
+    }
+    @include breakpoint (mini) {
+      width: 100%;
+    }
+    margin-left: 1.368rem;
+    width: calc(98% - 8.211rem - 1.368rem);
+  }
+
+  &[upcoming] > .chatDetails__soon {
+    @media screen and (min-width: 1200px) and (max-width: 1300px) {
+      padding: 1.105rem 0 1.105rem 1.068rem;
+    }
+    @include breakpoint (large) {
+      padding: 1.105rem 0 1.105rem 1.068rem;
+      width: 7.211rem;
+    }
+    @include breakpoint (mini) {
+      display: block;
+      float: none;
+      width: 100%;
+    }
+    background-color: $primary;
+    border-left: none;
+    border-top: none;
+    color: $white;
+    float: right;
+    margin-right: 0;
+    width: 8.211rem;
+
+    h2, strong {
+      color: $white;
+    }
+  }
 }
 
-.chatDetails__time {
-  @include chatDetails-column;
+  .chatDetails__notify {
+    @media screen and (min-width: 1200px) and (max-width: 1300px) {
+      width: calc(10.63rem - 1.789rem);
+    }
+    @include breakpoint (large) {
+      width: calc(10.63rem - 1.789rem);
+    }
+    @include breakpoint (medium, small, mini) {
+      display: none;
+    }
+    border-right: 1px solid rgba($grey-warm, 0.1);
+    border-top: 1px solid rgba($grey-warm, 0.1);
+    display: inline-block;
+    float: left;
+    height: 5rem;
+    margin-left: 1.789rem;
+    padding: 1.474rem 0 0;
+    width: calc(12.74rem - 1.789rem);
+  }
+
+  .mobile-chatDetails__notify{
+    @include breakpoint (medium, small, mini) {
+      border-top: 1px solid rgba($grey-warm, 0.1);
+      display: block;
+      max-width: 100%;
+      padding: 1rem 1.105rem;
+      width: 100%;
+    }
+    display: none;
+  }
+
+    .btn__notify {
+      @include btn-short;
+      cursor: pointer;
+      margin-bottom: 0;
+      &:hover > svg * {
+        fill: $black;
+      }
+    }
+
+  .chatDetails {
+    @media screen and (min-width: 1200px) and (max-width: 1300px) {
+      width: calc(100% - 8.211rem - 10.63rem);
+    }
+    @include breakpoint (large) {
+      width: calc(100% - 7.211rem - 10.63rem);
+    }
+    @include breakpoint (medium, small) {
+      width: calc(100% - 8.211rem);
+    }
+    @include breakpoint (mini) {
+      display: block;
+      float: none;
+      max-width: 100%;
+      width: 100%;
+    }
+    border-top: 1px solid rgba($grey-warm, 0.1);
+    display: inline-block;
+    float: left;
+    width: calc(100% - 8.211rem - 12.74rem);
+  }
+
+    .chatDetails__date,
+    .chatDetails__time {
+      @include p-meta;
+      @include breakpoint (mini) {
+        width: 49%;
+      }
+      display: inline-block;
+
+      h2 {
+        @include h2-level1;
+        @include breakpoint (mini) {
+          @include p-meta;
+          @include ff-adelle-bold;
+        }
+        line-height: 1;
+      }
+    }
+
+    .chatDetails__date {
+      @include breakpoint (large) {
+        padding: 1.105rem 0 1.105rem 1rem;
+      }
+      @include breakpoint (mini) {
+        padding: 0.4667rem 0 0.8667rem 1.105rem;
+      }
+      padding: 1.105rem 0 1.105rem 1.368rem;
+
+      *, h2 {
+        color: $green-light;
+      }
+    }
+
+    .chatDetails__time {
+      @media screen and (min-width: 1200px) and (max-width: 1300px) {
+        padding: 1.105rem 0 1.105rem 1.037rem;
+      }
+      @include breakpoint (large) {
+        padding: 1.105rem 0 1.105rem 1.037rem;
+      }
+      @include breakpoint (mini) {
+        border-left: 1px solid rgba($grey-warm, 0.1);
+        padding: 0.4667rem 0 0.8667rem 0.8rem;
+      }
+      padding: 1.105rem 0 1.105rem 1.737rem;
+
+      *, h2 {
+        color: $green-mid;
+      }
+
+      span {
+        @include p-meta;
+        @include breakpoint (mini) {
+          color: $grey-warm;
+        }
+        color: $green-mid;
+      }
+    }
+
+  .chatDetails__soon {
+    @include p-meta;
+    @include breakpoint (large) {
+      padding: 1.105rem 0 1.105rem 1rem;
+      width: calc(7.211rem - 1.684rem);
+    }
+    @include breakpoint (medium, small) {
+      float: none;
+      margin-right: 0;
+      width: 8.211rem;
+    }
+    @include breakpoint (mini) {
+      border-left: none;
+      display: block;
+      float: none;
+      height: auto;
+      margin-right: 0;
+      padding: 0.733rem 0;
+      text-align: center;
+      width: 100%;
+
+      strong {
+        color: $grey-warm;
+        display: inline-block;
+        font-size: 1.133rem;
+        line-height: 1;
+      }
+    }
+
+    border-left: 1px solid rgba($grey-warm, 0.1);
+    border-top: 1px solid rgba($grey-warm, 0.1);
+    color: $grey-warm;
+    display: inline-block;
+    float: left;
+    height: 5rem;
+    margin-right: 1.684rem;
+    padding: 1.105rem 0 1.105rem 1.368rem;
+    width: calc(8.211rem - 1.684rem);
+
+    h2 {
+      @include h2-level1;
+      @include breakpoint (mini) {
+        display: inline-block;
+        font-size: 1.133rem;
+        line-height: 1;
+      }
+      color: $primary;
+      line-height: 1;
+    }
+  }
+
+
+
+// debug styles
+.message {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+
+  p {
+    display: inline-block;
+  }
+}
+
+  .avatarWrapper {
+    width: 20px;
+    height: 20px;
+    float: left;
+
+    .message[data-self=true] & {
+      float: right;
+    }
+  }
+
+.messages {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  min-height: 300px;
 }
 
 .chatDetails__soon {

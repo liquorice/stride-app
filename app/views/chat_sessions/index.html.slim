@@ -5,7 +5,7 @@
 - content_for :light_strip do
   p Overview content for live chat
 
-- content_for :sidebar_locked do
-  = render 'partials/sidebar', expanded: true
+- content_for :sidebar do
+  = render 'partials/sidebar'
 
 = render @chat_sessions
