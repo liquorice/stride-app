@@ -1,0 +1,171 @@
+// Archived Chats Listing Styles
+
+.archiveList {
+  padding-bottom: 6.632rem;
+}
+
+.chatArchive__preview {
+  background-color: $white;
+  border-bottom: 1px solid rgba($grey-warm, 0.15);
+  display: block;
+  margin-bottom: 6px;
+  padding: 1.053rem 1.579rem 1.526rem 1.316rem;
+  width: 100%;
+
+  .text__main {
+    padding-bottom: 0.7895rem;
+
+    h3 {
+      @include h2-level1;
+      padding-bottom: 5px;
+    }
+
+    p {
+      @include p-short;
+    }
+  }
+
+  .text__sub {
+    border-top: 1px solid rgba($grey-warm, 0.1);
+    padding-top: 0.9474rem;
+
+    p {
+      @include p-meta;
+      color: $grey-warm;
+    }
+  }
+
+  & + .pagination {
+    @include breakpoint(mini) {
+      margin-top: 1.467rem;
+    }
+    margin-top: 1.053rem;
+  }
+}
+
+// Archived chat view
+
+
+.chatArchive {
+  padding-bottom: 2rem;
+}
+  .mobile-chatArchive__row {
+    @include breakpoint (small, mini) {
+      display: inline-block;
+    }
+    display: none;
+    width: 100%;
+    background-color: $white;
+
+    &:nth-child(n+3) {
+      border-top: 1px solid rgba($grey-warm, 0.1);
+    }
+
+    .chatArchive__col {
+      color: $grey-warm !important;
+
+      &:last-child {
+        float: right !important;
+        width: 41% !important;
+        padding-right: 1.526rem !important;
+      }
+    }
+  }
+  
+  .chatArchive__row {
+    width: 100%;
+    background-color: $white;
+
+    &:first-child {
+      @include breakpoint (small, mini) {
+        display: none;
+      }
+    }
+
+    &:nth-child(n+2) {
+      border-top: 1px solid rgba($grey-warm, 0.1);
+      padding: 0.8947rem 1.632rem 0.8947rem 1.316rem;
+    }
+
+    p {
+      @include p-meta;
+      color: $grey-warm;
+
+      &.desc {
+        @include p-short;
+        padding-bottom: 0.7895rem;
+      }
+
+      &.note__title {
+        padding: 0.316rem 0;
+      }
+
+      &.note__text {
+        padding: 0.211rem 0 0.6316rem;
+      }
+    }
+  }
+
+    .chatArchive__col {
+      display: inline-block;
+      background-color: $white;
+
+      &:first-child {
+        @include breakpoint (small, mini) {
+          padding: 1.158rem 0 1.211rem 1.526rem;
+        }
+        padding: 1.158rem 1.211rem 1.211rem 1.526rem;
+      }
+
+      &:nth-child(n+2) {
+        @include breakpoint (small, mini) {
+          padding: 1.158rem 0 1.211rem 1.526rem;
+        }
+        padding: 1.158rem 1.632rem 1.211rem 0.7895rem;
+      }
+
+      &:nth-child(n+1):nth-child(-n+4) {
+        @include breakpoint (small, mini) {
+          float: none;
+          border-right: none;
+          width: 28%;
+        }
+        float: left;
+        border-right: 1px solid rgba($grey-warm, 0.1);
+      }
+
+      &.light {
+        @include p-meta;
+        color: $green-light;
+        h2 {
+          @include h2-level1;
+          color: $green-light;
+          padding-top: 3px;
+        }
+      }
+
+      &.mid {
+        @include p-meta;
+        color: $green-mid;
+        h2 {
+          @include h2-level1;
+          color: $green-mid;
+          padding-top: 3px;
+        }
+      }
+
+      &.dark {
+        @include p-meta;
+        color: $green-dark;
+        h2 {
+          @include h2-level1;
+          color: $green-dark;
+          padding-top: 3px;
+        }
+      }
+    }
+
+
+.chatHistory {
+  
+}

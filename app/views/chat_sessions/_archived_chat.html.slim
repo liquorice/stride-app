@@ -1,9 +1,9 @@
-a.chatArchived__preview href=chat_session_path(chat_session)
-  .text-main
+a.chatArchive__preview href=chat_session_path(chat_session)
+  .text__main
     h3 = chat_session.name
     p = chat_session.description
 
-  .text-sub
+  .text__sub
     p
       strong Ended: 
       = chat_session.ended_at.strftime("%l.%M%p, ").downcase + chat_session.ended_at.strftime("%e %B, %Y")
