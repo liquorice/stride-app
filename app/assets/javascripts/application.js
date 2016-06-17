@@ -32,5 +32,6 @@
 //= require manage-topics
 //= require survey-popup
 //= require chat-bar
+//= require chathistory-bar
 
 //= require main
