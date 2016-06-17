@@ -35,20 +35,18 @@
 
   .mobile-chatArchive__row
     .chatArchive__col.light
-      p
-        strong Date 
-        = @chat_session.started_at.strftime("%d/%m/%y")
+      strong Date 
+      p = @chat_session.started_at.strftime("%d/%m/%y")
 
     .chatArchive__col.light
-      p
-        strong Time started 
-        = @chat_session.started_at.strftime("%H:%M%p").downcase
+      strong Time started 
+      p = @chat_session.started_at.strftime("%H:%M%p").downcase
 
-  .mobile-chatArchive__row
     .chatArchive__col.light
-      strong Chat duration
+      strong Duration
       p = pluralize((@chat_session.duration / 60).ceil, 'mins')
 
+  .mobile-chatArchive__row
     .chatArchive__col.mid
       strong Participants
       p = @chat_session.participants_count
@@ -58,6 +56,8 @@
       p = @chat_session.messages_count
 
   .chatArchive__row
+    p
+      strong Description
     p.desc = @chat_session.description
 
     // TODO Tags

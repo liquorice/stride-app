@@ -53,9 +53,9 @@
     @include breakpoint (small, mini) {
       display: inline-block;
     }
+    background-color: $white;
     display: none;
     width: 100%;
-    background-color: $white;
 
     &:nth-child(n+3) {
       border-top: 1px solid rgba($grey-warm, 0.1);
@@ -63,18 +63,17 @@
 
     .chatArchive__col {
       color: $grey-warm !important;
-
       &:last-child {
         float: right !important;
-        width: 41% !important;
         padding-right: 1.526rem !important;
+        width: 33% !important;
       }
     }
   }
   
   .chatArchive__row {
-    width: 100%;
     background-color: $white;
+    width: 100%;
 
     &:first-child {
       @include breakpoint (small, mini) {
@@ -107,31 +106,53 @@
   }
 
     .chatArchive__col {
-      display: inline-block;
       background-color: $white;
+      display: inline-block;
 
       &:first-child {
+        @include breakpoint (overlarge) {
+          padding: 1.158rem 1.111rem 1.111rem 1.526rem;
+        }
+        @include breakpoint (large) {
+          padding: 1.158rem 0.911rem 1.111rem 1.316rem;
+        }
+        @include breakpoint (medium) {
+          padding: 1.108rem 0.511rem 1.111rem 1.326rem;
+        }
         @include breakpoint (small, mini) {
+          margin-bottom: 0;
           padding: 1.158rem 0 1.211rem 1.526rem;
         }
-        padding: 1.158rem 1.211rem 1.211rem 1.526rem;
+        padding: 1.158rem 1.211rem 1.111rem 1.526rem;
+        margin-bottom: 0.1rem;
       }
 
       &:nth-child(n+2) {
-        @include breakpoint (small, mini) {
-          padding: 1.158rem 0 1.211rem 1.526rem;
+        @include breakpoint (overlarge) {
+          padding: 1.158rem 1.532rem 1.111rem 0.7895rem;
         }
-        padding: 1.158rem 1.632rem 1.211rem 0.7895rem;
+        @include breakpoint (large) {
+          padding: 1.158rem 1.316rem 1.111rem 0.6895rem;
+        }
+        @include breakpoint (medium) {
+          padding: 1.108rem 0.532rem 1.111rem 0.4895rem;
+        }
+        @include breakpoint (small, mini) {
+          margin-bottom: 0;
+          padding: 1.158rem 0 1.211rem 0;
+        }
+        margin-bottom: 0.1rem;
+        padding: 1.158rem 1.632rem 1.111rem 0.7895rem;
       }
 
       &:nth-child(n+1):nth-child(-n+4) {
         @include breakpoint (small, mini) {
-          float: none;
           border-right: none;
-          width: 28%;
+          float: none;
+          width: 32%;
         }
-        float: left;
         border-right: 1px solid rgba($grey-warm, 0.1);
+        float: left;
       }
 
       &.light {
@@ -139,6 +160,9 @@
         color: $green-light;
         h2 {
           @include h2-level1;
+          @include breakpoint (medium) {
+            font-size: 1.053rem;
+          }
           color: $green-light;
           padding-top: 3px;
         }
@@ -149,6 +173,9 @@
         color: $green-mid;
         h2 {
           @include h2-level1;
+          @include breakpoint (medium) {
+            font-size: 1.053rem;
+          }
           color: $green-mid;
           padding-top: 3px;
         }
@@ -159,6 +186,9 @@
         color: $green-dark;
         h2 {
           @include h2-level1;
+          @include breakpoint (medium) {
+            font-size: 1.053rem;
+          }
           color: $green-dark;
           padding-top: 3px;
         }
