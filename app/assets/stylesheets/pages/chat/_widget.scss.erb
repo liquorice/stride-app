@@ -1,0 +1,110 @@
+// Chat Widget Window Styles (chat not started)
+
+.launchArea {
+  background-color: $bg-dark;
+  height: 11.33rem;
+  margin-bottom: 38px;
+  text-align: center;
+
+  p {
+    @include p-meta;
+    color: $grey-warm;
+    line-height: 11.33rem;
+  }
+}
+
+  .img__launch {
+    @include breakpoint (small, mini) {
+      display: inline-block;
+    }
+    display: none;
+    height: 5.2rem;
+    margin-top: calc((11.33rem/2) - (5.2rem/2));
+    width: 5.2rem;
+
+    .bg {
+      fill: $primary;
+    }
+
+    &:hover {
+      .bg {
+        fill: $primary-dark;
+        transition: all 300ms ease-out;
+      }
+      .arrow-top {
+        transform: translateY(-5px) translateX(5px);
+        transition: all 300ms ease-in-out;
+      }
+      .arrow-bottom {
+        transform: translateY(5px) translateX(-5px);
+        transition: all 300ms ease-in-out;
+      }
+    }
+  }
+
+// Chat Widget Window Styles
+
+.chatArea {
+  overflow-y: scroll;
+  position: relative;
+  background-color: $bg-dark;
+  height: 45.11rem;
+}
+
+  .messages {
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    min-height: 45.11rem;
+  }
+
+// TODO These are debug styles only
+
+.message {
+  margin: 10px;
+  min-height: 60px;
+  text-align: right;
+  padding-top: 2px;
+
+  &.deleted {
+    display: none;
+  }
+}
+
+  .messageWrapper {
+    @include p-short;
+    padding: 1rem 1.316rem 1.105rem;
+    background-color: $white;
+    border-radius: 10px 0 10px 10px;
+    display: inline-block;
+  }
+
+  .user {
+    @include p-meta;
+    @include ff-adelle-bold;
+    display: block;
+    color: $links;
+    padding-top: 0.4211rem;
+    padding-right: 100px;
+  }
+
+  .avatarWrapper {
+    float: left;
+    background-color: $white;
+
+    .avatarWrapper__corner {
+      background-color: $bg-dark;
+      min-height: 59px;
+      border-radius: 22px 0 0 0;
+    }
+
+    .avatar {
+      @include avatar-large;
+      margin-left: 7px;
+      margin-top: -2px;
+    }
+
+    .message[data-self=true] & {
+      float: right;
+    }
+  }

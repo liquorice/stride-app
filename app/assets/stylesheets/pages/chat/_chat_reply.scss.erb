@@ -1,0 +1,84 @@
+// Chat Reply Styles
+
+.chatReply {
+  @include breakpoint (mini, small) {
+    padding-bottom: 3rem;
+  }
+  border-top: 3px solid rgba($grey-warm, 0.08);
+  display: table;
+  padding-bottom: 7.474rem;
+  width: 100%;
+}
+
+  .chatReply__form {
+    background-color: $white;
+    display: table-row;
+    width: 100%;
+
+    input {
+      @include p-short;
+      @include breakpoint(medium) {
+        width: 75.8%;
+      }
+      @include breakpoint(small) {
+        width: 79.3%;
+      }
+      @include breakpoint(mini) {
+        width: 100%;
+      }
+      @include breakpoint(mini, small) {
+        padding: 0.9333rem 1.133rem 1.2rem;
+      }
+      box-sizing:padding-box;
+      display: block;
+      display: table-cell;
+      float: left;
+      line-height: 1.4;
+      margin-bottom: 0;
+      overflow: hidden;
+      padding: 1.053rem 1.421rem 1.105rem;
+      resize: none;
+      width: 84.2%;
+    }
+  }
+
+// Chat Reply Button Styles
+
+  .chatReply__button {
+    @include breakpoint(mini) {
+      padding: 0 0.8rem 0.734rem;
+    }
+    background-color: $white;
+    display: table-cell;
+    float: right;
+    padding: 0.6316rem 0.6842rem;
+
+    button {
+      @include btn-short;
+      margin-bottom: 0;
+      cursor: pointer;
+      transition: all 100ms ease-out;
+
+      .chatReply__form.hasContent & {
+        @include btn-primary;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .chatReply__clear {
+    @include icon__clear;
+    @include breakpoint(mini) {
+      display: table-cell;
+    }
+    background-color: $bg-dark;
+    border-radius: 50%;
+    content: "";
+    cursor: pointer;
+    display: none;
+    float: right;
+    height: 17px;
+    margin-top: 0.4667rem;
+    position: relative;
+    width: 17px;
+  }

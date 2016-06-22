@@ -1,9 +1,17 @@
-// Chat Bar Styles (chat not started)
+// Chat Bar Styles
 
 .chatbar {
   width: 100%;
   border-bottom: 2px solid rgba($grey-warm, 0.2);
 }
+
+  .chatbar.active .chatbar__title {
+    .heading__chat-small {
+      path#bolt {
+        fill: $green-light;
+      }
+    }
+  }
 
   .chatbar__title {
     @include breakpoint (medium) {
@@ -47,9 +55,9 @@
     }
   }
 
-    .btn__start {
+    .btn__start,
+    .btn__end {
       @include btn-meta;
-      @include btn-primary;
       @include ff-adelle-bold;
       @include breakpoint (small, mini) {
         display: none;
@@ -58,6 +66,14 @@
       display: block;
       float: left;
       margin: 4px 0 0 1rem;
+    }
+
+    .btn__start {
+      @include btn-primary;
+    }
+
+    .btn__end {
+      @include btn-alert;
     }
 
   .chatbar__time {
@@ -123,6 +139,7 @@
         transform: translateY(0);
         transition: all 200ms ease-out;
         visibility: visible;
+        z-index: 100;
       }
     }
 
@@ -137,49 +154,5 @@
     p {
       @include p-meta;
       padding: 1rem 1.333rem;
-    }
-  }
-
-// Chat Widget Area Styles (chat not started)
-
-.chatArea {
-  background-color: $bg-dark;
-  height: 11.33rem;
-  margin-bottom: 38px;
-  text-align: center;
-
-  p {
-    @include p-meta;
-    color: $grey-warm;
-    line-height: 11.33rem;
-  }
-}
-
-  .img__launch {
-    @include breakpoint (small, mini) {
-      display: inline-block;
-    }
-    display: none;
-    height: 5.2rem;
-    margin-top: calc((11.33rem/2) - (5.2rem/2));
-    width: 5.2rem;
-
-    .bg {
-      fill: $primary;
-    }
-
-    &:hover {
-      .bg {
-        fill: $primary-dark;
-        transition: all 300ms ease-out;
-      }
-      .arrow-top {
-        transform: translateY(-5px) translateX(5px);
-        transition: all 300ms ease-in-out;
-      }
-      .arrow-bottom {
-        transform: translateY(5px) translateX(-5px);
-        transition: all 300ms ease-in-out;
-      }
     }
   }

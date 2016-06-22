@@ -18,6 +18,8 @@
     template = $('.js-chat-template').text();
 
     setup_moderator_tools();
+    setup_clear();
+    check_empty();
 
     form.on('submit', function(e) {
       e.preventDefault();
@@ -28,6 +30,24 @@
     send_to_server({ task: 'history' });
     setTimeout(flush_queue, POLL_INTERVAL);
   };
+
+  // Set up text input dynamic styles
+  var check_empty = function() {
+    input.on('input', function() {
+      if (input.val().length) {
+        form.addClass('hasContent');
+      }
+      else {
+        form.removeClass('hasContent');
+      }
+    });
+  }
+
+  var setup_clear = function() {
+    form.find('.js-clear').on('click', function() {
+      input.val('').trigger('input');
+    });
+  }
 
   // Rendering
 
