@@ -1,5 +1,3 @@
-/ TODO renaming
-
 .toolbar
   a.toolbar__logo href=topics_preview_path
     = insert_svg "#{@site.name}/logo.svg"
@@ -20,7 +18,7 @@
         .toolbar__menu-triangle
           = insert_svg "triangle.svg"
 
-        .toolbar__dropdown
+        .toolbar__menu-dropdown
           span #{@current_user.name}
           a href=preferences_path Preferences
           a href=logout_path data-method='post' Log out
