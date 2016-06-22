@@ -1,6 +1,7 @@
-// Upcoming (within a week) Chat Listing Styles
+// In Progress & Upcoming (within a week) Chat Listing Styles
 
-.futureChat[data-upcoming] {
+.chatSession[data-open],
+.chatSession[data-upcoming] {
   @include breakpoint (huge, overlarge) {
     max-width: calc(100% - 12.74rem);
   }
@@ -16,12 +17,14 @@
   margin-bottom: 14px;
   max-width: 100%;
 }
-
+  
+  .inProgress,
   .upcoming {
     display: none;
   }
 
-  .futureChat[data-upcoming] .upcoming {
+  .chatSession[data-open] .inProgress,
+  .chatSession[data-upcoming] .upcoming {
     @include breakpoint (huge, overlarge, large) {
       display: inline-block;
 
@@ -91,6 +94,7 @@
     vertical-align: top;
     width: 12.74rem;
 
+    & > .inProgress__title,
     & > .upcoming__title {
       @include p-meta;
       color: $white;
@@ -103,13 +107,26 @@
         height: 1.842rem;
         margin-top: 5px;
         width: 9.053rem;
+      }
+    }
 
+    & > .inProgress__title {
+      .heading__chat-small {
+        path#bolt {
+          fill: $green-light;
+        }
+      }
+    }
+
+    & > .upcoming__title {
+      .heading__chat-small {
         path#bolt {
           fill: $primary;
         }
       }
     }
 
+    & > .inProgress__notify,
     & > .upcoming__notify {
       @include breakpoint (medium, small, mini) {
         bottom: 0;
@@ -121,9 +138,8 @@
       width: 100%;
     }
 
+    & .inProgress__notify > .btn__notify
     & .upcoming__notify > .btn__notify {
-      @include btn-short;
-      @include btn-primary;
       @include breakpoint (mini) {
         padding: 0.35em 0.857em 0.5em;
       }
@@ -135,9 +151,24 @@
         fill: $white;
       }
     }
+
+    & .inProgress__notify > .btn__notify {
+      background-color: $green-light;
+      color: $white;
+
+      &:hover {
+        background-color: $green-mid;
+      }
+    }
+
+    & .upcoming__notify > .btn__notify {
+      @include btn-short;
+      @include btn-primary;
+    }
   }
 
-  .futureChat[data-upcoming] .futureChat__col {
+  .chatSession[data-open] .chatSession__col,
+  .chatSession[data-upcoming] .chatSession__col {
     @media screen and (min-width: 1200px) and (max-width: 1300px) {
       left: 10.63rem;
     }
@@ -154,15 +185,16 @@
     position: relative;
   }
 
-    .futureChat[data-upcoming] .futureChat__row {
-      & > .futureChat__notify,
-      & ~ .mobile-futureChat__notify {
+    .chatSession[data-open] .chatSession__row,
+    .chatSession[data-upcoming] .chatSession__row {
+      & > .chatSession__notify,
+      & ~ .mobile-chatSession__notify {
         display: none;
       }
 
-      & > .futureChat__details {
+      & > .chatSession__details {
         @include breakpoint (huge, overlarge, large) {
-          .future__date {
+          .chatSession__date {
             padding: 1.105rem 0;
           }
         }
@@ -182,7 +214,7 @@
         width: calc(98% - 8.211rem - 1.368rem);
       }
 
-      & > .futureChat__soon {
+      & > .chatSession__soon {
         @media screen and (min-width: 1200px) and (max-width: 1300px) {
           padding: 1.105rem 0 1.105rem 1.068rem;
         }
@@ -209,9 +241,28 @@
       }
     }
 
-// Upcoming Chat Listing Styles
+    .chatSession[data-open] .chatSession__row {
+      & > .chatSession__details {
+        @include breakpoint (large) {
+          margin-left: 1rem;
+          width: calc(100% - 1rem - 1.368rem);
+        }
+        @include breakpoint (medium, small, mini) {
+          float: none;
+          margin-left: 0;
+          width: calc(100% - 1.368rem);
+        }
+        @include breakpoint (mini) {
+          width: 100%;
+        }
+        margin-left: 1.368rem;
+        width: calc(100% - 1.368rem - 1.368rem);
+      }
+    }
 
-.futureChat {
+// Chat Listing Styles
+
+.chatSession {
   display: block;
   margin-bottom: 6px;
   position: relative;
@@ -222,12 +273,12 @@
   }
 }
 
-  .futureChat__col {
+  .chatSession__col {
     background-color: $white;
     display: block;
   }
 
-    .futureChat__title {
+    .chatSession__title {
       @include breakpoint (mini) {
         padding: 1rem;
       }
@@ -251,7 +302,7 @@
       }
     }
 
-    .futureChat__row {
+    .chatSession__row {
       @include breakpoint (mini) {
         height: auto;
         overflow: visible;
@@ -261,7 +312,7 @@
       width: 100%;
     }
 
-      .futureChat__notify {
+      .chatSession__notify {
         @media screen and (min-width: 1200px) and (max-width: 1300px) {
           width: calc(10.63rem - 1.789rem);
         }
@@ -281,7 +332,7 @@
         width: calc(12.74rem - 1.789rem);
       }
 
-      .mobile-futureChat__notify{
+      .mobile-chatSession__notify{
         @include breakpoint (medium, small, mini) {
           border-top: 1px solid rgba($grey-warm, 0.1);
           display: block;
@@ -301,7 +352,7 @@
           }
         }
 
-      .futureChat__details {
+      .chatSession__details {
         @media screen and (min-width: 1200px) and (max-width: 1300px) {
           width: calc(100% - 8.211rem - 10.63rem);
         }
@@ -323,8 +374,8 @@
         width: calc(100% - 8.211rem - 12.74rem);
       }
 
-        .future__date,
-        .future__time {
+        .chatSession__date,
+        .chatSession__time {
           @include p-meta;
           @include breakpoint (mini) {
             width: 49%;
@@ -341,7 +392,7 @@
           }
         }
 
-        .future__date {
+        .chatSession__date {
           @include breakpoint (large) {
             padding: 1.105rem 0 1.105rem 1rem;
           }
@@ -355,7 +406,7 @@
           }
         }
 
-        .future__time {
+        .chatSession__time {
           @media screen and (min-width: 1200px) and (max-width: 1300px) {
             padding: 1.105rem 0 1.105rem 1.037rem;
           }
@@ -381,7 +432,7 @@
           }
         }
 
-      .futureChat__soon {
+      .chatSession__soon {
         @include p-meta;
         @include breakpoint (large) {
           padding: 1.105rem 0 1.105rem 1rem;

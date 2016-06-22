@@ -1,4 +1,11 @@
-.futureChat data-upcoming=(chat_session.scheduled_for <= 1.day.from_now)
+.chatSession data-open=(chat_session.status == 'open') data-upcoming=((chat_session.scheduled_for <= 1.day.from_now) && (chat_session.status != 'open'))
+  .inProgress
+    .inProgress__title
+      p IN PROGRESS
+      = insert_svg("title-chat-small.svg", class:"heading__chat-small")
+    .inProgress__notify
+      a.btn__notify href=chat_session_path(chat_session) Join chat now
+
   .upcoming
     .upcoming__title
       p UPCOMING
@@ -11,33 +18,32 @@
           = insert_svg("icons/icon_notify.svg", class:"icon__notify")
           | Get notified
 
-  .futureChat__col
-    .futureChat__title
+  .chatSession__col
+    .chatSession__title
       h2 = chat_session.name
       p = chat_session.description
-      // p = chat_session.status
 
-    .futureChat__row
-      .futureChat__notify
+    .chatSession__row
+      .chatSession__notify
         - if current_user_can?(:chat_modify)
           a.btn__notify href=chat_session_path(chat_session) View chat
         - else
           a.btn__notify href=preferences_path
             = insert_svg("icons/icon_notify.svg", class:"icon__notify")
             | Get notified
-      .futureChat__details
-        .future__date
+      .chatSession__details
+        .chatSession__date
           strong Date
           h2 = chat_session.scheduled_for.strftime("%d/%m/%y")
 
-        .future__time
+        .chatSession__time
           strong Time
           h2
             = chat_session.scheduled_for.strftime("%l.%M%p").downcase
             span = chat_session.scheduled_for.strftime(" %Z")
 
-      - if (chat_session.scheduled_for <= (Date.today + 7.days))
-        .futureChat__soon
+      - if ((chat_session.status != 'open') && (chat_session.scheduled_for <= (Date.today + 7.days)))
+        .chatSession__soon
           - if (chat_session.scheduled_for <= Time.now)
             .awaiting
               p
@@ -50,7 +56,7 @@
               strong Chat live in
             h2  = distance_of_future_time_in_words(chat_session.scheduled_for)
 
-    .mobile-futureChat__notify
+    .mobile-chatSession__notify
       - if current_user_can?(:chat_modify)
         a.btn__notify href=chat_session_path(chat_session) View chat
       - else
