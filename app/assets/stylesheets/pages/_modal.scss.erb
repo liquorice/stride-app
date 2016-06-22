@@ -155,6 +155,20 @@
     margin-top: 15px;
   }
 
+  .form__textfield.date,
+  .form__textfield.time {
+    display: inline-block;
+    padding-right: 0.6rem;
+
+    button {
+      margin-right: 4px;
+    }
+  }
+
+  .form__textfield.time {
+    width: 6rem;
+  }
+
   .form__button {
     @include btn-standard;
     @include breakpoint (small, mini) {

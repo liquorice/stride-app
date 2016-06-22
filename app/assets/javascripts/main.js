@@ -3,6 +3,7 @@
   'use strict';
 
   var init_applies = function(container) {
+    Module.apply(container.find('.js-datetime'), 'datetimePicker');
     Module.apply(container.find('.js-chatbar'), 'chatbar');
     Module.apply(container.find('.js-chathistory'), 'chatHistory');
     Module.apply(container.find('.js-radiobutton'), 'radiobutton');

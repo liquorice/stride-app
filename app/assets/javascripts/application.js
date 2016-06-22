@@ -13,6 +13,8 @@
 
 //= require jquery
 //= require jquery-rails
+//= require zebra_datepicker
+//= require wickedpicker
 
 //= require module
 //= require post-content
@@ -27,6 +29,7 @@
 //= require mobile-menu
 //= require profile-edit
 //= require textarea-resize
+//= require datetime-picker
 //= require user-search
 //= require just-pinned
 //= require manage-topics
