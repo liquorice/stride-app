@@ -25,10 +25,17 @@
 
 script.js-chat-template type="text/x-template"
   .message.js-message data-self="$self" data-from="$from" data-id="$id"
-    / - if current_user_can?(:chat_modify)
-    /   ul
-    /     li.js-chat-delete Delete message
-    p.messageWrapper $content
+
+    .messageWrapper
+      p.contentWrapper $content
+
+      - if current_user_can?(:chat_modify)
+        .chatModerate
+          .chatModerate-button
+          .chatModerate-menu
+            p.js-chat-delete Remove this message
+            // TODO Private messaging
+            p.js-chat-delete Message user privately
 
     .avatarWrapper
       .avatarWrapper__corner
