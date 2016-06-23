@@ -11,11 +11,20 @@ h1 Manage forums
       = text_area_tag 'description', "Enter forums overview description", class:"input__textarea js-free-text"
 
   .label
-    ol.js-topics-reorder.topicsReorder
+    .edit__forums-titles
+      .label__title Forum Title
+      .label__title Show
+
+    ol.js-topics-reorder
       - @topics.each do |topic|
-        li
-          span = topic.name
+        li.edit__forums-row
+          .topic__title = topic.name
           input type="hidden" name="topics_order[]" value=topic.id
+          label.checkbox
+            = check_box_tag 'show', true, class:"input__checkbox"
+            .form__checkbox
+
+    .label__desc Please click and drop forums to re-order.
 
   .form__button.js-popup-close Cancel
   button.form__button.primary Save
