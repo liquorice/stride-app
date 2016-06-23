@@ -1,0 +1,161 @@
+.sidebar__chat {
+  @include breakpoint (mini, small) {
+    margin-bottom: 1.267rem;
+  }
+  height: auto;
+  margin-bottom: 1.421rem;
+  width: 100%;
+}
+
+  .sidebar__chat-header {
+    @include breakpoint (mini, small) {
+      padding: 1.867rem 0;
+    }
+
+    @include retina() {
+      background:
+        url('header-chat@2x.png') center center repeat,
+        url('noise-200x200@2x.png') center center repeat;
+      background-color: $grey-cool;
+      background-size: 660px 235px, 283px 283px;
+    }
+
+    background:
+      url('header-chat.png') center center repeat,
+      url('noise-200x200.png') center center repeat;
+    background-color: $grey-cool;
+    background-size: 660px 235px, 283px 283px;
+    padding: 1.316rem 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
+    p {
+      @include p-meta;
+      color: $white;
+      letter-spacing: 0.08rem;
+    }
+
+    &:before {
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid $grey-cool;
+      content: "";
+      height: 0;
+      position: absolute;
+      right: calc(50% - 10px);
+      top: 100%;
+      width:0;
+      z-index: 20;
+    }
+
+    .heading__chat-small {
+      @include breakpoint (medium) {
+        height: auto;
+        width: 90%;
+      }
+      @include breakpoint (small, mini) {
+        height: 2.333rem;
+        width: 11.47rem;
+      }
+      height: 1.842rem;
+      margin-top: 5px;
+      width: 9.053rem;
+
+      .sidebar__chat[data-open] & {
+        path#bolt {
+          fill: $green-light;
+        }
+      }
+
+      .sidebar__chat[data-upcoming] & {
+        path#bolt {
+          fill: $primary;
+        }
+      }
+    }
+  }
+
+  .sidebar__chat-title {
+    background-color: $white;
+    padding: 0.736rem 1rem 0.736rem 0.842rem;
+    text-align: center;
+    width: 100%;
+
+    h2 {
+      @include h3-regular;
+      padding-bottom: 0.684rem;
+      text-align: left;
+    }
+
+    .btn__notify {
+      @include btn-short;
+      display: block;
+
+      .sidebar__chat[data-open] & {
+        background-color: $green-light;
+        color: $white;
+
+        &:hover {
+          background-color: $green-mid;
+        }
+      }
+
+      .sidebar__chat[data-upcoming] & {
+        @include btn-primary;
+        & > svg *,
+        &:hover > svg * {
+          fill: $white;
+        }
+      }
+    }
+  }
+
+  .sidebar__chat-details {
+    background-color: $white;
+    border-top: 1px solid rgba($grey-warm, 0.1);
+
+    .details__date,
+    .details__time {
+      @include breakpoint (mini, small) {
+        padding: 0.533rem 0 0.867rem;
+      }
+      display: inline-block;
+      padding: 0.4211rem 0 0.6316rem;
+      vertical-align: top;
+      width: 50%;
+
+      p {
+        @include p-meta;
+        @include ff-adelle-bold;
+
+        span {
+          @include ff-adelle-regular;
+          color: $grey-warm;
+        }
+      }
+    }
+
+    .details__date {
+      p {
+        @include breakpoint (mini, small) {
+          padding-left: 1.133rem;
+        }
+        color: $green-light;
+        padding-left: 0.842rem;
+      }
+    }
+
+    .details__time {
+      border-left: 1px solid rgba($grey-warm, 0.1);
+
+      p {
+        @include breakpoint (mini, small) {
+          padding-left: 0.933rem;
+        }
+        color: $green-mid;
+        padding-left: 0.632rem;
+      }
+    }
+  }

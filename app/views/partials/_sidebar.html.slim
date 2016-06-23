@@ -1,4 +1,35 @@
 - expanded ||= false
+- chat_session = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).first
+
+.sidebar__chat data-open=(chat_session.status == 'open') data-upcoming=((chat_session.scheduled_for <= 1.day.from_now) && (chat_session.status != 'open'))
+  .sidebar__chat-header
+    - if (chat_session.status == 'open')
+      p IN PROGRESS
+    - else
+      p UPCOMING
+    = insert_svg("title-chat-small.svg", class:"heading__chat-small")
+
+  .sidebar__chat-title
+    h2 = chat_session.name
+    - if (chat_session.status == 'open')
+      a.btn__notify href=chat_session_path(chat_session) Join chat now
+    - else
+      - if current_user_can?(:chat_modify)
+        a.btn__notify href=chat_session_path(chat_session) View chat
+      - else
+        a.btn__notify href=preferences_path
+          = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+          | Get notified
+
+  .sidebar__chat-details
+    .details__date
+      p Date
+      p = chat_session.scheduled_for.strftime("%d/%m/%y")
+    .details__time
+      p Time
+      p
+        = chat_session.scheduled_for.strftime("%l.%M%p").downcase
+        span = chat_session.scheduled_for.strftime(" %Z")
 
 - unless expanded
   .btn__menu-show.js-menu-toggle
