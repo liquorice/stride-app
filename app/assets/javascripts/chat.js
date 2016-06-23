@@ -5,6 +5,7 @@
   var input;
   var duration_display;
   var messages_container;
+  var messages_area;
   var last_seen = -1;
   var queue = [];
   var template;
@@ -14,6 +15,7 @@
     form = $('.js-chat-form');
     input = form.find('.js-chat-content');
     messages_container = $('.js-chat-messages');
+    messages_area = $('.js-chat-area');
     duration_display = $('.js-chat-duration');
     template = $('.js-chat-template').text();
 
@@ -31,7 +33,7 @@
     setTimeout(flush_queue, POLL_INTERVAL);
   };
 
-  // Set up text input dynamic styles
+  // Set up text input post and clear buttons
   var check_empty = function() {
     input.on('input', function() {
       if (input.val().length) {
@@ -71,6 +73,10 @@
     };
 
     $(templated).appendTo(messages_container);
+
+    messages_area.stop().animate({
+      scrollTop: messages_container.height()
+    }, 900);
   };
 
   var update_duration = function(timestamp) {
