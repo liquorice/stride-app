@@ -23,6 +23,7 @@ class ChatMessage < ActiveRecord::Base
       content: content,
       user_name: user.name,
       user_id: user.id,
+      user_path: user.path,
       avatar_colour: user.processed_avatar_colour,
       avatar_face: user.avatar_face
     }

@@ -163,7 +163,8 @@
       user_name: USER_NAME,
       user_id: USER_ID,
       avatar_colour: AVATAR_COLOUR,
-      avatar_face: AVATAR_FACE
+      avatar_face: AVATAR_FACE,
+      user_path: USER_PATH
     });
 
     input.val('');

@@ -44,8 +44,7 @@ script.js-chat-template type="text/x-template"
         .avatar data-colour="$avatar_colour" data-face="$avatar_face"
 
     - if current_user_can?(:users_view)
-      // TODO Need to get user id and check for moderator
-      a.user href=user_path("$user_name") $user_name
+      a.user href="$user_path" $user_name
     - else
       p.user $user_name
 
@@ -60,3 +59,4 @@ script.js-chat-template type="text/x-template"
     var USER_NAME = "#{@current_user.name}";
     var AVATAR_COLOUR = "#{@current_user.processed_avatar_colour}";
     var AVATAR_FACE = "#{@current_user.avatar_face}";
+    var USER_PATH = "#{@current_user.path}";

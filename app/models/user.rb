@@ -70,4 +70,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  #
+
+  def path
+    user_path(self)
+  end
+
 end
