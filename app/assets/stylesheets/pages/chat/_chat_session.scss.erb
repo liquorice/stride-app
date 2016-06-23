@@ -145,11 +145,6 @@
       }
       cursor: pointer;
       margin-bottom: 0;
-
-      & > svg *,
-      &:hover > svg * {
-        fill: $white;
-      }
     }
 
     & .inProgress__notify > .btn__notify {
@@ -164,6 +159,11 @@
     & .upcoming__notify > .btn__notify {
       @include btn-short;
       @include btn-primary;
+
+      & > svg *,
+      &:hover > svg * {
+        fill: $white;
+      }
     }
   }
 
