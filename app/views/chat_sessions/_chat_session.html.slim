@@ -14,9 +14,14 @@
       - if current_user_can?(:chat_modify)
         a.btn__notify href=chat_session_path(chat_session) View chat
       - else
-        a.btn__notify href=preferences_path
-          = insert_svg("icons/icon_notify.svg", class:"icon__notify")
-          | Get notified
+        - if @current_user
+          a.btn__notify href=preferences_path
+            = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+            | Get notified
+        - else
+          a.btn__notify href=login_path data-modal=true
+            = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+            | Get notified
 
   .chatSession__col
     .chatSession__title
@@ -28,9 +33,15 @@
         - if current_user_can?(:chat_modify)
           a.btn__notify href=chat_session_path(chat_session) View chat
         - else
-          a.btn__notify href=preferences_path
-            = insert_svg("icons/icon_notify.svg", class:"icon__notify")
-            | Get notified
+          - if @current_user
+            a.btn__notify href=preferences_path
+              = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+              | Get notified
+          - else
+            a.btn__notify href=login_path data-modal=true
+              = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+              | Get notified
+
       .chatSession__details
         .chatSession__date
           strong Date
@@ -60,6 +71,11 @@
       - if current_user_can?(:chat_modify)
         a.btn__notify href=chat_session_path(chat_session) View chat
       - else
-        a.btn__notify href=preferences_path
-          = insert_svg("icons/icon_notify.svg", class:"icon__notify")
-          | Get notified
+        - if @current_user
+          a.btn__notify href=preferences_path
+            = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+            | Get notified
+        - else
+          a.btn__notify href=login_path data-modal=true
+            = insert_svg("icons/icon_notify.svg", class:"icon__notify")
+            | Get notified
