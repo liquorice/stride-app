@@ -147,11 +147,18 @@ class ChatSessionsController < ApplicationController
   end
 
   def chat_session_params
-    params.require(:chat_session).permit(
+    safe = params.require(:chat_session).permit(
       :name,
       :description,
       :tags => []
     )
+
+    safe[:scheduled_for] = ChatSession.scheduled_for_from_date_and_time(
+      params[:chat_session][:scheduled_for_date],
+      params[:chat_session][:scheduled_for_time]
+    )
+
+    safe
   end
 
 end

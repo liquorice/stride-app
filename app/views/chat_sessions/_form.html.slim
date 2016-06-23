@@ -17,11 +17,13 @@
     .label__title
       | Scheduled date/time
       span.alert *
-    // TODO JB Can you split the scheduled for into date and time?
+
     .form__textfield.date
-      = f.text_field :scheduled_for, placeholder:"#{Time.now.strftime("%a, %e %b %Y")}", class:"js-datepicker input__textfield"
+      input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" value=@chat_session.scheduled_for_date
+
+
     .form__textfield.time
-      = f.text_field :scheduled_for, placeholder:"#{Time.now.strftime("%l:%M %p")}", class:"js-timepicker input__textfield"
+      input.js-timepicker.input__textfield name="chat_session[scheduled_for_time]" value=@chat_session.scheduled_for_time
 
   .label.large
     .label__title Tags

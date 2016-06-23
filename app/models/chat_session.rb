@@ -30,6 +30,26 @@ class ChatSession < ActiveRecord::Base
     )
   end
 
+  def self.date_format
+    "%a, %e %b %Y"
+  end
+
+  def self.time_format
+    "%l:%M %p"
+  end
+
+  def self.scheduled_for_from_date_and_time(date, time)
+    Time.parse("#{date} #{time}")
+  end
+
+  def scheduled_for_date
+    scheduled_for.strftime(ChatSession.date_format)
+  end
+
+  def scheduled_for_time
+    scheduled_for.strftime(ChatSession.time_format).strip
+  end
+
   def messages_count
     chat_messages.count
   end
