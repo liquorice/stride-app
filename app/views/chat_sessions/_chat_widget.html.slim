@@ -9,6 +9,8 @@
     p.js-chat-duration 0 hr 0min 0s
   .btn__chatbar.js-chatbar = insert_svg("icons/icon_info.svg", class:"icon__info")
   .chatbar__info
+    - if current_user_can?(:chat_modify)
+      a.mobile-btn__end href=end_chat_session_path(@chat_session) data-method="patch" data-confirm="Are you sure you want to end this session?" End chat
     p = @chat_session.description
     // TODO Moderator and Tags
 

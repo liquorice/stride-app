@@ -55,6 +55,18 @@
     }
   }
 
+    .mobile-btn__end {
+      @include breakpoint (small, mini) {
+        @include btn-meta;
+        @include btn-alert;
+        @include ff-adelle-bold;
+        cursor: pointer;
+        display: inline-block;
+        margin: 1.6rem 1.333rem 0;
+      }
+      display: none;
+    }
+
     .btn__start,
     .btn__end {
       @include btn-meta;
