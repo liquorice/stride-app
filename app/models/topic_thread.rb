@@ -26,6 +26,10 @@ class TopicThread < ActiveRecord::Base
     where("? = ANY (tags)", tag)
   end
 
+  def topic_visible?
+    topic.visible?
+  end
+
   def posts_count
     posts.count
   end

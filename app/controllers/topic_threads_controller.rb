@@ -14,6 +14,13 @@ class TopicThreadsController < ApplicationController
       end
     end
 
+    # Restrict access to threads within hidden topics
+    unless @thread.topic_visible?
+      unless current_user_can?(:topics_viewHidden)
+        raise Exceptions::NotFoundError
+      end
+    end
+
     @posts = @thread.posts_for_page(params[:page])
     @topic = @thread.topic
   end
