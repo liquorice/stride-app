@@ -107,7 +107,7 @@
       send_to_server({
         task: 'view_only',
         last_seen: last_seen
-      });      
+      });
     }
 
     queue = [];
