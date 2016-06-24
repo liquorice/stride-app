@@ -39,7 +39,7 @@ class ApiController < ApplicationController
 
   def forums_overview
     topics = []
-    @site.topics.first(2).each do |topic|
+    @site.topics.visible.first(2).each do |topic|
       threads = []
       @topic_threads = topic
           .topic_threads
