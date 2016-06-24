@@ -18,12 +18,23 @@
       | Scheduled date/time
       span.alert *
 
-    .form__textfield.date
-      input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" value=@chat_session.scheduled_for_date
+    // TODO Whyyyyyyy Nillll error?!?!
 
+    / .form__textfield.date
+    /   - if @chat_session != nil
+    /     input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" value=@chat_session.scheduled_for_date
+    /   - else
+    /     input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" placeholder="#{Time.now.strftime("%a, %e %b %Y")}"
+
+    / .form__textfield.time
+    /   input.js-timepicker.input__textfield name="chat_session[scheduled_for_time]" value=(@chat_session.scheduled_for_time || Time.new.change(hour: 19).strftime("%l:%M %p"))
+
+    .form__textfield.date
+      input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]"
 
     .form__textfield.time
-      input.js-timepicker.input__textfield name="chat_session[scheduled_for_time]" value=@chat_session.scheduled_for_time
+      input.js-timepicker.input__textfield name="chat_session[scheduled_for_time]"
+      .icon__time.js-timepicker-icon = insert_svg("icons/icon_notify.svg")
 
   .label.large
     .label__title Tags

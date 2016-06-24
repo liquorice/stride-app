@@ -1,52 +1,76 @@
 .wickedpicker {
   @include unselectable;
   background: $white;
-  margin: 0 auto;
-  width: 5.368rem;
-  height: auto;
+  border-radius: 3px;
+  box-shadow: 0px 0px 6px 3px rgba($grey-warm, 0.15);
   display: none;
-  border-bottom: 1px solid $links;
-  box-shadow: 0px 0px 3px 1px rgba($links, 0.15);
+  height: auto;
+  margin: 0 auto;
 
-  // &__close {
-  //   transform: (translateY(-25%));
-  //   position: absolute;
-  //   top: 25%;
-  //   right: 10px;
-  //   cursor: pointer;
-  //   height: 15px;
-  //   width: 15px;
-  //   &:before {
-  //     content: url("<%= asset_data_uri 'icons/icon_cross-grey.svg' %>");
-  //   }
-  // }
+  &:before {
+    border-color: transparent transparent $white transparent;
+    border-style: solid;
+    border-width: 0.3rem;
+    content: "";
+    height: 0;
+    left: 14px;
+    position: absolute;
+    top: -0.5rem;
+    width: 0;
+  }
 
   &__controls {
     @include p-short;
+    border-radius: 3px;
     color: $links;
     margin: 0;
     &__control {
-      vertical-align: middle;
       display: inline-block;
       margin: 0 auto;
-      padding: 0.2rem;
       text-align: center;
+      vertical-align: middle;
+
       &-up, &-down {
-        position: relative;
-        display: block;
         cursor: pointer;
-        width: 1rem;
+        display: block;
+        height: 30px;
         margin: auto;
+        position: relative;
+        width: 38px;
       }
-      &-up:before {
-        content: url("<%= asset_data_uri 'icons/modal-arrow-small-up.svg' %>");
+      &-up {
+        background: url("<%= asset_data_uri 'icons/modal-arrow-small-up.svg' %>") no-repeat center center;
+        background-size: 9px 5px;
+        border-bottom: 1px solid rgba($grey-warm, 0.12);
+        content: " ";
+
+        &:hover {
+          background: url("<%= asset_data_uri 'icons/modal-arrow-small-up-blue.svg' %>") no-repeat center center;
+          background-color: mix($links, $white, 20%);
+          background-size: 9px 5px;
+          transition: all 200ms ease-out;
+        }
       }
-      &-down:after {
-        content: url("<%= asset_data_uri 'icons/modal-arrow-small-down.svg' %>");
+      &-down {
+        background: url("<%= asset_data_uri 'icons/modal-arrow-small-down.svg' %>") no-repeat center center;
+        background-size: 9px 5px;
+        border-top: 1px solid rgba($grey-warm, 0.12);
+        content: " ";
+
+        &:hover {
+          background: url("<%= asset_data_uri 'icons/modal-arrow-small-down-blue.svg' %>") no-repeat center center;
+          background-color: mix($links, $white, 20%);
+          background-size: 9px 5px;
+          transition: all 200ms ease-out;
+        }
+      }
+      &--hours,
+      &--minutes,
+      &--meridiem {
+        line-height: 32px;
       }
       &--separator {
-        @extend .wickedpicker__controls__control;
-        width: 5px;
+        display: none;
       }
     }
   }

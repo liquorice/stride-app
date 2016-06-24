@@ -1,3 +1,5 @@
+/* Based on Zebra DatePicker, code has been editted */
+
 /**
  *  Zebra_DatePicker
  *
@@ -203,7 +205,7 @@
             //  HTML to be used for the previous month/next month buttons
             //
             //  default is ['&#171;','&#187;']
-            header_navigation: ['&#171;', '&#187;'],
+            header_navigation: [' ', ' '],
 
             //  icon's position
             //  accepted values are "left" and "right"
@@ -239,8 +241,8 @@
             //  note that this only applies if the position of element relative to the browser's viewport doesn't require
             //  the date picker to be placed automatically so that it is visible!
             //
-            //  default is [5, -5]
-            offset: [5, -5],
+            //  default is [0, 0]
+            offset: [0, 6],
 
             //  set whether the date picker should be shown *only* when clicking the icon
             //  note that if you set the "show_icon" property to FALSE, you will not be able to show the date picker anymore!
@@ -1202,10 +1204,10 @@
             // add the mouseover/mousevents to all to the date picker's cells
             // except those that are not selectable
             datepicker.
-                delegate('td:not(.dp_disabled, .dp_weekend_disabled, .dp_not_in_month, .dp_week_number)', 'mouseover', function() {
+                delegate('td:not(.dp_disabled, .dp_weekend_disabled, .dp_not_in_month, .dp_week_number, .dp_caption)', 'mouseover', function() {
                     $(this).addClass('dp_hover');
                 }).
-                delegate('td:not(.dp_disabled, .dp_weekend_disabled, .dp_not_in_month, .dp_week_number)', 'mouseout', function() {
+                delegate('td:not(.dp_disabled, .dp_weekend_disabled, .dp_not_in_month, .dp_week_number, .dp_caption)', 'mouseout', function() {
                     $(this).removeClass('dp_hover');
                 });
 
@@ -1241,21 +1243,21 @@
             });
 
             // attach a click event to the caption in header
-            $('.dp_caption', header).bind('click', function() {
+            // $('.dp_caption', header).bind('click', function() {
 
-                // if current view is "days", take the user to the next view, depending on the format
-                if (view == 'days') view = ($.inArray('months', views) > -1 ? 'months' : ($.inArray('years', views) > -1 ? 'years' : 'days'));
+            //     // if current view is "days", take the user to the next view, depending on the format
+            //     if (view == 'days') view = ($.inArray('months', views) > -1 ? 'months' : ($.inArray('years', views) > -1 ? 'years' : 'days'));
 
-                // if current view is "months", take the user to the next view, depending on the format
-                else if (view == 'months') view = ($.inArray('years', views) > -1 ? 'years' : ($.inArray('days', views) > -1 ? 'days' : 'months'));
+            //     // if current view is "months", take the user to the next view, depending on the format
+            //     else if (view == 'months') view = ($.inArray('years', views) > -1 ? 'years' : ($.inArray('days', views) > -1 ? 'days' : 'months'));
 
-                // if current view is "years", take the user to the next view, depending on the format
-                else view = ($.inArray('days', views) > -1 ? 'days' : ($.inArray('months', views) > -1 ? 'months' : 'years'));
+            //     // if current view is "years", take the user to the next view, depending on the format
+            //     else view = ($.inArray('days', views) > -1 ? 'days' : ($.inArray('months', views) > -1 ? 'months' : 'years'));
 
-                // generate the appropriate view
-                manage_views();
+            //     // generate the appropriate view
+            //     manage_views();
 
-            });
+            // });
 
             // event for when clicking the "next" button
             $('.dp_next', header).bind('click', function() {
@@ -1612,8 +1614,8 @@
                         // this will be computed relative to the icon's top-right corner (if the calendar icon exists), or
                         // relative to the element's top-right corner otherwise, to which the offsets given at initialization
                         // are added/subtracted
-                        left = (undefined !== icon ? icon.offset().left + icon.outerWidth(true) : $element.offset().left + $element.outerWidth(true)) + plugin.settings.offset[0],
-                        top = (undefined !== icon ? icon.offset().top : $element.offset().top) - datepicker_height + plugin.settings.offset[1],
+                        left = ($element.offset().left + plugin.settings.offset[0]),
+                        top = ($element.offset().top - datepicker_height + plugin.settings.offset[1]),
 
                         // get browser window's width and height
                         window_width = $(window).width(),
@@ -1624,7 +1626,7 @@
                         window_scroll_left = $(window).scrollLeft();
 
                     if (plugin.settings.default_position == 'below')
-                        top = (undefined !== icon ? icon.offset().top : $element.offset().top) + plugin.settings.offset[1];
+                        top = ($element.offset().top + $element.height() + plugin.settings.offset[1]);
 
                     // if date picker is outside the viewport, adjust its position so that it is visible
                     if (left + datepicker_width > window_scroll_left + window_width) left = window_scroll_left + window_width - datepicker_width;

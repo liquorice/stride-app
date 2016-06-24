@@ -1,3 +1,5 @@
+/* Based on Wickedpicker, code has been editted */
+
 /**
  * wickedpicker v0.3.0 - A simple jQuery timepicker.
  * Copyright (c) 2015-2016 Eric Gagnon - http://github.com/wickedRidge/wickedpicker
@@ -84,7 +86,6 @@
          * @param {object} The input being clicked
          */
         showPicker: function (element) {
-            var timepickerPos = $(element).offset();
             $(element).attr({'aria-showingpicker': 'true', 'tabindex': -1});
             this.setText(element);
             this.showHideMeridiemControl();
@@ -101,12 +102,14 @@
                 }
                 this.setTime(newTime);
             }
+
             this.timepicker.css({
                 'z-index': '5000',
                 position: 'absolute',
-                left: timepickerPos.left,
-                top: timepickerPos.top + element[0].offsetHeight
-            }).show();
+                left: element[0].offsetLeft,
+                top: (element[0].offsetTop + element[0].offsetHeight + 5),
+                display: 'block'
+            });
 
             this.handleTimeAdjustments(element);
         },
@@ -145,7 +148,7 @@
                     picker += '<li class="wickedpicker__controls__control--separator"><span class="wickedpicker__controls__control--separator-inner">:</span></li><li class="wickedpicker__controls__control"><div class="' + this.options.upArrow + '"></div><span class="wickedpicker__controls__control--seconds" tabindex="-1">00</span><div class="' + this.options.downArrow + '"></div> </li>';
                 }
                 picker += '<li class="wickedpicker__controls__control"><div class="' + this.options.upArrow + '"></div><span class="wickedpicker__controls__control--meridiem" tabindex="-1">AM</span><div class="' + this.options.downArrow + '"></div></li></ul></div>';
-                $('body').append(picker);
+                $('body').find(".js-datetime").append(picker);
                 this.attachKeyboardEvents();
             }
         },
@@ -192,6 +195,8 @@
                 if ($(event.target).is(self.close)) {
                     self.hideTimepicker(element);
                 } else if ($(event.target).closest(self.timepicker).length || $(event.target).closest($('.hasWickedpicker')).length) { //Clicking the  Wickedpicker or one of it's inputs
+                    event.stopPropagation();
+                } else if ($(event.target).closest(self.timepicker).length || $(event.target).closest($('.js-timepicker-icon')).length) { //Clicking the  time icon
                     event.stopPropagation();
                 } else {   //Everything else
                     self.hideTimepicker(element);
@@ -346,7 +351,7 @@
             var newMeridiem = '';
             if (inputMeridiem === undefined) {
                 var meridiem = this.getMeridiem();
-                newMeridiem = (meridiem === 'PM') ? 'AM' : 'PM';
+                newMeridiem = (meridiem === 'pm') ? 'am' : 'pm';
             } else {
                 newMeridiem = inputMeridiem;
             }
@@ -396,7 +401,7 @@
          * @return {string}
          */
         parseMeridiem: function (hours) {
-            return (hours > 12) ? 'PM' : 'AM';
+            return (hours > 12) ? 'pm' : 'am';
         },
 
         /*

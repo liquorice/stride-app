@@ -158,15 +158,37 @@
   .form__textfield.date,
   .form__textfield.time {
     display: inline-block;
-    padding-right: 0.6rem;
 
     button {
-      margin-right: 4px;
+      margin-right: 10px;
     }
   }
 
+  .form__textfield.date {
+    padding-right: 0.6rem;
+    width: 190px;
+  }
+
   .form__textfield.time {
-    width: 6rem;
+    width: 114px;
+
+    .icon__time {
+      cursor: pointer;
+      display: inline-block;
+      float: right;
+      position: relative;
+    }
+    .icon__time > svg {
+      @include breakpoint(mini, small) {
+        top: 14px;
+      }
+      height: 12px;
+      margin: 0 10px 0 0;
+      position: absolute;
+      right: 0;
+      top: 20px;
+      width: 13px;
+    }
   }
 
   .form__button {
