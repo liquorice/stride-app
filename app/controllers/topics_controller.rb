@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
 
     # Restrict access to hidden topics
     unless @topic.visible?
-      unless @current_user && @current_user.can?(:topics_viewHidden)
+      unless current_user_can?(:topics_viewHidden)
         raise Exceptions::NotFoundError
       end
     end
