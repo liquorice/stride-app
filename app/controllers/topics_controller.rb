@@ -22,8 +22,11 @@ class TopicsController < ApplicationController
   def update_order
     require_permission :forums_modify
 
+    params[:topics_visible] ||= {}
+
     params[:topics_order].each_with_index do |topic_id, index|
-      @site.topics.find(topic_id.to_i).update(ordinal: index)
+      visible = params[:topics_visible][topic_id].present?
+      @site.topics.find(topic_id.to_i).update(ordinal: index, visible: visible)
     end
 
     flash[:success] = "Forums succesfully updated"

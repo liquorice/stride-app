@@ -21,7 +21,7 @@ h1 Manage forums
           // TODO Need to hook up input
           label.checkbox
             = insert_svg("icons/icon_reorder.svg", class:'icon__reorder')
-            = check_box_tag 'show', true, class:"input__checkbox"
+            = check_box_tag "topics_visible[#{topic.id}]", 1, topic.visible, class:"input__checkbox"
             .form__checkbox
 
   .form__button.js-popup-close Cancel
