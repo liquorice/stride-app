@@ -10,6 +10,7 @@
   var queue = [];
   var template;
   var chat_open = true;
+  var can_post;
 
   var init = function() {
     form = $('.js-chat-form');
@@ -18,6 +19,9 @@
     messages_area = $('.js-chat-area');
     duration_display = $('.js-chat-duration');
     template = $('.js-chat-template').text();
+
+    // If no USER_ID is present, we are in view-only mode
+    can_post = (typeof USER_ID !== 'undefined');
 
     setup_moderator_tools();
     setup_clear();
@@ -60,7 +64,7 @@
     vars = template.match(/\$[a-zA-Z_-]+/g);
     templated = template;
 
-    message_data['self'] = (message_data['user_id'] == USER_ID) ? 'true' : 'false';
+    message_data['self'] = (can_post && message_data['user_id'] == USER_ID) ? 'true' : 'false';
 
     for (var i = 0; i < vars.length; i++) {
       var var_name;
@@ -92,11 +96,19 @@
   // Queue
 
   var flush_queue = function() {
-    send_to_server({
-      task: 'update',
-      queue: queue,
-      last_seen: last_seen
-    });
+    if (can_post) {
+      send_to_server({
+        task: 'update',
+        queue: queue,
+        last_seen: last_seen
+      });
+    }
+    else {
+      send_to_server({
+        task: 'view_only',
+        last_seen: last_seen
+      });      
+    }
 
     queue = [];
     setTimeout(flush_queue, POLL_INTERVAL);

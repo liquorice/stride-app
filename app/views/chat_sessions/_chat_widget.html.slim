@@ -17,13 +17,17 @@
 .chatArea.js-chat-area
   .messages.js-chat-messages
 
-.chatReply
-  form.chatReply__form.js-chat-form
-    input.js-chat-content name="message" placeholder="Enter text..."
+- if current_user_can?(:message_create)
+  .chatReply
+    form.chatReply__form.js-chat-form
+      input.js-chat-content name="message" placeholder="Enter text..."
 
-    .chatReply__button
-      button Post
-    .chatReply__clear.js-clear
+      .chatReply__button
+        button Post
+      .chatReply__clear.js-clear
+
+- else
+  / TODO Display message to non-logged-in users
 
 script.js-chat-template type="text/x-template"
   .message.js-message data-self="$self" data-from="$from" data-id="$id"
@@ -55,8 +59,11 @@ script.js-chat-template type="text/x-template"
     var START_TIME = #{@chat_session.started_at.to_i};
     var POLL_INTERVAL = 2000;
     var POST_PATH = "#{post_to_chat_session_path(@chat_session)}"
-    var USER_ID = "#{@current_user.id}";
-    var USER_NAME = "#{@current_user.name}";
-    var AVATAR_COLOUR = "#{@current_user.processed_avatar_colour}";
-    var AVATAR_FACE = "#{@current_user.avatar_face}";
-    var USER_PATH = "#{@current_user.path}";
+
+  - if current_user_can?(:message_create)
+    javascript:
+      var USER_ID = "#{@current_user.id}";
+      var USER_NAME = "#{@current_user.name}";
+      var AVATAR_COLOUR = "#{@current_user.processed_avatar_colour}";
+      var AVATAR_FACE = "#{@current_user.avatar_face}";
+      var USER_PATH = "#{@current_user.path}";

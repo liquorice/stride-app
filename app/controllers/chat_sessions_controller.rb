@@ -10,7 +10,6 @@ class ChatSessionsController < ApplicationController
   end
 
   def show
-    require_permission :message_create
     @chat_session = @site.chat_sessions.find(params[:id])
 
     render @chat_session.status
@@ -75,7 +74,6 @@ class ChatSessionsController < ApplicationController
   end
 
   def post
-    require_permission :message_create
     @chat_session = @site.chat_sessions.find(params[:id])
     @chat_messages = @chat_session.chat_messages
 
@@ -98,10 +96,16 @@ class ChatSessionsController < ApplicationController
     when "history"
       # Retrieve all messages until now
       messages = @chat_messages.since(-1)
+    when "view_only"
+      # Retrieve all messages until now
+      messages = @chat_messages.since(last_seen)
     when "update"
       # Process the pending queue, and send back
       # all new messages, including private messages,
       # and excluding messages made by the user
+
+      # This is only available to priveledged users
+      require_permission :message_create
 
       process_queue
 
