@@ -4,6 +4,7 @@
   var form;
   var input;
   var duration_display;
+  var local_start_time;
   var messages_container;
   var messages_area;
   var last_seen = -1;
@@ -20,6 +21,8 @@
     duration_display = $('.js-chat-duration');
     template = $('.js-chat-template').text();
 
+    local_start_time = Date.now();
+
     // If no USER_ID is present, we are in view-only mode
     can_post = (typeof USER_ID !== 'undefined');
 
@@ -35,6 +38,7 @@
 
     send_to_server({ task: 'history' });
     setTimeout(flush_queue, POLL_INTERVAL);
+    setInterval(update_duration, 500);
   };
 
   // Set up text input post and clear buttons
@@ -85,10 +89,20 @@
 
   var update_duration = function(timestamp) {
     var duration;
+    var hours, minutes, seconds;
     var display_text;
 
-    duration = Math.floor((timestamp - START_TIME) / 60);
-    display_text = duration + ' ' + (duration == 1 ? 'min' : 'mins');
+    duration = Math.floor(EXISTING_DURATION + (Date.now() - local_start_time) / 1000);
+
+    hours = Math.floor(duration / 60 / 60);
+    minutes = Math.floor((duration - (hours * 60)) / 60);
+    seconds = Math.floor(duration % 60);
+
+    display_text = [
+      hours + (hours == 1 ? 'hr' : 'hrs'),
+      minutes + (minutes == 1 ? 'min' : 'mins'),
+      seconds + (seconds == 1 ? 'sec' : 'secs')
+    ].join(" ");
 
     duration_display.text(display_text);
   }
@@ -150,10 +164,6 @@
       for (var i = 0; i < response.messages.length; i++) {
         add_message(response.messages[i]);
       }
-    }
-
-    if (response.timestamp) {
-      update_duration(response.timestamp);
     }
   };
 

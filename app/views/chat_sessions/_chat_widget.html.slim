@@ -3,10 +3,9 @@
     = insert_svg("title-chat-small.svg", class:"heading__chat-small")
     - if current_user_can?(:chat_modify)
       a.btn__end href=end_chat_session_path(@chat_session) data-method="patch" data-confirm="Are you sure you want to end this session?" End chat
-        
-  // TODO JS timer
+
   .chatbar__time
-    p.js-chat-duration 0 hr 0min 0s
+    p.js-chat-duration
   .btn__chatbar.js-chatbar = insert_svg("icons/icon_info.svg", class:"icon__info")
   .chatbar__info
     - if current_user_can?(:chat_modify)
@@ -56,7 +55,7 @@ script.js-chat-template type="text/x-template"
 - content_for :footer do
   = javascript_include_tag 'chat'
   javascript:
-    var START_TIME = #{@chat_session.started_at.to_i};
+    var EXISTING_DURATION = (#{Time.now - @chat_session.started_at});
     var POLL_INTERVAL = 2000;
     var POST_PATH = "#{post_to_chat_session_path(@chat_session)}"
 
