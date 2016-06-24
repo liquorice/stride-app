@@ -18,23 +18,16 @@
       | Scheduled date/time
       span.alert *
 
-    // TODO Whyyyyyyy Nillll error?!?!
-
-    / .form__textfield.date
-    /   - if @chat_session != nil
-    /     input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" value=@chat_session.scheduled_for_date
-    /   - else
-    /     input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" placeholder="#{Time.now.strftime("%a, %e %b %Y")}"
-
-    / .form__textfield.time
-    /   input.js-timepicker.input__textfield name="chat_session[scheduled_for_time]" value=(@chat_session.scheduled_for_time || Time.new.change(hour: 19).strftime("%l:%M %p"))
-
     .form__textfield.date
-      input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]"
+      - if @chat_session.scheduled_for.present?
+        input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" value=@chat_session.scheduled_for_date
+      - else
+        input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" placeholder="#{Time.now.strftime(ChatSession.date_format)}"
 
     .form__textfield.time
-      input.js-timepicker.input__textfield name="chat_session[scheduled_for_time]"
-      .icon__time.js-timepicker-icon = insert_svg("icons/icon_notify.svg")
+      - scheduled_for_time = @chat_session.scheduled_for.present? ? @chat_session.scheduled_for_time : "7:00 PM"
+      input.js-timepicker.input__textfield name="chat_session[scheduled_for_time]" value=scheduled_for_time
+
 
   .label.large
     .label__title Tags
