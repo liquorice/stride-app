@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   # Public
 
   def preview
-    @topics = @site.topics
+    @topics = @site.topics.visible
   end
 
   def show

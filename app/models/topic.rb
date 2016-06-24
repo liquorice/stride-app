@@ -6,4 +6,8 @@ class Topic < ActiveRecord::Base
 
   default_scope { order(:ordinal) }
 
+  scope :visible, -> {
+    where(visible: true)
+  }
+
 end
