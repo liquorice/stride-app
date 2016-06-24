@@ -9,6 +9,14 @@ class TopicsController < ApplicationController
 
   def show
     @topic = @site.topics.find(params[:id])
+
+    # Restrict access to hidden topics
+    unless @topic.visible?
+      unless @current_user && @current_user.can?(:topics_viewHidden)
+        raise Exceptions::NotFoundError
+      end
+    end
+
     @threads = @topic.topic_threads.where(public: true).paginate(:page => params[:page])
   end
 

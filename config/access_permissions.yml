@@ -1,6 +1,7 @@
 accessLevels_modify: Modify available access levels
 forums_modify: Modify forums main page
 topics_create: Create new forums
+topics_viewHidden: View hidden topics
 topics_modify: Modify a forum
 topicThreads_modify: Modify a thread
 topicThreads_create: Create new threads
