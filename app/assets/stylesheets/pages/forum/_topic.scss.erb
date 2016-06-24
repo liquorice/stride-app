@@ -37,6 +37,7 @@
   }
 
 // Manage Forum modal styles
+
 .edit__forums-titles {
   .label__title {
     display: inline-block;
@@ -50,40 +51,87 @@
   }
 }
 
+.edit__forums-list {
+  counter-reset: item;
+}
+
   .edit__forums-row + .edit__forums-row {
-    border-top: 1px solid rgba($grey-warm, 0.15);
+    margin-top: 1px;
   }
 
   .edit__forums-row {
     @include p-meta;
+    background-color: $white;
     color: $grey-warm;
-    list-style-type: decimal;
     cursor: pointer;
-    padding: 0.45rem 0;
     float: right;
-    width: 100%;
-    list-style-position: inside;
+    height: 39px;
+    list-style-position: outside;
+    margin-left: 27px;
+    transition: background-color 200ms ease-out;
+    transition: color 200ms ease-out;
+    width: calc(100% - 27px);
+
+    &:hover {
+      background-color: mix($links, $white, 20%);
+      .topic__title {
+        color: $blue-dark;
+      }
+
+      .checkbox .icon__reorder {
+        display: block;
+      }
+    }
+
+    &:active {
+      box-shadow: 0px 0px 3px 1px rgba($grey-warm, 0.15);
+    }
+
+    &:before {
+      @include p-meta;
+      color: $grey-warm;
+      content: counter(item) ". ";
+      counter-increment: item;
+      display: block;
+      float: left;
+      line-height: 39px;
+      margin-left: -27px;
+    }
 
     .topic__title {
       @include p-meta;
       color: $grey-warm;
-      max-width: 79%;
       display: inline-block;
+      line-height: 39px;
+      max-width: 79%;
+      overflow: hidden;
+      padding-left: 13px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .checkbox {
       display: inline-block;
       float: right;
-      width: 20%;
+      width: 21%;
+
+      .icon__reorder {
+        display: none;
+        float: right;
+        height: 9.01px;
+        margin-right: calc(11px + 17px + 15px);
+        margin-top: calc((39px - 9.01px)/2);
+        width: 12.01px;
+      }
 
       .form__checkbox {
         left: initial;
-        right: 8px;
-        top: 0;
+        right: 11px;
+        top: calc((39px - 17px)/2);
       }
 
       & input:checked ~ .form__checkbox:after {
-        top: -1px;
+        top: -2px;
       }
     }
   }

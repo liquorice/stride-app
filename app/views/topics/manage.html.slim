@@ -10,20 +10,19 @@ h1 Manage forums
 
   .label
     .edit__forums-titles
-      .label__title Forum Title
+      .label__title Forums
       .label__title Show
 
-    ol.js-topics-reorder
+    ol.edit__forums-list.js-topics-reorder
       - @topics.each do |topic|
         li.edit__forums-row
           .topic__title = topic.name
           input type="hidden" name="topics_order[]" value=topic.id
           // TODO Need to hook up input
           label.checkbox
+            = insert_svg("icons/icon_reorder.svg", class:'icon__reorder')
             = check_box_tag 'show', true, class:"input__checkbox"
             .form__checkbox
-
-    .label__desc Please click and drop forums to re-order.
 
   .form__button.js-popup-close Cancel
   button.form__button.primary Save
