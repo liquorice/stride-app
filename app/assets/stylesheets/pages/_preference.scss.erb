@@ -55,6 +55,23 @@
     margin-bottom: 2.579rem;
   }
 
+  h3, h4 {
+    @include p-meta;
+    @include ff_adelle-bold;
+    color: $grey-warm;
+    margin-bottom: 1px;
+    .alert {
+      color: $alert;
+    }
+  }
+
+  h4 {
+    margin-top: 14px;
+  }
+}
+
+.profile,
+.notificationOption {
   button {
     @include btn-meta;
     @include btn-primary;
@@ -75,20 +92,6 @@
     height: auto;
     margin-bottom: 2.632rem;
     overflow: auto;
-
-    h3, h4 {
-      @include p-meta;
-      @include ff_adelle-bold;
-      color: $grey-warm;
-      margin-bottom: 1px;
-      .alert {
-        color: $alert;
-      }
-    }
-
-    h4 {
-      margin-top: 14px;
-    }
 
     p {
       @include p-meta;
@@ -353,6 +356,10 @@
     }
     max-width: 25.68rem;
 
+    form {
+      margin-bottom: 1.579rem;
+    }
+
     h2 {
       @include h2-level3;
       @include breakpoint (small, mini) {
@@ -361,14 +368,22 @@
       margin-bottom: 2.368rem;
     }
 
-    p {
+    h3, h4 {
+      @include p-meta;
+      @include ff_adelle-bold;
+      color: $grey-warm;
+      margin-bottom: 10px;
+    }
+
+    p.desc {
       @include p-short;
       padding-bottom: 1.053rem;
-      &.sample {
-        @include p-meta;
-        color: $grey-warm;
-        padding-bottom: 0.684rem;
-      }
+    }
+
+    p.sample {
+      @include p-meta;
+      color: $grey-warm;
+      padding-bottom: 0.684rem;
     }
 
     hr {
@@ -376,7 +391,10 @@
       border: none;
       color: rgba($grey-warm, 0.1);
       height: 1px;
-      margin: 0 0 2.895rem 0;
+      margin: 0 0 1rem 0;
+      &.sample {
+        margin: 0 0 2.895rem 0;
+      }
     }
 
     .img__sample {
@@ -390,6 +408,11 @@
       padding-top: 0;
 
       .label {
+        margin-bottom: 0;
+        padding: 0;
+      }
+
+      .label.med {
         margin-bottom: 40px;
         padding: 0;
       }
@@ -397,5 +420,9 @@
       .label .checkbox__text {
         margin-bottom: 0.737rem;
       }
+    }
+
+    .twitter-follow-button {
+      margin: 0.6rem 0;
     }
   }
