@@ -109,3 +109,46 @@
     .btn__profile-edit.js-profile-edit.view-default Edit
     button.view-edit Save
     .btn__profile-cancel.js-profile-edit.view-edit Cancel
+
+- content_for :notification_section do
+  .notificationOption
+    .constrained
+      .notificationOption-content
+        h2 Notifications
+        // TODO Need actual text here
+        p Pete Notifications are discreet and impersonal messages that are sent to your nominated accounts. These messages will notify you of upcoming chats sessions you have registered for, as well important articles it acestemquae pa plit exercil inciendio. Ut aut dolent optati comnia nobit hictat quias repro dolest, nam aspersp elignis etusto quam labo.
+
+        = image_tag("notification-sample.png", alt:'Notification display example', class:'img__sample')
+        p.sample Notifications may look a little like the example above
+
+        hr
+
+        // TODO JB Allow users to switch on/choose notifications
+        .modalContent
+          .label.med
+            .label__title = "Switch on notifications from #{@site.name}"
+            label.toggle
+              = check_box_tag 'accept_notifications'
+              .toggle__text Off
+              .toggle__text On
+
+          .label
+            label.checkbox
+              = check_box_tag 'sms', class:"input__checkbox"
+              .form__checkbox
+            .checkbox__text
+              strong SMS 
+              ' (only available in Australia)
+
+            label.checkbox
+              = check_box_tag 'email', class:"input__checkbox"
+              .form__checkbox
+            .checkbox__text
+              strong Email
+
+            label.checkbox
+              = check_box_tag 'twitter', class:"input__checkbox"
+              .form__checkbox
+            .checkbox__text
+              strong Twitter 
+              ' (direct messages only)

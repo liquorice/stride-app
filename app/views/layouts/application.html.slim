@@ -80,6 +80,9 @@ html
               = yield :sidebar_locked
           .content
             = yield
+            
+      - if content_for? :notification_section
+        = yield :notification_section
 
     = render "/partials/getSupport"
     = render "/partials/footer"

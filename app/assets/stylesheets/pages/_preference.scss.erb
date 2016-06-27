@@ -7,6 +7,9 @@
   cursor: pointer;
   display: block;
   width: 5.421rem;
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .btn__profile-cancel {
@@ -331,5 +334,68 @@
       top: calc(-1.684rem - 4px);
       transition: border 100ms ease-in;
       width: calc(1.684rem + 8px);
+    }
+  }
+
+// Notifcations Section Styles
+
+.notificationOption {
+  background-color: $bg-dark;
+  overflow: auto;
+  padding-bottom: 5.842rem;
+  padding-top: 3.737rem;
+  width: 100%;
+}
+
+  .notificationOption-content {
+    @include breakpoint(huge, overlarge, large, medium) {
+      margin-left: calc(24.32432% + 24px);
+    }
+    max-width: 25.68rem;
+
+    h2 {
+      @include h2-level3;
+      @include breakpoint (small, mini) {
+        margin-bottom: 1.8rem;
+      }
+      margin-bottom: 2.368rem;
+    }
+
+    p {
+      @include p-short;
+      padding-bottom: 1.053rem;
+      &.sample {
+        @include p-meta;
+        color: $grey-warm;
+        padding-bottom: 0.684rem;
+      }
+    }
+
+    hr {
+      background-color: rgba($grey-warm, 0.1);
+      border: none;
+      color: rgba($grey-warm, 0.1);
+      height: 1px;
+      margin: 0 0 2.895rem 0;
+    }
+
+    .img__sample {
+      margin-bottom: -0.895rem;
+      max-width: 100%;
+    }
+
+    .modalContent {
+      max-width: none;
+      padding-bottom: 0;
+      padding-top: 0;
+
+      .label {
+        margin-bottom: 40px;
+        padding: 0;
+      }
+
+      .label .checkbox__text {
+        margin-bottom: 0.737rem;
+      }
     }
   }
