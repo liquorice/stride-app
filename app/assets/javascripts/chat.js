@@ -70,6 +70,8 @@
 
     message_data['self'] = (can_post && message_data['user_id'] == USER_ID) ? 'true' : 'false';
 
+    message_data['content'] = message_data['content'].replace(/(?:\r\n|\r|\n)/g, '<br>');
+
     for (var i = 0; i < vars.length; i++) {
       var var_name;
       var_name = vars[i].substr(1);
