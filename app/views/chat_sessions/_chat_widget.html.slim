@@ -11,7 +11,13 @@
     - if current_user_can?(:chat_modify)
       a.mobile-btn__end href=end_chat_session_path(@chat_session) data-method="patch" data-confirm="Are you sure you want to end this session?" End chat
     p = @chat_session.description
-    // TODO Moderator and Tags
+    // TODO Moderator and Tag Links
+    p.moderator
+      strong Moderator: 
+      ' Moderator Name
+    - if (@chat_session.tags != nil) && (@chat_session.tags.any?)
+      - @chat_session.tags.each do |tag|
+        .tags__tag.link = tag
 
 .chatArea.js-chat-area
   .messages.js-chat-messages

@@ -158,13 +158,21 @@
   .chatbar__info {
     background-color: $white;
     border-bottom: 3px solid rgba($grey-warm, 0.08);
+    min-width: 100%;
     opacity: 0;
+    padding: 1.421rem 2.053rem 1.789rem;
     position: absolute;
     transform: translateY(-5px);
     visibility: hidden;
 
     p {
-      @include p-meta;
-      padding: 1rem 1.333rem;
+      @include p-short;
+      padding-bottom: 0.4211rem;
+
+      &.moderator {
+        @include p-meta;
+        color: $grey-warm;
+        padding-bottom: 0.6rem;
+      }
     }
   }
