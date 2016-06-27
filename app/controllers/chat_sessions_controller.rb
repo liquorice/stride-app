@@ -57,7 +57,7 @@ class ChatSessionsController < ApplicationController
     require_permission :chat_modify
     @chat_session = @site.chat_sessions.find(params[:id])
 
-    @chat_session.start
+    @chat_session.start(@current_user)
     flash[:success] = "#{@chat_session.name} is now open"
 
     redirect_to chat_session_path(@chat_session)

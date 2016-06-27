@@ -17,10 +17,11 @@ class ChatSession < ActiveRecord::Base
 
   self.per_page = 8
 
-  def start
+  def start(moderator_user)
     update(
       started_at: Time.now,
-      status: :open
+      status: :open,
+      moderator_id: moderator_user.id
     )
   end
 
@@ -57,6 +58,10 @@ class ChatSession < ActiveRecord::Base
 
   def participants_count
     chat_messages.pluck(:user_id).uniq.count
+  end
+
+  def moderator
+    site.users.find_by(id: moderator_id)
   end
 
   def duration
