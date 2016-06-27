@@ -25,8 +25,9 @@
         input.js-datepicker.input__textfield name="chat_session[scheduled_for_date]" placeholder="#{Time.now.strftime(ChatSession.date_format)}"
 
     .form__textfield.time
-      - scheduled_for_time = @chat_session.scheduled_for.present? ? @chat_session.scheduled_for_time : "7:00 PM"
+      - scheduled_for_time = @chat_session.scheduled_for.present? ? @chat_session.scheduled_for_time : "7 : 00 pm"
       input.js-timepicker.input__textfield name="chat_session[scheduled_for_time]" value=scheduled_for_time
+      .icon__time.js-timepicker-icon = insert_svg("icons/icon_notify.svg")
 
 
   .label.large
