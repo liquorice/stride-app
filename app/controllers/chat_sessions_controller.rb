@@ -155,6 +155,7 @@ class ChatSessionsController < ApplicationController
       :name,
       :discreet_name,
       :description,
+      :notes,
       :tags => []
     )
 
