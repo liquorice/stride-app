@@ -153,6 +153,7 @@ class ChatSessionsController < ApplicationController
   def chat_session_params
     safe = params.require(:chat_session).permit(
       :name,
+      :discreet_name,
       :description,
       :tags => []
     )

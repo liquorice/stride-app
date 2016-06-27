@@ -6,7 +6,6 @@
     .form__textfield
       = f.text_field :name, placeholder:"Enter chat title", class:"input__textfield"
 
-  // TODO JB Param for discreet notifications title
   // TODO What is the maximum characters allowed?
   .label
     .label__title
@@ -14,7 +13,7 @@
       span.alert *
     .label__desc Please enter a discreet chat title for notifications sent to users. Maximum XX characters.
     .form__textfield
-      = f.text_field :name, placeholder:"Enter discreet title", class:"input__textfield"
+      = f.text_field :discreet_name, placeholder:"Enter discreet title", class:"input__textfield"
 
   .label.large
     .label__title Chat description
