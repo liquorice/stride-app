@@ -57,9 +57,9 @@ script.js-chat-template type="text/x-template"
         .avatar data-colour="$avatar_colour" data-face="$avatar_face"
 
     - if current_user_can?(:users_view)
-      a.user href="$user_path" $user_name
+      a.user href="$user_path" $user_name $user_type
     - else
-      p.user $user_name
+      p.user $user_name $user_type
 
 
 - content_for :footer do

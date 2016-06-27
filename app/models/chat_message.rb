@@ -25,7 +25,8 @@ class ChatMessage < ActiveRecord::Base
       user_id: user.id,
       user_path: user.path,
       avatar_colour: user.processed_avatar_colour,
-      avatar_face: user.avatar_face
+      avatar_face: user.avatar_face,
+      user_type: (user.can?(:chat_modify) ? "(Moderator)" : "")
     }
   end
 
