@@ -7,7 +7,8 @@
   var local_start_time;
   var messages_container;
   var messages_area;
-  var last_seen = -1;
+  var last_seen_message = 0;
+  var last_seen_notification = 0;
   var queue = [];
   var template;
   var chat_open = true;
@@ -116,13 +117,15 @@
       send_to_server({
         task: 'update',
         queue: queue,
-        last_seen: last_seen
+        last_seen_message: last_seen_message,
+        last_seen_notification: last_seen_notification
       });
     }
     else {
       send_to_server({
         task: 'view_only',
-        last_seen: last_seen
+        last_seen_message: last_seen_message,
+        last_seen_notification: last_seen_notification
       });
     }
 
@@ -158,11 +161,16 @@
       return;
     }
 
-    if (response.last_seen) {
-      last_seen = response.last_seen;
+    if (response.last_seen_message) {
+      last_seen_message = response.last_seen_message;
+    }
+
+    if (response.last_seen_notification) {
+      last_seen_notification = response.last_seen_notification;
     }
 
     if (response.messages) {
+      console.table(response.messages);
       for (var i = 0; i < response.messages.length; i++) {
         add_message(response.messages[i]);
       }
@@ -188,7 +196,8 @@
       user_id: USER_ID,
       avatar_colour: AVATAR_COLOUR,
       avatar_face: AVATAR_FACE,
-      user_path: USER_PATH
+      user_path: USER_PATH,
+      user_type: ""
     });
 
     input.val('');
@@ -212,6 +221,24 @@
       );
 
       message_el.addClass('deleted');
+    });
+
+    messages_container.on('click', '.js-chat-private', function() {
+      var message_el;
+      var user_id;
+
+      message_el = $(this).parents('.js-message');
+      user_id = message_el.attr('data-user-id');
+
+      console.debug(user_id);
+
+      add_to_queue(
+        'create_private',
+        {
+          user_id: user_id
+        }
+      );
+
     });
   };
 

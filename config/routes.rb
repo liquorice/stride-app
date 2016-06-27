@@ -14,6 +14,13 @@ Rails.application.routes.draw do
   patch 'chat/:id/start' => 'chat_sessions#start', as: :start_chat_session
   patch 'chat/:id/end' => 'chat_sessions#end', as: :end_chat_session
 
+  # Chat
+  get 'private_chats' => 'chat_sessions#index', as: :private_chats
+  get 'private_chat/:id' => 'private_chat_sessions#show', as: :private_chat
+
+  patch 'private_chat/:id/end' => 'private_chat_sessions#end', as: :end_private_chat_session
+  post 'private_chat/:id/post' => 'private_chat_sessions#post', as: :post_to_private_chat_session
+
   # Chat messages
   post 'chat/:id/post' => 'chat_sessions#post', as: :post_to_chat_session
 

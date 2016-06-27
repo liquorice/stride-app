@@ -20,7 +20,9 @@ class ChatMessage < ActiveRecord::Base
   def to_data
     {
       id: id,
+      timestamp: created_at,
       content: content,
+      type: "message",
       user_name: user.name,
       user_id: user.id,
       user_path: user.path,

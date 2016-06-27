@@ -1,6 +1,7 @@
 class ChatSession < ActiveRecord::Base
   belongs_to :site
   has_many :chat_messages
+  has_many :private_chat_sessions
 
   validates :name, presence: true
   validates :discreet_name, presence: true

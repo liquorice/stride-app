@@ -39,7 +39,7 @@
       ' to reply
 
 script.js-chat-template type="text/x-template"
-  .message.js-message data-self="$self" data-from="$from" data-id="$id"
+  .message.js-message data-self="$self" data-user-id="$user_id" data-id="$id" data-type="$type"
 
     .messageWrapper
       p.contentWrapper $content
@@ -50,7 +50,7 @@ script.js-chat-template type="text/x-template"
           .chatModerate-menu
             p.js-chat-delete Remove this message
             // TODO Private messaging
-            p Message user privately
+            p.js-chat-private Message user privately
 
     .avatarWrapper
       .avatarWrapper__corner

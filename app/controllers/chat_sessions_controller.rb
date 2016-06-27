@@ -87,7 +87,8 @@ class ChatSessionsController < ApplicationController
 
     # Defaults
     queue = params[:queue] || []
-    last_seen = params[:last_seen] || -1
+    last_seen_message = params[:last_seen_message] || 0
+    last_seen_notification = params[:last_seen_notification] || 0
 
     # Init empty payload
     payload = {}
@@ -95,10 +96,21 @@ class ChatSessionsController < ApplicationController
     case params[:task]
     when "history"
       # Retrieve all messages until now
-      messages = @chat_messages.since(-1)
+      messages = @chat_messages
+        .since(-1)
+        .map(&:to_data)
+
+      notifications = @chat_session
+        .private_chat_sessions
+        .since(-1)
+        .for_user(@current_user)
+        .map(&:to_data)
     when "view_only"
       # Retrieve all messages until now
-      messages = @chat_messages.since(last_seen)
+      messages = @chat_messages
+        .since(last_seen_message)
+        .map(&:to_data)
+
     when "update"
       # Process the pending queue, and send back
       # all new messages, including private messages,
@@ -110,14 +122,31 @@ class ChatSessionsController < ApplicationController
       process_queue
 
       # Retrieve new messages for the user
-      messages = @chat_messages.since(last_seen).for_user(@current_user)
+      messages = @chat_messages
+        .since(last_seen_message)
+        .for_user(@current_user)
+        .map(&:to_data)
+
+      notifications = @chat_session
+        .private_chat_sessions
+        .since(last_seen_notification)
+        .for_user(@current_user)
+        .map(&:to_data)
     end
 
     # Add any messages to payload
+    messages ||= []
+    notifications ||= []
+
     if messages.any?
-      payload[:messages] = messages.map(&:to_data)
-      payload[:last_seen] = messages.last.id
+      payload[:last_seen_message] = messages.last[:id]
     end
+
+    if notifications.any?
+      payload[:last_seen_notification] = notifications.last[:id]
+    end
+
+    payload[:messages] = (messages + notifications).flatten.sort{|a, b| a[:timestamp] <=> b[:timestamp]}
 
     # Add the timestamp so that the duration can be updated
     payload[:timestamp] = Time.now.to_i
@@ -146,6 +175,15 @@ class ChatSessionsController < ApplicationController
         @chat_session.chat_messages.find_by(
           id: queue_item["payload"]["message_id"]
         ).destroy
+      when "create_private"
+        # Open a private chat session
+        # Moderators only
+        require_permission :chat_modify
+
+        @chat_session.private_chat_sessions.create(
+          moderator_id: @current_user.id,
+          user_id: queue_item["payload"]["user_id"]
+        )
       end
     end
   end

@@ -1,0 +1,56 @@
+- content_for :sidebar do
+  = render 'partials/sidebar'
+
+/ TODO MC styling
+
+p Private chat
+p This chat is only viewable by #{@chat_session.participants.pluck(:name).to_sentence }
+
+.chatbar.active
+  .chatbar__title
+    = insert_svg("title-chat-small.svg", class:"heading__chat-small")
+    - if @current_user == @chat_session.moderator
+      a.btn__end href=end_private_chat_session_path(@chat_session) data-method="patch" data-confirm="Are you sure you want to end this session?" End chat
+
+  .chatbar__time
+    p.js-chat-duration
+  .btn__chatbar.js-chatbar = insert_svg("icons/icon_info.svg", class:"icon__info")
+
+.chatArea.js-chat-area
+  .messages.js-chat-messages
+
+.chatReply
+  form.chatReply__form.js-chat-form
+    input.js-chat-content name="message" placeholder="Enter text..."
+
+    .chatReply__button
+      button Post
+    .chatReply__clear.js-clear
+
+script.js-chat-template type="text/x-template"
+  .message.js-message data-self="$self" data-from="$from" data-id="$id"
+
+    .messageWrapper
+      p.contentWrapper $content
+
+    .avatarWrapper
+      .avatarWrapper__corner
+        .avatar data-colour="$avatar_colour" data-face="$avatar_face"
+
+    - if current_user_can?(:users_view)
+      a.user href="$user_path" $user_name $user_type
+    - else
+      p.user $user_name $user_type
+
+
+- content_for :footer do
+  = javascript_include_tag 'chat'
+  javascript:
+    var EXISTING_DURATION = 0;
+    var POLL_INTERVAL = 2000;
+    var POST_PATH = "#{post_to_private_chat_session_path(@chat_session)}"
+    var USER_ID = "#{@current_user.id}";
+    var USER_NAME = "#{@current_user.name}";
+    var AVATAR_COLOUR = "#{@current_user.processed_avatar_colour}";
+    var AVATAR_FACE = "#{@current_user.avatar_face}";
+    var USER_PATH = "#{@current_user.path}";
