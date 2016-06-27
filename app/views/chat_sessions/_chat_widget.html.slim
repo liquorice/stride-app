@@ -26,7 +26,11 @@
       .chatReply__clear.js-clear
 
 - else
-  / TODO Display message to non-logged-in users
+  .message-replyDisabled
+    h3
+      ' Please
+      a href=login_path data-modal=true login or register 
+      ' to reply
 
 script.js-chat-template type="text/x-template"
   .message.js-message data-self="$self" data-from="$from" data-id="$id"
