@@ -3,6 +3,7 @@ class ChatSession < ActiveRecord::Base
   has_many :chat_messages
 
   validates :name, presence: true
+  validates :discreet_name, presence: true
   validates :site, presence: true
   validates :scheduled_for, presence: true
 
