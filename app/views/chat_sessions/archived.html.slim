@@ -61,7 +61,8 @@
     p.desc = @chat_session.description
 
     // TODO Tags
-    p Tags Foo bar baz
+    p Tags
+    = @chat_session.tags.join(", ")
 
   // TODO Need moderator name and notes
   .chatArchive__row
