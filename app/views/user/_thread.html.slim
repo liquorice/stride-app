@@ -1,10 +1,13 @@
-.userThread data-hidden=!thread.public? data-locked=thread.locked
+.userThread data-hidden=!thread.public? data-locked=thread.locked data-forum-hidden=!(thread.topic.visible)
   - if !thread.public?
     .message-postHidden
       | Thread hidden by moderator
   - elsif thread.locked?
     .message-postHidden
       | Thread locked by moderator
+  - elsif !(thread.topic.visible)
+    .message-postHidden
+      | Forum hidden by moderator
 
   .userThread__details
     h4

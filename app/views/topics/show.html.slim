@@ -1,5 +1,7 @@
 - content_for :dark_strip do
   .strip__dark-topic
+    - unless @topic.visible
+      .strip__modOnly Hidden Forum. Only visible to moderators.
     h2
       a href=topics_preview_path 
         = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")

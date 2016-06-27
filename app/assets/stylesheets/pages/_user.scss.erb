@@ -305,10 +305,19 @@
   margin-bottom: 6px;
   position: relative;
 
+  &[data-forum-hidden],
   &[data-hidden],
   &[data-locked] {
     background: rgba($bg-dark, 0.5);
     border-left: 6px solid $green-dark;
+
+    &.needsCropping .post__content:after {
+      background-image: linear-gradient(top, rgba($bg-dark, 0) 0%, rgba($bg-dark, 0.5) 100%) !important;
+    }
+
+    .post__content {
+      opacity: 0.5;
+    }
 
     .userThread__details,
     .userPost__details {
@@ -369,6 +378,14 @@
 
   .userPost__button {
     padding-bottom: 0;
+
+    .userPost[data-forum-hidden] &,
+    .userPost[data-hidden] & {
+      .post__showMore,
+      .post__showLess {
+        @include btn-mid;
+      }
+    }
   }
 
   .userThread__view,

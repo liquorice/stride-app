@@ -14,7 +14,7 @@
 - content_for :sidebar do
   = render 'partials/sidebar'
 
-- if !@thread.public || @thread.locked
+- if !@thread.public || @thread.locked || !@thread.topic.visible
   .message-threadDisabled
     - if !@thread.public
       p.hidden
@@ -28,6 +28,12 @@
         - if current_user_can?(:topicThreads_modify)
           span.italic Edit details 
           ' to unlock.
+    - elsif !@thread.topic.visible
+      p.hidden
+        ' Hidden forum.
+        - if current_user_can?(:forums_modify)
+          span.italic Manage forums 
+          ' to unhide.
 
 .threadDetails
   .threadDetails__created
@@ -67,7 +73,7 @@
     = insert_svg("empty-avatar.svg", class:"icon__avatar")
     | There's nothing here! Be the first to post a reply.
 
-- if current_user_can?(:post_create) && @thread.public? && !@thread.locked
+- if current_user_can?(:post_create) && @thread.public? && !@thread.locked && @thread.topic.visible
   .postReply.js-postReply
     .postReply__title
       h3 Post a reply
@@ -93,10 +99,13 @@
       ' Please
       a href=login_path data-modal=true login or register 
       ' to reply
-- elsif !@thread.public || @thread.locked
+- elsif !@thread.public || @thread.locked || !@thread.topic.visible
   .message-replyDisabled
     - if !@thread.public
       - if current_user_can?(:topicThreads_modify)
         h3 Hidden post. Replies cannot be made.
     - elsif @thread.locked
       h3 Locked post. Replies cannot be made.
+    - elsif !@thread.topic.visible
+      - if current_user_can?(:forums_modify)
+        h3 Hidden forum. Replies cannot be made.

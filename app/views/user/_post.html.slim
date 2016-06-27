@@ -1,7 +1,10 @@
-.post.userPost.js-post data-hidden=post.hidden?
+.post.userPost.js-post data-hidden=post.hidden? data-forum-hidden=!(post.topic_thread.topic.visible)
   - if post.hidden?
     .message-postHidden
       | Reply hidden by moderator #{post.hidden_at.strftime('%d/%m/%y')}
+  - elsif !(post.topic_thread.topic.visible)
+    .message-postHidden
+      | Forum hidden by moderator
 
   .userPost__details
     h4
