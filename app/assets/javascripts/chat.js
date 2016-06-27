@@ -101,7 +101,7 @@
     display_text = [
       hours + (hours == 1 ? 'hr' : 'hrs'),
       minutes + (minutes == 1 ? 'min' : 'mins'),
-      seconds + (seconds == 1 ? 'sec' : 'secs')
+      seconds + (seconds == 1 ? 's' : 's')
     ].join(" ");
 
     duration_display.text(display_text);
