@@ -15,6 +15,7 @@
 //= require jquery-rails
 //= require zebra_datepicker
 //= require wickedpicker
+//= require twitter-widget
 
 //= require module
 //= require post-content
