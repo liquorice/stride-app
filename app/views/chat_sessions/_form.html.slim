@@ -6,14 +6,23 @@
     .form__textfield
       = f.text_field :name, placeholder:"Enter chat title", class:"input__textfield"
 
+  // TODO JB Param for discreet notifications title
+  // TODO What is the maximum characters allowed?
   .label
     .label__title
-      | Chat description
+      | Discreet chat title
       span.alert *
+    .label__desc Please enter a discreet chat title for notifications sent to users. Maximum XX characters.
+    .form__textfield
+      = f.text_field :name, placeholder:"Enter discreet title", class:"input__textfield"
+
+  .label.large
+    .label__title Chat description
+    .label__desc Please enter a description of the chat. This will appear on the chat overview page, as well as the home page.
     .form__textarea.js-textarea
         = f.text_area :description, placeholder:"Enter chat description", class:"input__textarea js-free-text"
 
-  .label.js-datetime
+  .label.med.js-datetime
     .label__title
       | Scheduled date/time
       span.alert *
@@ -32,9 +41,17 @@
 
   .label.large
     .label__title Tags
+    .label__desc Enter tags separated by the return key.
     = render 'components/tags',
       name: 'chat_session[tags]',
       value: @chat_session.tags
+
+  // TODO JB Need to add param for moderator notes, this will only show in archive
+  .label.large
+    .label__title Additional notes from moderator.
+    .label__desc Please add notes on conclusion of chat. These will only be visible by other moderators.
+    .form__textarea.js-textarea
+        = f.text_area :description, placeholder:"Notes", class:"input__textarea js-free-text"
 
   .form__button.js-popup-close Cancel
   button.form__button.primary Save
