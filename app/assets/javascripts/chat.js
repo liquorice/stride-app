@@ -95,13 +95,13 @@
     duration = Math.floor(EXISTING_DURATION + (Date.now() - local_start_time) / 1000);
 
     hours = Math.floor(duration / 60 / 60);
-    minutes = Math.floor((duration - (hours * 60)) / 60);
+    minutes = Math.floor((duration - (hours * 60 * 60)) / 60);
     seconds = Math.floor(duration % 60);
 
     display_text = [
       hours + (hours == 1 ? 'hr' : 'hrs'),
       minutes + (minutes == 1 ? 'min' : 'mins'),
-      seconds + (seconds == 1 ? 's' : 's')
+      seconds + 's'
     ].join(" ");
 
     duration_display.text(display_text);
