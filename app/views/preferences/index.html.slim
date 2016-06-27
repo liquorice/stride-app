@@ -124,80 +124,50 @@
 
         hr.sample
 
-        // TODO JB Notification params
-        .modalContent
-          .label.med
-            .label__title = "Switch on notifications from #{@site.name}"
-            .label__desc Notifications will only be sent if you have saved the relevant contact details below.
-            label.toggle
-              = check_box_tag 'accept_notifications'
-              .toggle__text Off
-              .toggle__text On
+        = form_for @current_user, url: preferences_path, method: :patch do |f|
+
+          h3 Email
+
+          .label
+            label.checkbox
+              = f.check_box :email_opted_in, class:"input__checkbox"
+              .form__checkbox
+            .checkbox__text
+              strong Opt in to email notifications
+
+          - display_email = (@current_user.email || @current_user.email.empty?) ? "Not provided" : @current_user.email
+          p.view-default = display_email
+
+          .label
+            .label__desc Edit your email address above
 
           hr
 
-          = form_tag preferences_path, class: "js-profile"
+          h3 SMS
 
-            h3 Email
+          .label
+            label.checkbox
+              = f.check_box :sms_opted_in, class:"input__checkbox"
+              .form__checkbox
+            .checkbox__text
+              strong Opt in to SMS notifications
 
-            .label
-              label.checkbox
-                = check_box_tag 'notify_email', class:"input__checkbox"
-                .form__checkbox
-              .checkbox__text
-                strong Opt in to email notifications 
-
-            - display_email = (@current_user.email || @current_user.email.empty?) ? "Not provided" : @current_user.email
-            p.view-default = display_email
-
-            .label
-              .label__desc Edit your email address above
-
-          hr
-          
-          = form_tag preferences_path, class: "js-profile"
-
-            h3 SMS
-
-            .label
-              label.checkbox
-                = check_box_tag 'notify_sms', class:"input__checkbox"
-                .form__checkbox
-              .checkbox__text
-                strong Opt in to SMS notifications 
-
-            // TODO Check for user number
-            / - display_number = (@current_user.mobile || @current_user.mobile.empty?) ? "Not provided" : @current_user.mobile
-            p.view-default = "+61 123 234 345"
-
-            input.input__textfield.view-edit name="mobile_number" value="+61 123 234 345"
-
-            .btn__profile-edit.js-profile-edit.view-default Edit
-            button.view-edit Save
-            .btn__profile-cancel.js-profile-edit.view-edit Cancel
+          = f.text_field :sms_contact
 
           hr
 
-          = form_tag preferences_path, class: "js-profile"
+          h3 Twitter direct messages
 
-            h3 Twitter direct messages
+          .label
+            label.checkbox
+              = f.check_box :twitter_opted_in, class:"input__checkbox"
+              .form__checkbox
+            .checkbox__text
+              strong Opt in to Twitter DMs
+            .label__desc = "In order to receive notifications via Twitter DM, you must first follow #{@site.name}'s Twitter account using the button below, then enter and save your own Twitter account name."
 
-            .label
-              label.checkbox
-                = check_box_tag 'notify_twitter', class:"input__checkbox"
-                .form__checkbox
-              .checkbox__text
-                strong Opt in to Twitter DMs
-              .label__desc = "In order to receive notifications via Twitter DM, you must first follow #{@site.name}'s Twitter account using the button below, then enter and save your own Twitter account name."
+          a class="twitter-follow-button" href="https://twitter.com/#{@site.name}_community" data-show-count="false" data-size="large" = "Follow @#{@site.name}_community"
 
-            a class="twitter-follow-button" href="https://twitter.com/#{@site.name}_community" data-show-count="false" data-size="large" = "Follow @#{@site.name}_community"
+          = f.text_field :twitter_contact
 
-            // TODO Check for user twitter name
-            / - display_twitter = (@current_user.twitter || @current_user.twitter.empty?) ? "Not provided" : @current_user.twitter
-            p.view-default = "Your_twitter_name"
-
-            input.input__textfield.view-edit name="twitter_name" value="Your_twitter_name"
-
-            .btn__profile-edit.js-profile-edit.view-default Edit
-            button.view-edit Save
-            .btn__profile-cancel.js-profile-edit.view-edit Cancel
+          button Save

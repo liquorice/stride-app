@@ -46,7 +46,17 @@ class PreferencesController < ApplicationController
   private
 
   def preferences_params
-    params.require(:user).permit(:name, :avatar_colour, :avatar_face, :email)
+    params.require(:user).permit(
+      :name,
+      :avatar_colour,
+      :avatar_face,
+      :email,
+      :email_opted_in,
+      :sms_opted_in,
+      :twitter_opted_in,
+      :sms_contact,
+      :twitter_contact
+    )
   end
 
   def password_reset_params
