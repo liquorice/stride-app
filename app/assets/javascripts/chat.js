@@ -170,7 +170,6 @@
     }
 
     if (response.messages) {
-      console.table(response.messages);
       for (var i = 0; i < response.messages.length; i++) {
         add_message(response.messages[i]);
       }
