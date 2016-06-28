@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624150951) do
+ActiveRecord::Schema.define(version: 20160627161058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,25 +31,30 @@ ActiveRecord::Schema.define(version: 20160624150951) do
     t.integer  "chat_session_id"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.boolean  "visible",         default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "visible",                 default: true
+    t.integer  "private_chat_session_id"
   end
 
   add_index "chat_messages", ["chat_session_id"], name: "index_chat_messages_on_chat_session_id", using: :btree
+  add_index "chat_messages", ["private_chat_session_id"], name: "index_chat_messages_on_private_chat_session_id", using: :btree
   add_index "chat_messages", ["user_id"], name: "index_chat_messages_on_user_id", using: :btree
 
   create_table "chat_sessions", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "scheduled_for"
-    t.integer  "status"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "status",        default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "site_id"
     t.datetime "started_at"
     t.datetime "ended_at"
-    t.string   "tags",                       array: true
+    t.string   "tags",          default: [],              array: true
+    t.string   "discreet_name"
+    t.text     "notes"
+    t.integer  "moderator_id"
   end
 
   add_index "chat_sessions", ["site_id"], name: "index_chat_sessions_on_site_id", using: :btree
@@ -102,6 +107,20 @@ ActiveRecord::Schema.define(version: 20160624150951) do
   add_index "posts", ["topic_thread_id"], name: "index_posts_on_topic_thread_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "private_chat_sessions", force: :cascade do |t|
+    t.integer  "moderator_id"
+    t.integer  "user_id"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "status",          default: 0
+    t.integer  "chat_session_id"
+  end
+
+  add_index "private_chat_sessions", ["chat_session_id"], name: "index_private_chat_sessions_on_chat_session_id", using: :btree
+  add_index "private_chat_sessions", ["user_id"], name: "index_private_chat_sessions_on_user_id", using: :btree
+
   create_table "sites", force: :cascade do |t|
     t.string   "name"
     t.string   "hosts",      default: [],              array: true
@@ -142,15 +161,20 @@ ActiveRecord::Schema.define(version: 20160624150951) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "superuser",       default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "superuser",        default: false
     t.integer  "access_level_id"
     t.integer  "site_id"
-    t.integer  "avatar_colour",   default: 1
-    t.integer  "avatar_face",     default: 1
+    t.integer  "avatar_colour",    default: 1
+    t.integer  "avatar_face",      default: 1
     t.datetime "last_seen"
-    t.boolean  "suspended",       default: false
+    t.boolean  "suspended",        default: false
+    t.boolean  "email_opted_in",   default: false
+    t.boolean  "sms_opted_in",     default: false
+    t.boolean  "twitter_opted_in", default: false
+    t.string   "sms_contact"
+    t.string   "twitter_contact"
   end
 
   add_index "users", ["access_level_id"], name: "index_users_on_access_level_id", using: :btree
@@ -158,11 +182,14 @@ ActiveRecord::Schema.define(version: 20160624150951) do
 
   add_foreign_key "access_levels", "sites"
   add_foreign_key "chat_messages", "chat_sessions"
+  add_foreign_key "chat_messages", "private_chat_sessions"
   add_foreign_key "chat_messages", "users"
   add_foreign_key "chat_sessions", "sites"
   add_foreign_key "password_requests", "users"
   add_foreign_key "posts", "topic_threads"
   add_foreign_key "posts", "users"
+  add_foreign_key "private_chat_sessions", "chat_sessions"
+  add_foreign_key "private_chat_sessions", "users"
   add_foreign_key "topic_threads", "topics"
   add_foreign_key "topic_threads", "users"
   add_foreign_key "topics", "sites"
