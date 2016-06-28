@@ -61,23 +61,23 @@
     p.desc = @chat_session.description
 
     // TODO Tags
-    p 
+    p
       strong Tags
     p
-      - if @chat_session.tags.empty?
-        | No tags
-      - else
+      - if @chat_session.tags.any?
         = @chat_session.tags.join(", ")
+      - else
+        | No tags
 
   // TODO Moderator name and notes
   .chatArchive__row
     p.note__title
-      strong Moderator: 
-      // = @chat_session.moderator.name
+      strong Moderator:
+      = @chat_session.moderator.name
 
     p.note__title
       strong Notes from moderator
-    
+
     p.note__text
       - if @chat_session.notes
         = @chat_session.notes
