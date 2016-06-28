@@ -102,7 +102,7 @@
     p
       | Please note, your email address will not be visible to anyone else, and will only be used to recover a lost password or if email notification has been turned on.
 
-    - display_email = (@current_user.email || @current_user.email.empty?) ? "Not provided" : @current_user.email
+    - display_email = (!@current_user.email || @current_user.email.empty?) ? "Not provided" : @current_user.email
     p.view-default = display_email
 
     input.input__textfield.view-edit name="user[email]" placeholder="Enter email address" value=@current_user.email
@@ -122,52 +122,41 @@
         = image_tag("notification-sample.png", alt:'Notification display example', class:'img__sample')
         p.sample Notifications may look a little like the example above
 
-        hr.sample
+        hr
 
         = form_for @current_user, url: preferences_path, method: :patch do |f|
 
-          h3 Email
-
           .label
-            label.checkbox
-              = f.check_box :email_opted_in, class:"input__checkbox"
-              .form__checkbox
-            .checkbox__text
-              strong Opt in to email notifications
-
-          - display_email = (@current_user.email || @current_user.email.empty?) ? "Not provided" : @current_user.email
-          p.view-default = display_email
-
-          .label
+            .label__title = "Email notifications"
             .label__desc Edit your email address above
+            label.toggle
+              = f.check_box :email_opted_in
+              .toggle__text Off
+              .toggle__text On
 
-          hr
-
-          h3 SMS
-
-          .label
-            label.checkbox
-              = f.check_box :sms_opted_in, class:"input__checkbox"
-              .form__checkbox
-            .checkbox__text
-              strong Opt in to SMS notifications
-
-          = f.text_field :sms_contact
-
-          hr
-
-          h3 Twitter direct messages
+          - display_email = (!@current_user.email || @current_user.email.empty?) ? "Email not provided" : @current_user.email
+          p.display = display_email
 
           .label
-            label.checkbox
-              = f.check_box :twitter_opted_in, class:"input__checkbox"
-              .form__checkbox
-            .checkbox__text
-              strong Opt in to Twitter DMs
+            .label__title = "SMS notifications"
+            .label__desc Please save your mobile number to receive notifications
+            label.toggle
+              = f.check_box :sms_opted_in
+              .toggle__text Off
+              .toggle__text On
+
+          = f.text_field :sms_contact, placeholder:"Mobile not provided", class:"input__textfield"
+
+          .label
+            .label__title = "Twitter direct messages"
             .label__desc = "In order to receive notifications via Twitter DM, you must first follow #{@site.name}'s Twitter account using the button below, then enter and save your own Twitter account name."
+            label.toggle
+              = f.check_box :twitter_opted_in
+              .toggle__text Off
+              .toggle__text On
 
           a class="twitter-follow-button" href="https://twitter.com/#{@site.name}_community" data-show-count="false" data-size="large" = "Follow @#{@site.name}_community"
 
-          = f.text_field :twitter_contact
+          = f.text_field :twitter_contact, placeholder:"Twitter not provided", class:"input__textfield"
 
-          button Save
+          button Save notifications
