@@ -1,4 +1,6 @@
 class ApiController < ApplicationController
+  include ActionView::Helpers::DateHelper
+  include ApplicationHelper
 
   def threads_for_tag
     threads = @site.topic_threads.visible.for_tag(params[:tag])
@@ -27,7 +29,8 @@ class ApiController < ApplicationController
         name: chat_session.name,
         description: chat_session.description,
         url: chat_session_path(chat_session),
-        scheduled_for: chat_session.scheduled_for,
+        scheduled_for: chat_session.scheduled_for.to_i,
+        starts_in: distance_of_future_time_in_words(chat_session.scheduled_for),
         status: chat_session.status
       }
     else
@@ -50,8 +53,7 @@ class ApiController < ApplicationController
 
       @topic_threads.each do |topic_thread|
         threads.push({
-          data: topic_thread.export_to_json,
-          html: render_to_string(partial: 'topic_threads/topic_thread', locals: { topic_thread: topic_thread })
+          data: topic_thread.export_to_json
         })
       end
 

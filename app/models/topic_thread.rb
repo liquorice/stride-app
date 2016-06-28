@@ -1,4 +1,5 @@
 class TopicThread < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
   is_impressionable :counter_cache => true
   # --- Associations ---
   belongs_to :topic
@@ -67,7 +68,15 @@ class TopicThread < ActiveRecord::Base
       created_at: created_at.to_i,
       created_by: user.name,
       views: impressions_count,
-      posts: posts_count
+      posts: ("#{posts_count / 1000}k" if posts_count > 1000 ) || posts_count,
+      last_post: {
+        id: latest_post.id,
+        user: latest_post.user.name,
+        avatar_face: latest_post.user.avatar_face,
+        avatar_colour: latest_post.user.avatar_colour,
+        created_at: time_ago_in_words(latest_post.created_at, locale: 'en-brief'),
+        content: latest_post.content
+      }
     }
   end
 
