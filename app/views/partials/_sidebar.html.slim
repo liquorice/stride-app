@@ -83,5 +83,9 @@
     h2
       a href=topics_preview_path Forums
     - @site.topics.each do |topic|
-      - if topic.visible
-        a href=topic_path(topic) data-active=(topic == @topic) = topic.name
+      - if current_user_can?(:topics_viewHidden) || topic.visible?
+        a href=topic_path(topic) data-hidden=!(topic.visible?) data-active=(topic == @topic)
+          = topic.name 
+          - if !topic.visible?
+            span
+              '  (Hidden)

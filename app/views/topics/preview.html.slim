@@ -13,13 +13,17 @@
   = render 'partials/sidebar', expanded: true
 
 - @topics.each do |topic|
-  .topic__preview
-    .topic__name
-      h2
-        a href=topic_path(topic) = topic.name
+  - if current_user_can?(:topics_viewHidden) || topic.visible?
+    .topic__preview data-hidden=!(topic.visible?)
+      .topic__name
+        h2
+          a href=topic_path(topic) = topic.name
+          - if !topic.visible?
+            span
+              | (Hidden forum)
 
-    .topicThreads
-      = render topic.topic_threads.preview
+      .topicThreads
+        = render topic.topic_threads.preview
 
-    .topic__viewMore
-      a href=topic_path(topic) View more on this forum
+      .topic__viewMore
+        a href=topic_path(topic) View more on this forum

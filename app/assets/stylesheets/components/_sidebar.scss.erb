@@ -166,6 +166,10 @@
       transition: all 100ms ease-out;
     }
 
+    &[data-hidden] {
+      color: rgba($grey-warm, 0.5);
+    }
+
     &[data-active] {
       @include ff_adelle-boldItalic;
       color: $primary;

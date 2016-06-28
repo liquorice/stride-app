@@ -1,3 +1,38 @@
+.topic__preview[data-hidden] {
+  h2, a, strong {
+    color: $grey-warm;
+
+    span {
+      @include p-meta;
+      color: $grey-warm;
+      padding-left: 0.3rem;
+    }
+  }
+
+  .mobile-thread * {
+    color: $grey-warm;
+  }
+
+  .thread__preview {
+    border-color: mix($grey-warm, $white, 10%);
+
+    &[data-pinned] {
+      border-color: $blue-dark;
+    }
+  }
+
+  .thread * {
+    background: mix($grey-warm, $white, 10%);
+    &:hover {
+      background: mix($links, $white, 8%);
+    }
+  }
+
+  .thread:hover * {
+    background: mix($links, $white, 8%);
+  }
+}
+
 .topic__preview {
   @include breakpoint (mini, small) {
     margin-top: 0;
