@@ -230,8 +230,6 @@
       message_el = $(this).parents('.js-message');
       user_id = message_el.attr('data-user-id');
 
-      console.debug(user_id);
-
       add_to_queue(
         'create_private',
         {
