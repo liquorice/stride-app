@@ -1,0 +1,48 @@
+- content_for :sidebar do
+  = render 'partials/sidebar'
+
+- if @current_user.can?(:chat_modify)
+
+  p Private chat
+
+  p
+    | Chat launched from
+    br
+    a href=chat_session_path(@chat_session.chat_session) = @chat_session.chat_session.name
+
+  p
+    | Date
+    br
+    = @chat_session.created_at.strftime("%d/%m/%y")
+
+  p
+    | Moderator
+    br
+    = @chat_session.moderator.name
+
+  p
+    | User
+    br
+    = @chat_session.user.name
+
+
+  .chatHistory
+    - if @chat_session.chat_messages.any?
+      .chatHistory__bar.js-chathistory
+        a.chatHistory__bar-bottom href="##{@chat_session.chat_messages.last.id}"
+          = insert_svg("icons/chat-arrow.svg", class:"icon__arrow")
+          | bottom
+        a.chatHistory__bar-top href="##{@chat_session.chat_messages.first.id}"
+          = insert_svg("icons/chat-arrow.svg", class:"icon__arrow")
+          | up
+      - @chat_session.chat_messages.each do |chat_message|
+        = render "chat_messages/archived", chat_message: chat_message
+    - else
+      .message-noThreads
+        = insert_svg("empty-avatar.svg", class:"icon__avatar")
+        | There were no chat messages
+
+
+- else
+  / MC TODO For the non-moderator involved in the chat
+  p This chat has ended.

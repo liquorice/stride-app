@@ -21,7 +21,13 @@ a.chatArchive__preview href=chat_session_path(chat_session)
       strong Participants: 
       = chat_session.participants_count
 
-    - unless chat_session.tags.empty?
+    - if chat_session.tags.any?
       p
         strong Tags: 
         = chat_session.tags.join(", ")
+
+    - if chat_session.private_chat_sessions.any?
+        p
+          strong Private chats: 
+          = chat_session.private_chat_sessions.map(&:user).map(&:name).to_sentence
+
