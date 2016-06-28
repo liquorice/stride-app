@@ -3,6 +3,7 @@
     chat_session_<%= i %>_<%= site %>:
       site: <%= site %>
       name: "<%= LibLib.line(:title) %>"
+      discreet_name: "<%= LibLib.line(:title) %>"
       description: "<%= LibLib.line(:grimm) %>"
       status: 0
       scheduled_for: <%= i.days.from_now %>
@@ -14,6 +15,7 @@
     past_chat_session_<%= i %>_<%= site %>:
       site: <%= site %>
       name: "<%= LibLib.line(:title) %>"
+      discreet_name: "<%= LibLib.line(:title) %>"
       description: "<%= LibLib.line(:grimm) %>"
       status: 2
       scheduled_for: <%= i.days.ago %>
