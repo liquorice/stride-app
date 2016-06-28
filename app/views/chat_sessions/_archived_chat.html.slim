@@ -21,7 +21,7 @@ a.chatArchive__preview href=chat_session_path(chat_session)
       strong Participants: 
       = chat_session.participants_count
 
-    // TODO Tags
-    p
-      strong Tags: 
-      ' Foo bar baz
+    - unless chat_session.tags.empty?
+      p
+        strong Tags: 
+        = chat_session.tags.join(", ")
