@@ -3,14 +3,16 @@ footer.footer
     .constrained
       // TODO Client can change these URLs through KB
       p
-        = "A "
-        a href="/beyond_blue" = "Beyond Blue"
-        = " project"
+        = "#{@site.name.capitalize} is a "
+        a href="/beyond_blue"
+          em beyondblue
+        = " project funded with donations from the "
+        a href="#" Movember Foundation
 
       ul aria-label="Contributors"
         li
           a href="#"
-            img.logo__beyondBlue alt="Beyond Blue" src="#{asset_path('logos/beyond-blue-movember.png')}"
+            img.logo__beyondblue alt="beyondblue" src="#{asset_path('logos/beyond-blue-movember.png')}"
 
         li
           a href="#"
@@ -52,9 +54,8 @@ footer.footer
 
           li
             a href=topics_preview_path Forums
-          // TODO Remove this if launching without chat
           li
-            a href="#" Chat
+            a href=chats_path Chat
 
           li
             a href=link_to_kb('about') About

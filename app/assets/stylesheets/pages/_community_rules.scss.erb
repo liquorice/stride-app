@@ -1,6 +1,29 @@
 .community__section {
   margin-bottom: $standard-margin;
 
+  h1 {
+    @include ff_quatroSlab;
+    color: $primary;
+    font-size: 1.85rem;
+    line-height: 0.9;
+    margin-bottom: 1.263rem;
+  }
+
+  h2 {
+    @include ff_adelle-bold;
+    color: $primary;
+    font-size: 1.46rem;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+    margin-top: 1.4rem;
+  }
+
+  h3 {
+    @include h2-level1;
+    color: $primary;
+    margin-bottom: 0.474rem;
+  }
+
   h4 {
     @include h2-level1;
     margin-bottom: 0.474rem;
@@ -9,6 +32,27 @@
   p {
     @include p-regular;
     margin-bottom: 0.789rem;
+  }
+
+  ul {
+    @include p-regular;
+    list-style-position: inside;
+    margin-bottom: 0.842rem;
+
+    li {
+      display: block;
+      margin-bottom: 0.474rem;
+      margin-left: 1.263rem;
+
+      &:before {
+        @include ff_adelle-bold;
+        color: $primary;
+        content: "—";
+        display: block;
+        float: left;
+        margin-left: -1.263rem;
+      }
+    }
   }
 
   ol {
