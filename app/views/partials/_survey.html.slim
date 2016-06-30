@@ -1,8 +1,14 @@
 .survey.js-survey.hidden
   .survey-close.js-survey-close
   .survey-popup
-    h1 Dale needs your help dicaborum iundis a
-    p Shor Et volorum sequias raturit alitios nossunt enditat endebit as rem rehentur sitam nulpa aliqui dicaborum iundis audis ent re ommo beatium aut eliquae dolum natum, cum niatendit quaspis que officit fuga. Alis esequatibus dolendandam, si idus.
+    h1 = "#{@site.name.capitalize} needs your help"
+    p = "#{@site.name.capitalize} is a new website aimed at providing information and resources to people who may experience anxiety and depression."
+
+    p The University of New South Wales is conducting a brief survey for us to find out a bit more about who is using the website and what they think of it. We would really appreciate if you could take the time to complete the survey. Your responses will be completely anonymous and confidential. The results of the survey will be used to help us understand who is using the website and to improve the content and features of the website.
+
+    p
+      a href="#" Click here
+      '  to find out more and complete the survey!
 
     .btn-no.js-survey-close No thanks
     // TODO Link to somewhere
