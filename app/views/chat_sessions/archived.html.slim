@@ -76,6 +76,10 @@
 
   .chatArchive__row
     p.note__title
+      strong Discreet chat title: 
+      =< @chat_session.discreet_name
+      
+    p.note__title
       strong Moderator: 
       - if @chat_session.moderator
         =< @chat_session.moderator.name
