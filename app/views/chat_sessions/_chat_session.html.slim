@@ -62,10 +62,10 @@
               p moderator
           - else
             - if (chat_session.scheduled_for <= (Time.now + 1.days))
-              strong Chat starts in
+              strong => "Chat starts in "
             - else
-              strong Chat live in
-            h2  = distance_of_future_time_in_words(chat_session.scheduled_for)
+              strong => "Chat live in "
+            h2 = distance_of_future_time_in_words(chat_session.scheduled_for)
 
     .mobile-chatSession__notify
       - if current_user_can?(:chat_modify)
