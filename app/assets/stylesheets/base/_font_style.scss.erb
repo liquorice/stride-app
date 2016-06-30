@@ -204,3 +204,47 @@ $standard-margin: 0.6rem;
   line-height: 1.4;
   color: $black;
 }
+
+// Lists
+
+@mixin lists {
+  ul, ol {
+    @include p-regular;
+    list-style-type: none;
+    line-height: 1.46667;
+    position: relative;
+    left: 25px;
+    width: calc(100% - 25px);
+  }
+
+  ul li {
+    margin: 0 0 0.333334em;
+    padding: 0;
+    position: relative;
+
+    &:before {
+      @include ff_adelle-bold;
+      color: $primary;
+      content: "—";
+      font-size: .75rem;
+      line-height: 1.8;
+      position: absolute;
+      margin-left: -24px;
+    }
+  }
+
+  ol li {
+    counter-increment: list-counter;
+    margin: 0.333334em 0;
+    position: relative;
+
+    &:before {
+      @include ff_adelle-bold;
+      color: $primary;
+      content: counter(list-counter);
+      margin-right: .8rem;
+      position: absolute;
+      margin-left: -24px;
+    }
+  }
+}
