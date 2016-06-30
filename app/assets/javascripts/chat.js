@@ -187,26 +187,28 @@
 
   var send_message = function() {
     var message_content;
-    message_content = input.val();
+    if (input.val().trim()) {
+      message_content = input.val();
 
-    add_to_queue(
-      'message',
-      {
-        content: message_content
-      }
-    );
+      add_to_queue(
+        'message',
+        {
+          content: message_content
+        }
+      );
 
-    add_message({
-      content: message_content,
-      user_name: USER_NAME,
-      user_id: USER_ID,
-      avatar_colour: AVATAR_COLOUR,
-      avatar_face: AVATAR_FACE,
-      user_path: USER_PATH,
-      user_type: ""
-    });
+      add_message({
+        content: message_content,
+        user_name: USER_NAME,
+        user_id: USER_ID,
+        avatar_colour: AVATAR_COLOUR,
+        avatar_face: AVATAR_FACE,
+        user_path: USER_PATH,
+        user_type: ""
+      });
 
-    input.val('');
+      input.val('');
+    }
   };
 
   // Moderation
