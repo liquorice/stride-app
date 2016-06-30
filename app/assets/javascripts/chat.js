@@ -29,7 +29,7 @@
 
     setup_moderator_tools();
     setup_clear();
-    check_empty();
+    setup_growing_textarea();
 
     form.on('submit', function(e) {
       e.preventDefault();
@@ -42,8 +42,15 @@
     setInterval(update_duration, 500);
   };
 
-  // Set up text input post and clear buttons
-  var check_empty = function() {
+  // Textarea input auto-resize and clear
+
+  var setup_clear = function() {
+    form.find('.js-clear').on('click', function() {
+      input.val('').trigger('input');
+    });
+  }
+
+  var setup_growing_textarea = function() {
     input.on('input', function() {
       if (input.val().length) {
         form.addClass('hasContent');
@@ -51,13 +58,13 @@
       else {
         form.removeClass('hasContent');
       }
-    });
-  }
 
-  var setup_clear = function() {
-    form.find('.js-clear').on('click', function() {
-      input.val('').trigger('input');
+      input
+        .css('height', 0)
+        .css('height', input[0].scrollHeight + 'px');
     });
+
+    input.trigger('input');
   }
 
   // Rendering
