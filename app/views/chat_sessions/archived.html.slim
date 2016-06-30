@@ -65,20 +65,19 @@
         - taglink = 'tag/' + tag.downcase.gsub(" ", "-")
         a.tags__tag.link href="#{link_to_kb(taglink)}" = tag
 
-  - if @chat_session.private_chat_sessions.any?
-    .chatArchive__row
-      p
-        strong Private chats
-
-      p
-        - @chat_session.private_chat_sessions.each do |private_chat_session|
-          a href=private_chat_path(private_chat_session) = private_chat_session.user.name
-
   .chatArchive__row
     p.note__title
       strong Discreet chat title: 
       =< @chat_session.discreet_name
-      
+
+    - if @chat_session.private_chat_sessions.any?
+      p.note__title
+        strong Private chats: 
+        - @chat_session.private_chat_sessions.each do |private_chat_session|
+          a href=private_chat_path(private_chat_session) = private_chat_session.user.name
+          - if private_chat_session != @chat_session.private_chat_sessions.last
+            ' , 
+
     p.note__title
       strong Moderator: 
       - if @chat_session.moderator

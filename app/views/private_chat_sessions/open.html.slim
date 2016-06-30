@@ -1,9 +1,9 @@
 - content_for :chat_strip do
   .strip__dark-chat
     h2
-      a href=chats_path
+      a href=chat_session_path(@chat_session.chat_session)
         = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
-        | Live chats
+        = @chat_session.chat_session.name
     h1 Private Chat
 
 - content_for :sidebar do
