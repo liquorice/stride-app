@@ -6,7 +6,10 @@ class ChatSessionsController < ApplicationController
   end
 
   def archived_list
-    @chat_sessions = @site.chat_sessions.where(status: [ChatSession.statuses['archived']]).paginate(:page => params[:page])
+    @chat_sessions = @site.chat_sessions
+      .where(status: [ChatSession.statuses['archived']])
+      .reorder(ended_at: :desc)
+      .paginate(:page => params[:page])
   end
 
   def show
