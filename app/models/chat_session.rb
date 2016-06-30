@@ -20,6 +20,7 @@ class ChatSession < ActiveRecord::Base
 
   def start(moderator_user)
     update(
+      scheduled_for: Time.now,
       started_at: Time.now,
       status: :open,
       moderator_id: moderator_user.id
