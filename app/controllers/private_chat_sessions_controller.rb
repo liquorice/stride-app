@@ -63,7 +63,7 @@ class PrivateChatSessionsController < ApplicationController
     require_participant
 
     @chat_session.end
-    flash[:success] = "#{@chat_session.name} is now closed"
+    flash[:success] = "Private chat between #{@chat_session.moderator.name} and #{@chat_session.participants.name} is now closed"
 
     redirect_to private_chat_session_path(@chat_session)
   end

@@ -53,13 +53,13 @@ class PrivateChatSession < ActiveRecord::Base
       user_path: moderator.path,
       avatar_colour: moderator.processed_avatar_colour,
       avatar_face: moderator.avatar_face,
-      user_type: "(Moderator)"
+      user_type: "(moderator)"
     }
   end
 
   def message
     [
-      "#{user.name}, #{moderator.name} would like to chat to you privately. ",
+      "Hi #{user.name}, #{moderator.name} would like to chat to you privately. ",
       "<a href=#{self.path} target='_new'>Follow this link</a> ",
       "to chat in a new window"
     ].join
