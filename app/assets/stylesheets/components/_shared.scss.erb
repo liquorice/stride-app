@@ -41,6 +41,16 @@
   color: $grey-warm;
   min-height: 5rem;
   padding: 1.053rem 1.842rem;
+
+  a {
+    @include links;
+  }
+
+  p.longText {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 5rem);
+  }
 }
 
 .message-threadDisabled {

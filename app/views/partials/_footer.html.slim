@@ -64,8 +64,13 @@ footer.footer
 
           li
             a href=register_path data-modal=true Register
-          li
-            a href=preferences_path Preferences
+
+          - if @current_user
+            li
+              a href=preferences_path Preferences
+          - else
+            li
+              a href=login_path data-modal=true Preferences
 
           li
             a href=link_to_kb('terms-of-use') Terms of use

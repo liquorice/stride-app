@@ -118,6 +118,14 @@
     .chatModerate {
       display: none;
     }
+
+    .messageWrapper,
+    .avatarWrapper {
+      background-color: $grey-cool;
+      p, a {
+        color: $blue-light;
+      }
+    }
   }
 }
 
@@ -138,6 +146,10 @@
     @include p-short;
     padding-right: 2.895rem;
     text-align: left;
+
+    a {
+      @include links;
+    }
   }
 
   a.user {

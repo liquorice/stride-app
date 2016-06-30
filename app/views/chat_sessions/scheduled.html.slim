@@ -25,10 +25,10 @@
   .btn__chatbar.js-chatbar = insert_svg("icons/icon_info.svg", class:"icon__info")
   .chatbar__info
     p = @chat_session.description
-    // TODO Tag Links
     - if (@chat_session.tags != nil) && (@chat_session.tags.any?)
       - @chat_session.tags.each do |tag|
-        .tags__tag.link = tag
+        - taglink = 'tag/' + tag.downcase.gsub(" ", "-")
+        a.tags__tag.link href="#{link_to_kb(taglink)}" = tag
 
 .launchArea
   - if current_user_can?(:chat_modify)

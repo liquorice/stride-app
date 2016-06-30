@@ -32,6 +32,9 @@
     p {
       @include p-meta;
       color: $grey-warm;
+      a {
+        @include links;
+      }
     }
   }
 
@@ -88,6 +91,10 @@
     p {
       @include p-meta;
       color: $grey-warm;
+
+      a {
+        @include links;
+      }
 
       &.desc {
         @include p-short;

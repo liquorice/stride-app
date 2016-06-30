@@ -29,7 +29,7 @@
 
     setup_moderator_tools();
     setup_clear();
-    check_empty();
+    setup_growing_textarea();
 
     form.on('submit', function(e) {
       e.preventDefault();
@@ -42,8 +42,15 @@
     setInterval(update_duration, 500);
   };
 
-  // Set up text input post and clear buttons
-  var check_empty = function() {
+  // Textarea input auto-resize and clear
+
+  var setup_clear = function() {
+    form.find('.js-clear').on('click', function() {
+      input.val('').trigger('input');
+    });
+  }
+
+  var setup_growing_textarea = function() {
     input.on('input', function() {
       if (input.val().length) {
         form.addClass('hasContent');
@@ -51,13 +58,13 @@
       else {
         form.removeClass('hasContent');
       }
-    });
-  }
 
-  var setup_clear = function() {
-    form.find('.js-clear').on('click', function() {
-      input.val('').trigger('input');
+      input
+        .css('height', 0)
+        .css('height', input[0].scrollHeight + 'px');
     });
+
+    input.trigger('input');
   }
 
   // Rendering
@@ -180,26 +187,28 @@
 
   var send_message = function() {
     var message_content;
-    message_content = input.val();
+    if (input.val().trim()) {
+      message_content = input.val();
 
-    add_to_queue(
-      'message',
-      {
-        content: message_content
-      }
-    );
+      add_to_queue(
+        'message',
+        {
+          content: message_content
+        }
+      );
 
-    add_message({
-      content: message_content,
-      user_name: USER_NAME,
-      user_id: USER_ID,
-      avatar_colour: AVATAR_COLOUR,
-      avatar_face: AVATAR_FACE,
-      user_path: USER_PATH,
-      user_type: ""
-    });
+      add_message({
+        content: message_content,
+        user_name: USER_NAME,
+        user_id: USER_ID,
+        avatar_colour: AVATAR_COLOUR,
+        avatar_face: AVATAR_FACE,
+        user_path: USER_PATH,
+        user_type: ""
+      });
 
-    input.val('');
+      input.val('');
+    }
   };
 
   // Moderation

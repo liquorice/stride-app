@@ -1,30 +1,34 @@
+- content_for :chat_strip do
+  .strip__dark-chat
+    - if @current_user.can?(:chat_modify)
+      .strip__modOnly Only visible to moderators
+    h2
+      a href=chat_session_path(@chat_session.chat_session)
+        = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+        = @chat_session.chat_session.name
+    h1 = "Private chat: #{@chat_session.user.name}"
+
 - content_for :sidebar do
   = render 'partials/sidebar'
 
 - if @current_user.can?(:chat_modify)
+  .chatArchive
+    .chatArchive__row
+      p.note__title
+        strong Chat launched from: 
+        a href=chat_session_path(@chat_session.chat_session) = @chat_session.chat_session.name
 
-  p Private chat
+      p.note__title
+        strong Date: 
+        =< @chat_session.created_at.strftime("%d/%m/%y")
 
-  p
-    | Chat launched from
-    br
-    a href=chat_session_path(@chat_session.chat_session) = @chat_session.chat_session.name
+      p.note__title
+        strong Moderator: 
+        =< @chat_session.moderator.name
 
-  p
-    | Date
-    br
-    = @chat_session.created_at.strftime("%d/%m/%y")
-
-  p
-    | Moderator
-    br
-    = @chat_session.moderator.name
-
-  p
-    | User
-    br
-    = @chat_session.user.name
-
+      p.note__title
+        strong User: 
+        =< @chat_session.user.name
 
   .chatHistory
     - if @chat_session.chat_messages.any?
@@ -42,7 +46,11 @@
         = insert_svg("empty-avatar.svg", class:"icon__avatar")
         | There were no chat messages
 
-
 - else
-  / MC TODO For the non-moderator involved in the chat
-  p This chat has ended.
+  .chatArchive
+    .message-noThreads
+      = insert_svg("empty-avatar.svg", class:"icon__avatar")
+      p.longText
+        | This chat has ended, but you can continue the discussion in our 
+        a href=topics_preview_path forums
+        | .
