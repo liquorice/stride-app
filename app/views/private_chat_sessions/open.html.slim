@@ -1,10 +1,13 @@
+- content_for :chat_strip do
+  .strip__dark-chat
+    h2
+      a href=chats_path
+        = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
+        | Live chats
+    h1 Private Chat
+
 - content_for :sidebar do
   = render 'partials/sidebar'
-
-/ TODO MC styling
-
-p Private chat
-p This chat is only viewable by #{@chat_session.participants.pluck(:name).to_sentence }
 
 .chatbar.active
   .chatbar__title
@@ -15,6 +18,8 @@ p This chat is only viewable by #{@chat_session.participants.pluck(:name).to_sen
   .chatbar__time
     p.js-chat-duration
   .btn__chatbar.js-chatbar = insert_svg("icons/icon_info.svg", class:"icon__info")
+  .chatbar__info
+    p This is a private chat only viewable by #{@chat_session.participants.pluck(:name).to_sentence}.
 
 .chatArea.js-chat-area
   .messages.js-chat-messages
