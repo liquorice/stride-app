@@ -2,6 +2,14 @@ class ApiController < ApplicationController
   include ActionView::Helpers::DateHelper
   include ApplicationHelper
 
+  after_filter :cors_set_access_control_headers
+
+  def cors_set_access_control_headers
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token, Auth-Token, Email'
+  end
+
   def threads_for_tag
     threads = @site.topic_threads.visible.for_tag(params[:tag])
     render json: threads.map(&:export_to_json)
