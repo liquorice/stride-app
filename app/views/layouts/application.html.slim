@@ -86,6 +86,8 @@ html
     = render "/partials/getSupport"
     = render "/partials/footer"
 
+    javascript:
+      var KB_API_URL = "http://#{request.host.gsub(/forums\./, "")}/api";
     = javascript_include_tag 'application'
     - if content_for? :footer
       = yield :footer
