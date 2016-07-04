@@ -17,6 +17,7 @@
 //= require wickedpicker
 //= require twitter-widget
 
+//= require api
 //= require module
 //= require post-content
 //= require post-reply

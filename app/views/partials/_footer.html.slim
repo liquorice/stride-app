@@ -1,38 +1,37 @@
 footer.footer
-  section.footer__logos
+  section.footer__logos.js-footer_wrapper
     .constrained
-      // TODO Client can change these URLs through KB
       p
         = "#{@site.name.capitalize} is a "
-        a href="/beyond_blue"
+        a.js-beyondblue_link
           em beyondblue
         = " project funded with donations from the "
-        a href="#" Movember Foundation
+        a.js-movember_link Movember Foundation
 
       ul aria-label="Contributors"
         li
-          a href="#"
+          a.js-beyondblue_link
             img.logo__beyondblue alt="beyondblue" src="#{asset_path('logos/beyond-blue-movember.png')}"
 
         li
-          a href="#"
+          a.js-vac_link
             img.logo__vac alt="Victoria Aids Council" src="#{asset_path('logos/vac.png')}"
 
         li
-          a href="#"
+          a.js-acon_link
             img.logo__acon alt="ACON" src="#{asset_path('logos/acon.png')}"
 
         li
-          a href="#"
+          a.js-csrh_link
             img.logo__csrh alt="Centre for Social Research in Health" src="#{asset_path('logos/csrh.png')}"
 
         - if @site.name == 'pete'
           li
-            a href="#"
+            a.js-additional_link
               img.logo__livingPositive alt="Living Positive Victoria" src="#{asset_path('logos/living-positive-victoria.png')}"
         - elsif @site.name == 'dale'
           li
-            a href="#"
+            a.js-additional_link
               img.logo__gamma alt="Gamma" src="#{asset_path('logos/gamma.png')}"
 
   section.footer__links

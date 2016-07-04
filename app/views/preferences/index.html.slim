@@ -3,8 +3,7 @@
     h1 Preferences
 
 - content_for :light_strip do
-  p
-    | Everybody wants to be treated with respect and we want both the Forums and Live Chats to be safe and comfortable spaces for discussing a range of issues. With that in mind, here are a few ground rules for everyone to keep in mind...
+  p.js-preferences_overview
 
 - content_for :sidebar do
   = render 'partials/sidebar'
@@ -116,8 +115,7 @@
     .constrained
       .notificationOption-content
         h2 Notifications
-        // TODO Need actual text here
-        p.desc Pete Notifications are discreet and impersonal messages that are sent to your nominated accounts. These messages will notify you of upcoming chats sessions you have registered for, as well important articles it acestemquae pa plit exercil inciendio. Ut aut dolent optati comnia nobit hictat quias repro dolest, nam aspersp elignis etusto quam labo.
+        p.desc.js-preferences_notification
 
         = image_tag("notification-sample-#{@site.name}.png", alt:'Notification display example', class:'img__sample')
         p.sample Notifications may look a little like the example above
