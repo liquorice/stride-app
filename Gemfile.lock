@@ -137,6 +137,8 @@ GEM
     rake (11.2.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    recaptcha (3.3.0)
+      json
     ref (2.0.0)
     sass (3.4.22)
     sass-rails (5.0.4)
@@ -206,6 +208,7 @@ DEPENDENCIES
   mini_magick
   pg
   rails (= 4.2.5.1)
+  recaptcha
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   slim-rails
@@ -217,4 +220,4 @@ DEPENDENCIES
   will_paginate (~> 3.0.6)
 
 BUNDLED WITH
-   1.12.4
+   1.12.5

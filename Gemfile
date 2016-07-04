@@ -44,6 +44,8 @@ gem 'aws-sdk-rails', '~> 1.0'
 # For tracking views on forum threads
 gem 'impressionist'
 
+gem "recaptcha", require: "recaptcha/rails"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

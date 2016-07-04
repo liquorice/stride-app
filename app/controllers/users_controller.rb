@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     # Assign the 0th access group to the user
     @user.access_level = @site.access_levels.first
 
-    if @user.save
+    if verify_recaptcha(model: @user) && @user.save
       flash[:success] = "Account created, welcome #{@user.name}"
       log_in(@user)
       redirect_to topics_preview_path
