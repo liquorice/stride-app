@@ -27,6 +27,10 @@ h1 Register
     .form__textfield
       = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password"
 
+  // TODO JB Need to implement the server side Re-Captcha check
+  .label.large
+    .recaptcha.g-recaptcha data-sitekey="6LdRMSQTAAAAAKBtfI4-5LRbBPUaF7oJFRIb5qiU"
+
   .form__button Cancel
   button.form__button.primary Register
 
@@ -35,5 +39,3 @@ h1 Register
       | Required fields (
       span.alert *
       | )
-
-  // TODO : Implement google recaptcha
