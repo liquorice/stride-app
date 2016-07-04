@@ -18,7 +18,6 @@ h1 Manage forums
         li.edit__forums-row
           .topic__title = topic.name
           input type="hidden" name="topics_order[]" value=topic.id
-          // TODO Need to hook up input
           label.checkbox
             = insert_svg("icons/icon_reorder.svg", class:'icon__reorder')
             = check_box_tag "topics_visible[#{topic.id}]", 1, topic.visible, class:"input__checkbox"
