@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
 
+  # HACK for KB
+  get 'logout' => 'sessions#destroy'
+
   # Chat
   resources :chat_sessions, path: 'chat', except: [:index]
   get 'chats' => 'chat_sessions#index', as: :chats
