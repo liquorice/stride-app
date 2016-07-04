@@ -11,7 +11,11 @@ Module.register('modal', function() {
     popup_content = $('.js-popup-content')
 
     $('body').on('click', 'a[data-modal]', load_popup);
-    $('body').on('click', '.js-popup-close', hide_popup);
+    if (popup.length) {
+      $('body').on('click', '.js-popup-close', hide_popup);
+    } else {
+      setup_go_back();
+    }
     $(document).on('keydown', keypress);
   };
 
@@ -47,6 +51,12 @@ Module.register('modal', function() {
 
     e.preventDefault();
   };
+
+  var setup_go_back = function() {
+    body.find('.js-popup-close').on('click', function() {
+      window.history.back();
+    });
+  }
 
   var show_popup = function() {
     body.addClass('modal-visible');
