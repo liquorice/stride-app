@@ -25,11 +25,10 @@ Module.register('survey', function(_container) {
         document.cookie = cookieName + "true;" + cookiePath + "expires=" + cookieExpire.toUTCString();
       });
 
-      // TODO Set to 5secs for dev, change this to 90sec
       if (!closed) {
         setTimeout(function() {
           container.toggleClass("hidden");
-        }, 5000);
+        }, 90000);
       }
     }
 
