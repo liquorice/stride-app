@@ -21,7 +21,6 @@
 
   var init = function(container) {
     init_applies($('body'));
-    Module.include('api');
     Module.include('dropdown');
     Module.include('href');
     Module.include('modal');
