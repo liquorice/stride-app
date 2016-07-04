@@ -58,10 +58,20 @@
         = @user.posts.count
       .userDetails__column.fifth
         strong Chat messages
-        = "TODO"
+        = @user.chat_messages.count
       .userDetails__column
         strong Notifications
-        = "TODO - SMS, Twitter"
+        - opt_ins = Array.new()
+        - if @user.email_opted_in == true
+          - opt_ins.push('Email')
+        - if @user.sms_opted_in == true
+          - opt_ins.push('SMS')
+        - if @user.twitter_opted_in == true
+           - opt_ins.push('Twitter')
+        - if opt_ins.any?
+          = opt_ins.join(", ")
+        - else
+          = "None"
 
 - if @current_user.can?(:user_changeEmail)
   .userSection
