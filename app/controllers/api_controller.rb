@@ -2,6 +2,7 @@ class ApiController < ApplicationController
   include ActionView::Helpers::DateHelper
   include ApplicationHelper
 
+  # TODO JUST FOR TESTING cors_set_access_control_headers is just for testing, to make the API work cross domain, please remove/update for launch
   after_filter :cors_set_access_control_headers
 
   def cors_set_access_control_headers
