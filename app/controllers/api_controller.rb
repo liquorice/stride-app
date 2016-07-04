@@ -2,14 +2,7 @@ class ApiController < ApplicationController
   include ActionView::Helpers::DateHelper
   include ApplicationHelper
 
-  # TODO JUST FOR TESTING cors_set_access_control_headers is just for testing, to make the API work cross domain, please remove/update for launch
   after_filter :cors_set_access_control_headers
-
-  def cors_set_access_control_headers
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
-    response.headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token, Auth-Token, Email'
-  end
 
   def threads_for_tag
     threads = @site.topic_threads.visible.for_tag(params[:tag])
@@ -75,5 +68,14 @@ class ApiController < ApplicationController
 
     render json: topics
   end
+
+  private
+
+  def cors_set_access_control_headers
+    response.headers["Access-Control-Allow-Origin"] = request.headers["origin"]
+    response.headers["Access-Control-Allow-Methods"] = "GET"
+    response.headers['Access-Control-Allow-Credentials'] = "true"
+  end
+
 
 end

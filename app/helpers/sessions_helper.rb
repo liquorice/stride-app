@@ -5,7 +5,8 @@ module SessionsHelper
 
     cookies.signed[:user_id] = {
       value: user.id,
-      expires: (remember ? 1.month.from_now : nil)
+      expires: (remember ? 1.month.from_now : nil),
+      domain: @site.hosts
     }
   end
 
@@ -20,7 +21,10 @@ module SessionsHelper
   end
 
   def log_out
-    cookies.delete(:user_id)
+    cookies.delete(
+      :user_id,
+      domain: @site.hosts
+    )
     @current_user = nil
   end
 
