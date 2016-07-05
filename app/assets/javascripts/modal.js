@@ -56,7 +56,7 @@ Module.register('modal', function() {
     body.find('.js-popup-close').on('click', function() {
       window.history.back();
     });
-  }
+  };
 
   var show_popup = function() {
     body.addClass('modal-visible');
