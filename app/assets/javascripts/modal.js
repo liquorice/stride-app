@@ -8,7 +8,7 @@ Module.register('modal', function() {
   var init = function() {
     body = $('body');
     popup = $('.js-popup');
-    popup_content = $('.js-popup-content')
+    popup_content = $('.js-popup-content');
 
     $('body').on('click', 'a[data-modal]', load_popup);
     if (popup.length) {
