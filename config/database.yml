@@ -29,7 +29,7 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-staging:
+production:
   <<: *default
   database: stride_production
   username: stride
