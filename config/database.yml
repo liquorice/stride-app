@@ -29,6 +29,9 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
+staging:
   <<: *default
-  database: db/production.sqlite3
+  database: stride_production
+  username: stride
+  password: stride
+  host: localhost
