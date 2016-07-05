@@ -98,7 +98,7 @@
         footer_wrapper.find('.js-additional_link')[0].setAttribute('href', data["footer"]["additional"]);
       }
     }
-  }
+  };
 
   $(init);
 
