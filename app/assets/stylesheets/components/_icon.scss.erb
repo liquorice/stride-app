@@ -1,5 +1,5 @@
 @mixin icon__arrow-right {
-  content: url("<%= asset_data_uri 'icons/side-bar-icons_arrow-right--grey-warm.svg' %>");
+  content: url("<%= asset_path 'icons/side-bar-icons_arrow-right--grey-warm.svg' %>");
 }
 
 @mixin icon__edit-white {
@@ -7,7 +7,7 @@
     height: 0.7333rem;
     width: 0.7333rem;
   }
-  content: url("<%= asset_data_uri 'icons/icon_edit-white.svg' %>");
+  content: url("<%= asset_path 'icons/icon_edit-white.svg' %>");
   height: 0.7368rem;
   width: 0.7368rem;
 }
@@ -17,40 +17,40 @@
     background-size: 9px 9px;
   }
   background-size: 11px 11px;
-  background-image: url("<%= asset_data_uri 'icons/icon_edit-blue.svg' %>");
+  background-image: url("<%= asset_path 'icons/icon_edit-blue.svg' %>");
   background-repeat: no-repeat;
   background-position: center 82%;
 }
 
 @mixin icon__lock {
-  background: url("<%= asset_data_uri 'icons/icon_lock-gray.svg' %>") no-repeat;
+  background: url("<%= asset_path 'icons/icon_lock-gray.svg' %>") no-repeat;
   height: 16px;
   width: 12px;
 }
 
 @mixin icon__hide {
-  background-image: url("<%= asset_data_uri 'icons/icon_hide.svg' %>");
+  background-image: url("<%= asset_path 'icons/icon_hide.svg' %>");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 14px 14px;
 }
 
 @mixin icon__clear {
-  background-image: url("<%= asset_data_uri 'icons/icon_cross-grey.svg' %>");
+  background-image: url("<%= asset_path 'icons/icon_cross-grey.svg' %>");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 9px 9px;
 }
 
 @mixin icon__quote {
-  background-image: url("<%= asset_data_uri 'icons/icon_quote.svg' %>");
+  background-image: url("<%= asset_path 'icons/icon_quote.svg' %>");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 6.6px 6.1px;
 }
 
 @mixin icon__option {
-  content: url("<%= asset_data_uri 'icons/icon_dots-grey.svg' %>");
+  content: url("<%= asset_path 'icons/icon_dots-grey.svg' %>");
 }
 
 .icon__sidebar {

@@ -24,15 +24,15 @@
     }
     @include retina() {
       background:
-        url('header-chat@2x.png') center center repeat,
-        url('noise-200x200@2x.png') center center repeat;
+        url(<%= asset_path 'header-chat@2x.png' %>) center center repeat,
+        url(<%= asset_path 'noise-200x200@2x.png' %>) center center repeat;
       background-color: $grey-cool;
       background-size: 660px 235px, 283px 283px;
     }
 
     background:
-      url('header-chat.png') center center repeat,
-      url('noise-200x200.png') center center repeat;
+      url(<%= asset_path 'header-chat.png' %>) center center repeat,
+      url(<%= asset_path 'noise-200x200.png' %>) center center repeat;
     background-color: $grey-cool;
     background-size: 660px 235px, 283px 283px;
     float: left;

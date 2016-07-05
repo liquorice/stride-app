@@ -47,14 +47,14 @@
 .Zebra_DatePicker .dp_header .dp_previous,
 .Zebra_DatePicker .dp_header .dp_next       { width: 35px; display: inline-block; vertical-align: middle; height: 100% }
 
-.Zebra_DatePicker .dp_header .dp_previous   { background: url("<%= asset_data_uri 'icons/icon_prev-arrow.svg' %>") no-repeat center center; background-size: 7.125px 7.125px; }
-.Zebra_DatePicker .dp_header .dp_next       { background: url("<%= asset_data_uri 'icons/icon_next-arrow.svg' %>") no-repeat center center; background-size: 7.125px 7.125px; }
+.Zebra_DatePicker .dp_header .dp_previous   { background: url("<%= asset_path 'icons/icon_prev-arrow.svg' %>") no-repeat center center; background-size: 7.125px 7.125px; }
+.Zebra_DatePicker .dp_header .dp_next       { background: url("<%= asset_path 'icons/icon_next-arrow.svg' %>") no-repeat center center; background-size: 7.125px 7.125px; }
 
 .Zebra_DatePicker .dp_header .dp_caption    { @include ff-adelle-bold; cursor: default; display: inline-block; width: calc(100% - 70px); vertical-align: middle }
 
 .Zebra_DatePicker .dp_header .dp_hover      { background-color: mix($links, $white, 20%); color: $blue-dark }
-.Zebra_DatePicker .dp_header .dp_previous.dp_hover   { background: url("<%= asset_data_uri 'icons/icon_prev-arrow-blue.svg' %>") no-repeat center center; background-size: 7.125px 7.125px; background-color: mix($links, $white, 20%) }
-.Zebra_DatePicker .dp_header .dp_next.dp_hover       { background: url("<%= asset_data_uri 'icons/icon_next-arrow-blue.svg' %>") no-repeat center center; background-size: 7.125px 7.125px; background-color: mix($links, $white, 20%) }
+.Zebra_DatePicker .dp_header .dp_previous.dp_hover   { background: url("<%= asset_path 'icons/icon_prev-arrow-blue.svg' %>") no-repeat center center; background-size: 7.125px 7.125px; background-color: mix($links, $white, 20%) }
+.Zebra_DatePicker .dp_header .dp_next.dp_hover       { background: url("<%= asset_path 'icons/icon_next-arrow-blue.svg' %>") no-repeat center center; background-size: 7.125px 7.125px; background-color: mix($links, $white, 20%) }
 
 /* = DATEPICKER
 ----------------------------------------------------------------------------------------------------------------------*/
@@ -95,8 +95,8 @@
 
 /* = ICON
 ----------------------------------------------------------------------------------------------------------------------*/
-button.Zebra_DatePicker_Icon                { display: block; position: absolute; width: 13px; height: 13px; background: url("<%= asset_data_uri 'calendar.svg' %>") no-repeat left top; text-indent: -9000px; border: none; cursor: pointer; padding: 0; line-height: 0; vertical-align: top; }
-button.Zebra_DatePicker_Icon_Disabled       { background-image: url("<%= asset_data_uri 'calendar.svg' %>");}
+button.Zebra_DatePicker_Icon                { display: block; position: absolute; width: 13px; height: 13px; background: url("<%= asset_path 'calendar.svg' %>") no-repeat left top; text-indent: -9000px; border: none; cursor: pointer; padding: 0; line-height: 0; vertical-align: top; }
+button.Zebra_DatePicker_Icon_Disabled       { background-image: url("<%= asset_path 'calendar.svg' %>");}
 
 /* don't set vertical margins! */
 button.Zebra_DatePicker_Icon                { margin: 0 0 0 3px }

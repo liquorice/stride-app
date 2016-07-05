@@ -39,26 +39,26 @@
         width: 38px;
       }
       &-up {
-        background: url("<%= asset_data_uri 'icons/modal-arrow-small-up.svg' %>") no-repeat center center;
+        background: url("<%= asset_path 'icons/modal-arrow-small-up.svg' %>") no-repeat center center;
         background-size: 9px 5px;
         border-bottom: 1px solid rgba($grey-warm, 0.12);
         content: " ";
 
         &:hover {
-          background: url("<%= asset_data_uri 'icons/modal-arrow-small-up-blue.svg' %>") no-repeat center center;
+          background: url("<%= asset_path 'icons/modal-arrow-small-up-blue.svg' %>") no-repeat center center;
           background-color: mix($links, $white, 20%);
           background-size: 9px 5px;
           transition: all 200ms ease-out;
         }
       }
       &-down {
-        background: url("<%= asset_data_uri 'icons/modal-arrow-small-down.svg' %>") no-repeat center center;
+        background: url("<%= asset_path 'icons/modal-arrow-small-down.svg' %>") no-repeat center center;
         background-size: 9px 5px;
         border-top: 1px solid rgba($grey-warm, 0.12);
         content: " ";
 
         &:hover {
-          background: url("<%= asset_data_uri 'icons/modal-arrow-small-down-blue.svg' %>") no-repeat center center;
+          background: url("<%= asset_path 'icons/modal-arrow-small-down-blue.svg' %>") no-repeat center center;
           background-color: mix($links, $white, 20%);
           background-size: 9px 5px;
           transition: all 200ms ease-out;
