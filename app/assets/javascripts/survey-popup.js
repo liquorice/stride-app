@@ -21,8 +21,6 @@ Module.register('survey', function(_container) {
         container.toggleClass('hidden');
         closed = true;
 
-        console.log(data.attr('data-expire'));
-        console.log(parseInt(data.attr('data-expire'), 10));
         cookieExpire = new Date();
         cookieExpire.setTime( cookieExpire.getTime() + (parseInt(data.attr('data-expire'), 10) * 24 * 60 * 60 * 1000));
         
@@ -34,7 +32,7 @@ Module.register('survey', function(_container) {
         console.log(data.attr('data-time'));
         setTimeout(function() {
           container.toggleClass("hidden");
-        }, container.data('data-time'));
+        }, parseInt(data.attr('data-time'), 10));
       }
     }
 
