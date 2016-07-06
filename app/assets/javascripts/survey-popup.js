@@ -25,10 +25,11 @@ Module.register('survey', function(_container) {
         document.cookie = cookieName + "true;" + cookiePath + "expires=" + cookieExpire.toUTCString();
       });
 
+      console.log(container.attr('data-time'));
       if (!closed) {
         setTimeout(function() {
           container.toggleClass("hidden");
-        }, 90000);
+        }, container.attr('data-time'));
       }
     }
 

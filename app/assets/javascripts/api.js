@@ -2,7 +2,6 @@
 
   'use strict';
 
-
   var init = function() {
     $.get(
       KB_API_URL,
@@ -10,7 +9,6 @@
       "JSON"
     );
   };
-
 
   var process_api_response = function(data) {
     var survey_wrapper;
