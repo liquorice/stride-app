@@ -27,7 +27,6 @@ Module.register('survey', function(_container) {
 
   var process_survey_data = function(data) {
     if (data["survey"]) {
-      console.log(data["survey"]);
       if (data["survey"]["delay"]) {
         survey[0].setAttribute('data-time', data["survey"]["delay"]);
       }
@@ -54,8 +53,6 @@ Module.register('survey', function(_container) {
       });
 
       if (!closed) {
-        console.log(survey);
-        console.log(survey.attr('data-time'));
         setTimeout(function() {
           container.toggleClass("hidden");
         }, parseInt(survey.attr('data-time'), 10));
