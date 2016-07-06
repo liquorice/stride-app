@@ -25,8 +25,11 @@ Module.register('survey', function(_container) {
         document.cookie = cookieName + "true;" + cookiePath + "expires=" + cookieExpire.toUTCString();
       });
 
+      console.log(container);
       console.log(container.attr('data-time'));
       if (!closed) {
+        console.log(container);
+        console.log(container.attr('data-time'));
         setTimeout(function() {
           container.toggleClass("hidden");
         }, container.attr('data-time'));
