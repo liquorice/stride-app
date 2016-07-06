@@ -11,7 +11,6 @@
   };
 
   var process_api_response = function(data) {
-    var survey_wrapper;
     var get_support_wrapper;
     var footer_wrapper;
 
@@ -24,7 +23,6 @@
     var community_overview_wrapper = $('.js-community_overview');
     var community_rules_wrapper = $('.js-community_content');
 
-    survey_wrapper = $('.js-survey_api');
     get_support_wrapper = $('.js-get_support');
     footer_wrapper = $('.js-footer_wrapper');
 
@@ -61,21 +59,6 @@
     if (community_rules_wrapper.length) {
       if (data["community_rules"]) {
         community_rules_wrapper[0].innerHTML = data["community_rules"]["content"];
-      }
-    }
-
-    if (survey_wrapper.length) {
-      if (data["survey"]) {
-        console.log(data["survey"]["delay"]);
-        console.log(data["survey"]["expiry"]);
-        if (data["survey"]["delay"]) {
-          survey_wrapper[0].setAttribute('data-time', data["survey"]["delay"]);
-        }
-        if (data["survey"]["delay"]) {
-          survey_wrapper[0].setAttribute('data-expire', data["survey"]["expiry"]);
-        }
-        survey_wrapper.find('.js-survey_content')[0].innerHTML = data["survey"]["content"];
-        survey_wrapper.find('.js-survey_link')[0].setAttribute('href', data["survey"]["link"]);
       }
     }
 
