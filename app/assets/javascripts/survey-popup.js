@@ -2,7 +2,7 @@ Module.register('survey', function(_container) {
   'use strict';
 
   var container;
-  var data;
+  var survey;
   var close;
   var closed;
 
