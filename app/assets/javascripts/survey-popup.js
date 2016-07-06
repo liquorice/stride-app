@@ -11,6 +11,7 @@ Module.register('survey', function(_container) {
 
   var init = function() {
     container = _container;
+    data = container.find('.js-survey_api');
     close = container.find('.js-survey-close');
     closed = false;
 
@@ -19,20 +20,20 @@ Module.register('survey', function(_container) {
         container.toggleClass('hidden');
         closed = true;
 
+        console.log(data.attr('data-expire'));
+        console.log(parseInt(data.attr('data-expire'), 10));
         cookieExpire = new Date();
-        cookieExpire.setTime( cookieExpire.getTime() + (30 * 24 * 60 * 60 * 1000));
+        cookieExpire.setTime( cookieExpire.getTime() + (parseInt(data.attr('data-expire'), 10) * 24 * 60 * 60 * 1000));
         
         document.cookie = cookieName + "true;" + cookiePath + "expires=" + cookieExpire.toUTCString();
       });
 
-      console.log(container);
-      console.log(container.attr('data-time'));
       if (!closed) {
-        console.log(container);
-        console.log(container.attr('data-time'));
+        console.log(data);
+        console.log(data.attr('data-time'));
         setTimeout(function() {
           container.toggleClass("hidden");
-        }, container.attr('data-time'));
+        }, container.data('data-time'));
       }
     }
 

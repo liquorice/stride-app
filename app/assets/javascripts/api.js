@@ -66,6 +66,8 @@
 
     if (survey_wrapper.length) {
       if (data["survey"]) {
+        survey_wrapper[0].setAttribute('data-time', data["survey"]["delay"]);
+        survey_wrapper[0].setAttribute('data-expire', data["survey"]["expiry"]);
         survey_wrapper.find('.js-survey_content')[0].innerHTML = data["survey"]["content"];
         survey_wrapper.find('.js-survey_link')[0].setAttribute('href', data["survey"]["link"]);
       }
