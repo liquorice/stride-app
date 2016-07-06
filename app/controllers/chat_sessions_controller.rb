@@ -28,7 +28,7 @@ class ChatSessionsController < ApplicationController
     @chat_session = @site.chat_sessions.new(chat_session_params)
 
     if @chat_session.save
-      flash[:success] = "#{@chat_session.name} succesfully created"
+      flash[:success] = "#{@chat_session.name} successfully created"
       redirect_to chat_session_path(@chat_session)
     else
       flash.now[:error] = @chat_session.errors.full_messages.to_sentence
@@ -46,7 +46,7 @@ class ChatSessionsController < ApplicationController
     @chat_session = @site.chat_sessions.find(params[:id])
 
     if @chat_session.update(chat_session_params)
-      flash[:success] = "#{@chat_session.name} succesfully updated"
+      flash[:success] = "#{@chat_session.name} successfully updated"
       redirect_to chat_session_path(@chat_session)
     else
       flash.now[:error] = @chat_session.errors.full_messages.to_sentence

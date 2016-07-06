@@ -16,7 +16,7 @@ class AccessLevelsController < ApplicationController
     @access_level = @site.access_levels.new(access_level_params)
 
     if @access_level.save
-      flash[:success] = "#{@access_level.name} succesfully created"
+      flash[:success] = "#{@access_level.name} successfully created"
       redirect_to access_levels_path
     else
       flash.now[:error] = @access_level.errors.full_messages.to_sentence
@@ -33,7 +33,7 @@ class AccessLevelsController < ApplicationController
     @access_level = @site.access_levels.find(params[:id])
 
     if @access_level.update(access_level_params)
-      flash[:success] = "#{@access_level.name} succesfully updated"
+      flash[:success] = "#{@access_level.name} successfully updated"
       redirect_to access_levels_path
     else
       flash.now[:error] = @access_level.errors.full_messages.to_sentence

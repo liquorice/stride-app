@@ -8,7 +8,7 @@ class PreferencesController < ApplicationController
     require_user
 
     if @current_user.update(preferences_params)
-      flash[:success] = "Preferences succesfully updated"
+      flash[:success] = "Preferences successfully updated"
       redirect_to preferences_path
     else
       flash.now[:error] = @current_user.errors.full_messages.to_sentence
@@ -35,7 +35,7 @@ class PreferencesController < ApplicationController
 
     # Attempt to update username and password
     if @current_user.update(password_params)
-      flash[:success] = "Password succesfully updated"
+      flash[:success] = "Password successfully updated"
     else
       flash[:error] = @current_user.errors.full_messages.to_sentence
     end

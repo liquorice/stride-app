@@ -39,7 +39,7 @@ class PasswordRequestsController < ApplicationController
 
       # Log user in
       log_in(user)
-      flash[:success] = "Password reset succesfully. Welcome back, #{user.name}"
+      flash[:success] = "Password reset successfully. Welcome back, #{user.name}"
       redirect_to topics_preview_path
     else
       flash.now[:error] = user.errors.full_messages.to_sentence

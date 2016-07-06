@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
       @site.topics.find(topic_id.to_i).update(ordinal: index, visible: visible)
     end
 
-    flash[:success] = "Forums succesfully updated"
+    flash[:success] = "Forums successfully updated"
     redirect_to topics_preview_path
 
     params[:topics_order].inspect
@@ -53,7 +53,7 @@ class TopicsController < ApplicationController
     @topic = @site.topics.new(topic_params)
 
     if @topic.save
-      flash[:success] = "#{@topic.name} succesfully created"
+      flash[:success] = "#{@topic.name} successfully created"
       redirect_to topics_preview_path
     else
       flash.now[:error] = @topic.errors.full_messages.to_sentence
@@ -73,7 +73,7 @@ class TopicsController < ApplicationController
     @topic = @site.topics.find(params[:id])
 
     if @topic.update(topic_params)
-      flash[:success] = "#{@topic.name} succesfully updated"
+      flash[:success] = "#{@topic.name} successfully updated"
       redirect_to topic_path(@topic)
     else
       flash.now[:error] = @topic.errors.full_messages.to_sentence
