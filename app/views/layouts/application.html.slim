@@ -20,12 +20,11 @@ html
   body
     = render "/partials/survey"
     .modalOverlay.js-popup
-      .constrained
-        .modalOverlay__close.js-popup-close
-        .modalOverlay__loading
-          = insert_svg("icons/icon-spinner.svg", class:"icon__loading")
-          | Loading…
-        .js-popup-content
+      .modalOverlay__close.js-popup-close
+      .modalOverlay__loading
+        = insert_svg("icons/icon-spinner.svg", class:"icon__loading")
+        | Loading…
+      .js-popup-content
 
     - if flash[:success]
       .notification.success.js-notification

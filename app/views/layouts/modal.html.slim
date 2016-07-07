@@ -19,21 +19,22 @@ html
       })(document);
 
   body
-    .modalContainer
-      .modalContent
-        - if flash[:success]
-          .notification.success.js-notification
-            .constrained
-              = flash[:success]
-              .notification__close.js-notification-close
+    .constrained
+      .modalContainer
+        .modalContent
+          - if flash[:success]
+            .notification.success.js-notification
+              .constrained
+                = flash[:success]
+                .notification__close.js-notification-close
 
-        - if flash[:error]
-          .notification.error.js-notification
-            .constrained
-              = flash[:error]
-              .notification__close.js-notification-close
+          - if flash[:error]
+            .notification.error.js-notification
+              .constrained
+                = flash[:error]
+                .notification__close.js-notification-close
 
-        = yield
+          = yield
 
     javascript:
       var KB_API_URL = "http://#{request.host.gsub(/forums\./, "")}/api";
