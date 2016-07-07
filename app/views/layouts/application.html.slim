@@ -19,7 +19,7 @@ html
 
   body
     - if Rails.env.production?
-      - ga_id = ('UA-73547613-1' if @site.name == 'pete') || ('UA-73547613-2' if @site.name == 'dale')
+      - ga_id = ('UA-73547613-1' if @site.name == 'dale') || ('UA-73547613-2' if @site.name == 'pete')
       javascript:
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
