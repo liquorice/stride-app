@@ -20,7 +20,8 @@ html
   body
     = render "/partials/survey"
     .modalOverlay.js-popup
-      .modalOverlay__close.js-popup-close
+      .constrained
+        .modalOverlay__close.js-popup-close
       .modalOverlay__loading
         = insert_svg("icons/icon-spinner.svg", class:"icon__loading")
         | Loading…
