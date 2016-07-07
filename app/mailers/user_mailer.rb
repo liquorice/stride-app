@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @reset_url = reset_url
     to = @user.email
-    mail(to: to, subject: 'Password reset request')
+    mail(to: to, subject: 'Password Reset Request')
   end
 
 end
