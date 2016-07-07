@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
     mail(
       to: to,
       subject: 'Password Reset Request',
-      from: "password_reset@#{@host}"
+      from: "#{@user.site.name.capitalize} <password_reset@#{@host}>"
     )
   end
 
