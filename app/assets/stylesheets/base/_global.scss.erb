@@ -32,10 +32,12 @@ html {
     .page,
     .getSupport,
     .footer,
-    .notification,
-    .modalContainer {
+    .notification {
       opacity: 0;
       transform: translateY(-10px);
+    }
+    .modalContainer {
+      opacity: 0;
     }
   }
 }
@@ -57,8 +59,7 @@ body {
 
 // Load transistions
 
-.header,
-.modalContainer {
+.header {
   opacity: 1;
   transition: all 200ms ease-out 200ms;
 }
@@ -81,6 +82,10 @@ body {
 .footer {
   opacity: 1;
   transition: all 200ms ease-out 1000ms;
+}
+
+.modalContainer {
+  opacity: 1;
 }
 
 // Layout
