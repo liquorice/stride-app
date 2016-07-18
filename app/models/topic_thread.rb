@@ -27,6 +27,10 @@ class TopicThread < ActiveRecord::Base
     where("? = ANY (tags)", tag)
   end
 
+  def self.for_query(query)
+    where("topic_threads.name ilike ?", "%#{query}%")
+  end
+
   def topic_visible?
     topic.visible?
   end
@@ -62,14 +66,17 @@ class TopicThread < ActiveRecord::Base
   end
 
   def export_to_json
-    {
+    json = {
       id: id,
       name: name,
       created_at: created_at.to_i,
       created_by: user.name,
       views: impressions_count,
       posts: ("#{posts_count / 1000}k" if posts_count > 1000 ) || posts_count,
-      last_post: {
+    }
+
+    if latest_post
+      json[:last_post] = {
         id: latest_post.id,
         user: latest_post.user.name,
         avatar_face: latest_post.user.avatar_face,
@@ -77,7 +84,9 @@ class TopicThread < ActiveRecord::Base
         created_at: time_ago_in_words(latest_post.created_at, locale: 'en-brief'),
         content: latest_post.content
       }
-    }
+    end
+
+    json
   end
 
   private

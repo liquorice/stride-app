@@ -9,6 +9,11 @@ class ApiController < ApplicationController
     render json: threads.map(&:export_to_json)
   end
 
+  def threads_for_query
+    threads = @site.topic_threads.visible.for_query(params[:query])
+    render json: threads.map(&:export_to_json)
+  end
+
   def current_user
     if @current_user
       user_details = {
