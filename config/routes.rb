@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   # API
   scope :api do
     get 'threads_for_tag/:tag' => 'api#threads_for_tag'
+    get 'threads_for_query/:query' => 'api#threads_for_query'
     get 'user' => 'api#current_user'
     get 'upcoming_chat' => 'api#upcoming_chat'
     get 'forums_overview' => 'api#forums_overview'
