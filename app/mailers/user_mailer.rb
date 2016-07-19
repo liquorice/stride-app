@@ -12,4 +12,18 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def notification(host, user, content)
+    @host = host
+    @content = content
+    @site = user.site
+    to = @user.email
+
+    mail(
+      to: to,
+      subject: "A notification from #{@site.pretty_name}",
+      from: "#{@site.pretty_name} <notifications@#{@host}>"
+    )
+  end
+
+
 end

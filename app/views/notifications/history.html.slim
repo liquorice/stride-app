@@ -1,0 +1,22 @@
+h1 Notification history
+
+- @notifications.each do |notification|
+  dl
+    dt Status
+    dd = notification.status.humanize
+    dt Created by
+    dd = notification.user.name
+    dt Created at
+    dd = notification.created_at
+    dt Notification type
+    dd = notification.content_type
+    dt Content
+    dd = notification.content
+    dt Email no.
+    dd = notification.email_count
+    dt Twitter no.
+    dd = notification.twitter_count
+    dt SMS no.
+    dd = notification.sms_count
+
+

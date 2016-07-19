@@ -3,6 +3,7 @@ Rails.application.configure do
 
   # The % will be replaced by the site name
   config.kb_path = 'http://%.dev'
+  config.app_path = 'http://%-app.dev'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

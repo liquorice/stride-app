@@ -8,11 +8,16 @@ class Site < ActiveRecord::Base
   has_many :chat_sessions
   has_many :chat_messages, through: :chat_sessions
   has_many :private_chat_sessions, through: :chat_sessions
+  has_many :notifications, through: :users
 
   def self.find_by_host(host)
     # Helper function that searches the host array for a matching site
     matches = where('? = ANY (hosts)', host)
     matches.any? ? matches.first : nil
+  end
+
+  def pretty_name
+    name.capitalize
   end
 
 end

@@ -1,4 +1,7 @@
 class ChatSession < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+  include ApplicationHelper
+
   belongs_to :site
   has_many :chat_messages
   has_many :private_chat_sessions
@@ -17,6 +20,10 @@ class ChatSession < ActiveRecord::Base
   default_scope { order(:scheduled_for) }
 
   self.per_page = 8
+
+  def public_path
+    link_to_app(chat_session_path(self), site)
+  end
 
   def start(moderator_user)
     update(

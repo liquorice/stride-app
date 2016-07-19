@@ -1,0 +1,37 @@
+p Create new notification
+
+= form_tag new_notification_proof_path(:scheduled_chat_content) do |f|
+
+  h2 Scheduled chat
+  p
+    = Notification.scheduled_chat_content(@site)
+
+  select name="notification[data][chat_session_id]"
+    - @chat_sessions.each do |chat_session|
+      option  value=chat_session.id = chat_session.name
+
+  button Proof and send
+
+= form_tag new_notification_proof_path(:today_chat_content) do |f|
+
+  h2 Chat today
+  p
+    = Notification.today_chat_content(@site)
+
+  select name="notification[data][chat_session_id]"
+    - @chat_sessions.each do |chat_session|
+      option value=chat_session.id = chat_session.name
+
+  button Proof and send
+
+= form_tag new_notification_proof_path(:new_article_content) do |f|
+
+  h2 New article
+  p
+    = Notification.new_article_content(@site)
+
+    select name="notification[data][article_data]"
+      - @articles.each do |article_url, article_title|
+        option value="#{article_url}|#{article_title}" = article_title
+
+  button Proof and send

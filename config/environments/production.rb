@@ -3,6 +3,7 @@ Rails.application.configure do
 
   # The % will be replaced by the site name
   config.kb_path = 'http://%.org.au'
+  config.forums_path = 'http://forums.%.org.au'
 
   # Code is not reloaded between requests.
   config.cache_classes = true

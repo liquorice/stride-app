@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627161058) do
+ActiveRecord::Schema.define(version: 20160719135325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(version: 20160627161058) do
     t.integer  "chat_session_id"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.boolean  "visible",                 default: true
+    t.boolean  "private",                 default: false
+    t.integer  "recipient_id"
     t.integer  "private_chat_session_id"
   end
 
@@ -84,6 +86,20 @@ ActiveRecord::Schema.define(version: 20160627161058) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "email_count",   default: 0
+    t.integer  "sms_count",     default: 0
+    t.integer  "twitter_count", default: 0
+    t.text     "content"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "content_type"
+    t.integer  "status",        default: 0
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+
   create_table "password_requests", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "token"
@@ -120,6 +136,13 @@ ActiveRecord::Schema.define(version: 20160627161058) do
 
   add_index "private_chat_sessions", ["chat_session_id"], name: "index_private_chat_sessions_on_chat_session_id", using: :btree
   add_index "private_chat_sessions", ["user_id"], name: "index_private_chat_sessions_on_user_id", using: :btree
+
+  create_table "shortened_urls", force: :cascade do |t|
+    t.string   "long_url"
+    t.string   "short_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sites", force: :cascade do |t|
     t.string   "name"
@@ -185,6 +208,7 @@ ActiveRecord::Schema.define(version: 20160627161058) do
   add_foreign_key "chat_messages", "private_chat_sessions"
   add_foreign_key "chat_messages", "users"
   add_foreign_key "chat_sessions", "sites"
+  add_foreign_key "notifications", "users"
   add_foreign_key "password_requests", "users"
   add_foreign_key "posts", "topic_threads"
   add_foreign_key "posts", "users"

@@ -69,6 +69,12 @@ Rails.application.routes.draw do
   # Community rules
   get 'community_rules' => 'community_rules#index'
 
+  # resources :notifications
+  get "notifications/history" => "notifications#history", as: :notifications_history
+  get "notifications/new" => "notifications#new", as: :new_notification
+  post "notifications/proof/:content_type" => "notifications#proof", as: :new_notification_proof
+  post "notifications/create" => "notifications#create", as: :create_notification
+
   # API
   scope :api do
     get 'threads_for_tag/:tag' => 'api#threads_for_tag'

@@ -28,6 +28,11 @@ module ApplicationHelper
     "#{kb_path}/#{path}"
   end
 
+  def link_to_app(path, site)
+    kb_path = Rails.configuration.app_path.gsub('%', site.name)
+    "#{kb_path}#{path}"
+  end
+
   def distance_of_future_time_in_words(time)
     # Returns the distance in words between now and a future time
     # If the supplied time has already passed, treat the event as imminent
