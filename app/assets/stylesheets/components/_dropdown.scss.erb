@@ -17,6 +17,10 @@
     display: block;
     border: 0;
   }
+
+  &.small {
+    max-width: 320px;
+  }
 }
 
   .dropdown__display {
@@ -41,8 +45,6 @@
       background: $white url("<%= asset_path 'icons/dropdown-arrow-small.svg' %>") 100% center no-repeat;
       height: 26px;
       line-height: 26px;
-      padding-left: 0;
       padding-right: 26px;
-      text-align: center;
     }
   }

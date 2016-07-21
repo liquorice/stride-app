@@ -1,23 +1,37 @@
 h1 Proof notification
 
 = form_tag create_notification_path do
-  p Content:
-  p = @notification_content
+
+  .label
+    .label__title Sending notification for:
+    .label__desc = "//TODO JB Can we get chat/article name here?"
+
+  .label.mid
+    .label__title Notification preview:
+    .label__desc = @notification_content
 
   input type="hidden" name="notification[content_type]" value=@content_type
 
   - @notification_data.each do |k, v|
-    input type="hidden name="notification[data][#{k}]" value=v
+    input type="hidden" name="notification[data][#{k}]" value=v
 
-  dl
-    dt Email no.
-    dd = @site.users.where(email_opted_in: true).count
-    dt SMS no.
-    dd = @site.users.where(sms_opted_in: true).count
-    dt Twitter no.
-    dd = @site.users.where(twitter_opted_in: true).count
+  .label.large
+    .label__title Total notifications:
+    .label__desc
+      strong Email: 
+      = @site.users.where(email_opted_in: true).count
+    .label__desc
+      strong SMS: 
+      = @site.users.where(sms_opted_in: true).count
+    .label__desc
+      strong Twitter DM: 
+      = @site.users.where(twitter_opted_in: true).count
 
-  p
-    | This may take a few moments, please do not refresh your browser
+  .label.large
+    .message-modal
+      h3 Please note:
+      ul
+        li = "This may take a few moments, do not refresh your browser."
 
-  button Send now
+  .form__button.js-popup-close Cancel
+  button.form__button.primary Send

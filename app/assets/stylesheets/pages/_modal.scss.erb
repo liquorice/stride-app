@@ -204,11 +204,17 @@
       margin-right: 6px;
       margin-top: 4px;
     }
+
     cursor: pointer;
     margin-left: 10px;
     margin-top: 7px;
     text-align: center;
     width: 6.316rem;
+
+    &.meta {
+      @include btn-meta;
+      @include ff_adelle-bold;
+    }
 
     &.primary {
       @include btn-primary;

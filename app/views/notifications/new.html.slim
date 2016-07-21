@@ -1,37 +1,52 @@
-p Create new notification
+h1 Send notification
 
 = form_tag new_notification_proof_path(:scheduled_chat_content) do |f|
+  
+  .label.mid
+    .label__title New scheduled chat notification
+    .label__desc
+      | Preview: 
+      = Notification.scheduled_chat_content(@site)
 
-  h2 Scheduled chat
-  p
-    = Notification.scheduled_chat_content(@site)
+  .label.mid
+    = render 'components/dropdown',
+      name: "notification[data][chat_session_id]",
+      id: "notification[data][chat_session_id]",
+      options: Hash[@chat_sessions.pluck(:id, :name)]
 
-  select name="notification[data][chat_session_id]"
-    - @chat_sessions.each do |chat_session|
-      option  value=chat_session.id = chat_session.name
-
-  button Proof and send
+  .label.large
+    button.form__button.meta.primary Proof and send
 
 = form_tag new_notification_proof_path(:today_chat_content) do |f|
+  
+  .label.mid
+    .label__title Upcoming chat today notification
+    .label__desc
+      | Preview: 
+      = Notification.today_chat_content(@site)
 
-  h2 Chat today
-  p
-    = Notification.today_chat_content(@site)
+  .label.mid
+    = render 'components/dropdown',
+      name: "notification[data][chat_session_id]",
+      id: "notification[data][chat_session_id]",
+      options: Hash[@chat_sessions.pluck(:id, :name)]
 
-  select name="notification[data][chat_session_id]"
-    - @chat_sessions.each do |chat_session|
-      option value=chat_session.id = chat_session.name
-
-  button Proof and send
+  .label.large
+    button.form__button.meta.primary Proof and send
 
 = form_tag new_notification_proof_path(:new_article_content) do |f|
+  
+  .label.mid
+    .label__title New article notification
+    .label__desc
+      | Preview: 
+      = Notification.new_article_content(@site)
 
-  h2 New article
-  p
-    = Notification.new_article_content(@site)
+  .label.mid
+    = render 'components/dropdown',
+      name: "notification[data][article_data]",
+      id: "notification[data][article_data]",
+      options: Hash[@articles.map{|article| [article.join('|'), article[1]]}]
 
-    select name="notification[data][article_data]"
-      - @articles.each do |article_url, article_title|
-        option value="#{article_url}|#{article_title}" = article_title
-
-  button Proof and send
+  .label.large
+    button.form__button.meta.primary Proof and send
