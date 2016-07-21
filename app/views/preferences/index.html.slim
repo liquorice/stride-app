@@ -154,7 +154,7 @@
               .toggle__text Off
               .toggle__text On
 
-          a class="twitter-follow-button" href="https://twitter.com/#{@site.name}_community" data-show-count="false" data-size="large" = "Follow @#{@site.name}_community"
+          a class="twitter-follow-button" href="https://twitter.com/#{@site.name.capitalize}Community" data-show-count="false" data-size="large" = "Follow @#{@site.name.capitalize}Community"
 
           = f.text_field :twitter_contact, placeholder:"Twitter not provided", class:"input__textfield"
 
