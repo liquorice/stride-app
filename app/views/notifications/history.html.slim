@@ -1,22 +1,44 @@
-h1 Notification history
+- content_for :chat_strip do
+  .strip__dark-regular
+    .strip__modOnly Only visible to moderators
+    h1 Notification history
 
-- @notifications.each do |notification|
-  dl
-    dt Status
-    dd = notification.status.humanize
-    dt Created by
-    dd = notification.user.name
-    dt Created at
-    dd = notification.created_at
-    dt Notification type
-    dd = notification.content_type
-    dt Content
-    dd = notification.content
-    dt Email no.
-    dd = notification.email_count
-    dt Twitter no.
-    dd = notification.twitter_count
-    dt SMS no.
-    dd = notification.sms_count
+- content_for :sidebar do
+  = render 'partials/sidebar'
 
+.archiveList
+  - @notifications.each do |notification|
 
+    .notificationHistory
+      .text__main
+        // TODO JB Can we have the title here?
+        h3 = "//TODO Title"
+        p
+          strong Status: 
+          = notification.status.humanize
+        p = notification.content
+
+      .text__sub
+        p
+          strong Sent by: 
+          = notification.user.name
+
+        p
+          strong Sent at: 
+          = notification.created_at.strftime("%l.%M%p, ").downcase + notification.created_at.strftime("%e %B, %Y")
+
+        p
+          strong Notification type: 
+          = notification.content_type
+
+        p
+          strong Total emails: 
+          = notification.email_count
+
+        p
+          strong Total SMS: 
+          = notification.sms_count
+
+        p
+          strong Total Twitter direct messages: 
+          = notification.twitter_count
