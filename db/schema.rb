@@ -31,11 +31,9 @@ ActiveRecord::Schema.define(version: 20160719135325) do
     t.integer  "chat_session_id"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.boolean  "visible",                 default: true
-    t.boolean  "private",                 default: false
-    t.integer  "recipient_id"
     t.integer  "private_chat_session_id"
   end
 
