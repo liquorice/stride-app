@@ -2,13 +2,11 @@ h1 Send notification
 
 = form_tag new_notification_proof_path(:scheduled_chat_content) do |f|
   
-  .label.mid
+  .label
     .label__title New scheduled chat notification
-    .label__desc
-      | Preview: 
-      = Notification.scheduled_chat_content(@site)
+    .label__desc Select the chat you'd like to send a notification for.
 
-  .label.mid
+  .label
     = render 'components/dropdown',
       name: "notification[data][chat_session_id]",
       id: "notification[data][chat_session_id]",
@@ -19,13 +17,11 @@ h1 Send notification
 
 = form_tag new_notification_proof_path(:today_chat_content) do |f|
   
-  .label.mid
+  .label
     .label__title Upcoming chat today notification
-    .label__desc
-      | Preview: 
-      = Notification.today_chat_content(@site)
+    .label__desc Select the chat you'd like to send a notification for.
 
-  .label.mid
+  .label
     = render 'components/dropdown',
       name: "notification[data][chat_session_id]",
       id: "notification[data][chat_session_id]",
@@ -36,13 +32,11 @@ h1 Send notification
 
 = form_tag new_notification_proof_path(:new_article_content) do |f|
   
-  .label.mid
+  .label
     .label__title New article notification
-    .label__desc
-      | Preview: 
-      = Notification.new_article_content(@site)
+    .label__desc Select the article you'd like to send a notification for.
 
-  .label.mid
+  .label
     = render 'components/dropdown',
       name: "notification[data][article_data]",
       id: "notification[data][article_data]",

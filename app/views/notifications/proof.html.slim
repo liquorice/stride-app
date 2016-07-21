@@ -3,28 +3,30 @@ h1 Proof notification
 = form_tag create_notification_path do
 
   .label
-    .label__title Sending notification for:
-    .label__desc = "//TODO JB Can we get chat/article name here?"
+    .label__title Notification for:
+    //TODO JB Can we get the chat/article name here?
+    .label__desc = "//TODO Title"
 
-  .label.mid
-    .label__title Notification preview:
-    .label__desc = @notification_content
+  .label.small
+    .label__title Preview:
+  .label.small
+    .bubble = @notification_content
 
   input type="hidden" name="notification[content_type]" value=@content_type
 
   - @notification_data.each do |k, v|
     input type="hidden" name="notification[data][#{k}]" value=v
 
-  .label.large
+  .label.med
     .label__title Total notifications:
     .label__desc
-      strong Email: 
+      | Email: 
       = @site.users.where(email_opted_in: true).count
     .label__desc
-      strong SMS: 
+      | SMS: 
       = @site.users.where(sms_opted_in: true).count
     .label__desc
-      strong Twitter DM: 
+      | Twitter DM: 
       = @site.users.where(twitter_opted_in: true).count
 
   .label.large

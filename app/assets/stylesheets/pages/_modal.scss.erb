@@ -99,6 +99,32 @@
     color: $alert;
   }
 
+  .bubble {
+    @include p-short;
+    @include breakpoint(mini) {
+      padding: 0.533rem 0.867rem 0.733rem;
+    }
+    background-color: $white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 1rem 1.316rem 1.105rem;
+    position: relative;
+    text-align: left;
+
+    &:after {
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-right: 10px solid $white;
+      border-top: 10px solid $white;
+      bottom: -20px;
+      content: "";
+      height:0;
+      position:absolute;
+      right: 25px;
+      width:0;
+    }
+  }
+
   .label {
     @include breakpoint (small, mini) {
       margin-bottom: 12px;
