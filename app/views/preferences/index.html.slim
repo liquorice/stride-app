@@ -43,24 +43,12 @@
     button.view-edit Save
     .btn__profile-cancel.js-profile-edit.view-edit Cancel
 
-  = form_tag preferences_path, class: "js-profile", method: :patch do |f|
-
+  = form_tag
     h3
       | Username
       span.alert *
 
     p.view-default = @current_user.name
-
-    input.input__textfield.view-edit name="name" value=@current_user.name
-
-    .btn__profile-edit.js-profile-edit.view-default Edit
-    button.view-edit Save
-    .btn__profile-cancel.js-profile-edit.view-edit Cancel
-
-    .message-required.view-edit
-      | Required fields (
-      span.alert *
-      | )
 
 
   = form_tag update_password_path, class: "js-profile", method: :patch do |f|
