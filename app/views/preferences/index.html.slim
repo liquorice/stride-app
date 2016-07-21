@@ -138,17 +138,17 @@
 
           .label
             .label__title = "SMS notifications"
-            .label__desc Please save your mobile number to receive notifications
+            .label__desc Please save your mobile number to receive notifications (overseas numbers require a country code).
             label.toggle
               = f.check_box :sms_opted_in
               .toggle__text Off
               .toggle__text On
 
-          = f.text_field :sms_contact, placeholder:"Mobile not provided", class:"input__textfield"
+          = f.text_field :sms_contact, placeholder:"eg. 0400123456", class:"input__textfield"
 
           .label
             .label__title = "Twitter direct messages"
-            .label__desc = "In order to receive notifications via Twitter DM, you must first follow #{@site.name}'s Twitter account using the button below, then enter and save your own Twitter account name."
+            .label__desc = "In order to receive notifications via Twitter direct messages, you must first follow #{@site.name}'s Twitter account using the button below, then enter and save your own Twitter handle."
             label.toggle
               = f.check_box :twitter_opted_in
               .toggle__text Off
@@ -156,6 +156,6 @@
 
           a class="twitter-follow-button" href="https://twitter.com/#{@site.name.capitalize}Community" data-show-count="false" data-size="large" = "Follow @#{@site.name.capitalize}Community"
 
-          = f.text_field :twitter_contact, placeholder:"Twitter not provided", class:"input__textfield"
+          = f.text_field :twitter_contact, placeholder:"eg. @twitterUsername", class:"input__textfield"
 
           button Save notifications
