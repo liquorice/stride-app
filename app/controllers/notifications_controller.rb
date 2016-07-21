@@ -1,5 +1,6 @@
 class NotificationsController < ApplicationController
   include ApplicationHelper
+  layout 'modal', except: ['history']
 
   def history
     require_permission :notification_create
@@ -37,9 +38,9 @@ class NotificationsController < ApplicationController
       content_type: @content_type
     )
 
-    @notification.dispatch("")
+    @notification.dispatch(@host)
 
-    flash[:success] = "Your notification has been created"
+    flash[:success] = "Notification has been created"
     redirect_to notifications_history_path
   end
 

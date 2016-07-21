@@ -5,6 +5,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @reset_url = reset_url
     to = @user.email
+    
     mail(
       to: to,
       subject: 'Password Reset Request',
@@ -14,13 +15,14 @@ class UserMailer < ApplicationMailer
 
   def notification(host, user, content)
     @host = host
+    @user = user
     @content = content
     @site = user.site
     to = @user.email
 
     mail(
       to: to,
-      subject: "A notification from #{@site.pretty_name}",
+      subject: "Notification from #{@site.pretty_name}",
       from: "#{@site.pretty_name} <notifications@#{@host}>"
     )
   end

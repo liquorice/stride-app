@@ -32,8 +32,7 @@ class Notification < ActiveRecord::Base
     link = chat_session.id ? ShortenedUrl.shorten(chat_session.public_path) : "<link>"
 
     %{
-      A message from #{site.pretty_name} — There's an upcoming live chat
-      discussion about #{chat_session.discreet_name} that might
+      There's a live chat about #{chat_session.discreet_name} that might
       interest you on #{chat_session.scheduled_for_date} at
       #{chat_session.scheduled_for_time}. To find out more: #{link}
     }.gsub(/\s+/, " ")
@@ -48,9 +47,9 @@ class Notification < ActiveRecord::Base
     link = chat_session.id ? ShortenedUrl.shorten(chat_session.public_path) : "<link>"
 
     %{
-      A message from #{site.pretty_name} —  Today's live chat
-      discussion about #{chat_session.discreet_name} will begin at at
-      #{chat_session.scheduled_for_time}. To find out more: #{link}
+      Today's live chat discussion about #{chat_session.discreet_name}
+      will begin at at #{chat_session.scheduled_for_time}.
+      To find out more: #{link}
     }.gsub(/\s+/, " ")
   end
 
@@ -64,9 +63,8 @@ class Notification < ActiveRecord::Base
     end
 
     %{
-      A message from #{site.pretty_name} — There's a new article
-      about #{discreet_subject} that might interest you.
-      View here: #{article_link}
+      There's a new article that might interest you.
+      View it here: #{article_link}
     }.gsub(/\s+/, " ")
   end
 
