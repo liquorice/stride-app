@@ -66,6 +66,10 @@
     a.btn__newChat href=new_chat_session_path data-modal=true
       = insert_svg("icons/side-bar-icons_plus-chat.svg", class:"icon__sidebar")
       | Setup new Chat
+  - if current_user_can?(:notification_create)
+    a.btn__sendNotification href=new_notification_path data-modal=true
+      = insert_svg("icons/side-bar-icons-notification.svg", class:"icon__sidebar")
+      | Send Notification
 
 .sidebar__group locked-group=expanded
   .sideBar__menu
@@ -76,6 +80,8 @@
       a href=hidden_threads_path Hidden threads
     - if current_user_can?(:users_view)
       a href=users_path All users
+    - if current_user_can?(:notification_create)
+      a href=notifications_history_path Past notifications
     a href=community_rules_path Community rules
     a href=link_to_kb('privacy-policy') Privacy policy
 
