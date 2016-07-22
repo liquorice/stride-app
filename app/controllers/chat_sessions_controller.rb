@@ -6,6 +6,7 @@ class ChatSessionsController < ApplicationController
   end
 
   def archived_list
+    require_permission :chat_modify
     @chat_sessions = @site.chat_sessions
       .where(status: [ChatSession.statuses['archived']])
       .reorder(ended_at: :desc)
@@ -14,7 +15,8 @@ class ChatSessionsController < ApplicationController
 
   def show
     @chat_session = @site.chat_sessions.find(params[:id])
-
+    
+    require_permission :chat_modify if @chat_session.archived?
     render @chat_session.status
   end
 
