@@ -14,4 +14,26 @@
 - content_for :sidebar do
   = render 'partials/sidebar'
 
-= render 'chat_widget'
+.chatWidget-mobile.js-widget
+  = render 'chat_widget'
+
+.chatLaunch-mobile.js-launch
+  .chatbar.active
+    .chatbar__title
+      = insert_svg("title-chat-small.svg", class:"heading__chat-small")
+
+    .chatbar__time
+      p.js-chat-duration
+    .btn__chatbar.js-chatbar = insert_svg("icons/icon_info.svg", class:"icon__info")
+    .chatbar__info
+      p = @chat_session.description
+      p.moderator
+        strong Moderator: 
+        = @chat_session.moderator.name
+      - if (@chat_session.tags != nil) && (@chat_session.tags.any?)
+        - @chat_session.tags.each do |tag|
+          - taglink = 'tag/' + tag.downcase.gsub(" ", "-")
+          a.tags__tag.link href="#{link_to_kb(taglink)}" = tag
+
+  .launchArea
+    = insert_svg("chat_launch.svg", class:"img__launch green js-launch-button")

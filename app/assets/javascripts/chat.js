@@ -1,6 +1,10 @@
 (function() {
   'use strict';
 
+  var widget;
+  var launch_button;
+  var back_button;
+
   var form;
   var input;
   var duration_display;
@@ -15,6 +19,10 @@
   var can_post;
 
   var init = function() {
+    widget = $('.js-widget');
+    launch_button = $('.js-launch-button');
+    back_button = $('.js-widget-back');
+
     form = $('.js-chat-form');
     input = form.find('.js-chat-content');
     messages_container = $('.js-chat-messages');
@@ -30,6 +38,18 @@
     setup_moderator_tools();
     setup_clear();
     setup_growing_textarea();
+
+    launch_button.on('click', function() {
+      if (!widget.hasClass('show')) {
+        widget.addClass('show');
+      }
+    })
+
+    back_button.on('click', function() {
+      if (widget.hasClass('show')) {
+        widget.removeClass('show');
+      }
+    })
 
     form.on('submit', function(e) {
       e.preventDefault();

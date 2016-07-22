@@ -1,7 +1,13 @@
 // Chat Reply Styles
 
 .chatReply {
-  @include breakpoint (mini, small) {
+  @include breakpoint (mini) {
+    background-color: $bg-dark;
+    bottom: 0;
+    padding-bottom: 0;
+    position: fixed;
+  }
+  @include breakpoint (small) {
     padding-bottom: 3rem;
   }
   border-top: 3px solid rgba($grey-warm, 0.08);

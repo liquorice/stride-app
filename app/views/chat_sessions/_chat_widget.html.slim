@@ -1,4 +1,5 @@
 .chatbar.active
+  .btn__chatBack-mobile.js-widget-back = insert_svg("icons/icon_prev-arrow.svg", class:"icon__back")
   .chatbar__title
     = insert_svg("title-chat-small.svg", class:"heading__chat-small")
     - if current_user_can?(:chat_modify)

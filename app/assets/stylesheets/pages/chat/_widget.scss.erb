@@ -1,3 +1,37 @@
+// Mobile Visibility Styles
+
+.chatLaunch-mobile {
+  @include breakpoint(mini) {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.chatWidget-mobile {
+  @include breakpoint(mini) {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.show {
+    background-color: $bg-dark;
+    bottom: 0;
+    display: block;
+    left: 0;
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    visibility: visible;
+    width: 100%;
+    z-index: 5000;
+  }
+}
+
 // Chat Widget Window Styles (chat not started)
 
 .launchArea {
@@ -22,8 +56,26 @@
     margin-top: calc((11.33rem/2) - (5.2rem/2));
     width: 5.2rem;
 
+    text {
+      @include ff-adelle-bold;
+    }
+
+    &.green {
+      cursor: pointer;
+      .bg {
+        fill: $green-light;
+      }
+    }
+
     .bg {
       fill: $primary;
+    }
+
+    &.green:hover {
+      .bg {
+        fill: $green-mid;
+        transition: all 300ms ease-out;
+      }
     }
 
     &:hover {
@@ -45,6 +97,10 @@
 // Chat Widget Window Styles
 
 .chatArea {
+  @include breakpoint(mini) {
+    max-height: 100%;
+    padding-bottom: 8rem;
+  }
   overflow-y: scroll;
   position: relative;
   background-color: $bg-dark;
@@ -86,6 +142,9 @@
     }
 
     .avatar {
+      @include breakpoint(mini) {
+        z-index: 0;
+      }
       margin-left: 7px;
     }
   }
