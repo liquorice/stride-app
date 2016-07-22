@@ -69,6 +69,10 @@ class ChatSession < ActiveRecord::Base
     chat_messages.pluck(:user_id).uniq.count
   end
 
+  def private_chat_participants
+    site.users.where(id: private_chat_sessions.map(&:user_id))
+  end
+
   def moderator
     site.users.find_by(id: moderator_id)
   end
