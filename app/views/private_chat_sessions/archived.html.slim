@@ -14,6 +14,7 @@
 - if @current_user.can?(:chat_modify)
   .chatArchive
     .chatArchive__row
+    .chatArchive__row
       p.note__title
         strong Chat launched from: 
         a href=chat_session_path(@chat_session.chat_session) = @chat_session.chat_session.name
