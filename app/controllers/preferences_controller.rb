@@ -47,7 +47,6 @@ class PreferencesController < ApplicationController
 
   def preferences_params
     params.require(:user).permit(
-      :name,
       :avatar_colour,
       :avatar_face,
       :email,
