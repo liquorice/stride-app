@@ -16,9 +16,9 @@
 // Default and Error Strip Styles
 
 .strip__default {
+  background: url(<%= asset_path 'noise-diamonds-283x283-@2x.png' %>) center center repeat;
   background-color: $blue-dark;
   background-size: 283px 283px;
-  background: url(<%= asset_path 'noise-diamonds-283x283-@2x.png' %>) center center repeat;
   padding: 2.526rem 0 3.211rem;
   text-align: center;
 
@@ -186,8 +186,8 @@
   @include breakpoint(small, mini) {
     padding: 1.579rem 12px;
   }
-  background-size: 1440px 530px;
   background: url(<%= asset_path 'noise-1440x530.png' %>) center center repeat $bg-dark;
+  background-size: 1440px 530px;
   padding: 2.632rem 12px 2.895rem;
 
   p {
