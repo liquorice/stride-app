@@ -30,6 +30,21 @@
     width: 100%;
     z-index: 5000;
   }
+
+  &.private {
+    @include breakpoint(mini) {
+      background-color: $bg-dark;
+      bottom: 0;
+      display: block;
+      left: 0;
+      opacity: 1;
+      position: fixed;
+      top: 0;
+      visibility: visible;
+      width: 100%;
+      z-index: 5000;
+    }
+  }
 }
 
 // Chat Widget Window Styles (chat not started)
