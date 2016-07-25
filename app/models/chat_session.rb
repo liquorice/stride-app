@@ -21,6 +21,14 @@ class ChatSession < ActiveRecord::Base
 
   self.per_page = 8
 
+  def self.for_tag(tag)
+    where("? = ANY (tags)", tag)
+  end
+
+  def self.for_query(query)
+    where("name ilike ? or description ilike ?", "%#{query}%", "%#{query}%")
+  end
+
   def public_path
     link_to_app(chat_session_path(self), site)
   end
@@ -50,7 +58,7 @@ class ChatSession < ActiveRecord::Base
   end
 
   def self.scheduled_for_from_date_and_time(date, time)
-    Time.parse("#{date} #{time}")
+    Time.zone.parse("#{date} #{time}")
   end
 
   def scheduled_for_date
@@ -80,5 +88,15 @@ class ChatSession < ActiveRecord::Base
   def duration
     return false unless archived?
     ended_at - started_at
+  end
+
+  def export_to_json
+    {
+      id: id,
+      name: name,
+      scheduled_for: scheduled_for.to_i,
+      description: description,
+      status: status.humanize,
+    }
   end
 end

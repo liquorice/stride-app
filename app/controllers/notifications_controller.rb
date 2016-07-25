@@ -21,6 +21,7 @@ class NotificationsController < ApplicationController
     raise Exceptions::NotFoundError unless Notification.content_types.include?(@content_type)
 
     @notification_data = params[:notification][:data]
+    @subject_title = Notification.subject_title_for_data(@notification_data)
     @notification_content = Notification.send(@content_type, *[@site, @notification_data])
   end
 
@@ -32,10 +33,12 @@ class NotificationsController < ApplicationController
 
     @notification_data = params[:notification][:data]
     @notification_content = Notification.send(@content_type, *[@site, @notification_data])
+    @subject_title = Notification.subject_title_for_data(@notification_data)
 
     @notification = @current_user.notifications.create(
       content: @notification_content,
-      content_type: @content_type
+      content_type: @content_type,
+      subject_title: @subject_title
     )
 
     @notification.dispatch(@host)

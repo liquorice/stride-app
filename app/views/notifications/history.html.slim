@@ -11,8 +11,7 @@
 
     .notificationHistory
       .text__main
-        // TODO JB Can we have the title here?
-        h3 = "//TODO Title"
+        h3 = notification.subject_title || "(Unknown title)"
         p
           strong Status: 
           = notification.status.humanize

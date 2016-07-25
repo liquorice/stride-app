@@ -56,6 +56,22 @@ class ChatSessionsController < ApplicationController
     end
   end
 
+  def update_notes
+    require_permission :chat_modify
+    @chat_session = @site.chat_sessions.find(params[:id])
+
+    # Only the chat moderator can update the notes
+    raise Exceptions::NotAuthorisedError unless @chat_session.moderator == @current_user
+
+    if @chat_session.update(notes: params[:notes])
+      flash[:success] = "#{@chat_session.name} successfully updated"
+      redirect_to chat_session_path(@chat_session)
+    else
+      flash.now[:error] = @chat_session.errors.full_messages.to_sentence
+      render :show
+    end
+  end
+
   # Live chat actions
 
   def start
