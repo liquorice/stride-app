@@ -38,5 +38,6 @@
 //= require survey-popup
 //= require chat-bar
 //= require chathistory-bar
+//= require chatarchive-edit
 
 //= require main

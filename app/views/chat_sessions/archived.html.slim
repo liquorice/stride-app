@@ -88,18 +88,25 @@
     p.note__title
       strong Notes from moderator
 
-    p.note__text
-      / TODO styling
-      - if @chat_session.moderator == @current_user
-        = form_tag update_notes_for_chat_session_path(@chat_session), method: :patch do |f|
-          textarea placeholder="No notes" name="notes" = @chat_session.notes
-          button Update notes
+    - if @chat_session.moderator == @current_user
+      = form_tag update_notes_for_chat_session_path(@chat_session), class: "js-noteEdit", method: :patch do |f|
+        - if @chat_session.notes.blank?
+          p.note__text.view-edit No notes
+          textarea.input__textarea.onWhite.view-default placeholder="Please enter moderator notes" name="notes" = @chat_session.notes
 
-      - else
-        - if @chat_session.notes
-          = @chat_session.notes
+          .btn-edit.js-edit.view-edit Edit notes
+          button.view-default Save notes
+          .btn-cancel.js-edit.view-default Cancel
         - else
-          | No notes
+          p.note__text.view-default = @chat_session.notes
+          textarea.input__textarea.onWhite.view-edit placeholder="Please enter moderator notes" name="notes" = @chat_session.notes
+
+          .btn-edit.js-edit.view-default Edit notes
+          button.view-edit Save notes
+          .btn-cancel.js-edit.view-edit Cancel
+
+    - else
+      p.note__text = @chat_session.notes || "No notes"
 
 .chatHistory
   - if @chat_session.chat_messages.any?

@@ -52,6 +52,7 @@
 .chatArchive {
   padding-bottom: 2rem;
 }
+
   .mobile-chatArchive__row {
     @include breakpoint (small, mini) {
       display: inline-block;
@@ -109,6 +110,88 @@
       &.note__text {
         padding: 0.211rem 0 0.6316rem;
       }
+    }
+
+    form {
+      button {
+        @include btn-meta;
+        @include btn-primary;
+        @include ff_adelle-bold;
+        @include breakpoint (small, mini) {
+          margin-left: 16px;
+          margin-top: 16px;
+        }
+        cursor: pointer;
+        margin-top: 13px;
+      }
+
+      .btn-cancel,
+      .btn-edit {
+        @include p-meta;
+        @include links;
+        border-bottom: none;
+        cursor: pointer;
+        width: 5.421rem;
+        &:hover {
+          box-shadow: none;
+        }
+      }
+
+      .btn-cancel {
+        margin-left: 6px;
+
+      }
+
+      .btn-edit {
+        @include breakpoint (small, mini) {
+          margin-top: 6px;
+        }
+        margin-top: 11px;
+
+        &:before {
+          @include icon__edit-blue;
+          @include breakpoint (small, mini) {
+            height: 9px;
+            margin: 5px 3px 0 0;
+            width: 9px;
+          }
+          content: " ";
+          float: left;
+          height: 11px;
+          margin: 2px 4px 0 0;
+          width: 11px;
+        }
+      }
+    }
+
+    form.edit {
+      & > .btn-edit.view-edit {
+        display: block;
+      }
+
+      & > .view-edit {
+        display: inline-block;
+      }
+
+      & > .view-default {
+        display: none;
+      }
+    }
+
+    .btn-edit.view-default {
+      display: block;
+    }
+
+    .view-default,
+    button.view-default,
+    p.view-default {
+      display: inline-block;
+    }
+
+    .view-edit,
+    button.view-edit,
+    b.view-edit {
+      display: none;
     }
   }
 
