@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'chats/archived' => 'chat_sessions#archived_list', as: :archived_chats
   patch 'chat/:id/start' => 'chat_sessions#start', as: :start_chat_session
   patch 'chat/:id/end' => 'chat_sessions#end', as: :end_chat_session
+  patch 'chat/:id/notes' => 'chat_sessions#update_notes', as: :update_notes_for_chat_session
 
   # Chat
   get 'private_chats' => 'chat_sessions#index', as: :private_chats
@@ -79,6 +80,8 @@ Rails.application.routes.draw do
   scope :api do
     get 'threads_for_tag/:tag' => 'api#threads_for_tag'
     get 'threads_for_query/:query' => 'api#threads_for_query'
+    get 'sessions_for_tag/:tag' => 'api#sessions_for_tag'
+    get 'sessions_for_query/:query' => 'api#sessions_for_query'
     get 'user' => 'api#current_user'
     get 'upcoming_chat' => 'api#upcoming_chat'
     get 'forums_overview' => 'api#forums_overview'

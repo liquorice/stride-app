@@ -2,22 +2,9 @@ h1 Proof notification
 
 = form_tag create_notification_path do
 
-  input type="hidden" name="notification[content_type]" value=@content_type
-
-  - @notification_data.each do |k, v|
-    input type="hidden" name="notification[data][#{k}]" value=v
-
-    - name = nil
-    - if v
-      - if v =~ /[0-9]/
-        - name = @site.chat_sessions.find(v).name
-      - if v.split('|').length == 2
-        - name = v.split('|')[1]
-
-    - if name
-      .label
-        .label__title Notification for:
-        .label__desc = name
+  .label
+    .label__title Notification for:
+    .label__desc = @subject_title
 
   .label.small
     .label__title Preview:

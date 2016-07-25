@@ -68,6 +68,14 @@ class Notification < ActiveRecord::Base
     }.gsub(/\s+/, " ")
   end
 
+  def self.subject_title_for_data(data)
+    if data[:article_data]
+      data[:article_data].split("|", 2)[1]
+    elsif data[:chat_session_id]
+      ChatSession.find_by(id: data[:chat_session_id]).try(&:name)
+    end
+  end
+
   def dispatch(host)
     # Only run on unsent messages
     return if sent?
@@ -95,7 +103,8 @@ class Notification < ActiveRecord::Base
       "password=#{ERB::Util.url_encode(Rails.configuration.smsbroadcast_password)}&",
       "to=#{to_numbers}&",
       "from=#{site.pretty_name}&",
-      "message=#{escaped_content}"
+      "message=#{escaped_content}&",
+      "maxsplit=3"
     ].join()
 
     open(sms_api_url).read

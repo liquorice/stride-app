@@ -89,10 +89,17 @@
       strong Notes from moderator
 
     p.note__text
-      - if @chat_session.notes
-        = @chat_session.notes
+      / TODO styling
+      - if @chat_session.moderator == @current_user
+        = form_tag update_notes_for_chat_session_path(@chat_session), method: :patch do |f|
+          textarea placeholder="No notes" name="notes" = @chat_session.notes
+          button Update notes
+
       - else
-        | No notes
+        - if @chat_session.notes
+          = @chat_session.notes
+        - else
+          | No notes
 
 .chatHistory
   - if @chat_session.chat_messages.any?

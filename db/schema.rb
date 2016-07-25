@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719135325) do
+ActiveRecord::Schema.define(version: 20160722143835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(version: 20160719135325) do
     t.integer  "chat_session_id"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.boolean  "visible",                 default: true
+    t.boolean  "private",                 default: false
+    t.integer  "recipient_id"
     t.integer  "private_chat_session_id"
   end
 
@@ -90,10 +92,11 @@ ActiveRecord::Schema.define(version: 20160719135325) do
     t.integer  "sms_count",     default: 0
     t.integer  "twitter_count", default: 0
     t.text     "content"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "content_type"
     t.integer  "status",        default: 0
+    t.string   "subject_title", default: ""
   end
 
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
