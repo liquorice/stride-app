@@ -1,18 +1,19 @@
 accessLevels_modify: Modify available access levels
 forums_modify: Modify forums main page
-topics_create: Create new forums
 topics_viewHidden: View hidden topics
+topics_create: Create new forums
 topics_modify: Modify a forum
-topicThreads_modify: Modify a thread
 topicThreads_create: Create new threads
+topicThreads_modify: Modify a thread
 post_create: Create new posts
 post_moderate: Show/hide other users posts
 chat_modify: Create and modify chat sessions
 message_create: Participate in chat
 preferences_modify: Modify own preferences
-users_view: View information about other users
 special_avatar: Use moderator avatar colour
+users_view: View information about other users
 accessLevel_set: Set other users access level
 user_hideActivity: Hide all threads and posts by a users
 user_suspend: Change a users suspension status
 user_changeEmail: Change other users email address
+notification_create: Send notifications to users
