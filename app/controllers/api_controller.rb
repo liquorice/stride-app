@@ -48,7 +48,7 @@ class ApiController < ApplicationController
         url: chat_session_path(chat_session),
         scheduled_for: chat_session.scheduled_for.to_i,
         starts_in: distance_of_future_time_in_words(chat_session.scheduled_for),
-        status: chat_session.status
+        status: ((chat_session.status if chat_session.open?) || ("upcoming" if (chat_session.scheduled_for <= 1.day.from_now)) || chat_session.status)
       }
     else
       chat = false;
