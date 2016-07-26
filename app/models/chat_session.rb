@@ -98,7 +98,7 @@ class ChatSession < ActiveRecord::Base
       url: chat_session_path(self),
       scheduled_for: scheduled_for.to_i,
       starts_in: distance_of_future_time_in_words(scheduled_for),
-      status: status
+      status: ((status if open?) || ("upcoming" if (scheduled_for <= 1.day.from_now)) || status)
     }
   end
 end

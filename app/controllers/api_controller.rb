@@ -15,13 +15,13 @@ class ApiController < ApplicationController
   end
 
   def sessions_for_tag
-    threads = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).for_tag(params[:tag])
-    render json: threads.map(&:export_to_json)
+    sessions = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).for_tag(params[:tag])
+    render json: sessions.map(&:export_to_json)
   end
 
   def sessions_for_query
-    threads = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).for_query(params[:query])
-    render json: threads.map(&:export_to_json)
+    sessions = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).for_query(params[:query])
+    render json: sessions.map(&:export_to_json)
   end
 
   def current_user
