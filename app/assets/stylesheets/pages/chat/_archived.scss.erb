@@ -109,6 +109,7 @@
 
       &.note__text {
         padding: 0.211rem 0 0.6316rem;
+        white-space: pre-wrap;
       }
     }
 
@@ -139,15 +140,9 @@
 
       .btn-cancel {
         margin-left: 6px;
-
       }
 
       .btn-edit {
-        @include breakpoint (small, mini) {
-          margin-top: 6px;
-        }
-        margin-top: 11px;
-
         &:before {
           @include icon__edit-blue;
           @include breakpoint (small, mini) {
