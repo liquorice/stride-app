@@ -1,5 +1,6 @@
 class ChatSession < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include ActionView::Helpers::DateHelper
   include ApplicationHelper
 
   belongs_to :site
@@ -92,11 +93,12 @@ class ChatSession < ActiveRecord::Base
 
   def export_to_json
     {
-      id: id,
       name: name,
-      scheduled_for: scheduled_for.to_i,
       description: description,
-      status: status.humanize,
+      url: chat_session_path(self),
+      scheduled_for: scheduled_for.to_i,
+      starts_in: distance_of_future_time_in_words(scheduled_for),
+      status: status
     }
   end
 end
