@@ -3,35 +3,35 @@ footer.footer
     .constrained
       p
         = "#{@site.name.capitalize} is a "
-        a.js-beyondblue_link
+        a.js-beyondblue_link target="_blank"
           em beyondblue
         = " project funded with donations from the "
-        a.js-movember_link Movember Foundation
+        a.js-movember_link target="_blank" Movember Foundation
 
       ul aria-label="Contributors"
         li
-          a.js-beyondblue_link
+          a.js-beyondblue_link target="_blank"
             img.logo__beyondblue alt="beyondblue" src="#{asset_path('logos/beyond-blue-movember.png')}"
 
         li
-          a.js-vac_link
+          a.js-vac_link target="_blank"
             img.logo__vac alt="Victoria Aids Council" src="#{asset_path('logos/vac.png')}"
 
         li
-          a.js-acon_link
+          a.js-acon_link target="_blank"
             img.logo__acon alt="ACON" src="#{asset_path('logos/acon.png')}"
 
         li
-          a.js-csrh_link
+          a.js-csrh_link target="_blank"
             img.logo__csrh alt="Centre for Social Research in Health" src="#{asset_path('logos/csrh.png')}"
 
         - if @site.name == 'pete'
           li
-            a.js-additional_link
+            a.js-additional_link target="_blank"
               img.logo__livingPositive alt="Living Positive Victoria" src="#{asset_path('logos/living-positive-victoria.png')}"
         - elsif @site.name == 'dale'
           li
-            a.js-additional_link
+            a.js-additional_link target="_blank"
               img.logo__gamma alt="Gamma" src="#{asset_path('logos/gamma.png')}"
 
   section.footer__links
