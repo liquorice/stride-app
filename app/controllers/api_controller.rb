@@ -2,7 +2,7 @@ class ApiController < ApplicationController
   include ActionView::Helpers::DateHelper
   include ApplicationHelper
 
-  # after_filter :cors_set_access_control_headers
+  after_filter :cors_set_access_control_headers
 
   def threads_for_tag
     threads = @site.topic_threads.visible.for_tag(params[:tag])
@@ -15,13 +15,13 @@ class ApiController < ApplicationController
   end
 
   def sessions_for_tag
-    threads = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).for_tag(params[:tag])
-    render json: threads.map(&:export_to_json)
+    sessions = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).for_tag(params[:tag])
+    render json: sessions.map(&:export_to_json)
   end
 
   def sessions_for_query
-    threads = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).for_query(params[:query])
-    render json: threads.map(&:export_to_json)
+    sessions = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).for_query(params[:query])
+    render json: sessions.map(&:export_to_json)
   end
 
   def current_user
@@ -48,7 +48,7 @@ class ApiController < ApplicationController
         url: chat_session_path(chat_session),
         scheduled_for: chat_session.scheduled_for.to_i,
         starts_in: distance_of_future_time_in_words(chat_session.scheduled_for),
-        status: chat_session.status
+        status: ((chat_session.status if chat_session.open?) || ("upcoming" if (chat_session.scheduled_for <= 1.day.from_now)) || chat_session.status)
       }
     else
       chat = false;

@@ -2,6 +2,10 @@ h1 Proof notification
 
 = form_tag create_notification_path do
 
+  input type="hidden" name="notification[content_type]" value=@content_type
+  - @notification_data.each do |k, v|
+    input type="hidden" name="notification[data][#{k}]" value=v
+
   .label
     .label__title Notification for:
     .label__desc = @subject_title

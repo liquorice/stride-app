@@ -12,10 +12,20 @@
     .notificationHistory
       .text__main
         h3 = notification.subject_title || "(Unknown title)"
+        - notification_type = nil
+        - if notification.content_type == 'scheduled_chat_content'
+          - notification_type = "New scheduled chat"
+        - elsif notification.content_type == 'today_chat_content'
+          - notification_type = "Upcoming chat today"
+        - elsif notification.content_type == 'new_article_content'
+          - notification_type = "New article"
+
         p
-          strong Status: 
-          = notification.status.humanize
-        p = notification.content
+          strong Notification type: 
+          = notification_type || "(Unknown type)"
+        p
+          strong Message: 
+          = notification.content
 
       .text__sub
         p
@@ -27,8 +37,8 @@
           = notification.created_at.strftime("%l.%M%p, ").downcase + notification.created_at.strftime("%e %B, %Y")
 
         p
-          strong Notification type: 
-          = notification.content_type
+          strong Status: 
+          = notification.status.humanize
 
         p
           strong Total emails: 
