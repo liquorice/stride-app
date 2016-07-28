@@ -142,7 +142,24 @@
     }
   }
 
-    .btn__chatbar:hover,
+    .btn__chatbar:hover {
+      @include breakpoint(huge, overlarge, large, medium) {
+        background-color: $white;
+        transition: all 200ms ease-in;
+        .icon__info > * {
+          fill: $links;
+        }
+
+        & ~ .chatbar__info {
+          opacity: 1;
+          transform: translateY(0);
+          transition: all 200ms ease-out;
+          visibility: visible;
+          z-index: 100;
+        }
+      }
+    }
+
     .btn__chatbar.expanded {
       background-color: $white;
       transition: all 200ms ease-in;
