@@ -35,4 +35,9 @@
     a href=start_chat_session_path(@chat_session) data-method="patch"
       = insert_svg("chat_launch.svg", class:"img__launch")
   - else
-    p Awaiting moderator
+    - if @chat_session.scheduled_for <= Time.now
+      p Awaiting moderator
+    - elsif @chat_session.scheduled_for <= 1.day.from_now
+      p = "Chat scheduled for #{@chat_session.scheduled_for.strftime("%l.%M%p").downcase} #{@chat_session.scheduled_for.strftime(" %Z")}"
+    - else
+      p = "Chat scheduled for #{@chat_session.scheduled_for.strftime("%d/%m/%y")}"
