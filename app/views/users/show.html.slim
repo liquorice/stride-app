@@ -25,6 +25,10 @@
             name: "user[access_level_id]",
             options: access_levels_hash_for_user(@current_user),
             value: @user.access_level.id
+      - else
+        p
+          strong Level: 
+          = @user.access_level.name
 
     .userDetails__suspend
       - if @user.suspended?
@@ -32,14 +36,20 @@
           | Status: 
           span.alert Suspended
         - if @current_user.can?(:user_suspend)
-          a.unsuspend href=unsuspend_user_path(@user) data-method="post" Allow access
+          - if (@current_user.superuser?) || (@current_user.access_level.name.downcase == 'admin') || (@user.access_level.name.downcase == 'user')
+            a.unsuspend href=unsuspend_user_path(@user) data-method="post" Allow access
+          - else
+            p Please contact an admin if you feel a suspended moderator should be allowed access again.
       - else
         h3 Status: Allowed access
         - if @current_user.can?(:user_suspend)
-          a.suspend href=suspend_user_path(@user) data-method="post" Suspend user
-          p
-            strong Suspending a user 
-            ' will log the user out and prevent them from logging back in.
+          - if (@current_user.superuser?) || (@current_user.access_level.name.downcase == 'admin') || (@user.access_level.name.downcase == 'user')
+            a.suspend href=suspend_user_path(@user) data-method="post" Suspend user
+            p
+              strong Suspending a user 
+              ' will log the user out and prevent them from logging back in.
+          - else
+            p Please contact an admin if you feel a moderator has displayed alarming behaviour.
 
   .userDetails__row
     .mobile__row
