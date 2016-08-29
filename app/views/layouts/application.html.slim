@@ -54,6 +54,8 @@ html
         = render "/partials/navigation"
 
     main.main id="content" tabindex="0"
+      = render "/partials/chatNotification"
+
       - if content_for? :default_strip
         .strip__default
           .constrained

@@ -1,0 +1,94 @@
+.chatNotification-mobile {
+  @include breakpoint (small, mini) {
+    display: block;
+    height: 4rem;
+    position: relative;
+    width: 100%;
+    z-index: 700;
+  }
+
+  background-color: $grey-cool;
+  display: none;
+
+  & .chatNotification__row {
+    height: 2rem;
+    text-align: center;
+    width: 100%;
+    display: block;
+    float: left;
+
+    p.title {
+      @include p-short;
+      @include ff-adelle-bold;
+      color: $white;
+      float: left;
+      line-height: 2rem;
+      max-width: calc(100% - 110px);
+      overflow: hidden;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    p.link {
+      @include p-short;
+      @include ff-adelle-bold;
+      float: right;
+      line-height: 2rem;
+      text-align: left;
+
+      a {
+        border-bottom: none;
+        color: $blue-light;
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+
+    &:first-child {
+      padding: 0.5rem 0;
+    }
+
+    &:nth-child(2) {
+      background-color: mix($grey-cool, $white, 95%);
+    }
+  }
+
+    & .chatNotification__col {
+      @include breakpoint (mini) {
+        padding: 0 0.75rem;
+        &:first-child {
+          padding: 0 0.75rem 0 0;
+        }
+      }
+
+      display: inline-block;
+      float: left;
+
+      &:first-child {
+        padding: 0 1rem 0 0;
+      }
+
+      & svg {
+        height: 1.211rem;
+        width: 5.789rem;
+        path#bolt {
+          fill: $primary;
+        }
+      }
+    }
+
+  & .chatNotification__soon {
+    height: auto;
+    padding: 0;
+    text-align: left;
+    background-color: inherit;
+    float: left;
+
+    p {
+      @include p-meta;
+      color: $primary;
+    }
+  }
+}

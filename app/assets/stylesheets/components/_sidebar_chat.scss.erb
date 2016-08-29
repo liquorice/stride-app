@@ -1,6 +1,6 @@
 .sidebar__chat {
   @include breakpoint (mini, small) {
-    margin-bottom: 1.267rem;
+    display: none;
   }
   height: auto;
   margin-bottom: 1.421rem;
@@ -8,10 +8,6 @@
 }
 
   .sidebar__chat-header {
-    @include breakpoint (mini, small) {
-      padding: 1.867rem 0;
-    }
-
     @include retina() {
       background-image:
         url(<%= asset_path 'header-chat@2x.png' %>),
@@ -58,10 +54,6 @@
       @include breakpoint (medium) {
         height: auto;
         width: 90%;
-      }
-      @include breakpoint (small, mini) {
-        height: 2.333rem;
-        width: 11.47rem;
       }
       height: 1.842rem;
       margin-top: 5px;
@@ -122,9 +114,6 @@
 
     .details__date,
     .details__time {
-      @include breakpoint (mini, small) {
-        padding: 0.533rem 0 0.867rem;
-      }
       display: inline-block;
       padding: 0.4211rem 0 0.6316rem;
       vertical-align: top;
@@ -143,9 +132,6 @@
 
     .details__date {
       p {
-        @include breakpoint (mini, small) {
-          padding-left: 1.133rem;
-        }
         color: $green-light;
         padding-left: 0.842rem;
       }
@@ -155,9 +141,6 @@
       border-left: 1px solid rgba($grey-warm, 0.1);
 
       p {
-        @include breakpoint (mini, small) {
-          padding-left: 0.933rem;
-        }
         color: $green-mid;
         padding-left: 0.632rem;
       }
