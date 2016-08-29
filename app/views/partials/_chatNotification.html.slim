@@ -1,28 +1,29 @@
 - chat_session = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).first
+- if (chat_session.status == 'open')
+  - chat_link = chat_session_path(chat_session)
+- else
+  - chat_link = chats_path
 
 - if chat_session
-  - if (chat_session.status == 'open')
-    a href=chat_session_path(chat_session)
-  - else
-    a href=chats_path
-      .chatNotification-mobile data-open=(chat_session.status == 'open')
-        .chatNotification__row
-          .constrained
-            .chatNotification__col
-              = insert_svg("title-chat-small.svg", class:"heading__chat-small")
-            .chatNotification__col
-              .chatNotification__soon
-                p
-                  - if (chat_session.status == 'open')
-                    strong Chat now LIVE
-                  - else
-                    strong = "Chat starts in #{distance_of_future_time_in_words(chat_session.scheduled_for)}"
+  a href=chat_link
+    .chatNotification-mobile data-open=(chat_session.status == 'open')
+      .chatNotification__row
+        .constrained
+          .chatNotification__col
+            = insert_svg("title-chat-small.svg", class:"heading__chat-small")
+          .chatNotification__col
+            .chatNotification__soon
+              p
+                - if (chat_session.status == 'open')
+                  strong Chat now LIVE
+                - else
+                  strong = "Chat starts in #{distance_of_future_time_in_words(chat_session.scheduled_for)}"
 
-        .chatNotification__row
-          .constrained
-            p.title = chat_session.name
-            p.link
-              - if (chat_session.status == 'open')
-                a href=chat_session_path(chat_session) Join chat now
-              - else
-                a href=chats_path View chat
+      .chatNotification__row
+        .constrained
+          p.title = chat_session.name
+          p.link
+            - if (chat_session.status == 'open')
+              a href=chat_session_path(chat_session) Join chat now
+            - else
+              a href=chats_path View chat
