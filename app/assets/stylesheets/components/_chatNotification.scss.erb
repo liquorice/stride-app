@@ -1,3 +1,11 @@
+.chatNotification-mobile[data-status="open"] {
+  & .chatNotification__col svg {
+    path#bolt {
+      fill: $green-light;
+    }
+  }
+}
+
 .chatNotification-mobile {
   @include breakpoint (small, mini) {
     display: block;
