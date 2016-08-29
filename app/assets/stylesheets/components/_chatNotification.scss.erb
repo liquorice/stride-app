@@ -1,4 +1,8 @@
-.chatNotification-mobile[data-status="open"] {
+.chatNotification-mobile[data-open] {
+  & .chatNotification__soon p {
+    color: $green-light;
+  }
+
   & .chatNotification__col svg {
     path#bolt {
       fill: $green-light;

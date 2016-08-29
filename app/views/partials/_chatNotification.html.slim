@@ -2,7 +2,7 @@
 
 - if chat_session
   a href=chat_session_path(chat_session)
-    .chatNotification-mobile
+    .chatNotification-mobile data-open=(chat_session.status == 'open')
       .chatNotification__row
         .constrained
           .chatNotification__col
