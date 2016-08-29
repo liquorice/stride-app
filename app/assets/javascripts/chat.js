@@ -185,7 +185,7 @@
     if (response.status && response.status == 'archived') {
       chat_open = false;
       alert('This chat has ended');
-      document.location.href = 'http://' + document.domain + '/chats';
+      document.location.href = 'http://' + document.domain;
       return;
     }
 
