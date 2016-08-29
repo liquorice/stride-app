@@ -1,10 +1,10 @@
 - chat_session = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).first
-- if (chat_session.status == 'open')
-  - chat_link = chat_session_path(chat_session)
-- else
-  - chat_link = chats_path
 
 - if chat_session
+  - if (chat_session.status == 'open')
+    - chat_link = chat_session_path(chat_session)
+  - else
+    - chat_link = chats_path
   a href=chat_link
     .chatNotification-mobile data-open=(chat_session.status == 'open')
       .chatNotification__row
