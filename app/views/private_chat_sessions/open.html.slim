@@ -11,14 +11,14 @@
 
 .chatWidget-mobile.private
   .chatbar.active
-    a.btn__chatBack-mobile href=chats_path = insert_svg("icons/icon_prev-arrow.svg", class:"icon__back")
+    a.btn__chatBack-mobile href=chat_session_path(@chat_session.chat_session) = insert_svg("icons/icon_prev-arrow.svg", class:"icon__back")
     .chatbar__title
       = insert_svg("title-chat-small.svg", class:"heading__chat-small")
       - if @current_user == @chat_session.moderator
         a.btn__end href=end_private_chat_session_path(@chat_session) data-method="patch" data-confirm="Are you sure you want to end this session?" End chat
 
     .chatbar__time
-      p.js-chat-duration
+      p Private Chat
     .btn__chatbar.js-chatbar = insert_svg("icons/icon_info.svg", class:"icon__info")
     .chatbar__info
       - if current_user_can?(:chat_modify)
