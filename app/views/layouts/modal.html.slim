@@ -5,9 +5,17 @@ html
     meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags
+    = favicon_link_tag "#{@site.name.downcase}/touch-icons/favicon.ico"
+    = favicon_link_tag "#{@site.name.downcase}/touch-icons/apple-touch-icon.png", rel: 'apple-touch-icon', sizes: '180x180'
+    = favicon_link_tag "#{@site.name.downcase}/touch-icons/favicon-32x32.png", rel: 'icon', type: 'image/png', sizes: '32x32'
+    = favicon_link_tag "#{@site.name.downcase}/touch-icons/favicon-16x16.png", rel: 'icon', type: 'image/png', sizes: '16x16'
+    = favicon_link_tag "#{@site.name.downcase}/touch-icons/manifest.json", rel: 'manifest'
+    = favicon_link_tag "#{@site.name.downcase}/touch-icons/safari-pinned-tab.svg", rel: 'mask-icon', color: '#f97f8b'
+    = content_tag :meta, nil, content: asset_path("#{@site.name.downcase}/touch-icons/browserconfig.xml"), name: 'msapplication-config'
+    meta name="theme-color" content="#ffffff"
+
     = stylesheet_link_tag @site.name
     script src="https://www.google.com/recaptcha/api.js"
-    
     javascript:
       (function(d) {
         var config = {
