@@ -43,19 +43,27 @@
       if (!widget.hasClass('show')) {
         widget.addClass('show');
       }
-    })
+    });
 
     back_button.on('click', function() {
       if (widget.hasClass('show')) {
         widget.removeClass('show');
       }
-    })
+    });
 
     form.on('submit', function(e) {
       e.preventDefault();
       send_message();
       return false;
-    })
+    });
+
+    form.keypress(function(e) {
+      if ((e.which == 13) && (!e.shiftKey)) {
+        e.preventDefault();
+        form.submit();
+        return false;
+      }
+    });
 
     send_to_server({ task: 'history' });
     setTimeout(flush_queue, POLL_INTERVAL);
