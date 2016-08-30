@@ -1,3 +1,6 @@
+- content_for :custom_title do
+  title = "Archived Chats · #{@site.name.capitalize}"
+
 - content_for :chat_strip do
   .strip__dark-chat
     - if @current_user.can?(:chat_modify)
