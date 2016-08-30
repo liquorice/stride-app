@@ -499,8 +499,13 @@
           p {
             @include ff-adelle-bold;
             @include breakpoint (mini) {
-              display: inline-block;
               font-size: 1.133rem;
+            }
+
+            span {
+              @include breakpoint (huge, overlarge, large, medium, small) {
+                display: block;
+              }
             }
           }
         }

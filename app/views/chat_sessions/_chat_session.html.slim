@@ -58,8 +58,8 @@
           - if (chat_session.scheduled_for <= Time.now)
             .awaiting
               p
-                ' Awaiting 
-              p moderator
+                ' Awaiting
+                span moderator
           - else
             - if (chat_session.scheduled_for <= (Time.now + 1.days))
               strong => "Chat starts in "
