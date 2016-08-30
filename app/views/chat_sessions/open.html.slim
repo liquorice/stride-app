@@ -5,7 +5,7 @@
         = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
         | Live chats
     h1
-      =< @chat_session.name
+      =< @chat_session.discreet_name
 
 - if current_user_can?(:chat_modify)
   - content_for :edit_strip do
@@ -26,6 +26,8 @@
       p.js-chat-duration
     .btn__chatbar.js-chatbar = insert_svg("icons/icon_info.svg", class:"icon__info")
     .chatbar__info
+      p
+        strong = @chat_session.name
       p = @chat_session.description
       p.moderator
         strong Moderator: 

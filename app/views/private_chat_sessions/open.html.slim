@@ -3,8 +3,8 @@
     h2
       a href=chat_session_path(@chat_session.chat_session)
         = insert_svg("icons/icon_back-arrow-white.svg", class:"icon__back")
-        = @chat_session.chat_session.name
-    h1 Private Chat
+        = @chat_session.chat_session.discreet_name
+    h1 Private Chat: #{@chat_session.participants.pluck(:name).to_sentence}
 
 - content_for :sidebar do
   = render 'partials/sidebar'
@@ -23,7 +23,9 @@
     .chatbar__info
       - if current_user_can?(:chat_modify)
         a.mobile-btn__end href=end_private_chat_session_path(@chat_session) data-method="patch" data-confirm="Are you sure you want to end this session?" End chat
-      p This is a private chat only viewable by #{@chat_session.participants.pluck(:name).to_sentence}.
+      p
+        ' This is a private chat only viewable by
+        strong #{@chat_session.participants.pluck(:name).to_sentence}.
 
   .chatArea.js-chat-area
     .messages.js-chat-messages
