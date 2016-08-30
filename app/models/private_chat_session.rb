@@ -60,7 +60,7 @@ class PrivateChatSession < ActiveRecord::Base
   def message
     [
       "Hi #{user.name}, #{moderator.name} would like to chat to you privately. ",
-      "<a href=#{self.path} target='_new'>Follow this link</a> ",
+      "<a href=#{self.path} target='_blank'>Follow this link</a> ",
       "to chat in a new window"
     ].join
   end
