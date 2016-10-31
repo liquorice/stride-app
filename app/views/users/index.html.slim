@@ -40,7 +40,9 @@
               .usersRow-avatar
                 = render "user/avatar", user: user
               = user.name
-            h4 = user.created_at.strftime('%d/%m/%y')
+            h4
+              = user.created_at.strftime('%d/%m/%y')
+              = Time.at(user.created_at)
             h4
               = user_last_active(user.last_seen)
               = Time.at(user.last_seen)
