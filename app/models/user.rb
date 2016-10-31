@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def update_last_seen
-    update(last_seen: Time.now)
+    update(last_seen: Time.zone.now)
   end
 
   def send_password_reset(host)
