@@ -43,8 +43,8 @@
             h4 = user.created_at.strftime('%d/%m/%y')
             h4
               = user_last_active(user.last_seen)
-              = Time.at(user.last_seen.beginning_of_day).to_date
-              = Time.at(Time.zone.now.beginning_of_day).to_date
+              = Time.at(user.last_seen)
+              = Time.at(Time.zone.now)
             h4 = ("#{user.posts.count / 1000}k" if user.posts.count > 1000 ) || user.posts.count
             h4 = user.chat_messages.count
 
