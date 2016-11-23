@@ -19,7 +19,9 @@ h1 Proof notification
     .label__title Total notifications:
     .label__desc
       | Email: 
-      = @site.users.where(email_opted_in: true).count
+      / TODO: ACTIONMAILER NOT WORKING - Commented out following because actionmailer is currently not working, please uncomment once it works again
+      / = @site.users.where(email_opted_in: true).count
+      = "Email notifications currently unavailable"
     .label__desc
       | SMS: 
       = @site.users.where(sms_opted_in: true).count
