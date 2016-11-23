@@ -6,16 +6,10 @@ class UserMailer < ApplicationMailer
     @reset_url = reset_url
     to = @user.email
     
-    # mail(
-    #   to: to,
-    #   subject: 'Password Reset Request',
-    #   from: "#{@user.site.name.capitalize} <password_reset@#{@host}>"
-    # )
-
     mail(
       to: to,
       subject: 'Password Reset Request',
-      from: "dev@liquoricestudio.com"
+      from: "#{@user.site.name.capitalize} <password_reset@#{@host}>"
     )
   end
 

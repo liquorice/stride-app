@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   def send_password_reset(host)
     request = password_requests.create
     reset_url = password_reset_path(request.token)
-    UserMailer.password_reset(host, self, reset_url).deliver_now!
+    UserMailer.password_reset(host, self, reset_url).deliver_now
   end
 
   # --- Avatar ---
