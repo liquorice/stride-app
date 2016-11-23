@@ -91,38 +91,38 @@ class Notification < ActiveRecord::Base
     end
 
     # SMS notifications
-    # numbers = site.users.where(sms_opted_in: true).pluck(:sms_contact)
+    numbers = site.users.where(sms_opted_in: true).pluck(:sms_contact)
 
     # Remove any non-numeric chars
-    # to_numbers = numbers.map{|n| n.tr("^0-9", "") }.join(",")
-    # escaped_content = ERB::Util.url_encode(content)
+    to_numbers = numbers.map{|n| n.tr("^0-9", "") }.join(",")
+    escaped_content = ERB::Util.url_encode(content)
 
-    # sms_api_url = [
-    #   "https://api.smsbroadcast.com.au/api-adv.php?",
-    #   "username=#{Rails.configuration.smsbroadcast_username}&",
-    #   "password=#{ERB::Util.url_encode(Rails.configuration.smsbroadcast_password)}&",
-    #   "to=#{to_numbers}&",
-    #   "from=#{site.pretty_name}&",
-    #   "message=#{escaped_content}&",
-    #   "maxsplit=3"
-    # ].join()
+    sms_api_url = [
+      "https://api.smsbroadcast.com.au/api-adv.php?",
+      "username=#{Rails.configuration.smsbroadcast_username}&",
+      "password=#{ERB::Util.url_encode(Rails.configuration.smsbroadcast_password)}&",
+      "to=#{to_numbers}&",
+      "from=#{site.pretty_name}&",
+      "message=#{escaped_content}&",
+      "maxsplit=3"
+    ].join()
 
-    # open(sms_api_url).read
-    # update(sms_count: numbers.count)
+    open(sms_api_url).read
+    update(sms_count: numbers.count)
 
     # Twitter notification
-    # credentials = Rails.configuration.twitter_credentials[site.name]
-    # client = Twitter::REST::Client.new do |config|
-    #   config.consumer_key = credentials[:consumer_key]
-    #   config.consumer_secret = credentials[:consumer_secret]
-    #   config.access_token = credentials[:access_token]
-    #   config.access_token_secret = credentials[:access_token_secret]
-    # end
+    credentials = Rails.configuration.twitter_credentials[site.name]
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = credentials[:consumer_key]
+      config.consumer_secret = credentials[:consumer_secret]
+      config.access_token = credentials[:access_token]
+      config.access_token_secret = credentials[:access_token_secret]
+    end
 
-    # site.users.where(twitter_opted_in: true).each do |user|
-    #   client.create_direct_message(user.twitter_contact, content)
-    #   update(twitter_count: twitter_count + 1)
-    # end
+    site.users.where(twitter_opted_in: true).each do |user|
+      client.create_direct_message(user.twitter_contact, content)
+      update(twitter_count: twitter_count + 1)
+    end
 
     # Update status
     update(status: :sent)
