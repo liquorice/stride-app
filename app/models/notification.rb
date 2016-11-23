@@ -81,14 +81,14 @@ class Notification < ActiveRecord::Base
     return if sent?
 
     # Email notification
-    site.users.where(email_opted_in: true).each do |user|
-      UserMailer.notification(
-        host,
-        user,
-        content
-      ).deliver_now
-      update(email_count: email_count + 1)
-    end
+    # site.users.where(email_opted_in: true).each do |user|
+    #   UserMailer.notification(
+    #     host,
+    #     user,
+    #     content
+    #   ).deliver_now
+    #   update(email_count: email_count + 1)
+    # end
 
     # SMS notifications
     # numbers = site.users.where(sms_opted_in: true).pluck(:sms_contact)

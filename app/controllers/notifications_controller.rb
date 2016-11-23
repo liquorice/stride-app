@@ -41,7 +41,7 @@ class NotificationsController < ApplicationController
       subject_title: @subject_title
     )
 
-    # @notification.dispatch(@host)
+    @notification.dispatch(@host)
 
     flash[:success] = "Notification has been created"
     redirect_to notifications_history_path
