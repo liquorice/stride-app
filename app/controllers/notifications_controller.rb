@@ -28,18 +28,18 @@ class NotificationsController < ApplicationController
   def create
     require_permission :notification_create
 
-    # @content_type = params[:notification][:content_type].to_sym
-    # raise Exceptions::NotFoundError unless Notification.content_types.include?(@content_type)
+    @content_type = params[:notification][:content_type].to_sym
+    raise Exceptions::NotFoundError unless Notification.content_types.include?(@content_type)
 
-    # @notification_data = params[:notification][:data]
-    # @notification_content = Notification.send(@content_type, *[@site, @notification_data])
-    # @subject_title = Notification.subject_title_for_data(@notification_data)
+    @notification_data = params[:notification][:data]
+    @notification_content = Notification.send(@content_type, *[@site, @notification_data])
+    @subject_title = Notification.subject_title_for_data(@notification_data)
 
-    # @notification = @current_user.notifications.create(
-    #   content: @notification_content,
-    #   content_type: @content_type,
-    #   subject_title: @subject_title
-    # )
+    @notification = @current_user.notifications.create(
+      content: @notification_content,
+      content_type: @content_type,
+      subject_title: @subject_title
+    )
 
     # @notification.dispatch(@host)
 
