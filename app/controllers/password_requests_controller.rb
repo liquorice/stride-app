@@ -15,8 +15,8 @@ class PasswordRequestsController < ApplicationController
         # Only send email to users with an email address,
         # but pretend it was sent regardless to not leak
         # information about accounts
-        flash[:success] = "Meow, #{@host}"
-        user.send_password_reset(@host)
+        flash.now[:error] = "Meow, #{@host}"
+        # user.send_password_reset(@host)
       end
     end
 
