@@ -80,7 +80,7 @@ class Notification < ActiveRecord::Base
     # Only run on unsent messages
     return if sent?
 
-    Email notification
+    # Email notification
     site.users.where(email_opted_in: true).each do |user|
       UserMailer.notification(
         host,
