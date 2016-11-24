@@ -80,20 +80,15 @@ class Notification < ActiveRecord::Base
     # Only run on unsent messages
     return if sent?
 
-    # TODO: ACTIONMAILER NOT WORKING - Commented out following because actionmailer is currently not working, please uncomment once it works again
-
-    # Email notification
-    # site.users.where(email_opted_in: true).each do |user|
-    #   UserMailer.notification(
-    #     host,
-    #     user,
-    #     content
-    #   ).deliver_now
-    #   update(email_count: email_count + 1)
-    # end
-
-    # TODO: ACTIONMAILER NOT WORKING - This is just placeholder data while actionmailer is broken, please remove this line once it works again
-    update(email_count: 0)
+    Email notification
+    site.users.where(email_opted_in: true).each do |user|
+      UserMailer.notification(
+        host,
+        user,
+        content
+      ).deliver_now
+      update(email_count: email_count + 1)
+    end
 
     # SMS notifications
     numbers = site.users.where(sms_opted_in: true).pluck(:sms_contact)
