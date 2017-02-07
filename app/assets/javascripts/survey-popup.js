@@ -34,6 +34,7 @@ Module.register('survey', function(_container) {
         survey[0].setAttribute('data-expire', data["survey"]["expiry"]);
       }
       survey.find('.js-survey_content')[0].innerHTML = data["survey"]["content"];
+      var content = survey.find('.js-survey_content').find('a').attr('target', '_blank');
       survey.find('.js-survey_link')[0].setAttribute('href', data["survey"]["link"]);
     }
 
