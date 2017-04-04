@@ -19,10 +19,10 @@ Module.register('chatsidebar-update', function(_container) {
 
             container.attr('data-open', '');
             container.removeAttr('data-upcoming');
-            container.removeAttr('data-modal');
             startsin_text[0].innerText = "IN PROGRESS";
 
             btn.attr('href', data["chat"]["url"]);
+            btn.removeAttr('data-modal');
             btn[0].innerHTML = "Join chat now";
 
           }
