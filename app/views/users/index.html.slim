@@ -47,6 +47,7 @@
               = user_last_active(user.last_seen)
               = Time.at(user.last_seen)
               = Time.at(Time.zone.now)
+              = Time.zone.name
             h4 = ("#{user.posts.count / 1000}k" if user.posts.count > 1000 ) || user.posts.count
             h4 = user.chat_messages.count
 
