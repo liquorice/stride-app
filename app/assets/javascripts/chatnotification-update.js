@@ -3,8 +3,7 @@ Module.register('chatnotification-update', function(_container) {
 
   var init = function() {
     // setInterval(update_startsin_text, 60000);
-    // setInterval(update_startsin_text, 5000);
-    update_startsin_text();
+    setInterval(update_startsin_text, 5000);
   }
 
   var update_startsin_text = function() {
