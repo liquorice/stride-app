@@ -7,10 +7,8 @@ Module.register('chatnotification-update', function(_container) {
   }
 
   var update_startsin_text = function() {
-    
 
     $.get("/api/upcoming_chat", function(data) {
-
 
       console.log('MEOW');
 
@@ -21,12 +19,13 @@ Module.register('chatnotification-update', function(_container) {
           var startsin_text = _container.find('.js-chatNotification_startsin');
 
           if (data["chat"]["status"] == "open") {
-            notification.setAttribute('data-open', 'open');
-            notification.find('a').setAttribute('href', data["chat"]["url"]);
+            notification.attr('data-open', 'open');
+            notification.find('a').attr('href', data["chat"]["url"]);
+            startsin_text[0].innerText = "Chat now LIVE";
           }
-
-          startsin_text.innerHTML = "Chat starts in " + data["chat"]["starts_in"];
-
+          else {
+            startsin_text[0].innerText = "Chat starts in " + data["chat"]["starts_in"];
+          }
 
         }
       }
