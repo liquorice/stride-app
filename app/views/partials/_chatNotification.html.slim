@@ -13,11 +13,11 @@
             = insert_svg("title-chat-small.svg", class:"heading__chat-small")
           .chatNotification__col
             .chatNotification__soon
-              p.js-chatNotification_startsin
+              p
                 - if (chat_session.status == 'open')
-                  strong Chat now LIVE
+                  strong.js-chatNotification_startsin Chat now LIVE
                 - else
-                  strong = "Chat starts in #{distance_of_future_time_in_words(chat_session.scheduled_for)}"
+                  strong.js-chatNotification_startsin = "Chat starts in #{distance_of_future_time_in_words(chat_session.scheduled_for)}"
 
       .chatNotification__row
         .constrained

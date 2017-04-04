@@ -10,26 +10,26 @@ Module.register('chatnotification-update', function(_container) {
     
 
     $.get("/api/upcoming_chat", function(data) {
-      // $("#elem_to_place_foo").html(data.integer);
-      // console.log(_container.find('.js-chatNotification_startsin'));
-      console.log('MEOW');
 
+
+      console.log('MEOW');
 
       if (data) {
         if (data["chat"]) {
 
+          var notification = _container;
           var startsin_text = _container.find('.js-chatNotification_startsin');
 
           if (data["chat"]["status"] == "open") {
-            console.log("OPEN");
+            notification.setAttribute('data-open', 'open');
+            notification.find('a').setAttribute('href', data["chat"]["url"]);
           }
-          else {
-            console.log(data["chat"]["starts_in"]);
-          }
+
+          startsin_text.innerHTML = "Chat starts in " + data["chat"]["starts_in"];
+
 
         }
       }
-
 
 
     }, "json");
