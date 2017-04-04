@@ -5,6 +5,7 @@
   var init_applies = function(container) {
     Module.apply(container.find('.js-noteEdit'), 'noteEdit');
     Module.apply(container.find('.js-datetime'), 'datetimePicker');
+    Module.apply(container.find('.js-chatSidebar'), 'chatsidebar-update');
     Module.apply(container.find('.js-chatNotification'), 'chatnotification-update');
     Module.apply(container.find('.js-chatbar'), 'chatbar');
     Module.apply(container.find('.js-chathistory'), 'chatHistory');
