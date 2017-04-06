@@ -81,34 +81,34 @@ class Notification < ActiveRecord::Base
     return if sent?
 
     # Email notification
-    # site.users.where(email_opted_in: true).each do |user|
-    #   UserMailer.notification(
-    #     host,
-    #     user,
-    #     content
-    #   ).deliver_now
-    #   update(email_count: email_count + 1)
-    # end
+    site.users.where(email_opted_in: true).each do |user|
+      UserMailer.notification(
+        host,
+        user,
+        content
+      ).deliver_now
+      update(email_count: email_count + 1)
+    end
 
     # SMS notifications
-    numbers = site.users.where(sms_opted_in: true).pluck(:sms_contact)
+    # numbers = site.users.where(sms_opted_in: true).pluck(:sms_contact)
 
     # Remove any non-numeric chars
-    to_numbers = numbers.map{|n| n.tr("^0-9", "") }.join(",")
-    escaped_content = ERB::Util.url_encode(content)
+    # to_numbers = numbers.map{|n| n.tr("^0-9", "") }.join(",")
+    # escaped_content = ERB::Util.url_encode(content)
 
-    sms_api_url = [
-      "https://api.smsbroadcast.com.au/api-adv.php?",
-      "username=#{Rails.configuration.smsbroadcast_username}&",
-      "password=#{ERB::Util.url_encode(Rails.configuration.smsbroadcast_password)}&",
-      "to=#{to_numbers}&",
-      "from=#{site.pretty_name}&",
-      "message=#{escaped_content}&",
-      "maxsplit=3"
-    ].join()
+    # sms_api_url = [
+    #   "https://api.smsbroadcast.com.au/api-adv.php?",
+    #   "username=#{Rails.configuration.smsbroadcast_username}&",
+    #   "password=#{ERB::Util.url_encode(Rails.configuration.smsbroadcast_password)}&",
+    #   "to=#{to_numbers}&",
+    #   "from=#{site.pretty_name}&",
+    #   "message=#{escaped_content}&",
+    #   "maxsplit=3"
+    # ].join()
 
-    open(sms_api_url).read
-    update(sms_count: numbers.count)
+    # open(sms_api_url).read
+    # update(sms_count: numbers.count)
 
     # Twitter notification
     # credentials = Rails.configuration.twitter_credentials[site.name]
