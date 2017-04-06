@@ -81,14 +81,14 @@ class Notification < ActiveRecord::Base
     return if sent?
 
     # Email notification
-    site.users.where(email_opted_in: true).each do |user|
-      UserMailer.notification(
-        host,
-        user,
-        content
-      ).deliver_now
-      update(email_count: email_count + 1)
-    end
+    # site.users.where(email_opted_in: true).each do |user|
+    #   UserMailer.notification(
+    #     host,
+    #     user,
+    #     content
+    #   ).deliver_now
+    #   update(email_count: email_count + 1)
+    # end
 
     # SMS notifications
     # numbers = site.users.where(sms_opted_in: true).pluck(:sms_contact)
@@ -111,18 +111,18 @@ class Notification < ActiveRecord::Base
     # update(sms_count: numbers.count)
 
     # Twitter notification
-    # credentials = Rails.configuration.twitter_credentials[site.name]
-    # client = Twitter::REST::Client.new do |config|
-    #   config.consumer_key = credentials[:consumer_key]
-    #   config.consumer_secret = credentials[:consumer_secret]
-    #   config.access_token = credentials[:access_token]
-    #   config.access_token_secret = credentials[:access_token_secret]
-    # end
+    credentials = Rails.configuration.twitter_credentials[site.name]
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = credentials[:consumer_key]
+      config.consumer_secret = credentials[:consumer_secret]
+      config.access_token = credentials[:access_token]
+      config.access_token_secret = credentials[:access_token_secret]
+    end
 
-    # site.users.where(twitter_opted_in: true).each do |user|
-    #   client.create_direct_message(user.twitter_contact, content)
-    #   update(twitter_count: twitter_count + 1)
-    # end
+    site.users.where(twitter_opted_in: true).each do |user|
+      client.create_direct_message(user.twitter_contact, content)
+      update(twitter_count: twitter_count + 1)
+    end
 
     # Update status
     update(status: :sent)
