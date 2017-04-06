@@ -39,5 +39,7 @@
 //= require chat-bar
 //= require chathistory-bar
 //= require chatarchive-edit
+//= require chatnotification-update
+//= require chatsidebar-update
 
 //= require main
