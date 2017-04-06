@@ -2,12 +2,12 @@
 - chat_session = @site.chat_sessions.where(status: [ChatSession.statuses['open'], ChatSession.statuses['scheduled']]).first
 
 - if chat_session
-  .sidebar__chat.js-chatSidebar data-open=(chat_session.status == 'open') data-upcoming=((chat_session.scheduled_for <= 1.day.from_now) && (chat_session.status != 'open'))
+  .sidebar__chat data-open=(chat_session.status == 'open') data-upcoming=((chat_session.scheduled_for <= 1.day.from_now) && (chat_session.status != 'open'))
     .sidebar__chat-header
       - if (chat_session.status == 'open')
-        p.js-chatSidebar_startsin IN PROGRESS
+        p IN PROGRESS
       - else
-        p.js-chatSidebar_startsin UPCOMING
+        p UPCOMING
       = insert_svg("title-chat-small.svg", class:"heading__chat-small")
 
     .sidebar__chat-title
@@ -16,14 +16,14 @@
         a.btn__notify href=chat_session_path(chat_session) Join chat now
       - else
         - if current_user_can?(:chat_modify)
-          a.btn__notify.js-chatSidebar_btn href=chat_session_path(chat_session) View chat
+          a.btn__notify href=chat_session_path(chat_session) View chat
         - else
           - if @current_user
-            a.btn__notify.js-chatSidebar_btn href=preferences_path
+            a.btn__notify href=preferences_path
               = insert_svg("icons/icon_notify.svg", class:"icon__notify")
               | Get notified
           - else
-            a.btn__notify.js-chatSidebar_btn href=login_path data-modal=true
+            a.btn__notify href=login_path data-modal=true
               = insert_svg("icons/icon_notify.svg", class:"icon__notify")
               | Get notified
 
