@@ -98,3 +98,5 @@ All SCSS files should be named `*.scss.erb`. The `.erb` suffix allows us to use 
 - `$ bundle config build.nokogiri --use-system-libraries --with-xml2-include=$(brew --prefix libxml2)/include/libxml2`
 - `$ ARCHFLAGS="-arch x86_64" bundle install`
 - `$ bundle exec cap production deploy`
+- `$ bundle exec cap production unicorn:stop`
+- `$ bundle exec cap production unicorn:start`
