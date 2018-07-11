@@ -193,7 +193,7 @@
     if (response.status && response.status == 'archived') {
       chat_open = false;
       alert('This chat has ended');
-      document.location.href = 'http://' + document.domain;
+      document.location.href = 'https://' + document.domain;
       return;
     }
 
