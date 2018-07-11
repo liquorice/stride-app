@@ -3,7 +3,7 @@ lock '3.4.0'
 
 set :application, 'stride-app'
 
-set :repo_url, 'git@bitbucket.org:liquoricestudio/stride-app.git'
+set :repo_url, 'git@github.com:liquorice/stride-app.git'
 set :rbenv_ruby, '2.0.0-p481'
 
 set :default_env, { path: "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH" }

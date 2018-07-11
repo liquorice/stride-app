@@ -91,3 +91,10 @@ All SCSS files should be named `*.scss.erb`. The `.erb` suffix allows us to use 
                    /  |   |  |         |  |  |  |
                   "---"  /___|        /___|  /__|
                          '"""         '"""  '"""
+
+## From scratch on macOS
+
+- `$ brew install libxml2`
+- `$ bundle config build.nokogiri --use-system-libraries --with-xml2-include=$(brew --prefix libxml2)/include/libxml2`
+- `$ ARCHFLAGS="-arch x86_64" bundle install`
+- `$ bundle exec cap production deploy`
