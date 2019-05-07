@@ -8,3 +8,9 @@ set :unicorn_config_path, '/var/www/stride-production/current/config/unicorn/pro
 set :unicorn_pid, '/var/www/stride-production/shared/tmp/unicorn-production.pid'
 
 set :branch, 'production'
+
+set :pty, true
+set :ssh_options, {
+  forward_agent: true,
+  keys: %w[~/.ssh/stride-a.pem]
+}

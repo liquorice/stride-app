@@ -45,5 +45,5 @@ html
           = yield
 
     javascript:
-      var KB_API_URL = "http://#{request.host.gsub(/forums\./, "")}/api";
+      var KB_API_URL = "https://#{request.host.gsub(/forums\./, "")}/api";
     = javascript_include_tag 'application'
