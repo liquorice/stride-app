@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -23,25 +22,21 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "ordinal"
+    t.index ["site_id"], name: "index_access_levels_on_site_id", using: :btree
   end
-
-  add_index "access_levels", ["site_id"], name: "index_access_levels_on_site_id", using: :btree
 
   create_table "chat_messages", force: :cascade do |t|
     t.integer  "chat_session_id"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.boolean  "visible",                 default: true
-    t.boolean  "private",                 default: false
-    t.integer  "recipient_id"
     t.integer  "private_chat_session_id"
+    t.index ["chat_session_id"], name: "index_chat_messages_on_chat_session_id", using: :btree
+    t.index ["private_chat_session_id"], name: "index_chat_messages_on_private_chat_session_id", using: :btree
+    t.index ["user_id"], name: "index_chat_messages_on_user_id", using: :btree
   end
-
-  add_index "chat_messages", ["chat_session_id"], name: "index_chat_messages_on_chat_session_id", using: :btree
-  add_index "chat_messages", ["private_chat_session_id"], name: "index_chat_messages_on_private_chat_session_id", using: :btree
-  add_index "chat_messages", ["user_id"], name: "index_chat_messages_on_user_id", using: :btree
 
   create_table "chat_sessions", force: :cascade do |t|
     t.string   "name"
@@ -57,9 +52,8 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.string   "discreet_name"
     t.text     "notes"
     t.integer  "moderator_id"
+    t.index ["site_id"], name: "index_chat_sessions_on_site_id", using: :btree
   end
-
-  add_index "chat_sessions", ["site_id"], name: "index_chat_sessions_on_site_id", using: :btree
 
   create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type"
@@ -75,16 +69,15 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.text     "referrer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
+    t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
+    t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
+    t.index ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
+    t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
+    t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
+    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
+    t.index ["user_id"], name: "index_impressions_on_user_id", using: :btree
   end
-
-  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
-  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
-  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
-  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
-  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
-  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
-  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
-  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
@@ -97,18 +90,16 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.string   "content_type"
     t.integer  "status",        default: 0
     t.string   "subject_title", default: ""
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
-
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "password_requests", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_password_requests_on_user_id", using: :btree
   end
-
-  add_index "password_requests", ["user_id"], name: "index_password_requests_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.integer  "topic_thread_id"
@@ -119,10 +110,9 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.boolean  "visible",         default: true
     t.datetime "hidden_at"
     t.integer  "quoted_post_id"
+    t.index ["topic_thread_id"], name: "index_posts_on_topic_thread_id", using: :btree
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
-
-  add_index "posts", ["topic_thread_id"], name: "index_posts_on_topic_thread_id", using: :btree
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "private_chat_sessions", force: :cascade do |t|
     t.integer  "moderator_id"
@@ -133,10 +123,9 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.datetime "updated_at",                  null: false
     t.integer  "status",          default: 0
     t.integer  "chat_session_id"
+    t.index ["chat_session_id"], name: "index_private_chat_sessions_on_chat_session_id", using: :btree
+    t.index ["user_id"], name: "index_private_chat_sessions_on_user_id", using: :btree
   end
-
-  add_index "private_chat_sessions", ["chat_session_id"], name: "index_private_chat_sessions_on_chat_session_id", using: :btree
-  add_index "private_chat_sessions", ["user_id"], name: "index_private_chat_sessions_on_user_id", using: :btree
 
   create_table "shortened_urls", force: :cascade do |t|
     t.string   "long_url"
@@ -164,10 +153,9 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.datetime "updated_at",                           null: false
     t.boolean  "similar_thread_check"
     t.integer  "impressions_count"
+    t.index ["topic_id"], name: "index_topic_threads_on_topic_id", using: :btree
+    t.index ["user_id"], name: "index_topic_threads_on_user_id", using: :btree
   end
-
-  add_index "topic_threads", ["topic_id"], name: "index_topic_threads_on_topic_id", using: :btree
-  add_index "topic_threads", ["user_id"], name: "index_topic_threads_on_user_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"
@@ -177,9 +165,8 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.integer  "site_id"
     t.integer  "ordinal",     default: 0
     t.boolean  "visible",     default: true
+    t.index ["site_id"], name: "index_topics_on_site_id", using: :btree
   end
-
-  add_index "topics", ["site_id"], name: "index_topics_on_site_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -199,10 +186,9 @@ ActiveRecord::Schema.define(version: 20160722143835) do
     t.boolean  "twitter_opted_in", default: false
     t.string   "sms_contact"
     t.string   "twitter_contact"
+    t.index ["access_level_id"], name: "index_users_on_access_level_id", using: :btree
+    t.index ["site_id"], name: "index_users_on_site_id", using: :btree
   end
-
-  add_index "users", ["access_level_id"], name: "index_users_on_access_level_id", using: :btree
-  add_index "users", ["site_id"], name: "index_users_on_site_id", using: :btree
 
   add_foreign_key "access_levels", "sites"
   add_foreign_key "chat_messages", "chat_sessions"

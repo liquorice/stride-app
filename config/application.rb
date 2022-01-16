@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -25,6 +25,8 @@ module StrideApp
 
     # Use Amazon SES for mailing
     config.action_mailer.delivery_method = :aws_sdk
+
+    # credentials below should be moved outside of git
 
     # For SMS sending
     config.smsbroadcast_username = "liquoricestudio"

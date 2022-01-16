@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -12,11 +12,12 @@ gem "slim-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Auto prefixer for Rails
-gem "autoprefixer-rails"
+gem "execjs", '< 2.7'
+gem "autoprefixer-rails", '9.8.6'
 
 # For uglifier, mebbe?
-gem 'therubyracer', '0.12.2', platforms: :ruby
-gem 'libv8', '3.16.14.15'
+# gem 'therubyracer', platforms: :ruby
+# gem 'libv8'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -47,6 +48,8 @@ gem 'impressionist'
 gem "recaptcha", require: "recaptcha/rails"
 
 gem "twitter"
+
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

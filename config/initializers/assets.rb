@@ -8,7 +8,6 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# TODO this is a massive hack and makes me sad. Should instead scan the contents
-# of assets/stylesheets/.
+# Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += ['pete.css', 'dale.css', 'admin.css', 'chat.js']
+Rails.application.config.assets.precompile += %w( pete.min.css, dale.min.css, admin.css, chat.js)
