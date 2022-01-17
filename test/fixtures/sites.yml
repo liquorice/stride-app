@@ -1,7 +1,0 @@
-pete:
-  name: pete
-  hosts: [forums.stride-base.dev, forums.pete.dev, forums.stage.pete.org.au, forums.pete.org.au]
-
-dale:
-  name: dale
-  hosts: [forums.dale.dev, forums.stage.dale.org.au, forums.dale.org.au,]
