@@ -1,4 +1,4 @@
-class AddNotificationDetailsToUsers < ActiveRecord::Migration
+class AddNotificationDetailsToUsers < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :email_opted_in, :boolean, default: false
     add_column :users, :sms_opted_in, :boolean, default: false

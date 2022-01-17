@@ -15,7 +15,6 @@ class ChatSessionsController < ApplicationController
 
   def show
     @chat_session = @site.chat_sessions.find(params[:id])
-    
     require_permission :chat_modify if @chat_session.archived?
     render @chat_session.status
   end
@@ -63,7 +62,7 @@ class ChatSessionsController < ApplicationController
     # Only the chat moderator can update the notes
     raise Exceptions::NotAuthorisedError unless @chat_session.moderator == @current_user
 
-    if @chat_session.update(notes: params[:notes])
+    if @chat_session.update(params.require(:notes).permit(:notes))
       flash[:success] = "#{@chat_session.name} successfully updated"
       redirect_to chat_session_path(@chat_session)
     else

@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 
     @post = @thread.posts.new(
       user: @current_user,
-      content: params[:content],
+      content: params.permit(:content)[:content],
       quoted_post_id: quoted_post_id
     )
 

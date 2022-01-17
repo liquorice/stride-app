@@ -76,7 +76,7 @@ Rails.application.routes.draw do
   get "notifications/new" => "notifications#new", as: :new_notification
   post "notifications/proof/:content_type" => "notifications#proof", as: :new_notification_proof
   post "notifications/create" => "notifications#create", as: :create_notification
-
+  get 'api' => 'api#index'
   # API
   scope :api do
     get 'threads_for_tag/:tag' => 'api#threads_for_tag'

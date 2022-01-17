@@ -1,4 +1,4 @@
-class AddImpressionsCountToTopicThreads < ActiveRecord::Migration
+class AddImpressionsCountToTopicThreads < ActiveRecord::Migration[4.2]
   def change
     add_column :topic_threads, :impressions_count, :integer
   end

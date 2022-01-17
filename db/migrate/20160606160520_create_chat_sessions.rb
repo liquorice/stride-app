@@ -1,4 +1,4 @@
-class CreateChatSessions < ActiveRecord::Migration
+class CreateChatSessions < ActiveRecord::Migration[4.2]
   def change
     create_table :chat_sessions do |t|
       t.string :name

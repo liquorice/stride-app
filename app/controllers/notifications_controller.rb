@@ -17,10 +17,10 @@ class NotificationsController < ApplicationController
   def proof
     require_permission :notification_create
 
-    @content_type = params[:content_type].to_sym
+    @content_type = params.permit(:content_type)[:content_type].to_sym
     raise Exceptions::NotFoundError unless Notification.content_types.include?(@content_type)
 
-    @notification_data = params[:notification][:data]
+    @notification_data = notification_params[:data]
     @subject_title = Notification.subject_title_for_data(@notification_data)
     @notification_content = Notification.send(@content_type, *[@site, @notification_data])
   end
@@ -28,10 +28,11 @@ class NotificationsController < ApplicationController
   def create
     require_permission :notification_create
 
-    @content_type = params[:notification][:content_type].to_sym
+    @content_type = notification_params[:content_type].to_sym
     raise Exceptions::NotFoundError unless Notification.content_types.include?(@content_type)
 
-    @notification_data = params[:notification][:data]
+    @notification_data = notification_params[:data]
+
     @notification_content = Notification.send(@content_type, *[@site, @notification_data])
     @subject_title = Notification.subject_title_for_data(@notification_data)
 
@@ -54,6 +55,10 @@ class NotificationsController < ApplicationController
     api_raw = open(api_url).read
     api_data = JSON.parse(api_raw)
     api_data["articles"]
+  end
+
+  def notification_params
+    params.require(:notification).permit(:content_type, data: [:chat_session_id])
   end
 
 end
