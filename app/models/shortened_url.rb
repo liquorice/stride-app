@@ -1,4 +1,4 @@
-class ShortenedUrl < ActiveRecord::Base
+class ShortenedUrl < ApplicationRecord
 
   def self.shorten(url)
     # Check cache to see if URL has already been shortened

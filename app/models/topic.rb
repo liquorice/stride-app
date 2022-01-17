@@ -1,4 +1,4 @@
-class Topic < ActiveRecord::Base
+class Topic < ApplicationRecord
   belongs_to :site
   has_many :topic_threads
   validates :name, presence: true

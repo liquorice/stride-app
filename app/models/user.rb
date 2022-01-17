@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Rails.application.routes.url_helpers
 
   # --- Associations ---

@@ -1,4 +1,4 @@
-class AccessLevel < ActiveRecord::Base
+class AccessLevel < ApplicationRecord
   belongs_to :site
   has_many :users
 

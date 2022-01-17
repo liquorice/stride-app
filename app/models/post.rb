@@ -1,4 +1,4 @@
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
   # URL helpers needed for building direct_path
   include Rails.application.routes.url_helpers
 

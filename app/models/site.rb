@@ -1,4 +1,4 @@
-class Site < ActiveRecord::Base
+class Site < ApplicationRecord
   has_many :access_levels
   has_many :topics
   has_many :topic_threads, through: :topics

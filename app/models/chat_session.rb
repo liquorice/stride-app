@@ -1,4 +1,4 @@
-class ChatSession < ActiveRecord::Base
+class ChatSession < ApplicationRecord
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::DateHelper
   include ApplicationHelper

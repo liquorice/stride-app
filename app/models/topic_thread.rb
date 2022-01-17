@@ -1,4 +1,4 @@
-class TopicThread < ActiveRecord::Base
+class TopicThread < ApplicationRecord
   include ActionView::Helpers::DateHelper
   is_impressionable :counter_cache => true
   # --- Associations ---

@@ -1,4 +1,4 @@
-class PasswordRequest < ActiveRecord::Base
+class PasswordRequest < ApplicationRecord
   belongs_to :user
 
   before_validation :assign_token
