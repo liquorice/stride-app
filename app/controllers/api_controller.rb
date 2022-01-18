@@ -2,7 +2,7 @@ class ApiController < ApplicationController
   include ActionView::Helpers::DateHelper
   include ApplicationHelper
 
-  after_filter :cors_set_access_control_headers
+  after_action :cors_set_access_control_headers
 
   def index
     # TODO: Temporary only
