@@ -49,7 +49,6 @@ gem 'aws-sdk-rails', '~> 1.0'
 gem 'impressionist', '~>1.6.1'
 gem 'dotenv', groups: [:development, :test]
 gem "recaptcha", require: "recaptcha/rails"
-gem 'rack-cors'
 gem "twitter"
 gem 'rspec-rails'
 

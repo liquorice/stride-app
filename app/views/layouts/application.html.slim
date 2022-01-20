@@ -111,7 +111,7 @@ html
     = render "/partials/footer"
 
     javascript:
-      var KB_API_URL = "https://#{request.host.gsub(/forums\./, "")}/api";
+      var KB_API_URL = "#{api_path}";
 
     = javascript_include_tag 'application'
     - if content_for? :footer
