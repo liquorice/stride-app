@@ -17,16 +17,21 @@ class UsersController < ApplicationController
   end
 
   def signup
+    success = verify_recaptcha(action: 'signup', minimum_score: 0.5, secret_key: ENV['RECAPTCHA_SECRET_KEY_V3'], model: @user)
+    checkbox_success = verify_recaptcha(model: @user) unless success
+
     @user = @site.users.new(new_user_params)
 
-    # Assign the 0th access group to the user
+    # Assign the default access group to the user
+    # Default access level is the first record
     @user.access_level = @site.access_levels.first
 
-    if verify_recaptcha(model: @user) && @user.save
+    if (success || checkbox_success) && @user.save
       flash[:success] = "Account created, welcome #{@user.name}"
       log_in(@user)
       redirect_to topics_preview_path
     else
+      @show_checkbox_recaptcha = true unless success
       flash.now[:error] = @user.errors.full_messages.to_sentence
       render :register, layout: 'modal'
     end

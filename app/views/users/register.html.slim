@@ -28,7 +28,10 @@ h1 Register
       = f.password_field :password_confirmation, class:"input__textfield", placeholder:"Re-enter password"
 
   .label.large.recaptcha
-    = recaptcha_tags
+    -if @show_checkbox_recaptcha
+      = recaptcha_tags
+    else
+      = recaptcha_v3(action: 'signup', site_key: ENV['RECAPTCHA_SITE_KEY_V3'])
 
   .form__button.js-popup-close Cancel
   button.form__button.primary Register

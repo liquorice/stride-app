@@ -1,3 +1,4 @@
+
 def next?
   File.basename(__FILE__) == "Gemfile.next"
 end
@@ -47,7 +48,6 @@ gem 'aws-sdk-rails', '~> 1.0'
 
 # For tracking views on forum threads
 gem 'impressionist', '~>1.6.1'
-gem 'dotenv', groups: [:development, :test]
 gem "recaptcha", require: "recaptcha/rails"
 gem "twitter"
 gem 'rspec-rails'
@@ -58,6 +58,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'listen'
+  gem 'dotenv-rails'
 end
 
 group :development do
