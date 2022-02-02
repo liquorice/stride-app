@@ -152,6 +152,8 @@ GEM
     nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
       racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
+      racc (~> 1.4)
     pg (1.2.3)
     public_suffix (4.0.6)
     puma (5.5.2)
@@ -279,6 +281,7 @@ GEM
 
 PLATFORMS
   -darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   autoprefixer-rails (= 9.8.6)
