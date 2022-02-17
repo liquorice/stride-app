@@ -14,8 +14,8 @@ when 'production'
 end
 
 user                 = User.create(site: site, name: 'admin', email:'james.dantes@reinteractive.com', superuser: true, password_digest: BCrypt::Password.create("Test1234"))
-access_level         = AccessLevel.create(site: nil, name: "administrator", permissions_data: AccessLevel.permissions_list)
+access_level         = AccessLevel.create(site: nil, name: "administrator", permissions_data: AccessLevel.permissions_list, ordinal: 5)
 general_access_level = AccessLevel.create(site: site, name: "administrator",
-                                          permissions_data: AccessLevel.permissions_list.slice("user_changeEmail", "forums_modify", "topics_create", "topics_modify", "topicThreads_modify", "topicThreads_create", "post_create", "message_create", "preferences_modify"))
+                                          permissions_data: AccessLevel.permissions_list.slice("user_changeEmail", "forums_modify", "topics_create", "topics_modify", "topicThreads_create", "post_create", "message_create", "preferences_modify"), ordinal: 1)
 user.access_level    = access_level
 user.save!
